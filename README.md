@@ -73,7 +73,8 @@ pnpm --filter frontend dev
 
 Phase 0 (de-risk) → Phase 1 (spatial MVP) → Phase 2 (proximity A/V) → Phase 3 (multi-space,
 screen-share, chat) → Phase 4 (multi-tenancy) → Phase 5 (enterprise hardening) →
-Phase 6 (scale + SOC 2). Full detail in [`CLAUDE.md`](./CLAUDE.md).
+Phase 6 (scale + SOC 2). Full detail, with a trackable checklist per phase, in
+[`CLAUDE.md`](./CLAUDE.md).
 
 ## Team
 

@@ -61,15 +61,129 @@ Local infra: `docker compose up` from `infra/docker` (Postgres, Redis, LiveKit).
 
 ## Phase roadmap
 
-- **Phase 0** (1–2 wk): de-risk — WS echo, LiveKit audio between two clients, tilemap render.
-- **Phase 1** (3–4 wk): single-room spatial MVP, real-time avatars.
-- **Phase 2** (3–5 wk): proximity A/V. **Tightly coupled — pair on this, don't parallelize.**
-- **Phase 3** (4–6 wk): product surface — multiple spaces, screen-share, chat.
-- **Phase 4** (3–5 wk): multi-tenancy + org accounts.
-- **Phase 5** (6–10 wk): enterprise hardening — SSO, SCIM, audit logs, data residency.
-- **Phase 6** (ongoing): scale + SOC 2 Type I → II.
+Track progress by checking items off as they land. Each phase is split into backend and
+frontend enhancement issues, plus one checkbox at the end for the phase's overall goal
+(quoted from the build roadmap doc).
 
-Rough cumulative: proximity MVP ~2.5–3 mo · pilot-ready ~4–5 mo · enterprise-ready ~8–11 mo.
+### Phase 0 — De-risk & Scaffold (1–2 wk)
+
+**Backend**
+- [ ] Monorepo + NestJS skeleton
+- [ ] WebSocket gateway echo
+- [ ] LiveKit spike — get one audio track flowing between two clients
+
+**Frontend**
+- [ ] Render a tilemap
+- [ ] Move an avatar with keyboard input
+- [ ] Open a WS connection sending position
+
+**Goal**
+- [ ] **Phase goal:** Two browsers show two avatars moving on a shared map, and a raw LiveKit call works between them.
+
+### Phase 1 — Spatial MVP (3–4 wk)
+
+**Backend**
+- [ ] Position broadcast via Redis pub/sub
+- [ ] Room/presence state (join/leave)
+- [ ] User model
+- [ ] Simple JWT auth
+
+**Frontend**
+- [ ] Collision layer
+- [ ] Smooth local movement + interpolation of remote avatars
+- [ ] Name tags
+- [ ] Presence list
+
+**Goal**
+- [ ] **Phase goal:** 5–10 users in one room see each other move smoothly; refresh drops you back in.
+
+### Phase 2 — Proximity A/V (3–5 wk)
+
+> ⚠️ Tightly coupled — pair on this, don't parallelize.
+
+**Backend**
+- [ ] Proximity computation
+- [ ] LiveKit token issuance
+- [ ] Drive subscribe/unsubscribe on movement
+- [ ] Handle churn
+
+**Frontend**
+- [ ] LiveKit client integration
+- [ ] Attach/detach tracks on proximity events
+- [ ] Distance-based volume
+- [ ] Mute/camera controls
+- [ ] Private-area support
+
+**Goal**
+- [ ] **Phase goal:** Walking near someone connects A/V, walking away disconnects.
+
+### Phase 3 — Product Surface (4–6 wk)
+
+**Backend**
+- [ ] Multiple spaces/maps
+- [ ] Spawn points
+- [ ] Interactive objects
+- [ ] Screen-share signaling
+- [ ] Layout persistence
+
+**Frontend**
+- [ ] Map loader (or basic editor)
+- [ ] Interactable tiles
+- [ ] Screen-share UI
+- [ ] Text chat
+- [ ] Emotes
+
+**Goal**
+- [ ] **Phase goal:** An org can have several rooms, share screens, drop into meeting areas, and text chat.
+
+### Phase 4 — Multi-tenancy & Org Accounts (3–5 wk)
+
+**Backend**
+- [ ] Tenant model
+- [ ] Org/workspace boundaries
+- [ ] Roles (admin/member/guest)
+- [ ] Invites
+- [ ] Tenant isolation
+
+**Frontend**
+- [ ] Org onboarding
+- [ ] Admin panel basics
+- [ ] Member management
+
+**Goal**
+- [ ] **Phase goal:** Two separate companies use the platform fully isolated from each other.
+
+### Phase 5 — Enterprise Hardening (6–10 wk)
+
+**Backend**
+- [ ] SSO (SAML/OIDC)
+- [ ] SCIM provisioning
+- [ ] Audit logs
+- [ ] Rate limiting
+- [ ] Secrets management
+- [ ] Observability
+- [ ] Backups
+- [ ] India data-residency
+
+**Frontend**
+- [ ] SSO login flows
+- [ ] Audit views
+- [ ] SCIM sync UI
+
+**Goal**
+- [ ] **Phase goal:** An IT admin can wire up SSO + auto-provisioning and see audit logs.
+
+### Phase 6 — Scale & Compliance (ongoing)
+
+**Backend**
+- [ ] Horizontal scaling of WS + proximity workers
+- [ ] LiveKit/SFU tuning
+- [ ] Load testing
+- [ ] Disaster recovery
+- [ ] SOC 2 Type I → II path
+
+**Goal**
+- [ ] **Phase goal:** Your load target holds and you have a SOC 2 Type I report.
 
 ## Working constraints (read before planning work)
 

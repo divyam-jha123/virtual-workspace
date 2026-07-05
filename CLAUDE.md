@@ -8,6 +8,12 @@ Guidance for Claude Code (and humans) working in this repository.
 virtual office): users move avatars around a 2D map and get **proximity-based audio/video** —
 you hear/see people near you, and conversations fade as you walk away.
 
+## pushing rules to github (for automated push by claude)
+
+**commands**
+commit - git commit -m "<commit message>"
+in commit message dont put "Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>" these line. commit messages should be one linners only
+
 
 ## Monorepo layout
 

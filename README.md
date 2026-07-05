@@ -1,4 +1,5 @@
-# Virtual Space for Enterprises
+## Virtual Space for Enterprises
+
 
 A **spatial collaboration platform** — a Gather-style virtual office where users move
 avatars around a 2D map and get **proximity-based audio/video**: you hear and see the people

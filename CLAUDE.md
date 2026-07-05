@@ -92,7 +92,6 @@ frontend enhancement issues, plus one checkbox at the end for the phase's overal
 - [ ] Monorepo + NestJS skeleton
 - [ ] Prove avatar position over LiveKit data channel (two clients)
 - [ ] LiveKit spike — get one audio track flowing between two clients
-- [ ] Deploy hello-world NestJS to App Platform (BLR1) — prove push-to-deploy + TLS
 
 **Frontend**
 - [ ] Render a tilemap
@@ -217,14 +216,17 @@ frontend enhancement issues, plus one checkbox at the end for the phase's overal
 
 ## Deployment targets
 
-**Option B on DigitalOcean** — the topology carries unchanged from Phase 1 through Phase 4:
+**Phases 0–3 are local development only** (Docker + LiveKit Cloud free tier) — no cloud
+hosting is provisioned during dev. The **first cloud deploy is at Phase 4** (pilot-ready).
+
+**Option B on DigitalOcean** (the Phase 4 target topology, then unchanged through Phase 4):
 
 - Backend (stateless REST) + static frontend → **DigitalOcean App Platform, BLR1 (Bangalore)**.
   Push-to-deploy from GitHub, automatic TLS on `workium.cc`, scale by instance count.
 - Postgres → **Neon** (→ DO Managed Postgres BLR at Phase 5 for India residency).
 - Realtime A/V + game-state transport → **LiveKit Cloud** (Build tier → Ship at real pilot use).
-- Redis → **none until Phase 3+** (Upstash or DO Managed Valkey), only for rate-limit/cache.
-- India-region infra later via `infra/terraform` (introduced Phase 4); App Platform → DOKS at Phase 6.
+- Redis → **none until actually needed** (Upstash or DO Managed Valkey), only for rate-limit/cache.
+- India-region infra via `infra/terraform` (introduced Phase 4); App Platform → DOKS at Phase 6.
 
 See [`docs/deployment-plan.md`](docs/deployment-plan.md) for the full phase-by-phase plan,
 cost trajectory, and parked decisions.

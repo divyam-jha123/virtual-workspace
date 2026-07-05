@@ -90,7 +90,7 @@ frontend enhancement issues, plus one checkbox at the end for the phase's overal
 
 **Backend**
 - [ ] Monorepo + NestJS skeleton
-- [ ] Prove position + one audio track over LiveKit (data channel + track)
+- [ ] Prove avatar position over LiveKit data channel (two clients)
 - [ ] LiveKit spike — get one audio track flowing between two clients
 - [ ] Deploy hello-world NestJS to App Platform (BLR1) — prove push-to-deploy + TLS
 

@@ -73,7 +73,7 @@ frontend enhancement issues, plus one checkbox at the end for the phase's overal
 - [ ] LiveKit spike — get one audio track flowing between two clients
 
 **Frontend**
-- [ ] Render a tilemap
+- [x] Render a tilemap
 - [ ] Move an avatar with keyboard input
 - [ ] Open a WS connection sending position
 

@@ -1,0 +1,9 @@
+{
+  "name": "virtual-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter frontend dev",
+    "build": "pnpm -r build"
+  },
+  "packageManager": "pnpm@11.7.0"
+}

@@ -23,6 +23,9 @@ function validate(env: Record<string, unknown>): Record<string, unknown> {
   imports: [
     NestConfigModule.forRoot({
       isGlobal: true,
+      // Credentials live in the monorepo-root .env; also honour a backend-local
+      // .env if present. First match wins.
+      envFilePath: ['.env', '../../.env'],
       validate,
     }),
   ],

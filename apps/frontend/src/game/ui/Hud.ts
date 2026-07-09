@@ -10,7 +10,8 @@ export function renderHud(root: HTMLElement, title: string, onExit: () => void):
 
   const hint = document.createElement("div");
   hint.className = "hud-hint";
-  hint.textContent = "Arrows/WASD or drag to pan · scroll to zoom · ESC or Exit to change map";
+  hint.textContent =
+    "WASD / arrows to move · scroll to zoom · ` toggles debug · ESC or Exit to change map";
   root.appendChild(hint);
 
   const exitBtn = document.createElement("button");

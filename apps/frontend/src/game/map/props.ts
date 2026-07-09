@@ -585,6 +585,7 @@ export function getPropTexture(theme: OfficeTheme, prop: PropType): Texture {
   }
 
   tex = Texture.from(canvas);
+  tex.source.scaleMode = "nearest"; // crisp pixel art at any zoom
   cache.set(key, tex);
   return tex;
 }

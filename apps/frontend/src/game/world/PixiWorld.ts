@@ -3,20 +3,23 @@ import type { OfficeMapData } from "../map/schema";
 import type { OfficeTheme } from "../map/themes";
 import { TILE_SIZE, getTileTexture, Tile } from "../map/tileset";
 import { getPropTexture } from "../map/props";
+import { Camera } from "./Camera";
+import { Input } from "../entities/Input";
+import { Player } from "../entities/Player";
+import { createCollisionMap, getSpawnTile, type CollisionMap } from "../map/collision";
+import { buildCharacterSpritesheet, getCharacter } from "../entities/characters";
 
-const PAN_SPEED = 420;
 const MAX_ZOOM = 4;
 /**
- * Zoom to open a map at: 1x, the native/unscaled resolution the pixel art
- * was drawn at (one 32px tile = 32 screen px). `minZoom` (fit the whole map
- * on screen) shrinks an ~80-tile-wide office down to a few pixels per desk —
- * far too small — but opening pre-zoomed-in past 1x reads as artificially
- * zoomed rather than "normal". Players scroll/pan to see the rest.
+ * Default opening zoom, as a multiple of the fit-to-screen minimum: 1.0 would
+ * show the whole floor exactly; 1.25 opens 25% tighter so the avatar reads a
+ * bit larger while most of the office is still visible. The camera can't go
+ * below the fit minimum, so the map always fills the viewport.
  */
-const DEFAULT_ZOOM = 1;
-/** How fast the current zoom chases the target zoom each second (1 = instant-ish). */
-const ZOOM_LERP_SPEED = 12;
-const PAN_KEYS = new Set([
+const DEFAULT_ZOOM_FACTOR = 1.25;
+const PAN_SPEED = 420; // spectate keyboard pan, world px/sec at zoom 1
+
+const SPECTATE_PAN_KEYS = new Set([
   "ArrowUp",
   "ArrowDown",
   "ArrowLeft",
@@ -32,72 +35,78 @@ export interface PixiWorldOptions {
   map: OfficeMapData;
   theme: OfficeTheme;
   onExit: () => void;
+  /** when set, spawns that avatar and switches to follow-cam "play" mode */
+  characterId?: string;
 }
 
 /**
  * Renders one OfficeMapData as a layered PixiJS scene (floor → walls →
- * decoration → depth-sorted furniture) and drives camera pan/zoom from
- * keyboard, drag and wheel input. Purely data-driven: it has no idea what a
- * "boardroom" is, it just draws tiles and props from the map.
+ * decoration → depth-sorted furniture + player) and runs one of two modes:
  *
- * Zoom is pointer-anchored (Figma/Google Maps style): the world point under
- * the cursor at the moment of the wheel event stays under the cursor as the
- * zoom eases toward its new target. Trackpad pinch-zoom reaches this same
- * code path since browsers dispatch it as a `wheel` event (with `ctrlKey`),
- * so no separate handling is needed.
+ *  - spectate (no character): free camera — WASD/drag pan, pointer-anchored
+ *    wheel zoom.
+ *  - play (character set): the avatar moves with WASD/arrows, the camera
+ *    follows it, and `~` toggles a debug overlay (tile coords + FPS).
  */
 export class PixiWorld {
   private app: Application;
   private world: Container;
   private opts: PixiWorldOptions;
-  private worldW: number;
-  private worldH: number;
-  private minZoom = 1;
-  private zoom = 1;
-  private targetZoom = 1;
-  private scrollX = 0;
-  private scrollY = 0;
-  /** World point that must stay under `anchorScreen` while zoom eases toward its target. */
-  private anchorWorld = { x: 0, y: 0 };
-  private anchorScreen = { x: 0, y: 0 };
-  private hasAnchor = false;
-  private heldKeys = new Set<string>();
+  private camera: Camera;
+  private furnitureLayer!: Container;
+
+  // spectate state
+  private heldPanKeys = new Set<string>();
   private dragging = false;
   private lastPointer = { x: 0, y: 0 };
+
+  // play state
+  private input?: Input;
+  private player?: Player;
+  private collision?: CollisionMap;
+  private debugOn = false;
+  private debugEl?: HTMLDivElement;
+
+  private get isPlayMode(): boolean {
+    return this.player !== undefined;
+  }
 
   private onKeyDown = (e: KeyboardEvent) => {
     if (e.code === "Escape") {
       this.opts.onExit();
       return;
     }
-    if (PAN_KEYS.has(e.code)) this.heldKeys.add(e.code);
+    if (e.code === "Backquote") {
+      this.toggleDebug();
+      return;
+    }
+    // Spectate pan keys only matter without an avatar (Input owns them in play mode).
+    if (!this.isPlayMode && SPECTATE_PAN_KEYS.has(e.code)) this.heldPanKeys.add(e.code);
   };
   private onKeyUp = (e: KeyboardEvent) => {
-    this.heldKeys.delete(e.code);
+    this.heldPanKeys.delete(e.code);
   };
   private onWheel = (e: WheelEvent) => {
     e.preventDefault();
-    const { x: sx, y: sy } = this.toCanvasPoint(e.clientX, e.clientY);
-    const worldX = sx / this.zoom + this.scrollX;
-    const worldY = sy / this.zoom + this.scrollY;
-    const factor = Math.pow(1.1, -e.deltaY / 100);
-    this.targetZoom = Math.max(this.minZoom, Math.min(MAX_ZOOM, this.targetZoom * factor));
-    this.anchorScreen = { x: sx, y: sy };
-    this.anchorWorld = { x: worldX, y: worldY };
-    this.hasAnchor = true;
+    if (this.isPlayMode) {
+      this.camera.nudgeZoom(e.deltaY);
+    } else {
+      const { x, y } = this.toCanvasPoint(e.clientX, e.clientY);
+      this.camera.zoomAt(e.deltaY, x, y);
+    }
   };
   private onPointerDown = (e: PointerEvent) => {
+    if (this.isPlayMode) return; // camera is locked to the avatar
     this.dragging = true;
     this.lastPointer = { x: e.clientX, y: e.clientY };
   };
   private onPointerMove = (e: PointerEvent) => {
     if (!this.dragging) return;
-    this.scrollX -= (e.clientX - this.lastPointer.x) / this.zoom;
-    this.scrollY -= (e.clientY - this.lastPointer.y) / this.zoom;
+    this.camera.moveScroll(
+      -(e.clientX - this.lastPointer.x) / this.camera.zoom,
+      -(e.clientY - this.lastPointer.y) / this.camera.zoom,
+    );
     this.lastPointer = { x: e.clientX, y: e.clientY };
-    this.hasAnchor = false;
-    this.clampScroll();
-    this.applyTransform();
   };
   private onPointerUp = () => {
     this.dragging = false;
@@ -107,8 +116,10 @@ export class PixiWorld {
     this.app = app;
     this.world = world;
     this.opts = opts;
-    this.worldW = opts.map.width * TILE_SIZE;
-    this.worldH = opts.map.height * TILE_SIZE;
+    const worldW = opts.map.width * TILE_SIZE;
+    const worldH = opts.map.height * TILE_SIZE;
+    this.camera = new Camera(worldW, worldH, app.screen.width, app.screen.height, MAX_ZOOM, 0);
+    this.camera.setZoomFromFit(DEFAULT_ZOOM_FACTOR);
   }
 
   static async create(opts: PixiWorldOptions): Promise<PixiWorld> {
@@ -126,13 +137,21 @@ export class PixiWorld {
 
     const instance = new PixiWorld(app, world, opts);
     instance.build();
+    if (opts.characterId) await instance.setupPlayer(opts.characterId);
     instance.setupInput();
-    instance.recomputeMinZoom();
-    const startZoom = Math.max(instance.minZoom, DEFAULT_ZOOM);
-    instance.zoom = startZoom;
-    instance.targetZoom = startZoom;
-    instance.centerCamera();
-    app.ticker.add((ticker) => instance.tick(ticker.deltaMS));
+
+    // Frame the camera on the avatar (play) or the map center (spectate).
+    if (instance.player) {
+      instance.camera.snapFocus(instance.player.x, instance.player.y - TILE_SIZE / 2);
+    } else {
+      instance.camera.centerOn(
+        (opts.map.width * TILE_SIZE) / 2,
+        (opts.map.height * TILE_SIZE) / 2,
+      );
+    }
+    instance.camera.apply(world);
+
+    app.ticker.add((ticker) => instance.tick(ticker.deltaMS, ticker.deltaTime));
     return instance;
   }
 
@@ -183,7 +202,20 @@ export class PixiWorld {
       furnitureLayer.addChild(sprite);
     }
 
+    this.furnitureLayer = furnitureLayer;
     this.world.addChild(floorLayer, wallLayer, decorationLayer, furnitureLayer);
+  }
+
+  private async setupPlayer(characterId: string): Promise<void> {
+    const sheet = await buildCharacterSpritesheet(getCharacter(characterId));
+    const spawn = getSpawnTile(this.opts.map);
+    this.collision = createCollisionMap(this.opts.map);
+    this.player = new Player(sheet, spawn.tx, spawn.ty);
+    // Same layer as furniture so the avatar depth-sorts behind/in front of props.
+    this.furnitureLayer.addChild(this.player.sprite);
+    this.input = new Input();
+    this.input.attach();
+    this.buildDebugOverlay();
   }
 
   private setupInput(): void {
@@ -200,66 +232,49 @@ export class PixiWorld {
     return { x: clientX - rect.left, y: clientY - rect.top };
   }
 
-  private recomputeMinZoom(): void {
-    this.minZoom = Math.max(
-      this.app.screen.width / this.worldW,
-      this.app.screen.height / this.worldH,
-    );
-    if (this.targetZoom < this.minZoom) this.targetZoom = this.minZoom;
-    if (this.zoom < this.minZoom) this.zoom = this.minZoom;
+  private buildDebugOverlay(): void {
+    const el = document.createElement("div");
+    el.className = "debug-overlay";
+    el.style.display = "none";
+    this.opts.container.appendChild(el);
+    this.debugEl = el;
   }
 
-  private centerCamera(): void {
-    this.scrollX = (this.worldW - this.app.screen.width / this.zoom) / 2;
-    this.scrollY = (this.worldH - this.app.screen.height / this.zoom) / 2;
-    this.applyTransform();
+  private toggleDebug(): void {
+    this.debugOn = !this.debugOn;
+    if (this.debugEl) this.debugEl.style.display = this.debugOn ? "block" : "none";
   }
 
-  private clampScroll(): void {
-    const viewW = this.app.screen.width / this.zoom;
-    const viewH = this.app.screen.height / this.zoom;
-    const maxX = Math.max(0, this.worldW - viewW);
-    const maxY = Math.max(0, this.worldH - viewH);
-    this.scrollX = maxX > 0 ? Math.max(0, Math.min(maxX, this.scrollX)) : maxX / 2;
-    this.scrollY = maxY > 0 ? Math.max(0, Math.min(maxY, this.scrollY)) : maxY / 2;
-  }
+  private tick(dtMS: number, deltaTime: number): void {
+    this.camera.resize(this.app.screen.width, this.app.screen.height);
 
-  private applyTransform(): void {
-    this.world.scale.set(this.zoom);
-    this.world.position.set(-this.scrollX * this.zoom, -this.scrollY * this.zoom);
-  }
-
-  private tick(deltaMS: number): void {
-    this.recomputeMinZoom();
-
-    if (Math.abs(this.targetZoom - this.zoom) > 0.0005) {
-      const t = Math.min(1, (deltaMS / 1000) * ZOOM_LERP_SPEED);
-      this.zoom += (this.targetZoom - this.zoom) * t;
-      if (Math.abs(this.targetZoom - this.zoom) < 0.0005) this.zoom = this.targetZoom;
-
-      if (this.hasAnchor) {
-        // Re-solve scroll so the same world point stays under the cursor at the new zoom.
-        this.scrollX = this.anchorWorld.x - this.anchorScreen.x / this.zoom;
-        this.scrollY = this.anchorWorld.y - this.anchorScreen.y / this.zoom;
+    if (this.player && this.input && this.collision) {
+      // Single loop, fixed order: input → physics → camera → animation.
+      const move = this.input.vector();
+      this.player.updatePhysics(deltaTime, dtMS, move, this.collision);
+      this.camera.update(dtMS); // ease zoom
+      this.camera.follow(this.player.x, this.player.y - TILE_SIZE / 2, deltaTime);
+      this.camera.apply(this.world);
+      this.player.updateAnimation();
+      if (this.debugOn && this.debugEl) {
+        this.debugEl.textContent =
+          `tile ${this.player.tileX}, ${this.player.tileY}  ·  ` +
+          `${Math.round(this.app.ticker.FPS)} fps`;
       }
-      this.clampScroll();
-      this.applyTransform();
+      return;
     }
 
-    const step = (PAN_SPEED * deltaMS) / 1000 / this.zoom;
+    // spectate: keyboard pan
+    this.camera.update(dtMS);
+    const step = (PAN_SPEED * dtMS) / 1000 / this.camera.zoom;
     let dx = 0;
     let dy = 0;
-    if (this.heldKeys.has("ArrowLeft") || this.heldKeys.has("KeyA")) dx -= step;
-    if (this.heldKeys.has("ArrowRight") || this.heldKeys.has("KeyD")) dx += step;
-    if (this.heldKeys.has("ArrowUp") || this.heldKeys.has("KeyW")) dy -= step;
-    if (this.heldKeys.has("ArrowDown") || this.heldKeys.has("KeyS")) dy += step;
-    if (dx !== 0 || dy !== 0) {
-      this.hasAnchor = false;
-      this.scrollX += dx;
-      this.scrollY += dy;
-      this.clampScroll();
-      this.applyTransform();
-    }
+    if (this.heldPanKeys.has("ArrowLeft") || this.heldPanKeys.has("KeyA")) dx -= step;
+    if (this.heldPanKeys.has("ArrowRight") || this.heldPanKeys.has("KeyD")) dx += step;
+    if (this.heldPanKeys.has("ArrowUp") || this.heldPanKeys.has("KeyW")) dy -= step;
+    if (this.heldPanKeys.has("ArrowDown") || this.heldPanKeys.has("KeyS")) dy += step;
+    if (dx !== 0 || dy !== 0) this.camera.moveScroll(dx, dy);
+    this.camera.apply(this.world);
   }
 
   destroy(): void {
@@ -269,6 +284,8 @@ export class PixiWorld {
     this.app.canvas.removeEventListener("pointerdown", this.onPointerDown);
     window.removeEventListener("pointermove", this.onPointerMove);
     window.removeEventListener("pointerup", this.onPointerUp);
+    this.input?.detach();
+    this.debugEl?.remove();
     this.app.destroy(true, { children: true, texture: false });
   }
 }

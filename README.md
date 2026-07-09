@@ -60,6 +60,39 @@ pnpm --filter backend dev
 pnpm --filter frontend dev
 ```
 
+## Running the frontend
+
+The frontend is a PixiJS app served by Vite. To run it on your machine:
+
+**Prerequisites**
+
+- Node.js 20+
+- pnpm 10 — the repo pins a version, so the easiest way is `corepack enable`
+  (bundled with Node 20+)
+
+**Steps**
+
+```bash
+# 1. clone and enter the repo
+git clone https://github.com/divyam-jha123/virtual-workspace.git
+cd virtual-workspace
+
+# 2. install workspace dependencies — run from the repo ROOT (it's a pnpm workspace)
+pnpm install
+
+# 3. start the Vite dev server
+pnpm --filter frontend dev
+```
+
+Then open **http://localhost:5173** in your browser.
+
+**Troubleshooting**
+
+- Run `pnpm install` from the repository root, not from `apps/frontend` — installing
+  inside a sub-package won't resolve the workspace.
+- `pnpm: command not found` → run `corepack enable`, then retry.
+- If port `5173` is in use, Vite prints the port it fell back to — open that URL instead.
+
 ## Architecture at a glance
 
 - **Movement & presence** broadcast via Redis pub/sub; the WebSocket gateway fans out to

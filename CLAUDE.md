@@ -90,7 +90,7 @@ frontend enhancement issues, plus one checkbox at the end for the phase's overal
 
 **Backend**
 - [ ] Monorepo + NestJS skeleton
-- [ ] Prove avatar position over LiveKit data channel (two clients)
+- [x] Prove avatar position over LiveKit data channel (two clients)
 - [ ] LiveKit spike — get one audio track flowing between two clients
 
 **Frontend**

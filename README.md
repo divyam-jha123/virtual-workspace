@@ -86,6 +86,22 @@ pnpm --filter frontend dev
 
 Then open **http://localhost:5173** in your browser.
 
+**Once it's running**
+
+1. Pick a map, then choose a character.
+2. Walk around and try the office:
+
+| Action | Control |
+| ------ | ------- |
+| Move | `W` `A` `S` `D` or the arrow keys |
+| Sit down | walk onto any chair, sofa, or meeting-table seat — the avatar sits automatically |
+| Stand up | move again while seated |
+| Zoom in / out | mouse wheel / trackpad scroll |
+| Change map | `Esc`, or the **Exit** button |
+| Toggle debug overlay (tile + FPS) | `` ` `` (backtick) |
+
+No backend, database, or LiveKit is needed to explore the map — it's a self-contained frontend build. Real-time multiplayer and audio/video come in later phases.
+
 **Troubleshooting**
 
 - Run `pnpm install` from the repository root, not from `apps/frontend` — installing

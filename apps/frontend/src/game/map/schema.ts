@@ -1,5 +1,6 @@
 import { Tile } from "./tileset";
-import { DECORATION_PROPS, propFootprint, type PropType } from "./props";
+import type { PropType } from "./props";
+import { propBlockedTiles } from "./collision";
 
 /**
  * The renderer consumes only this data — a Tiled-style stack of layers. All
@@ -168,7 +169,7 @@ export function compileOfficeMap(raw: RawOfficeLayout): OfficeMapData {
   };
 }
 
-/** Marks the tile cells a furniture sprite's footprint covers as blocked. */
+/** Blocks the tiles a furniture sprite substantially covers (see propBlockedTiles). */
 function markFootprint(
   collision: boolean[][],
   prop: PropType,
@@ -177,13 +178,7 @@ function markFootprint(
   width: number,
   height: number,
 ): void {
-  if (DECORATION_PROPS.includes(prop)) return;
-  const [fw, fh] = propFootprint(prop);
-  const x1 = Math.max(0, tx - Math.floor(fw / 2));
-  const x2 = Math.min(width - 1, x1 + fw - 1);
-  const y1 = Math.max(0, ty - fh + 1);
-  const y2 = Math.min(height - 1, ty);
-  for (let y = y1; y <= y2; y++) {
-    for (let x = x1; x <= x2; x++) collision[y][x] = true;
+  for (const [x, y] of propBlockedTiles(prop, tx, ty)) {
+    if (x >= 0 && y >= 0 && x < width && y < height) collision[y][x] = true;
   }
 }

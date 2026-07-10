@@ -138,6 +138,7 @@ export function getTileTexture(theme: OfficeTheme, tile: Tile): Texture {
   }
 
   tex = Texture.from(canvas);
+  tex.source.scaleMode = "nearest"; // crisp pixel art at any zoom
   cache.set(key, tex);
   return tex;
 }

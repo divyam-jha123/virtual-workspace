@@ -84,8 +84,8 @@ export const PROP_SIZE_PX: Record<PropType, [number, number]> = {
   deskSolo: [40, 40],
   chair: [20, 24],
   stool: [18, 20],
-  boardtable: [256, 76],
-  meetsmall: [128, 68],
+  boardtable: [160, 96],
+  meetsmall: [96, 96],
   trainpair: [64, 36],
   receptiondesk: [96, 34],
   rug: [64, 40],
@@ -115,6 +115,24 @@ export const PROP_SIZE_PX: Record<PropType, [number, number]> = {
   speaker: [14, 20],
 };
 
+/**
+ * Optional solid sub-region (in local sprite px, top-left origin) used for
+ * collision instead of the whole sprite. Desk pods only block their central
+ * desk — the flanking chairs stay walkable so the avatar can step onto a chair
+ * and sit. (drawPod: desk island is at x=34, y=8, w=60, h=rows*32.)
+ */
+export const PROP_COLLISION_BOX: Partial<Record<PropType, { x: number; y: number; w: number; h: number }>> = {
+  pod2: { x: 34, y: 8, w: 60, h: 32 },
+  pod4: { x: 34, y: 8, w: 60, h: 64 },
+  pod6: { x: 34, y: 8, w: 60, h: 96 },
+  // Meeting tables block only their middle (table) tile row — the chair rows
+  // above and below stay walkable so each chair is a reachable seat tile
+  // (drawMeetingTable: table body at local y 34..62, one tile row tall).
+  boardtable: { x: 4, y: 33, w: 152, h: 30 },
+  meetsmall: { x: 4, y: 33, w: 88, h: 30 },
+  trainpair: { x: 4, y: 8, w: 56, h: 14 },
+};
+
 /** Tile footprint used for collision — rounded up from the sprite's pixel size. */
 export function propFootprint(prop: PropType): [number, number] {
   const [w, h] = PROP_SIZE_PX[prop];
@@ -140,6 +158,26 @@ function box(ctx: Ctx, x: number, y: number, w: number, h: number, fill: string,
   }
 }
 
+/** Rounded-corner filled rect with a darker border — the tabletop primitive. */
+function roundedBox(
+  ctx: Ctx,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number,
+  fill: string,
+  stroke: string,
+): void {
+  ctx.beginPath();
+  ctx.roundRect(x, y, w, h, r);
+  ctx.fillStyle = fill;
+  ctx.fill();
+  ctx.strokeStyle = stroke;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+}
+
 function circle(ctx: Ctx, cx: number, cy: number, r: number, color: string): void {
   ctx.fillStyle = color;
   ctx.beginPath();
@@ -163,30 +201,41 @@ function podChair(ctx: Ctx, x: number, y: number, side: "left" | "right", th: Of
   else ctx.fillRect(x + 17, y + 1, 4, 19);
 }
 
-/** Desk island with `rows` facing pairs — 2*rows seats, chairs baked in. */
+/** Small open laptop seen top-down: a dark screen with a lit panel above a
+ *  light keyboard deck — one sits in front of each seat on the table. */
+function laptop(ctx: Ctx, x: number, y: number): void {
+  box(ctx, x, y, 12, 6, "#2b2f36");
+  ctx.fillStyle = "#5a86a8";
+  ctx.fillRect(x + 1, y + 1, 10, 4);
+  ctx.fillStyle = "#c9ccd2";
+  ctx.fillRect(x, y + 6, 12, 4);
+}
+
+/**
+ * A meeting/work table with `rows` facing pairs — 2*rows seats, chairs baked
+ * in on the left and right. The surface is a clean rounded wooden tabletop
+ * (soft shadow + darker border + top-edge highlight) so it reads as a table,
+ * not a cabinet. Drawn to the same footprint as the collision box (x=34, y=8,
+ * w=60, h=rows*32) — swap in a real table sprite by replacing this body.
+ */
 function drawPod(ctx: Ctx, rows: number, th: OfficeTheme): void {
-  const islandTop = 8;
-  const islandH = rows * 32;
-  shadow(ctx, 64, islandTop + islandH + 4, 36, 4);
-  box(ctx, 34, islandTop, 60, islandH, th.desk.top, th.desk.edge);
-  ctx.fillStyle = th.desk.edge;
-  ctx.fillRect(63, islandTop, 2, islandH);
-  for (let r = 1; r < rows; r++) ctx.fillRect(34, islandTop + r * 32, 60, 1);
+  const x = 34;
+  const w = 60;
+  const top = 8;
+  const h = rows * 32;
+
+  shadow(ctx, 64, top + h + 3, 34, 5);
+  roundedBox(ctx, x, top, w, h, 6, th.wood.base, th.wood.dark);
+  // top-edge highlight (catches light) + faint seam splitting the two sides
+  ctx.fillStyle = "rgba(255,255,255,0.10)";
+  ctx.fillRect(x + 5, top + 4, w - 10, 3);
+  ctx.fillStyle = th.wood.dark;
+  ctx.fillRect(x + w / 2 - 0.5, top + 6, 1, h - 12);
 
   for (let r = 0; r < rows; r++) {
-    const y = islandTop + r * 32;
-    box(ctx, 50, y + 5, 11, 9, "#22252c");
-    ctx.fillStyle = "#7fb6d9";
-    ctx.fillRect(52, y + 7, 7, 5);
-    box(ctx, 67, y + 5, 11, 9, "#22252c");
-    ctx.fillStyle = "#7fb6d9";
-    ctx.fillRect(69, y + 7, 7, 5);
-    ctx.fillStyle = "#dfe2e8";
-    ctx.fillRect(38, y + 19, 10, 4);
-    ctx.fillRect(80, y + 19, 10, 4);
-    circle(ctx, 43, y + 27, 1.2, "#9aa0aa");
-    circle(ctx, 85, y + 27, 1.2, "#9aa0aa");
-
+    const y = top + r * 32;
+    laptop(ctx, x + 6, y + 11);
+    laptop(ctx, x + w - 18, y + 11);
     podChair(ctx, 8, y + 4, "left", th);
     podChair(ctx, 99, y + 4, "right", th);
   }
@@ -219,25 +268,40 @@ function drawStool(ctx: Ctx, th: OfficeTheme): void {
   circle(ctx, 9, 9, 6, th.chair.dark);
 }
 
-/** Shared drawer for meeting-style tables: `perSide` chairs on each long edge. */
-function drawMeetingTable(ctx: Ctx, w: number, h: number, perSide: number, th: OfficeTheme): void {
-  const tableW = w - 56;
-  const tableX = (w - tableW) / 2;
-  const spacing = tableW / perSide;
-  shadow(ctx, w / 2, h - 8, w / 2 - 8, 5);
-  for (const cy of [4, h - 20]) {
-    for (let i = 0; i < perSide; i++) {
-      const cx = tableX + spacing * i + spacing / 2 - 10;
-      box(ctx, cx, cy, 20, 16, th.chair.seat, th.chair.dark);
-    }
-  }
-  box(ctx, tableX, 20, tableW, h - 40, th.wood.base, th.wood.dark);
-  ctx.fillStyle = "rgba(255,255,255,0.12)";
-  ctx.fillRect(tableX + 4, 24, tableW - 8, 3);
+/** Top-down meeting chair centred on a tile column at local-x `cx`; `back` is
+ *  which edge the backrest sits on ("up" = top edge → the seat faces down,
+ *  toward the table). `top` is the chair block's local y. */
+function meetChair(ctx: Ctx, cx: number, top: number, back: "up" | "down", th: OfficeTheme): void {
+  shadow(ctx, cx, top + 19, 9, 2.5);
+  box(ctx, cx - 9, top + 2, 18, 15, th.chair.seat, th.chair.dark);
+  ctx.fillStyle = th.chair.dark;
+  if (back === "up") ctx.fillRect(cx - 10, top, 20, 4);
+  else ctx.fillRect(cx - 10, top + 15, 20, 4);
+}
+
+/**
+ * Conference table on a clean 3-row tile grid: a chair row on top (backs up,
+ * facing down into the table), the tabletop in the middle row, and a chair row
+ * on the bottom (backs down, facing up). `cols` chairs per side — kept ODD so
+ * the bottom-centre-anchored sprite covers whole tiles and every chair lands on
+ * its own walkable seat tile. Seats/facing are registered in generateSeats
+ * (MEETING_COLS); collision blocks only the middle (table) row.
+ */
+function drawMeetingTable(ctx: Ctx, cols: number, th: OfficeTheme): void {
+  const W = cols * TILE_SIZE;
+  shadow(ctx, W / 2, 65, W / 2 - 4, 5);
+  roundedBox(ctx, 5, 34, W - 10, 28, 6, th.wood.base, th.wood.dark);
+  ctx.fillStyle = "rgba(255,255,255,0.10)";
+  ctx.fillRect(9, 37, W - 18, 3);
   ctx.fillStyle = th.wood.dark;
-  ctx.fillRect(tableX + 4, h - 24, tableW - 8, 1);
-  ctx.fillStyle = "#dfe2e8";
-  ctx.fillRect(w / 2 - 8, h / 2 - 6, 16, 8);
+  ctx.fillRect(9, 58, W - 18, 1);
+  for (let c = 0; c < cols; c++) {
+    const cx = c * TILE_SIZE + TILE_SIZE / 2;
+    ctx.fillStyle = "#e7e2d6";
+    ctx.fillRect(cx - 6, 44, 12, 8); // a paper/placemat per seat
+    meetChair(ctx, cx, 5, "up", th); // top row → faces down
+    meetChair(ctx, cx, 73, "down", th); // bottom row → faces up
+  }
 }
 
 /** Training-room pair: a shared table with two chairs on the near side only. */
@@ -395,8 +459,8 @@ const THEMED_DRAWERS: Record<PropType, (ctx: Ctx, th: OfficeTheme) => void> = {
   deskSolo: drawDeskSolo,
   chair: drawChair,
   stool: drawStool,
-  boardtable: (ctx, th) => drawMeetingTable(ctx, 256, 76, 6, th),
-  meetsmall: (ctx, th) => drawMeetingTable(ctx, 128, 68, 3, th),
+  boardtable: (ctx, th) => drawMeetingTable(ctx, 5, th),
+  meetsmall: (ctx, th) => drawMeetingTable(ctx, 3, th),
   trainpair: drawTrainPair,
   receptiondesk: drawReceptionDesk,
   rug: drawRug,

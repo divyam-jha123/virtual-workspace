@@ -6,17 +6,22 @@ import { getPropTexture } from "../map/props";
 import { Camera } from "./Camera";
 import { Input } from "../entities/Input";
 import { Player } from "../entities/Player";
-import { createCollisionMap, getSpawnTile, type CollisionMap } from "../map/collision";
+import { createCollisionMap, getSpawnTile, dumpCollisionRegion, type CollisionMap } from "../map/collision";
 import { buildCharacterSpritesheet, getCharacter } from "../entities/characters";
+import { ZoneManager } from "../entities/Zones";
+import { SeatManager } from "../entities/Seats";
+import type { Direction } from "../entities/characters";
+
+const LOCAL_ID = "local";
 
 const MAX_ZOOM = 4;
 /**
  * Default opening zoom, as a multiple of the fit-to-screen minimum: 1.0 would
- * show the whole floor exactly; 1.25 opens 25% tighter so the avatar reads a
+ * show the whole floor exactly; 1.4 opens 40% tighter so the avatar reads a
  * bit larger while most of the office is still visible. The camera can't go
  * below the fit minimum, so the map always fills the viewport.
  */
-const DEFAULT_ZOOM_FACTOR = 1.25;
+const DEFAULT_ZOOM_FACTOR = 1.4;
 const PAN_SPEED = 420; // spectate keyboard pan, world px/sec at zoom 1
 
 const SPECTATE_PAN_KEYS = new Set([
@@ -54,6 +59,7 @@ export class PixiWorld {
   private opts: PixiWorldOptions;
   private camera: Camera;
   private furnitureLayer!: Container;
+  private zoneLayer!: Container;
 
   // spectate state
   private heldPanKeys = new Set<string>();
@@ -64,6 +70,10 @@ export class PixiWorld {
   private input?: Input;
   private player?: Player;
   private collision?: CollisionMap;
+  private zoneManager?: ZoneManager;
+  private seatManager?: SeatManager;
+  /** after sitting, require input to return to zero before a press stands up */
+  private sitReleased = false;
   private debugOn = false;
   private debugEl?: HTMLDivElement;
 
@@ -202,8 +212,11 @@ export class PixiWorld {
       furnitureLayer.addChild(sprite);
     }
 
+    // Zone outlines sit above the floor/decoration but below characters.
+    const zoneLayer = new Container();
     this.furnitureLayer = furnitureLayer;
-    this.world.addChild(floorLayer, wallLayer, decorationLayer, furnitureLayer);
+    this.zoneLayer = zoneLayer;
+    this.world.addChild(floorLayer, wallLayer, decorationLayer, zoneLayer, furnitureLayer);
   }
 
   private async setupPlayer(characterId: string): Promise<void> {
@@ -215,6 +228,16 @@ export class PixiWorld {
     this.furnitureLayer.addChild(this.player.sprite);
     this.input = new Input();
     this.input.attach();
+
+    this.zoneManager = new ZoneManager(this.opts.map);
+    this.zoneManager.render(this.zoneLayer);
+    this.seatManager = new SeatManager(this.opts.map);
+
+    // Diagnostic: dump the collision grid around the spawn so phantom blocks
+    // on walkable floor are visible.
+    // eslint-disable-next-line no-console
+    console.log(dumpCollisionRegion(this.opts.map, spawn.tx - 8, spawn.ty - 8, spawn.tx + 8, spawn.ty + 8));
+
     this.buildDebugOverlay();
   }
 
@@ -245,20 +268,89 @@ export class PixiWorld {
     if (this.debugEl) this.debugEl.style.display = this.debugOn ? "block" : "none";
   }
 
+  /** Depth bias so a seated avatar sorts correctly against the seat. */
+  private seatZBias(facing: Direction): number {
+    return facing === "up" ? -8 : 8; // behind an up-facing backrest, in front otherwise
+  }
+
+  private nearestWalkableAdjacent(tx: number, ty: number): { x: number; y: number } {
+    const col = this.collision!;
+    const ring = [
+      [0, 1], [0, -1], [1, 0], [-1, 0],
+      [1, 1], [1, -1], [-1, 1], [-1, -1],
+    ];
+    for (const [dx, dy] of ring) {
+      if (col.isWalkable(tx + dx, ty + dy)) return { x: tx + dx, y: ty + dy };
+    }
+    return { x: tx, y: ty };
+  }
+
   private tick(dtMS: number, deltaTime: number): void {
     this.camera.resize(this.app.screen.width, this.app.screen.height);
 
-    if (this.player && this.input && this.collision) {
-      // Single loop, fixed order: input → physics → camera → animation.
+    if (this.player && this.input && this.collision && this.seatManager && this.zoneManager) {
+      // input → (walk / sit-transition) → camera → animation → zones.
+      const player = this.player;
+      const seats = this.seatManager;
       const move = this.input.vector();
-      this.player.updatePhysics(deltaTime, dtMS, move, this.collision);
+      const moving = move.x !== 0 || move.y !== 0;
+      const nowMs = performance.now();
+
+      if (seats.isWalking) {
+        player.updatePhysics(deltaTime, dtMS, move, this.collision);
+        const seat = seats.trigger(player.tileX, player.tileY, nowMs);
+        if (seat) {
+          seats.beginSit(seat, player.x, player.y, nowMs);
+          player.poseWalk(seat.facing); // glide toward the seat
+          this.sitReleased = !moving;
+          // eslint-disable-next-line no-console
+          console.log(`[seat] ${LOCAL_ID} sitting on ${seat.type} @ ${seat.x},${seat.y} facing ${seat.facing}`);
+        } else {
+          player.updateAnimation();
+        }
+      } else if (seats.transitioning) {
+        // Ease the avatar into/out of the seat (input locked).
+        const sitting = seats.isSitting;
+        const step = seats.advance(nowMs);
+        player.setPosition(step.x, step.y);
+        if (step.done) {
+          if (sitting) {
+            const seat = seats.currentSeat!;
+            const off = seats.offset(seat.type);
+            const zRef = seat.sitZ ?? player.y;
+            player.sit(seat.facing, off.x, off.y, zRef + this.seatZBias(seat.facing));
+            seats.finishSit();
+          } else {
+            player.stand();
+            seats.finishStand(nowMs);
+          }
+        }
+      } else {
+        // Seated: a fresh key press (after releasing) begins standing up.
+        if (!moving) this.sitReleased = true;
+        else if (this.sitReleased) {
+          const seat = seats.currentSeat!;
+          const spot = this.nearestWalkableAdjacent(seat.x, seat.y);
+          player.poseWalk(seat.facing);
+          seats.beginStand(player.x, player.y, (spot.x + 0.5) * TILE_SIZE, (spot.y + 1) * TILE_SIZE, nowMs);
+          // eslint-disable-next-line no-console
+          console.log(`[seat] ${LOCAL_ID} standing up`);
+        }
+      }
+
       this.camera.update(dtMS); // ease zoom
-      this.camera.follow(this.player.x, this.player.y - TILE_SIZE / 2, deltaTime);
+      this.camera.follow(player.x, player.y - TILE_SIZE / 2, deltaTime);
       this.camera.apply(this.world);
-      this.player.updateAnimation();
+
+      this.zoneManager.update(
+        [{ id: LOCAL_ID, tileX: player.tileX, tileY: player.tileY }],
+        LOCAL_ID,
+      );
+
       if (this.debugOn && this.debugEl) {
         this.debugEl.textContent =
-          `tile ${this.player.tileX}, ${this.player.tileY}  ·  ` +
+          `tile ${player.tileX}, ${player.tileY}` +
+          `${seats.isSeated ? " · seated" : seats.transitioning ? " · …" : ""}  ·  ` +
           `${Math.round(this.app.ticker.FPS)} fps`;
       }
       return;

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "spike:position": "tsx livekit-position-spike.ts",
+    "spike:audio": "tsx livekit-audio-spike.ts",
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {

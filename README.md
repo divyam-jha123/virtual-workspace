@@ -100,7 +100,7 @@ Then open **http://localhost:5173** in your browser.
 | Change map | `Esc`, or the **Exit** button |
 | Toggle debug overlay (tile + FPS) | `` ` `` (backtick) |
 
-No backend, database, or LiveKit is needed to explore the map — it's a self-contained frontend build. Real-time multiplayer and audio/video come in later phases.
+The frontend on its own runs single-player, so you don't need the backend or LiveKit just to explore the map and movement. To actually see other people moving on the same map, run the backend and a LiveKit server too (see the next section). Audio/video comes in a later phase.
 
 **Troubleshooting**
 
@@ -108,6 +108,49 @@ No backend, database, or LiveKit is needed to explore the map — it's a self-co
   inside a sub-package won't resolve the workspace.
 - `pnpm: command not found` → run `corepack enable`, then retry.
 - If port `5173` is in use, Vite prints the port it fell back to — open that URL instead.
+
+## Playing together (multiplayer)
+
+The frontend alone is single-player. To see other people on the same map, you also need the backend running plus a LiveKit server for the avatars to sync through. Positions travel over LiveKit directly, so the backend's only job here is handing out a join token.
+
+**1. Get a LiveKit server.** Two ways:
+
+Local (easiest, no account):
+
+```bash
+brew install livekit    # one-time (macOS). Other OSes: https://docs.livekit.io/home/self-hosting/local/
+livekit-server --dev    # runs on ws://localhost:7880 with dev keys (devkey / secret)
+```
+
+Or LiveKit Cloud (free): create a project at https://cloud.livekit.io and copy the URL, API key and secret from Settings → Keys.
+
+**2. Create a `.env` in the repo root** (it's git-ignored):
+
+```bash
+LIVEKIT_URL=ws://localhost:7880   # or your wss://<project>.livekit.cloud URL
+LIVEKIT_API_KEY=devkey            # use "devkey" for the local dev server
+LIVEKIT_API_SECRET=secret         # use "secret" for the local dev server
+PORT=3100                         # backend port (3000 is often already in use)
+```
+
+**3. Run all three**, each in its own terminal, from the repo root:
+
+```bash
+livekit-server --dev                                                # LiveKit (skip if using Cloud)
+pnpm --filter backend dev                                           # backend (reads .env)
+VITE_BACKEND_URL=http://localhost:3100 pnpm --filter frontend dev   # frontend, pointed at the backend
+```
+
+If you set `PORT=3000` instead, you can drop the `VITE_BACKEND_URL=...` part.
+
+**4. Try it.** Open two windows on the same map — one normal, one Incognito, so they count as two different people — at **http://localhost:5173**. Pick a character in each and walk around. You'll see each other move in real time, each as the character you picked. Close a window and that avatar disappears for the other.
+
+**Troubleshooting**
+
+- Backend won't start, `Missing required environment variables` → you don't have a `.env` yet (or it's missing a key). Copy the block above.
+- Backend won't start, `EADDRINUSE` → that port is taken; change `PORT` in `.env` and match `VITE_BACKEND_URL`.
+- You don't see the other person → both windows must be on the same map, and open the browser console: if it says `running offline`, the frontend couldn't reach the backend (wrong port, or the backend isn't running).
+- Both windows show up as the same person → use one normal and one Incognito window (each needs its own saved character).
 
 ## Architecture at a glance
 

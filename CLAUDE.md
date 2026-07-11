@@ -89,31 +89,32 @@ frontend enhancement issues, plus one checkbox at the end for the phase's overal
 ### Phase 0 — De-risk & Scaffold (1–2 wk)
 
 **Backend**
-- [ ] Monorepo + NestJS skeleton
+- [x] Monorepo + NestJS skeleton
 - [x] Prove avatar position over LiveKit data channel (two clients)
 - [x] LiveKit spike — get one audio track flowing between two clients
 
 **Frontend**
 - [x] Render a tilemap
-- [ ] Move an avatar with keyboard input
-- [ ] Join a LiveKit room and publish position as a data message
+- [x] Move an avatar with keyboard input
+- [x] Join a LiveKit room and publish position as a data message
 
 **Goal**
-- [ ] **Phase goal:** Two browsers show two avatars moving on a shared map, and a raw LiveKit call works between them.
+- [x] **Phase goal:** Two browsers show two avatars moving on a shared map, and a raw LiveKit call works between them.
 
 ### Phase 1 — Spatial MVP (3–4 wk)
 
 **Backend**
-- [ ] LiveKit token issuance + room join
-- [ ] Presence via LiveKit participant events (backend persists user/room metadata only)
-- [ ] User model
-- [ ] Simple JWT auth
+- [x] LiveKit token issuance + room join — *done in Phase 0 (`src/realtime/token`)*
+- [ ] Simple JWT auth — login endpoint issues a JWT; add a guard so `POST /realtime/token` derives identity + display name from the authenticated user instead of the request body
+- [ ] User model — introduce Prisma + PostgreSQL (first DB use); persist users
+- [ ] Presence + room metadata via LiveKit webhooks — handle participant joined/left webhooks and persist minimal room membership / last-seen (no game-state relay)
 
 **Frontend**
-- [ ] Collision layer
-- [ ] Smooth local movement + interpolation of remote avatars (positions via LiveKit data channel)
-- [ ] Name tags
-- [ ] Presence list (from LiveKit participant events)
+- [x] Collision layer — *done in Phase 0 (`game/map/collision.ts`)*
+- [x] Smooth local movement + interpolation of remote avatars — *done in Phase 0 (`Player.ts` eased physics, `RemotePlayer.ts` lerp)*
+- [ ] Real identity + login wiring — replace the random per-tab id (`RoomConnection.getIdentity`) with the authenticated user; send the auth token when fetching the LiveKit token and carry a display name
+- [ ] Name tags — render each avatar's display name above local + remote sprites
+- [ ] Presence list — roster UI in `src/ui/presence`, driven by LiveKit `ParticipantConnected`/`Disconnected` (add a join handler to `RoomConnection`, which today only handles leave)
 
 **Goal**
 - [ ] **Phase goal:** 5–10 users in one room see each other move smoothly; refresh drops you back in.

@@ -7,10 +7,14 @@ import { Camera } from "./Camera";
 import { Input } from "../entities/Input";
 import { Player } from "../entities/Player";
 import { createCollisionMap, getSpawnTile, dumpCollisionRegion, type CollisionMap } from "../map/collision";
-import { buildCharacterSpritesheet, getCharacter } from "../entities/characters";
+import { buildCharacterSpritesheet, getCharacter, DEFAULT_CHARACTER_ID, CHARACTERS } from "../entities/characters";
 import { ZoneManager } from "../entities/Zones";
 import { SeatManager } from "../entities/Seats";
+import { RemotePlayer } from "../entities/RemotePlayer";
+import { RoomConnection } from "../net/RoomConnection";
 import type { Direction } from "../entities/characters";
+import type { Spritesheet } from "pixi.js";
+import type { PositionMessage } from "protocol";
 
 const LOCAL_ID = "local";
 
@@ -72,6 +76,12 @@ export class PixiWorld {
   private collision?: CollisionMap;
   private zoneManager?: ZoneManager;
   private seatManager?: SeatManager;
+  // networking (issue #11): join a LiveKit room, publish our position, render peers.
+  private room?: RoomConnection;
+  private remotes = new Map<string, RemotePlayer>();
+  private remoteLastT = new Map<string, number>();
+  /** One spritesheet per character id, so a peer renders as the avatar they chose. */
+  private remoteSheets?: Map<string, Spritesheet>;
   /** after sitting, require input to return to zero before a press stands up */
   private sitReleased = false;
   private debugOn = false;
@@ -238,6 +248,22 @@ export class PixiWorld {
     // eslint-disable-next-line no-console
     console.log(dumpCollisionRegion(this.opts.map, spawn.tx - 8, spawn.ty - 8, spawn.tx + 8, spawn.ty + 8));
 
+    // Networking (#11): a spritesheet per character (so peers render as the
+    // avatar THEY picked), then join the room = the map key and sync positions.
+    // Best-effort: if the backend/LiveKit is unreachable the game runs solo.
+    this.remoteSheets = new Map();
+    await Promise.all(
+      CHARACTERS.map(async (c) => this.remoteSheets!.set(c.id, await buildCharacterSpritesheet(c))),
+    );
+    this.room = new RoomConnection(this.opts.map.key, characterId, {
+      onRemoteMove: (msg, charId) => this.applyRemoteMove(msg, charId),
+      onRemoteLeave: (id) => this.removeRemote(id),
+    });
+    this.room.connect().catch((e: unknown) =>
+      // eslint-disable-next-line no-console
+      console.warn(`[net] running offline (no peers): ${e instanceof Error ? e.message : String(e)}`),
+    );
+
     this.buildDebugOverlay();
   }
 
@@ -271,6 +297,42 @@ export class PixiWorld {
   /** Depth bias so a seated avatar sorts correctly against the seat. */
   private seatZBias(facing: Direction): number {
     return facing === "up" ? -8 : 8; // behind an up-facing backrest, in front otherwise
+  }
+
+  /** Apply a peer's position update: spawn its avatar on first sight, drop
+   *  stale/reordered lossy packets by timestamp, else steer it to the target. */
+  private applyRemoteMove(msg: PositionMessage, characterId?: string): void {
+    const lastT = this.remoteLastT.get(msg.identity) ?? 0;
+    if (msg.t <= lastT) return; // stale (lossy delivery can reorder)
+    this.remoteLastT.set(msg.identity, msg.t);
+
+    const sheets = this.remoteSheets;
+    if (!sheets) return;
+    // Resolve the peer's character; only trust a known id (their name may not
+    // have propagated yet on the first packet → keep default until it does).
+    const known = characterId && sheets.has(characterId) ? characterId : undefined;
+
+    let rp = this.remotes.get(msg.identity);
+    if (!rp) {
+      const cid = known ?? DEFAULT_CHARACTER_ID;
+      rp = new RemotePlayer(sheets.get(cid)!, cid, msg.x, msg.y);
+      this.remotes.set(msg.identity, rp);
+      this.furnitureLayer.addChild(rp.sprite);
+    } else if (known && known !== rp.characterId) {
+      // Their name arrived (or changed) → correct the sprite.
+      rp.setCharacter(sheets.get(known)!, known);
+    }
+    rp.setTarget(msg.x, msg.y, msg.facing);
+  }
+
+  /** Remove a peer's avatar when they leave the room. */
+  private removeRemote(identity: string): void {
+    const rp = this.remotes.get(identity);
+    if (!rp) return;
+    this.furnitureLayer.removeChild(rp.sprite);
+    rp.destroy();
+    this.remotes.delete(identity);
+    this.remoteLastT.delete(identity);
   }
 
   private nearestWalkableAdjacent(tx: number, ty: number): { x: number; y: number } {
@@ -347,6 +409,10 @@ export class PixiWorld {
         LOCAL_ID,
       );
 
+      // Networking (#11): broadcast our position (throttled) + ease peers along.
+      this.room?.publishPosition(player.x, player.y, player.facingDir, nowMs);
+      for (const rp of this.remotes.values()) rp.update(deltaTime);
+
       if (this.debugOn && this.debugEl) {
         this.debugEl.textContent =
           `tile ${player.tileX}, ${player.tileY}` +
@@ -377,6 +443,9 @@ export class PixiWorld {
     window.removeEventListener("pointermove", this.onPointerMove);
     window.removeEventListener("pointerup", this.onPointerUp);
     this.input?.detach();
+    this.room?.disconnect();
+    for (const rp of this.remotes.values()) rp.destroy();
+    this.remotes.clear();
     this.debugEl?.remove();
     this.app.destroy(true, { children: true, texture: false });
   }

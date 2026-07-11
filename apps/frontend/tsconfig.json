@@ -8,7 +8,12 @@
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "protocol": ["../../packages/protocol/src/index.ts"],
+      "shared-types": ["../../packages/shared-types/src/index.ts"]
+    }
   },
   "include": ["src"]
 }

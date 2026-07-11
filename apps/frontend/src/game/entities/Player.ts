@@ -64,6 +64,10 @@ export class Player {
   get tileY(): number {
     return Math.floor((this.y - 1) / TILE_SIZE);
   }
+  /** Current look direction — published to peers over LiveKit. */
+  get facingDir(): Direction {
+    return this.facing;
+  }
 
   /** Step 1+2 of the loop: integrate eased velocity and resolve collision. */
   updatePhysics(deltaTime: number, dtMS: number, input: InputVector, col: CollisionMap): void {

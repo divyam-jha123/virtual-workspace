@@ -1,0 +1,22 @@
+// First database in the project (Phase 1). The stateless-REST constraint still
+// holds: no game-state lives here — position/presence/chat ride LiveKit. The DB
+// only persists accounts (and, later, minimal presence metadata).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// A persisted user account. Backs JWT auth (#24) and presence metadata (#26).
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  displayName  String
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

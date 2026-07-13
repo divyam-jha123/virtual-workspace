@@ -7,6 +7,7 @@ const REQUIRED = [
   'LIVEKIT_API_KEY',
   'LIVEKIT_API_SECRET',
   'DATABASE_URL',
+  'JWT_SECRET',
 ] as const;
 
 /**

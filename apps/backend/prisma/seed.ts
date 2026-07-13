@@ -1,26 +1,31 @@
 import { PrismaClient } from '@prisma/client';
+import * as bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
 /**
- * Dev seed users. `passwordHash` is a placeholder here — real password hashing
- * (bcrypt) arrives with the JWT auth PR (#24); this issue only introduces the
- * User model. Idempotent so it can be re-run safely.
+ * Dev seed users with a shared, well-known password so `POST /auth/login` works
+ * out of the box locally. Idempotent so it can be re-run safely.
  */
+const DEV_PASSWORD = 'password123';
+
 const users = [
   { email: 'alice@example.com', displayName: 'Alice' },
   { email: 'bob@example.com', displayName: 'Bob' },
 ];
 
 async function main(): Promise<void> {
+  const passwordHash = await bcrypt.hash(DEV_PASSWORD, 10);
   for (const user of users) {
     await prisma.user.upsert({
       where: { email: user.email },
-      update: { displayName: user.displayName },
-      create: { ...user, passwordHash: 'placeholder-set-in-auth-pr' },
+      update: { displayName: user.displayName, passwordHash },
+      create: { ...user, passwordHash },
     });
   }
-  console.log(`Seeded ${users.length} dev users.`);
+  console.log(
+    `Seeded ${users.length} dev users (password: "${DEV_PASSWORD}").`,
+  );
 }
 
 main()

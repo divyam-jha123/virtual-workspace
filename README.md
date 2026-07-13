@@ -51,14 +51,18 @@ virtual-workspace/
 > incrementally. Once they exist, the expected workflow is:
 
 ```bash
-pnpm install                 # install workspace dependencies
-docker compose up            # local Postgres + Redis + LiveKit (from infra/docker)
-pnpm dev                     # run backend + frontend together (turbo)
+pnpm install                                              # install workspace dependencies
+docker compose -f infra/docker/docker-compose.yml up -d   # local Postgres (from infra/docker)
+pnpm --filter backend prisma:migrate                      # set up the database schema
+pnpm dev                                                  # run backend + frontend together (turbo)
 
 # or run a single app:
 pnpm --filter backend dev
 pnpm --filter frontend dev
 ```
+
+See [Database (Postgres)](#database-postgres) for the full DB setup, and
+[Playing together (multiplayer)](#playing-together-multiplayer) for the `.env` and LiveKit steps.
 
 ## Running the frontend
 
@@ -109,6 +113,48 @@ The frontend on its own runs single-player, so you don't need the backend or Liv
 - `pnpm: command not found` → run `corepack enable`, then retry.
 - If port `5173` is in use, Vite prints the port it fell back to — open that URL instead.
 
+## Database (Postgres)
+
+The backend persists user accounts in PostgreSQL via [Prisma](https://www.prisma.io/). As of
+Phase 1 the backend **won't boot without a database** — it fails fast if `DATABASE_URL` is
+missing. A ready-to-use local Postgres ships in `infra/docker`.
+
+**Prerequisites**
+
+- Docker (Docker Desktop on macOS/Windows)
+
+**Steps** — run from the repo root:
+
+```bash
+# 1. start local Postgres (postgres:16, on localhost:5432)
+docker compose -f infra/docker/docker-compose.yml up -d
+
+# 2. add DATABASE_URL to your root .env (see the .env block in the next section)
+#    DATABASE_URL=postgresql://postgres:postgres@localhost:5432/virtual_workspace
+
+# 3. apply the schema and generate the Prisma client
+pnpm --filter backend prisma:migrate     # creates the User table
+
+# 4. (optional) seed a couple of dev users
+pnpm --filter backend db:seed
+```
+
+To inspect the data:
+
+```bash
+docker compose -f infra/docker/docker-compose.yml exec postgres \
+  psql -U postgres -d virtual_workspace -c 'SELECT email, "displayName" FROM "User";'
+```
+
+**Troubleshooting**
+
+- `P1010: User was denied access` or `role "postgres" does not exist` → you already have another
+  Postgres bound to port `5432` (commonly a Homebrew `postgresql@N` service) shadowing the Docker
+  one. Stop it (`brew services stop postgresql@14`) or change the host port in
+  `infra/docker/docker-compose.yml` (e.g. `5433:5432`) and match it in `DATABASE_URL`.
+- `Can't reach database server at localhost:5432` → the container isn't up; run step 1 and check
+  `docker compose -f infra/docker/docker-compose.yml ps` shows it `healthy`.
+
 ## Playing together (multiplayer)
 
 The frontend alone is single-player. To see other people on the same map, you also need the backend running plus a LiveKit server for the avatars to sync through. Positions travel over LiveKit directly, so the backend's only job here is handing out a join token.
@@ -131,7 +177,12 @@ LIVEKIT_URL=ws://localhost:7880   # or your wss://<project>.livekit.cloud URL
 LIVEKIT_API_KEY=devkey            # use "devkey" for the local dev server
 LIVEKIT_API_SECRET=secret         # use "secret" for the local dev server
 PORT=3100                         # backend port (3000 is often already in use)
+
+# Postgres — see the "Database (Postgres)" section above
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/virtual_workspace
 ```
+
+The backend also needs Postgres running and migrated — see [Database (Postgres)](#database-postgres) above.
 
 **3. Run all three**, each in its own terminal, from the repo root:
 
@@ -147,7 +198,8 @@ If you set `PORT=3000` instead, you can drop the `VITE_BACKEND_URL=...` part.
 
 **Troubleshooting**
 
-- Backend won't start, `Missing required environment variables` → you don't have a `.env` yet (or it's missing a key). Copy the block above.
+- Backend won't start, `Missing required environment variables` → you don't have a `.env` yet (or it's missing a key such as `DATABASE_URL`). Copy the block above.
+- Backend won't start, `Can't reach database server` or a Prisma `P1010` error → Postgres isn't running or migrated; see [Database (Postgres)](#database-postgres).
 - Backend won't start, `EADDRINUSE` → that port is taken; change `PORT` in `.env` and match `VITE_BACKEND_URL`.
 - You don't see the other person → both windows must be on the same map, and open the browser console: if it says `running offline`, the frontend couldn't reach the backend (wrong port, or the backend isn't running).
 - Both windows show up as the same person → use one normal and one Incognito window (each needs its own saved character).

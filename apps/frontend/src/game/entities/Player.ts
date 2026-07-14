@@ -1,5 +1,6 @@
-import { AnimatedSprite, type Spritesheet } from "pixi.js";
+import { AnimatedSprite, type Spritesheet, type Text } from "pixi.js";
 import { TILE_SIZE } from "../map/tileset";
+import { createNameTag } from "./NameTag";
 import type { CollisionMap } from "../map/collision";
 import type { InputVector } from "./Input";
 import type { Direction } from "./characters";
@@ -33,6 +34,7 @@ const MAX_DELTA_MS = (MAX_DELTA * 1000) / 60;
  */
 export class Player {
   readonly sprite: AnimatedSprite;
+  private readonly nameTag: Text;
   x: number;
   y: number;
   private vx = 0;
@@ -46,6 +48,7 @@ export class Player {
     private sheet: Spritesheet,
     spawnTileX: number,
     spawnTileY: number,
+    displayName = "",
   ) {
     this.x = (spawnTileX + 0.5) * TILE_SIZE;
     this.y = (spawnTileY + 1) * TILE_SIZE;
@@ -55,7 +58,15 @@ export class Player {
     this.sprite.animationSpeed = BASE_ANIM;
     this.sprite.gotoAndStop(0);
     this.animKey = "idle_down";
+    // Child of the sprite → the tag follows the avatar and depth-sorts with it.
+    this.nameTag = createNameTag(displayName);
+    this.sprite.addChild(this.nameTag);
     this.render();
+  }
+
+  /** Update the label above the head (e.g. once a real login name arrives). */
+  setDisplayName(name: string): void {
+    this.nameTag.text = name;
   }
 
   get tileX(): number {

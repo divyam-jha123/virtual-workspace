@@ -10,9 +10,10 @@ const PUBLISH_INTERVAL_MS = 100;
 const IDLE_HEARTBEAT_MS = 1000;
 
 /** Events the world reacts to. Kept tiny so PixiWorld owns the avatars.
- *  `characterId` is the peer's chosen avatar, carried as the participant name. */
+ *  `displayName` is the peer's name (the LiveKit participant name), shown on
+ *  their name tag. */
 export interface RoomCallbacks {
-  onRemoteMove: (msg: PositionMessage, characterId?: string) => void;
+  onRemoteMove: (msg: PositionMessage, displayName?: string) => void;
   onRemoteLeave: (identity: string) => void;
 }
 
@@ -42,9 +43,10 @@ export class RoomConnection {
 
   constructor(
     private readonly roomName: string,
-    /** Local player's chosen character — sent as the participant name so peers
-     *  render us as the avatar we picked, not a default. */
-    private readonly characterId: string,
+    /** Local player's display name — sent as the LiveKit participant name so
+     *  peers can show it on our name tag. (Once login lands, the backend
+     *  overrides this with the authenticated user's name.) */
+    private readonly displayName: string,
     private readonly cb: RoomCallbacks,
   ) {}
 
@@ -59,13 +61,13 @@ export class RoomConnection {
   /** Fetch a token, wire events, and join. Throws if the backend/LiveKit is
    *  unreachable — the caller treats that as "run offline / single-player". */
   async connect(): Promise<void> {
-    const { token, url } = await fetchToken(this.roomName, this.identity, this.characterId);
+    const { token, url } = await fetchToken(this.roomName, this.identity, this.displayName);
 
     this.room
       .on(RoomEvent.DataReceived, (payload: Uint8Array, participant, _kind, topic) => {
         if (topic !== undefined && topic !== DataTopic.POSITION) return;
         const msg = decodePosition(payload);
-        // The peer's chosen character rides on their participant name.
+        // The peer's display name rides on their participant name.
         if (msg && msg.identity !== this.identity) this.cb.onRemoteMove(msg, participant?.name);
       })
       .on(RoomEvent.ParticipantDisconnected, (p: RemoteParticipant) =>

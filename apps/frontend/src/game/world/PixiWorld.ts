@@ -46,6 +46,9 @@ export interface PixiWorldOptions {
   onExit: () => void;
   /** when set, spawns that avatar and switches to follow-cam "play" mode */
   characterId?: string;
+  /** Name typed at character select — shown above the avatar's head and sent
+   *  to peers as the LiveKit participant name. */
+  displayName?: string;
 }
 
 /**
@@ -233,7 +236,7 @@ export class PixiWorld {
     const sheet = await buildCharacterSpritesheet(getCharacter(characterId));
     const spawn = getSpawnTile(this.opts.map);
     this.collision = createCollisionMap(this.opts.map);
-    this.player = new Player(sheet, spawn.tx, spawn.ty);
+    this.player = new Player(sheet, spawn.tx, spawn.ty, this.opts.displayName ?? "");
     // Same layer as furniture so the avatar depth-sorts behind/in front of props.
     this.furnitureLayer.addChild(this.player.sprite);
     this.input = new Input();
@@ -255,8 +258,8 @@ export class PixiWorld {
     await Promise.all(
       CHARACTERS.map(async (c) => this.remoteSheets!.set(c.id, await buildCharacterSpritesheet(c))),
     );
-    this.room = new RoomConnection(this.opts.map.key, characterId, {
-      onRemoteMove: (msg, charId) => this.applyRemoteMove(msg, charId),
+    this.room = new RoomConnection(this.opts.map.key, this.opts.displayName ?? "", {
+      onRemoteMove: (msg, displayName) => this.applyRemoteMove(msg, displayName),
       onRemoteLeave: (id) => this.removeRemote(id),
     });
     this.room.connect().catch((e: unknown) =>
@@ -300,28 +303,28 @@ export class PixiWorld {
   }
 
   /** Apply a peer's position update: spawn its avatar on first sight, drop
-   *  stale/reordered lossy packets by timestamp, else steer it to the target. */
-  private applyRemoteMove(msg: PositionMessage, characterId?: string): void {
+   *  stale/reordered lossy packets by timestamp, else steer it to the target.
+   *  `displayName` is the peer's LiveKit participant name → their name tag; it
+   *  can arrive after the first packet, so we keep it up to date. */
+  private applyRemoteMove(msg: PositionMessage, displayName?: string): void {
     const lastT = this.remoteLastT.get(msg.identity) ?? 0;
     if (msg.t <= lastT) return; // stale (lossy delivery can reorder)
     this.remoteLastT.set(msg.identity, msg.t);
 
     const sheets = this.remoteSheets;
     if (!sheets) return;
-    // Resolve the peer's character; only trust a known id (their name may not
-    // have propagated yet on the first packet → keep default until it does).
-    const known = characterId && sheets.has(characterId) ? characterId : undefined;
 
     let rp = this.remotes.get(msg.identity);
     if (!rp) {
-      const cid = known ?? DEFAULT_CHARACTER_ID;
-      rp = new RemotePlayer(sheets.get(cid)!, cid, msg.x, msg.y);
+      // The chosen character no longer reaches peers (the backend now sets the
+      // participant name from the logged-in user), so peers render as the
+      // default until a character transport exists. Tracked separately.
+      const cid = DEFAULT_CHARACTER_ID;
+      rp = new RemotePlayer(sheets.get(cid)!, cid, msg.x, msg.y, displayName ?? "");
       this.remotes.set(msg.identity, rp);
       this.furnitureLayer.addChild(rp.sprite);
-    } else if (known && known !== rp.characterId) {
-      // Their name arrived (or changed) → correct the sprite.
-      rp.setCharacter(sheets.get(known)!, known);
     }
+    if (displayName) rp.setDisplayName(displayName);
     rp.setTarget(msg.x, msg.y, msg.facing);
   }
 

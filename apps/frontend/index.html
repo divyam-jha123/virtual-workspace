@@ -43,6 +43,34 @@
         font-size: 15px;
         margin: 0 0 48px;
       }
+      .name-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin: 0 0 28px;
+      }
+      .name-label {
+        color: #8fa0c5;
+        font-size: 14px;
+      }
+      .name-input {
+        background: #1b2133;
+        border: 1px solid #2f3956;
+        border-radius: 8px;
+        color: #e8edf9;
+        font-family: inherit;
+        font-size: 15px;
+        padding: 9px 12px;
+        width: 220px;
+        outline: none;
+      }
+      .name-input::placeholder {
+        color: #5d6b8c;
+      }
+      .name-input:focus {
+        border-color: #4c7dff;
+      }
       .menu-grid {
         display: flex;
         flex-wrap: wrap;
@@ -188,11 +216,6 @@
         width: 64px;
         height: 96px;
         image-rendering: pixelated;
-      }
-      .char-name {
-        color: #e6ecf7;
-        font-size: 14px;
-        font-weight: bold;
       }
       .char-actions {
         display: flex;

@@ -2,7 +2,7 @@ import { getTheme } from "./game/map/themes";
 import { getOfficeMap } from "./game/map/build";
 import { PixiWorld } from "./game/world/PixiWorld";
 import { renderMapSelectMenu } from "./game/ui/MapSelectMenu";
-import { renderCharacterSelect, getSavedCharacterId } from "./game/ui/CharacterSelect";
+import { renderCharacterSelect, getSavedCharacterId, getSavedName } from "./game/ui/CharacterSelect";
 import { renderHud } from "./game/ui/Hud";
 import { DEFAULT_CHARACTER_ID } from "./game/entities/characters";
 
@@ -20,11 +20,11 @@ function showCharacterSelect(themeKey: string): void {
   renderCharacterSelect(root, {
     initialId: getSavedCharacterId() ?? undefined,
     onBack: showMenu,
-    onStart: (characterId) => void enterWorld(themeKey, characterId),
+    onStart: (characterId, displayName) => void enterWorld(themeKey, characterId, displayName),
   });
 }
 
-async function enterWorld(themeKey: string, characterId: string): Promise<void> {
+async function enterWorld(themeKey: string, characterId: string, displayName: string): Promise<void> {
   root.innerHTML = "";
 
   const worldContainer = document.createElement("div");
@@ -43,16 +43,20 @@ async function enterWorld(themeKey: string, characterId: string): Promise<void> 
     map,
     theme,
     characterId,
+    displayName,
     onExit: showMenu,
   });
 
   renderHud(hudContainer, map.name, showMenu);
 }
 
-// Dev deep-link: /?map=<themeKey> jumps straight in with the saved character.
-const themeKey = new URLSearchParams(window.location.search).get("map");
+// Dev deep-link: /?map=<themeKey> jumps straight in with the saved character
+// and name (&name= overrides, handy for opening two windows as two people).
+const params = new URLSearchParams(window.location.search);
+const themeKey = params.get("map");
 if (themeKey) {
-  void enterWorld(themeKey, getSavedCharacterId() ?? DEFAULT_CHARACTER_ID);
+  const name = params.get("name") ?? getSavedName() ?? "Guest";
+  void enterWorld(themeKey, getSavedCharacterId() ?? DEFAULT_CHARACTER_ID, name);
 } else {
   showMenu();
 }

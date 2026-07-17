@@ -5,6 +5,7 @@ import { User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 import { OAuth2Client } from 'google-auth-library';
 import { UsersService } from '../users/users.service';
+import { EmailCodeService, normaliseEmail } from './email-code.service';
 
 /** Claims carried in the signed JWT. `sub` is the LiveKit identity. */
 export interface JwtPayload {
@@ -25,6 +26,7 @@ export class AuthService {
   constructor(
     private readonly users: UsersService,
     private readonly jwt: JwtService,
+    private readonly emailCodes: EmailCodeService,
     config: ConfigService,
   ) {
     // ConfigModule fails at boot if this is missing, so it is set by now.
@@ -73,6 +75,32 @@ export class AuthService {
       displayName: payload.name ?? payload.email.split('@')[0],
       googleId: payload.sub,
       avatarUrl: payload.picture,
+    });
+    return this.issueToken(user);
+  }
+
+  /**
+   * Email a one-time login code. Returns nothing on purpose: whether the address
+   * has an account is not the caller's business, and with passwordless sign-in
+   * it doesn't matter — the account is created when the code checks out.
+   */
+  async requestEmailCode(email: string): Promise<void> {
+    await this.emailCodes.requestCode(email);
+  }
+
+  /**
+   * Verify a one-time code, find-or-create the account, and issue our JWT — the
+   * same token, by the same path, that Google sign-in returns.
+   */
+  async loginWithEmailCode(email: string, code: string): Promise<LoginResponse> {
+    await this.emailCodes.verifyCode(email, code);
+
+    const address = normaliseEmail(email);
+    const user = await this.users.upsertEmailCodeUser({
+      email: address,
+      // No profile to draw on here, so the local part stands in until onboarding
+      // asks for a name — the same fallback loginWithGoogle uses.
+      displayName: address.split('@')[0],
     });
     return this.issueToken(user);
   }

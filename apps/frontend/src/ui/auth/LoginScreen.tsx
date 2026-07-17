@@ -1,21 +1,24 @@
 /**
  * The Vorkium login screen — a port of the "Vorkium Login & Signup" design,
  * narrowed to a single login page. There is no signup screen and no password
- * field: an account is created on first Google sign-in, and the display name
- * comes from the Google profile until the onboarding flow lands.
+ * field anywhere: an account is created on first sign-in, whichever way you come
+ * in, and the display name comes from the Google profile (or the email's local
+ * part) until the onboarding flow lands.
  *
- * Email sign-in is a one-time code sent to your inbox. The form is here and
- * validates, but the backend endpoint doesn't exist yet — submitting says so.
- * Google is the working path for now. See `submitEmail` below.
+ * Two ways in, both ending at the same JWT: Google, and a one-time code emailed
+ * to you. This screen is step one of the email path — it sends the code and
+ * hands off to VerifyCodeScreen; AuthFlow owns which of the two is on screen.
  */
 
 import { useState, type FormEvent } from "react";
-import { loginWithGoogle } from "../../net/authClient";
+import { loginWithGoogle, requestEmailCode } from "../../net/authClient";
 import { setSession, type Session } from "../../state/session";
 import { useGoogleSignIn } from "./useGoogleSignIn";
 
 export interface LoginScreenProps {
   onAuthed: (session: Session) => void;
+  /** Advance to the code step; the address is already normalised and valid. */
+  onCodeSent: (email: string) => void;
 }
 
 /** Same shape the design's prototype validated against. */
@@ -27,11 +30,12 @@ function emailError(email: string): string | null {
   return null;
 }
 
-export function LoginScreen({ onAuthed }: LoginScreenProps) {
+export function LoginScreen({ onAuthed, onCodeSent }: LoginScreenProps) {
   const [email, setEmail] = useState("");
   const [touched, setTouched] = useState(false);
   const [attempted, setAttempted] = useState(false);
   const [emailNotice, setEmailNotice] = useState<string | null>(null);
+  const [sending, setSending] = useState(false);
 
   const { containerRef, loading, pending, error } = useGoogleSignIn(async (idToken) => {
     try {
@@ -49,13 +53,27 @@ export function LoginScreen({ onAuthed }: LoginScreenProps) {
   const invalid = emailError(email);
   const showEmailError = (touched || attempted) && invalid ? invalid : null;
 
-  function submitEmail(e: FormEvent): void {
+  async function submitEmail(e: FormEvent): Promise<void> {
     e.preventDefault();
     setAttempted(true);
     if (emailError(email)) return;
-    // Deliberate placeholder: emailing a one-time code needs a backend endpoint
-    // and a mail provider, neither of which exists yet.
-    setEmailNotice("Email sign-in isn't ready yet — please continue with Google for now.");
+
+    const address = email.trim();
+    setSending(true);
+    setEmailNotice(null);
+    try {
+      await requestEmailCode(address);
+      onCodeSent(address);
+    } catch (err: unknown) {
+      // authClient has already picked what's safe to show (the rate-limit wait
+      // is worth naming; a 500 isn't), so this message goes straight to the user.
+      setEmailNotice(
+        err instanceof Error ? err.message : "We couldn't send your code. Please try again.",
+      );
+      setSending(false);
+    }
+    // No `finally`: on success this screen is being replaced, and clearing
+    // `sending` first would flash the button back to its idle label.
   }
 
   const banner = error ?? emailNotice;
@@ -145,7 +163,11 @@ export function LoginScreen({ onAuthed }: LoginScreenProps) {
           )}
         </div>
 
-        <form onSubmit={submitEmail} noValidate className="flex flex-col gap-[18px] mt-5">
+        <form
+          onSubmit={(e) => void submitEmail(e)}
+          noValidate
+          className="flex flex-col gap-[18px] mt-5"
+        >
           <div className="flex flex-col gap-1.5">
             <label htmlFor="vk-login-email" className="text-sm font-semibold">
               Email
@@ -161,6 +183,7 @@ export function LoginScreen({ onAuthed }: LoginScreenProps) {
                 setEmailNotice(null);
               }}
               onBlur={() => setTouched(true)}
+              disabled={sending}
               aria-invalid={!!showEmailError}
               aria-describedby={showEmailError ? "vk-login-email-error" : undefined}
               className={`min-h-12 rounded-xl border bg-vk-surface px-3.5 text-[15px] text-vk-ink outline-none focus:border-vk-accent focus:ring-[3px] focus:ring-vk-accent/18 ${
@@ -182,10 +205,16 @@ export function LoginScreen({ onAuthed }: LoginScreenProps) {
           */}
           <button
             type="submit"
-            disabled={loading || !!invalid}
+            disabled={loading || sending || !!invalid}
             className="cursor-pointer mt-1 flex min-h-[50px] w-full items-center justify-center gap-2.5 rounded-xl bg-vk-accent text-base font-semibold text-white shadow-[0_4px_14px_rgba(33,69,230,0.3)] transition-colors outline-none hover:bg-vk-accent-hover focus-visible:ring-[3px] focus-visible:ring-vk-accent/40 disabled:cursor-not-allowed disabled:bg-vk-accent-weak disabled:shadow-none"
           >
-            Continue with email
+            {sending && (
+              <span
+                aria-hidden="true"
+                className="size-[18px] animate-vk-spin rounded-full border-[2.5px] border-white/40 border-t-white"
+              />
+            )}
+            {sending ? "Sending code…" : "Continue with email"}
           </button>
         </form>
 

@@ -13,18 +13,45 @@ datasource db {
 
 /// A persisted user account. Backs JWT auth (#24) and presence metadata (#26).
 ///
-/// An account arrives one of two ways: the dev seed (email + passwordHash) or
-/// Google sign-in (googleId, no password). Both are keyed on `email`, so the
-/// same person signing in either way lands on one row.
+/// An account arrives one of three ways: the dev seed (email + passwordHash),
+/// Google sign-in (googleId, no password), or an emailed one-time code (neither).
+/// All are keyed on `email`, so the same person signing in any way lands on one
+/// row.
 model User {
-  id           String   @id @default(cuid())
-  email        String   @unique
+  id           String    @id @default(cuid())
+  email        String    @unique
   displayName  String
-  /// Null for Google accounts — they authenticate via `googleId` instead.
+  /// Null for Google and email-code accounts — they never set a password.
   passwordHash String?
   /// Google's stable subject id. Null until the user signs in with Google.
-  googleId     String?  @unique
+  googleId     String?   @unique
   avatarUrl    String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  /// When we last saw proof the user controls this address: Google asserting
+  /// `email_verified`, or a one-time code they read out of the inbox. Null for
+  /// seeded accounts, which nobody ever verified.
+  emailVerifiedAt DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+/// A pending one-time login code.
+///
+/// Keyed on `email`, not a user id: with passwordless sign-in the account may
+/// not exist yet when the code is sent — it's created once the code checks out.
+/// `codeHash` is bcrypt, never the code itself: a 6-digit code is only 10^6
+/// possibilities, so plaintext here would be trivially brute-forced offline if
+/// this table ever leaked. Rows are short-lived and never reused; `attempts`
+/// caps guessing against a code we did issue.
+model LoginCode {
+  id         String    @id @default(cuid())
+  email      String
+  codeHash   String
+  expiresAt  DateTime
+  consumedAt DateTime?
+  attempts   Int       @default(0)
+  createdAt  DateTime  @default(now())
+
+  /// Both hot paths — newest code for an email, and counting recent sends for
+  /// the rate limit — look up by email and order/filter on createdAt.
+  @@index([email, createdAt])
 }

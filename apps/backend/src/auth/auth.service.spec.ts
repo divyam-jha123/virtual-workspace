@@ -5,6 +5,7 @@ import { User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 import { UsersService } from '../users/users.service';
 import { AuthService, JwtPayload } from './auth.service';
+import { EmailCodeService } from './email-code.service';
 
 /** Stand in for Google's verifier so no test ever hits the network. */
 const verifyIdToken = jest.fn();
@@ -30,6 +31,7 @@ describe('AuthService', () => {
       passwordHash,
       googleId: null,
       avatarUrl: null,
+      emailVerifiedAt: null,
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -38,15 +40,23 @@ describe('AuthService', () => {
   beforeEach(() => verifyIdToken.mockReset());
 
   function makeService() {
-    const users = { findByEmail: jest.fn(), upsertGoogleUser: jest.fn() };
+    const users = {
+      findByEmail: jest.fn(),
+      upsertGoogleUser: jest.fn(),
+      upsertEmailCodeUser: jest.fn(),
+    };
     const jwt = { signAsync: jest.fn().mockResolvedValue('signed.jwt.token') };
     const config = { get: jest.fn().mockReturnValue(GOOGLE_CLIENT_ID) };
+    // Code issue/verify has its own spec; here it's stubbed so these tests only
+    // cover what AuthService does with the result.
+    const emailCodes = { requestCode: jest.fn(), verifyCode: jest.fn() };
     const service = new AuthService(
       users as unknown as UsersService,
       jwt as unknown as JwtService,
+      emailCodes as unknown as EmailCodeService,
       config as unknown as ConfigService,
     );
-    return { service, users, jwt };
+    return { service, users, jwt, emailCodes };
   }
 
   /** Shape a Google ticket the way `verifyIdToken` returns one. */
@@ -202,6 +212,59 @@ describe('AuthService', () => {
       await expect(service.loginWithGoogle('empty')).rejects.toBeInstanceOf(
         UnauthorizedException,
       );
+    });
+  });
+
+  describe('loginWithEmailCode', () => {
+    it('issues the same JWT shape as login() once the code checks out', async () => {
+      const { service, users, jwt } = makeService();
+      users.upsertEmailCodeUser.mockResolvedValue(user);
+
+      const result = await service.loginWithEmailCode(user.email, '123456');
+
+      expect(jwt.signAsync).toHaveBeenCalledWith({
+        sub: user.id,
+        email: user.email,
+        name: user.displayName,
+      } satisfies JwtPayload);
+      expect(result).toEqual({ accessToken: 'signed.jwt.token' });
+    });
+
+    it('creates the account with the email local-part as a placeholder name', async () => {
+      const { service, users } = makeService();
+      users.upsertEmailCodeUser.mockResolvedValue(user);
+
+      await service.loginWithEmailCode(user.email, '123456');
+
+      expect(users.upsertEmailCodeUser).toHaveBeenCalledWith({
+        email: 'alice@example.com',
+        displayName: 'alice',
+      });
+    });
+
+    it('normalises the address before it reaches the db', async () => {
+      const { service, users } = makeService();
+      users.upsertEmailCodeUser.mockResolvedValue(user);
+
+      await service.loginWithEmailCode('  Alice@Example.COM ', '123456');
+
+      // Otherwise this would create a second account for the same person, since
+      // User.email is unique and case-sensitive.
+      expect(users.upsertEmailCodeUser).toHaveBeenCalledWith({
+        email: 'alice@example.com',
+        displayName: 'alice',
+      });
+    });
+
+    it('creates no account and issues no token when the code is rejected', async () => {
+      const { service, users, jwt, emailCodes } = makeService();
+      emailCodes.verifyCode.mockRejectedValue(new UnauthorizedException());
+
+      await expect(
+        service.loginWithEmailCode(user.email, '000000'),
+      ).rejects.toBeInstanceOf(UnauthorizedException);
+      expect(users.upsertEmailCodeUser).not.toHaveBeenCalled();
+      expect(jwt.signAsync).not.toHaveBeenCalled();
     });
   });
 });

@@ -20,3 +20,20 @@ model User {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
+
+/// Minimal room membership / last-seen, written from LiveKit webhooks (#26).
+/// This is presence *metadata* only — no position or game state lives here
+/// (Option B: those ride LiveKit). One row per (room, participant identity);
+/// `leftAt == null` means the participant is currently connected.
+model RoomMembership {
+  id          String    @id @default(cuid())
+  roomName    String
+  identity    String
+  displayName String?
+  joinedAt    DateTime  @default(now())
+  leftAt      DateTime?
+  lastSeenAt  DateTime  @default(now())
+
+  @@unique([roomName, identity])
+  @@index([roomName, leftAt])
+}

@@ -107,7 +107,7 @@ frontend enhancement issues, plus one checkbox at the end for the phase's overal
 - [x] LiveKit token issuance + room join — *done in Phase 0 (`src/realtime/token`)*
 - [ ] Simple JWT auth — login endpoint issues a JWT; add a guard so `POST /realtime/token` derives identity + display name from the authenticated user instead of the request body
 - [ ] User model — introduce Prisma + PostgreSQL (first DB use); persist users
-- [ ] Presence + room metadata via LiveKit webhooks — handle participant joined/left webhooks and persist minimal room membership / last-seen (no game-state relay)
+- [x] Presence + room metadata via LiveKit webhooks — handle participant joined/left webhooks and persist minimal room membership / last-seen (no game-state relay)
 
 **Frontend**
 - [x] Collision layer — *done in Phase 0 (`game/map/collision.ts`)*

@@ -258,7 +258,7 @@ export class PixiWorld {
     await Promise.all(
       CHARACTERS.map(async (c) => this.remoteSheets!.set(c.id, await buildCharacterSpritesheet(c))),
     );
-    this.room = new RoomConnection(this.opts.map.key, this.opts.displayName ?? "", {
+    this.room = new RoomConnection(this.opts.map.key, {
       onRemoteMove: (msg, displayName) => this.applyRemoteMove(msg, displayName),
       onRemoteLeave: (id) => this.removeRemote(id),
     });

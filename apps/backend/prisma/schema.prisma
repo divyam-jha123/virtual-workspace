@@ -12,11 +12,19 @@ datasource db {
 }
 
 /// A persisted user account. Backs JWT auth (#24) and presence metadata (#26).
+///
+/// An account arrives one of two ways: the dev seed (email + passwordHash) or
+/// Google sign-in (googleId, no password). Both are keyed on `email`, so the
+/// same person signing in either way lands on one row.
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
   displayName  String
-  passwordHash String
+  /// Null for Google accounts — they authenticate via `googleId` instead.
+  passwordHash String?
+  /// Google's stable subject id. Null until the user signs in with Google.
+  googleId     String?  @unique
+  avatarUrl    String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }

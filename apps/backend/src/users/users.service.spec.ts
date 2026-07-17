@@ -9,6 +9,8 @@ describe('UsersService', () => {
     email: 'alice@example.com',
     displayName: 'Alice',
     passwordHash: 'hash',
+    googleId: null,
+    avatarUrl: null,
     createdAt: now,
     updatedAt: now,
   };
@@ -18,6 +20,7 @@ describe('UsersService', () => {
       user: {
         findUnique: jest.fn(),
         create: jest.fn(),
+        upsert: jest.fn(),
       },
     };
     const service = new UsersService(prisma as unknown as PrismaService);
@@ -67,5 +70,43 @@ describe('UsersService', () => {
     await service.create(input);
 
     expect(prisma.user.create).toHaveBeenCalledWith({ data: input });
+  });
+
+  describe('upsertGoogleUser', () => {
+    const input = {
+      email: 'alice@example.com',
+      displayName: 'Alice',
+      googleId: 'google_123',
+      avatarUrl: 'https://example.com/alice.jpg',
+    };
+
+    it('upserts on email so an existing account links instead of colliding', async () => {
+      const { service, prisma } = makeService();
+      prisma.user.upsert.mockResolvedValue(sampleUser);
+
+      await service.upsertGoogleUser(input);
+
+      expect(prisma.user.upsert).toHaveBeenCalledWith({
+        where: { email: input.email },
+        update: {
+          displayName: input.displayName,
+          googleId: input.googleId,
+          avatarUrl: input.avatarUrl,
+        },
+        create: input,
+      });
+    });
+
+    it('creates the account with no password hash', async () => {
+      const { service, prisma } = makeService();
+      prisma.user.upsert.mockResolvedValue(sampleUser);
+
+      await service.upsertGoogleUser(input);
+
+      const { create } = prisma.user.upsert.mock.calls[0][0] as {
+        create: Record<string, unknown>;
+      };
+      expect(create).not.toHaveProperty('passwordHash');
+    });
   });
 });

@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Virtual Workspace</title>
+    <link rel="icon" type="image/png" href="/vorkium-logo.png" />
+    <!-- Google Identity Services: powers the sign-in popup on the login screen. -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--
+      Styles for the map select / character select / HUD screens, which are still
+      plain DOM. The login screen is React + Tailwind — see src/styles.css.
+    -->
     <style>
       html,
       body {
@@ -164,6 +177,26 @@
       .hud-exit:hover {
         background: #2a3450;
         border-color: #ff8a80;
+      }
+      /* Sits left of Exit — quieter, since it drops you all the way to login. */
+      .hud-signout {
+        position: absolute;
+        top: 12px;
+        right: 108px;
+        pointer-events: auto;
+        background: rgba(34, 42, 60, 0.92);
+        border: 2px solid #39445e;
+        border-radius: 6px;
+        color: #8fa0c5;
+        font-size: 15px;
+        font-family: inherit;
+        padding: 8px 16px;
+        cursor: pointer;
+      }
+      .hud-signout:hover {
+        background: #2a3450;
+        border-color: #7aa2ff;
+        color: #cdd8f0;
       }
 
       /* --- Character select --- */

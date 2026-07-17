@@ -1,5 +1,10 @@
-/** Screen-fixed overlay drawn over the Pixi canvas: title, controls hint, exit button. */
-export function renderHud(root: HTMLElement, title: string, onExit: () => void): void {
+/** Screen-fixed overlay drawn over the Pixi canvas: title, controls hint, exit + sign out. */
+export function renderHud(
+  root: HTMLElement,
+  title: string,
+  onExit: () => void,
+  onSignOut: () => void,
+): void {
   root.innerHTML = "";
   root.className = "hud-overlay";
 
@@ -19,4 +24,10 @@ export function renderHud(root: HTMLElement, title: string, onExit: () => void):
   exitBtn.textContent = "⏻ Exit";
   exitBtn.addEventListener("click", onExit);
   root.appendChild(exitBtn);
+
+  const signOutBtn = document.createElement("button");
+  signOutBtn.className = "hud-signout";
+  signOutBtn.textContent = "Sign out";
+  signOutBtn.addEventListener("click", onSignOut);
+  root.appendChild(signOutBtn);
 }

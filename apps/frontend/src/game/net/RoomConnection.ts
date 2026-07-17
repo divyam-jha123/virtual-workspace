@@ -1,6 +1,7 @@
 import { Room, RoomEvent, type RemoteParticipant } from "livekit-client";
 import { DataTopic, decodePosition, encodePosition, type PositionMessage } from "protocol";
 import type { Facing } from "shared-types";
+import { getSession } from "../../state/session";
 import { fetchToken } from "./tokenClient";
 
 /** Publish at most this often while moving (ms) → ~10 Hz, matching the spike. */
@@ -17,17 +18,6 @@ export interface RoomCallbacks {
   onRemoteLeave: (identity: string) => void;
 }
 
-/** A stable per-tab identity, so a refresh rejoins as the "same" participant. */
-function getIdentity(): string {
-  const KEY = "vw-identity";
-  let id = sessionStorage.getItem(KEY);
-  if (!id) {
-    id = `user-${crypto.randomUUID().slice(0, 8)}`;
-    sessionStorage.setItem(KEY, id);
-  }
-  return id;
-}
-
 /**
  * Wraps a LiveKit room for position sync (issue #11): fetch a token, join,
  * publish the local avatar's position on the lossy data channel, and surface
@@ -36,19 +26,27 @@ function getIdentity(): string {
  */
 export class RoomConnection {
   private room = new Room();
-  private readonly identity = getIdentity();
+  /**
+   * The signed-in user's id. This has to match the LiveKit participant identity
+   * the backend puts in our token (it uses the JWT's `sub`), because we stamp it
+   * on every position we publish and use it to filter our own messages back out.
+   * If the two ever diverge, you see a ghost of yourself and peers never leave.
+   */
+  private readonly identity: string;
   private connected = false;
   private lastSent = 0;
   private last = { x: NaN, y: NaN, facing: "down" as Facing };
 
   constructor(
     private readonly roomName: string,
-    /** Local player's display name — sent as the LiveKit participant name so
-     *  peers can show it on our name tag. (Once login lands, the backend
-     *  overrides this with the authenticated user's name.) */
-    private readonly displayName: string,
     private readonly cb: RoomCallbacks,
-  ) {}
+  ) {
+    const session = getSession();
+    if (!session) {
+      throw new Error("cannot join a room while signed out");
+    }
+    this.identity = session.userId;
+  }
 
   /** Leave the room when the tab is closed/hidden so our avatar disappears for
    *  peers immediately, instead of lingering until LiveKit's join timeout. */
@@ -61,7 +59,7 @@ export class RoomConnection {
   /** Fetch a token, wire events, and join. Throws if the backend/LiveKit is
    *  unreachable — the caller treats that as "run offline / single-player". */
   async connect(): Promise<void> {
-    const { token, url } = await fetchToken(this.roomName, this.identity, this.displayName);
+    const { token, url } = await fetchToken(this.roomName);
 
     this.room
       .on(RoomEvent.DataReceived, (payload: Uint8Array, participant, _kind, topic) => {

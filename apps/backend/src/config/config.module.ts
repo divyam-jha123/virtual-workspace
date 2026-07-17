@@ -8,6 +8,9 @@ const REQUIRED = [
   'LIVEKIT_API_SECRET',
   'DATABASE_URL',
   'JWT_SECRET',
+  // Google sign-in is the only login path in the UI, so without this nobody can
+  // get in at all — fail at boot rather than at the first sign-in attempt.
+  'GOOGLE_CLIENT_ID',
 ] as const;
 
 /**

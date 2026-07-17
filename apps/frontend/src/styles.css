@@ -34,11 +34,33 @@
   }
 }
 
+/*
+ * Google's sign-in button, made invisible and stretched over the design's own
+ * button — see ui/auth/useGoogleSignIn.ts for why it has to be Google's button
+ * that takes the click. GIS renders a fixed ~40px-tall widget inside a
+ * cross-origin iframe; forcing both it and its wrapper to fill this box is what
+ * stops the design button's taller edges from being dead to clicks. Stretching
+ * distorts Google's artwork, which costs nothing at opacity 0.
+ */
+.vk-google-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.vk-google-overlay > div,
+.vk-google-overlay iframe {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  border-radius: 12px;
+}
+
 /* Design tokens from the "Vorkium Login & Signup" prototype. The auth screen is
  * light on purpose; the rest of the app is still dark. */
 @theme {
   --color-vk-page: #e6e9ed;
   --color-vk-surface: #ffffff;
+  --color-vk-surface-hover: #f6f8fb;
   --color-vk-ink: #16232b;
   --color-vk-muted: #5c6b74;
   --color-vk-subtle: #8a99a1;

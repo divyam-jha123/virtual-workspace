@@ -3,11 +3,22 @@
  * GIS loads from the <script> tag in index.html and hands back an ID token,
  * which the backend verifies (see net/authClient).
  *
- * Google renders the button itself, into the node you attach `containerRef` to.
- * That is deliberate, not a shortcut: the ID-token flow only issues a credential
- * from Google's own button. A custom-styled button would mean the OAuth access-
- * token flow instead, which needs a client secret and a server-side exchange.
- * So the button is Google's, themed as close to the design as its options allow.
+ * Google renders the button itself, into the node you attach `containerRef` to,
+ * and it can't be styled: it lives in a cross-origin iframe, and `renderButton`
+ * only takes the options in GoogleButtonOptions below. None of them reach the
+ * design's 12px radius, Outfit face, or 48px height.
+ *
+ * It still has to be Google's button that takes the click — the ID-token flow
+ * only issues a credential from it. (A freely styled button would mean the OAuth
+ * auth-code flow, which needs a client secret and a server-side exchange.) So
+ * LoginScreen paints the design's button and lays this one over it, invisible;
+ * see `.vk-google-overlay` in styles.css. The options below are near-irrelevant
+ * as a result — nobody sees this button. Only `width` still matters, since it
+ * sets the widget's own box before the CSS stretches it to fill.
+ *
+ * The seam to watch: this leans on GIS keeping a plain iframe we can size from
+ * the outside. If Google changes that, the button goes invisible rather than
+ * ugly — so if sign-in ever appears to do nothing on click, look here first.
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -123,7 +134,8 @@ export function useGoogleSignIn(
           text: "continue_with",
           shape: "rectangular",
           logo_alignment: "left",
-          // Matches the 400px max-width column the design centres on.
+          // The 400px column the design centres on. Rendering at full width
+          // keeps the stretch to fill roughly 1:1 horizontally.
           width: 400,
         });
         setPending(false);

@@ -105,15 +105,15 @@ frontend enhancement issues, plus one checkbox at the end for the phase's overal
 
 **Backend**
 - [x] LiveKit token issuance + room join — *done in Phase 0 (`src/realtime/token`)*
-- [ ] Simple JWT auth — login endpoint issues a JWT; add a guard so `POST /realtime/token` derives identity + display name from the authenticated user instead of the request body
-- [ ] User model — introduce Prisma + PostgreSQL (first DB use); persist users
+- [x] Simple JWT auth — password login, Google sign-in, and email-code login issue a JWT; `JwtAuthGuard` on `POST /realtime/token` derives identity + display name from the authenticated user (`src/auth/*`)
+- [x] User model — Prisma + PostgreSQL with `User` model; accounts via seed, Google, or email code (`prisma/schema.prisma`)
 - [x] Presence + room metadata via LiveKit webhooks — handle participant joined/left webhooks and persist minimal room membership / last-seen (no game-state relay)
 
 **Frontend**
 - [x] Collision layer — *done in Phase 0 (`game/map/collision.ts`)*
 - [x] Smooth local movement + interpolation of remote avatars — *done in Phase 0 (`Player.ts` eased physics, `RemotePlayer.ts` lerp)*
-- [ ] Real identity + login wiring — replace the random per-tab id (`RoomConnection.getIdentity`) with the authenticated user; send the auth token when fetching the LiveKit token and carry a display name
-- [ ] Name tags — render each avatar's display name above local + remote sprites
+- [x] Real identity + login wiring — login UI (password, Google, email code), session in localStorage, Bearer token on token fetch; `RoomConnection` uses the JWT `sub` as LiveKit identity (`src/ui/auth/*`, `src/state/session.ts`, `RoomConnection.ts`)
+- [x] Name tags — render each avatar's display name above local + remote sprites; name comes from the authenticated account (`NameTag.ts`, `Player.ts`, `RemotePlayer.ts`)
 - [ ] Presence list — roster UI in `src/ui/presence`, driven by LiveKit `ParticipantConnected`/`Disconnected` (add a join handler to `RoomConnection`, which today only handles leave)
 
 **Goal**

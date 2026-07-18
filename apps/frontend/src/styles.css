@@ -1,0 +1,89 @@
+/*
+ * Tailwind, imported WITHOUT Preflight.
+ *
+ * Preflight is a global reset. This app is mid-migration: only the login screen
+ * is React + Tailwind, while the map select, character select, and HUD are still
+ * plain DOM styled by the <style> block in index.html. Pulling in Preflight would
+ * silently restyle those three screens (it strips heading sizes, button borders,
+ * list markers...). Importing the layers individually keeps the utilities and
+ * skips the reset. Once the remaining screens are ported, drop this in favour of
+ * a plain `@import "tailwindcss"` and delete index.html's <style> block.
+ */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/*
+ * The cost of skipping Preflight: browser defaults survive, so a React screen
+ * gets UA button borders, Arial in form controls, and heading margins unless it
+ * opts out. This is the missing reset, scoped to the auth tree so the dark
+ * plain-DOM screens keep the styling they already rely on. Keep it narrow —
+ * it disappears once the whole UI is Tailwind and real Preflight comes back.
+ */
+@layer base {
+  .vk-auth :is(h1, h2, p) {
+    margin: 0;
+  }
+  .vk-auth :is(input, button, select, textarea) {
+    font: inherit;
+    color: inherit;
+  }
+  .vk-auth button {
+    border: 0;
+    background: none;
+  }
+}
+
+/*
+ * Google's sign-in button, made invisible and stretched over the design's own
+ * button — see ui/auth/useGoogleSignIn.ts for why it has to be Google's button
+ * that takes the click. GIS renders a fixed ~40px-tall widget inside a
+ * cross-origin iframe; forcing both it and its wrapper to fill this box is what
+ * stops the design button's taller edges from being dead to clicks. Stretching
+ * distorts Google's artwork, which costs nothing at opacity 0.
+ */
+.vk-google-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.vk-google-overlay > div,
+.vk-google-overlay iframe {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  border-radius: 12px;
+}
+
+/* Design tokens from the "Vorkium Login & Signup" prototype. The auth screen is
+ * light on purpose; the rest of the app is still dark. */
+@theme {
+  --color-vk-page: #e6e9ed;
+  --color-vk-surface: #ffffff;
+  --color-vk-surface-hover: #f6f8fb;
+  --color-vk-ink: #16232b;
+  --color-vk-muted: #5c6b74;
+  --color-vk-subtle: #8a99a1;
+  --color-vk-border: #dbe3e6;
+  --color-vk-accent: #2145e6;
+  --color-vk-accent-hover: #1836c0;
+  --color-vk-accent-weak: #aab7ea;
+  /* The design specced #e6ecee here, which is invisible against the #e6e9ed
+   * page — darkened just enough for the separator to actually read. */
+  --color-vk-rule: #ccd5da;
+  --color-vk-danger: #d9564a;
+  --color-vk-danger-ink: #a02c20;
+  --color-vk-danger-text: #b3352a;
+  --color-vk-danger-bg: #fdf1f0;
+  --color-vk-danger-border: #f5c9c4;
+
+  --font-vk: "Outfit", "Helvetica Neue", sans-serif;
+
+  --animate-vk-spin: vk-spin 0.7s linear infinite;
+
+  @keyframes vk-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

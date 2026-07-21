@@ -247,6 +247,81 @@
         border-color: var(--danger);
       }
 
+      /* --- Presence roster (#29) --- */
+      .presence {
+        position: absolute;
+        top: 62px;
+        right: 18px;
+        width: 194px;
+        max-height: 44vh;
+        display: flex;
+        flex-direction: column;
+        z-index: 11;
+        pointer-events: auto;
+        background: rgba(15, 19, 30, 0.82);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-sm);
+        color: var(--text);
+        overflow: hidden;
+      }
+      .presence-header {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 10px 13px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-dim);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .presence-count {
+        margin-left: auto;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text);
+        border-radius: var(--pill);
+        padding: 1px 8px;
+        font-size: 11px;
+      }
+      .presence-list {
+        list-style: none;
+        margin: 0;
+        padding: 6px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+      }
+      .presence-row {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 6px 8px;
+        border-radius: var(--radius-sm);
+        font-size: 13px;
+      }
+      .presence-row:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .presence-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex: 0 0 auto;
+      }
+      .presence-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .presence-you {
+        margin-left: auto;
+        color: var(--text-faint);
+        font-size: 11px;
+      }
+
       /* --- Character select --- */
       .back-link {
         position: absolute;

@@ -5,6 +5,7 @@ import { PixiWorld } from "./game/world/PixiWorld";
 import { renderMapSelectMenu } from "./game/ui/MapSelectMenu";
 import { renderCharacterSelect, getSavedCharacterId, getSavedName } from "./game/ui/CharacterSelect";
 import { renderHud } from "./game/ui/Hud";
+import { PresenceList } from "./ui/presence/PresenceList";
 import { DEFAULT_CHARACTER_ID } from "./game/entities/characters";
 
 const root = document.getElementById("app")!;
@@ -36,6 +37,11 @@ async function enterWorld(themeKey: string, characterId: string, displayName: st
   const hudContainer = document.createElement("div");
   root.appendChild(hudContainer);
 
+  // Roster panel (#29) — kept in sync from PixiWorld's presence events. Lives in
+  // the overlay; cleared when the menu re-renders `root` on exit.
+  const presence = new PresenceList();
+  root.appendChild(presence.root);
+
   const theme = getTheme(themeKey);
   const map = getOfficeMap(theme);
 
@@ -46,6 +52,7 @@ async function enterWorld(themeKey: string, characterId: string, displayName: st
     characterId,
     displayName,
     onExit: showMenu,
+    onPresenceChange: (entries) => presence.render(entries),
   });
 
   renderHud(hudContainer, map.name, showMenu);

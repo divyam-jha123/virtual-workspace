@@ -14,6 +14,9 @@ const IDLE_HEARTBEAT_MS = 1000;
  *  their name tag. */
 export interface RoomCallbacks {
   onRemoteMove: (msg: PositionMessage, displayName?: string) => void;
+  /** A participant joined the room (for the presence roster). Fires for anyone
+   *  who joins after us, plus once per peer already present when we connect. */
+  onRemoteJoin: (identity: string, displayName?: string) => void;
   onRemoteLeave: (identity: string) => void;
 }
 
@@ -70,6 +73,9 @@ export class RoomConnection {
         // The peer's display name rides on their participant name.
         if (msg && msg.identity !== this.identity) this.cb.onRemoteMove(msg, participant?.name);
       })
+      .on(RoomEvent.ParticipantConnected, (p: RemoteParticipant) =>
+        this.cb.onRemoteJoin(p.identity, p.name),
+      )
       .on(RoomEvent.ParticipantDisconnected, (p: RemoteParticipant) =>
         this.cb.onRemoteLeave(p.identity),
       );
@@ -77,6 +83,10 @@ export class RoomConnection {
     await this.room.connect(url, token);
     this.connected = true;
     window.addEventListener("pagehide", this.onPageHide);
+    // Seed the roster with peers already in the room when we joined.
+    for (const p of this.room.remoteParticipants.values()) {
+      this.cb.onRemoteJoin(p.identity, p.name);
+    }
   }
 
   /**

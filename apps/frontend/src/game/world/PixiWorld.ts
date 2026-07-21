@@ -15,6 +15,7 @@ import { RoomConnection } from "../net/RoomConnection";
 import type { Direction } from "../entities/characters";
 import type { Spritesheet } from "pixi.js";
 import type { PositionMessage } from "protocol";
+import type { PresenceEntry } from "../../ui/presence/PresenceList";
 
 const LOCAL_ID = "local";
 
@@ -53,6 +54,8 @@ export interface PixiWorldOptions {
   /** Name typed at character select — shown above the avatar's head and sent
    *  to peers as the LiveKit participant name. */
   displayName?: string;
+  /** Called with the full room roster whenever someone joins or leaves (#29). */
+  onPresenceChange?: (entries: PresenceEntry[]) => void;
 }
 
 /**
@@ -89,6 +92,8 @@ export class PixiWorld {
   private remoteLastT = new Map<string, number>();
   /** One spritesheet per character id, so a peer renders as the avatar they chose. */
   private remoteSheets?: Map<string, Spritesheet>;
+  /** Room roster (identity → name/isLocal), drives the presence list (#29). */
+  private presence = new Map<string, { name: string; isLocal: boolean }>();
   /** after sitting, require input to return to zero before a press stands up */
   private sitReleased = false;
   private debugOn = false;
@@ -266,9 +271,16 @@ export class PixiWorld {
       CHARACTERS.map(async (c) => this.remoteSheets!.set(c.id, await buildCharacterSpritesheet(c))),
     );
     this.room = new RoomConnection(this.opts.map.key, this.opts.displayName ?? "", {
+      onRemoteJoin: (id, name) => this.setPresence(id, name || "Guest", false),
       onRemoteMove: (msg, displayName) => this.applyRemoteMove(msg, displayName),
-      onRemoteLeave: (id) => this.removeRemote(id),
+      onRemoteLeave: (id) => {
+        this.removeRemote(id);
+        this.removePresence(id);
+      },
     });
+    // Show the local player in the roster immediately (even before connecting /
+    // when running offline). The rest of the roster fills in via join/leave.
+    this.setPresence(this.room.localIdentity, this.opts.displayName || "You", true);
     this.room.connect().catch((e: unknown) =>
       // eslint-disable-next-line no-console
       console.warn(`[net] running offline (no peers): ${e instanceof Error ? e.message : String(e)}`),
@@ -331,8 +343,29 @@ export class PixiWorld {
       this.remotes.set(msg.identity, rp);
       this.furnitureLayer.addChild(rp.sprite);
     }
-    if (displayName) rp.setDisplayName(displayName);
+    if (displayName) {
+      rp.setDisplayName(displayName);
+      this.setPresence(msg.identity, displayName, false); // keep roster name in sync
+    }
     rp.setTarget(msg.x, msg.y, msg.facing);
+  }
+
+  /** Add/update a roster entry; emits only when something actually changed. */
+  private setPresence(id: string, name: string, isLocal: boolean): void {
+    const cur = this.presence.get(id);
+    if (cur && cur.name === name && cur.isLocal === isLocal) return;
+    this.presence.set(id, { name, isLocal });
+    this.emitPresence();
+  }
+
+  private removePresence(id: string): void {
+    if (this.presence.delete(id)) this.emitPresence();
+  }
+
+  private emitPresence(): void {
+    const cb = this.opts.onPresenceChange;
+    if (!cb) return;
+    cb([...this.presence.entries()].map(([id, v]) => ({ id, name: v.name, isLocal: v.isLocal })));
   }
 
   /** Remove a peer's avatar when they leave the room. */

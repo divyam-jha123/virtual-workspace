@@ -35,6 +35,8 @@ const MAX_DELTA_MS = (MAX_DELTA * 1000) / 60;
 export class Player {
   readonly sprite: AnimatedSprite;
   private readonly nameTag: Text;
+  /** Display name — read by the name tag and the minimap. */
+  displayName: string;
   x: number;
   y: number;
   private vx = 0;
@@ -52,6 +54,7 @@ export class Player {
   ) {
     this.x = (spawnTileX + 0.5) * TILE_SIZE;
     this.y = (spawnTileY + 1) * TILE_SIZE;
+    this.displayName = displayName;
 
     this.sprite = new AnimatedSprite(sheet.animations.walk_down);
     this.sprite.anchor.set(0.5, 1);
@@ -66,7 +69,16 @@ export class Player {
 
   /** Update the label above the head (e.g. once a real login name arrives). */
   setDisplayName(name: string): void {
+    this.displayName = name;
     this.nameTag.text = name;
+  }
+
+  /** World-pixel position — read by the minimap (MinimapPlayer). */
+  get worldX(): number {
+    return this.x;
+  }
+  get worldY(): number {
+    return this.y;
   }
 
   get tileX(): number {

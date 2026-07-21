@@ -1,8 +1,16 @@
-import { Room, RoomEvent, type RemoteParticipant } from "livekit-client";
+import { Room, RoomEvent, type RemoteParticipant, type RemoteTrackPublication } from "livekit-client";
 import { DataTopic, decodePosition, encodePosition, type PositionMessage } from "protocol";
 import type { Facing } from "shared-types";
 import { getSession } from "../../state/session";
+import { LocalMedia, MediaError, type MediaFailure } from "../../media/LocalMedia";
 import { fetchToken } from "./tokenClient";
+
+/** Result of a mic/cam toggle: the resulting state, plus why it failed (if it
+ *  did) so the caller can stay in position-only mode. */
+export interface MediaToggleResult {
+  on: boolean;
+  failure?: MediaFailure;
+}
 
 /** Publish at most this often while moving (ms) → ~10 Hz, matching the spike. */
 const PUBLISH_INTERVAL_MS = 100;
@@ -36,6 +44,8 @@ export class RoomConnection {
   private connected = false;
   private lastSent = 0;
   private last = { x: NaN, y: NaN, facing: "down" as Facing };
+  /** Local mic/camera capture (issue #37). Published to `this.room` on toggle. */
+  private readonly media = new LocalMedia();
 
   constructor(
     private readonly roomName: string,
@@ -70,7 +80,17 @@ export class RoomConnection {
       })
       .on(RoomEvent.ParticipantDisconnected, (p: RemoteParticipant) =>
         this.cb.onRemoteLeave(p.identity),
-      );
+      )
+      // A/V publications from peers (issue #37 acceptance: confirm tracks land on
+      // the remote participant). Subscription/rendering is a later issue (#38).
+      .on(RoomEvent.TrackPublished, (pub: RemoteTrackPublication, p: RemoteParticipant) => {
+        // eslint-disable-next-line no-console
+        console.log(`[media] ${p.identity} published ${pub.kind} track (${pub.trackSid})`);
+      })
+      .on(RoomEvent.TrackUnpublished, (pub: RemoteTrackPublication, p: RemoteParticipant) => {
+        // eslint-disable-next-line no-console
+        console.log(`[media] ${p.identity} unpublished ${pub.kind} track`);
+      });
 
     await this.room.connect(url, token);
     this.connected = true;
@@ -98,10 +118,79 @@ export class RoomConnection {
     });
   }
 
+  get micOn(): boolean {
+    return this.media.micOn;
+  }
+  get camOn(): boolean {
+    return this.media.camOn;
+  }
+
+  /**
+   * Turn the microphone on/off (issue #37). On enable it captures the mic and
+   * publishes it to the room; on disable it unpublishes + stops the track. On a
+   * permission denial or missing device it stays off and returns the reason, so
+   * the caller can keep running position-only. No-ops until connected.
+   */
+  async setMicEnabled(on: boolean): Promise<MediaToggleResult> {
+    if (!this.connected) return { on: false };
+    try {
+      if (on) {
+        await this.unlockAudio();
+        const track = await this.media.enableMic();
+        await this.room.localParticipant.publishTrack(track);
+      } else {
+        const track = this.media.micTrack;
+        if (track) await this.room.localParticipant.unpublishTrack(track, true);
+        this.media.disableMic();
+      }
+      return { on: this.media.micOn };
+    } catch (e) {
+      this.media.disableMic();
+      const failure = e instanceof MediaError ? e.reason : "failed";
+      // eslint-disable-next-line no-console
+      console.warn(`[media] mic ${on ? "enable" : "disable"} failed: ${failure}`);
+      return { on: false, failure };
+    }
+  }
+
+  /** Turn the camera on/off — same contract as setMicEnabled. */
+  async setCamEnabled(on: boolean): Promise<MediaToggleResult> {
+    if (!this.connected) return { on: false };
+    try {
+      if (on) {
+        const track = await this.media.enableCam();
+        await this.room.localParticipant.publishTrack(track);
+      } else {
+        const track = this.media.camTrack;
+        if (track) await this.room.localParticipant.unpublishTrack(track, true);
+        this.media.disableCam();
+      }
+      return { on: this.media.camOn };
+    } catch (e) {
+      this.media.disableCam();
+      const failure = e instanceof MediaError ? e.reason : "failed";
+      // eslint-disable-next-line no-console
+      console.warn(`[media] cam ${on ? "enable" : "disable"} failed: ${failure}`);
+      return { on: false, failure };
+    }
+  }
+
+  /** Satisfy the browser autoplay policy: unlock audio playback on the first
+   *  user gesture (the toggle) so future subscribed audio (#38) can play. */
+  private async unlockAudio(): Promise<void> {
+    if (this.room.canPlaybackAudio) return;
+    try {
+      await this.room.startAudio();
+    } catch {
+      // No user gesture yet — harmless; the next toggle retries.
+    }
+  }
+
   disconnect(): void {
     if (!this.connected) return;
     this.connected = false;
     window.removeEventListener("pagehide", this.onPageHide);
+    this.media.stopAll();
     void this.room.disconnect();
   }
 }

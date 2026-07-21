@@ -103,9 +103,33 @@ export class PixiWorld {
       this.toggleDebug();
       return;
     }
+    // TEMP (issue #37): mic/cam toggles for testing capture+publish. The real
+    // mute/camera UI is issue #41; these keys go away when that lands.
+    if (this.isPlayMode && this.room) {
+      if (e.code === "KeyM") {
+        void this.toggleMic();
+        return;
+      }
+      if (e.code === "KeyC") {
+        void this.toggleCam();
+        return;
+      }
+    }
     // Spectate pan keys only matter without an avatar (Input owns them in play mode).
     if (!this.isPlayMode && SPECTATE_PAN_KEYS.has(e.code)) this.heldPanKeys.add(e.code);
   };
+
+  /** TEMP (#37): toggle mic and log the outcome — replaced by the HUD UI (#41). */
+  private async toggleMic(): Promise<void> {
+    const res = await this.room!.setMicEnabled(!this.room!.micOn);
+    // eslint-disable-next-line no-console
+    console.log(`[media] mic → ${res.on ? "ON" : "OFF"}${res.failure ? ` (${res.failure})` : ""}`);
+  }
+  private async toggleCam(): Promise<void> {
+    const res = await this.room!.setCamEnabled(!this.room!.camOn);
+    // eslint-disable-next-line no-console
+    console.log(`[media] cam → ${res.on ? "ON" : "OFF"}${res.failure ? ` (${res.failure})` : ""}`);
+  }
   private onKeyUp = (e: KeyboardEvent) => {
     this.heldPanKeys.delete(e.code);
   };

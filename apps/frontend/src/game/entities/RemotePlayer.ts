@@ -1,5 +1,5 @@
-import { AnimatedSprite, type Spritesheet, type Text } from "pixi.js";
-import { createNameTag } from "./NameTag";
+import { AnimatedSprite, type Spritesheet } from "pixi.js";
+import { NameTag } from "./NameTag";
 import type { Facing } from "shared-types";
 import type { Direction } from "./characters";
 
@@ -19,7 +19,7 @@ const ANIM_SPEED = 0.18;
  */
 export class RemotePlayer {
   readonly sprite: AnimatedSprite;
-  private readonly nameTag: Text;
+  private readonly nameTag: NameTag;
   private x: number;
   private y: number;
   private targetX: number;
@@ -45,15 +45,15 @@ export class RemotePlayer {
     this.sprite.animationSpeed = ANIM_SPEED;
     this.sprite.gotoAndStop(0);
     // Child of the sprite → the tag follows the peer and depth-sorts with them.
-    this.nameTag = createNameTag(displayName);
-    this.sprite.addChild(this.nameTag);
+    this.nameTag = new NameTag(displayName);
+    this.sprite.addChild(this.nameTag.view);
     this.render();
   }
 
   /** Set/correct the peer's label (their name may arrive after their first
    *  position packet). No-op when unchanged. */
   setDisplayName(name: string): void {
-    if (this.nameTag.text !== name) this.nameTag.text = name;
+    this.nameTag.setText(name);
   }
 
   /** Swap to the peer's real character once we learn it (fixes the brief

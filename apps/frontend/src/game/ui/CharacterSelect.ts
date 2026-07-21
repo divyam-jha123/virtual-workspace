@@ -1,4 +1,6 @@
+import { ArrowLeft, ArrowRight } from "lucide";
 import { CHARACTERS, drawCharacterPreview } from "../entities/characters";
+import { icon } from "./icon";
 
 const STORAGE_KEY = "vw.character";
 const NAME_KEY = "vw.name";
@@ -24,7 +26,7 @@ export function renderCharacterSelect(root: HTMLElement, opts: CharacterSelectOp
 
   const back = document.createElement("button");
   back.className = "back-link";
-  back.textContent = "← Back to maps";
+  back.append(icon(ArrowLeft, 15), "Back to maps");
   back.addEventListener("click", opts.onBack);
   root.appendChild(back);
 
@@ -65,7 +67,7 @@ export function renderCharacterSelect(root: HTMLElement, opts: CharacterSelectOp
 
   const startBtn = document.createElement("button");
   startBtn.className = "start-btn";
-  startBtn.textContent = "Start →";
+  startBtn.append("Start", icon(ArrowRight, 17));
 
   /** Need both a name and an avatar before we can spawn. */
   function refreshStart(): void {

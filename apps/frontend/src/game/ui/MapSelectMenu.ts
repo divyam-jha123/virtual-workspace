@@ -1,6 +1,8 @@
+import { ArrowRight } from "lucide";
 import { THEMES } from "../map/themes";
 import { getOfficeMap } from "../map/build";
 import { buildPreviewCanvas } from "./preview";
+import { icon } from "./icon";
 
 /** DOM-based map-select screen — plain HTML/CSS, no canvas needed for menu chrome. */
 export function renderMapSelectMenu(root: HTMLElement, onSelect: (themeKey: string) => void): void {
@@ -42,7 +44,7 @@ export function renderMapSelectMenu(root: HTMLElement, onSelect: (themeKey: stri
 
     const cta = document.createElement("div");
     cta.className = "menu-card-cta";
-    cta.textContent = "Click to enter →";
+    cta.append("Click to enter", icon(ArrowRight, 15));
     card.appendChild(cta);
 
     card.addEventListener("click", () => onSelect(theme.key));

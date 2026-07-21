@@ -20,12 +20,16 @@ const LOCAL_ID = "local";
 
 const MAX_ZOOM = 4;
 /**
- * Default opening zoom, as a multiple of the fit-to-screen minimum: 1.0 would
- * show the whole floor exactly; 1.4 opens 40% tighter so the avatar reads a
- * bit larger while most of the office is still visible. The camera can't go
- * below the fit minimum, so the map always fills the viewport.
+ * Spectate opening zoom, as a multiple of the fit-to-screen minimum (1.0 shows
+ * the whole floor). The camera can't go below the fit minimum, so the map
+ * always fills the viewport.
  */
 const DEFAULT_ZOOM_FACTOR = 1.4;
+/**
+ * Play-mode zoom: an ABSOLUTE scale so the avatar reads large at a consistent
+ * size on any map (a 32px tile renders ~2× = 64px). Wheel still zooms freely.
+ */
+const PLAY_ZOOM = 2;
 const PAN_SPEED = 420; // spectate keyboard pan, world px/sec at zoom 1
 
 const SPECTATE_PAN_KEYS = new Set([
@@ -237,6 +241,9 @@ export class PixiWorld {
     const spawn = getSpawnTile(this.opts.map);
     this.collision = createCollisionMap(this.opts.map);
     this.player = new Player(sheet, spawn.tx, spawn.ty, this.opts.displayName ?? "");
+    this.camera.setZoom(PLAY_ZOOM); // avatars read large in the play view
+
+
     // Same layer as furniture so the avatar depth-sorts behind/in front of props.
     this.furnitureLayer.addChild(this.player.sprite);
     this.input = new Input();

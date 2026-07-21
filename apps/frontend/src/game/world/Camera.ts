@@ -73,6 +73,13 @@ export class Camera {
     this.targetZoom = this.zoomValue;
   }
 
+  /** Set current+target zoom to an absolute value (clamped). Used for the play
+   *  view so the avatar reads large at a consistent scale on any map. */
+  setZoom(z: number): void {
+    this.zoomValue = this.clampZoom(z);
+    this.targetZoom = this.zoomValue;
+  }
+
   screenToWorld(sx: number, sy: number): { x: number; y: number } {
     return { x: sx / this.zoomValue + this.scrollX, y: sy / this.zoomValue + this.scrollY };
   }

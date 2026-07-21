@@ -20,6 +20,8 @@ const ANIM_SPEED = 0.18;
 export class RemotePlayer {
   readonly sprite: AnimatedSprite;
   private readonly nameTag: Text;
+  /** Display name — read by the name tag and the minimap. */
+  displayName: string;
   private x: number;
   private y: number;
   private targetX: number;
@@ -40,6 +42,7 @@ export class RemotePlayer {
     this.y = y;
     this.targetX = x;
     this.targetY = y;
+    this.displayName = displayName;
     this.sprite = new AnimatedSprite(sheet.animations.walk_down);
     this.sprite.anchor.set(0.5, 1);
     this.sprite.animationSpeed = ANIM_SPEED;
@@ -53,7 +56,16 @@ export class RemotePlayer {
   /** Set/correct the peer's label (their name may arrive after their first
    *  position packet). No-op when unchanged. */
   setDisplayName(name: string): void {
+    this.displayName = name;
     if (this.nameTag.text !== name) this.nameTag.text = name;
+  }
+
+  /** World-pixel position (current, eased) — read by the minimap (MinimapPlayer). */
+  get worldX(): number {
+    return this.x;
+  }
+  get worldY(): number {
+    return this.y;
   }
 
   /** Swap to the peer's real character once we learn it (fixes the brief

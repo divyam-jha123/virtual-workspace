@@ -1,9 +1,11 @@
-import { Application, Container, Sprite } from "pixi.js";
+import { Application, Container, Sprite, Texture } from "pixi.js";
 import type { OfficeMapData } from "../map/schema";
 import type { OfficeTheme } from "../map/themes";
 import { TILE_SIZE, getTileTexture, Tile } from "../map/tileset";
 import { getPropTexture } from "../map/props";
 import { Camera } from "./Camera";
+import { Minimap } from "./Minimap";
+import { buildPreviewCanvas } from "../ui/preview";
 import { Input } from "../entities/Input";
 import { Player } from "../entities/Player";
 import { createCollisionMap, getSpawnTile, dumpCollisionRegion, type CollisionMap } from "../map/collision";
@@ -82,6 +84,8 @@ export class PixiWorld {
   // networking (issue #11): join a LiveKit room, publish our position, render peers.
   private room?: RoomConnection;
   private remotes = new Map<string, RemotePlayer>();
+  /** Screen-fixed minimap in the top-right corner. */
+  private minimap?: Minimap;
   private remoteLastT = new Map<string, number>();
   /** One spritesheet per character id, so a peer renders as the avatar they chose. */
   private remoteSheets?: Map<string, Spritesheet>;
@@ -239,6 +243,18 @@ export class PixiWorld {
     this.player = new Player(sheet, spawn.tx, spawn.ty, this.opts.displayName ?? "");
     // Same layer as furniture so the avatar depth-sorts behind/in front of props.
     this.furnitureLayer.addChild(this.player.sprite);
+
+    // Minimap: reuse the scaled map preview as the background. Added to the
+    // STAGE (not `this.world`) so it stays screen-fixed while the camera moves.
+    const previewTex = Texture.from(buildPreviewCanvas(this.opts.map, this.opts.theme));
+    previewTex.source.scaleMode = "nearest";
+    this.minimap = new Minimap(
+      previewTex,
+      this.opts.map.width * TILE_SIZE,
+      this.opts.map.height * TILE_SIZE,
+      this.app.screen.width,
+    );
+    this.app.stage.addChild(this.minimap.view);
     this.input = new Input();
     this.input.attach();
 
@@ -415,6 +431,10 @@ export class PixiWorld {
       // Networking (#11): broadcast our position (throttled) + ease peers along.
       this.room?.publishPosition(player.x, player.y, player.facingDir, nowMs);
       for (const rp of this.remotes.values()) rp.update(deltaTime);
+
+      // Minimap: reuse the same local player + remotes as the sync logic.
+      this.minimap?.reposition(this.app.screen.width);
+      this.minimap?.updatePlayers(player, this.remotes);
 
       if (this.debugOn && this.debugEl) {
         this.debugEl.textContent =

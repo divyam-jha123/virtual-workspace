@@ -1,18 +1,18 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { BellIcon, PlusIcon } from "./icons";
 import { ThemeToggle } from "./ThemeToggle";
 import { AccountMenu } from "./AccountMenu";
 import { useOffices } from "./OfficesProvider";
 import { useAuth } from "./AuthProvider";
+import { LOGIN_URL } from "@/lib/maps";
 import styles from "./SiteHeader.module.css";
 
 /** The white Vorkium top bar. Signed in: theme toggle, account menu, notifications,
- *  and "Create your office". Signed out: theme toggle + "Log in". */
+ *  "Join with code" and "Create your office". Signed out: theme toggle + "Log in"
+ *  (goes to the game client's login). */
 export function SiteHeader() {
-  const router = useRouter();
-  const { openCreate } = useOffices();
+  const { openCreate, openJoin } = useOffices();
   const { user } = useAuth();
 
   return (
@@ -34,13 +34,17 @@ export function SiteHeader() {
               <span className={styles.bellDot} aria-hidden />
             </button>
 
+            <button className={styles.join} onClick={openJoin}>
+              Join with code
+            </button>
+
             <button className={styles.create} onClick={openCreate}>
               <PlusIcon size={20} />
               Create your office
             </button>
           </>
         ) : (
-          <button className={styles.login} onClick={() => router.push("/login")}>
+          <button className={styles.login} onClick={() => (window.location.href = LOGIN_URL)}>
             Log in
           </button>
         )}

@@ -18,11 +18,17 @@ type OfficesContextValue = {
   offices: Office[];
   addOffice: (draft: NewOffice) => void;
   removeOffice: (id: string) => void;
+  joinOffice: (code: string) => void;
 
   /** Create-office dialog. */
   createOpen: boolean;
   openCreate: () => void;
   closeCreate: () => void;
+
+  /** Join-by-code dialog. */
+  joinOpen: boolean;
+  openJoin: () => void;
+  closeJoin: () => void;
 
   /** Map-chooser dialog (opened by "Enter office"); tracks which office. */
   enteringOffice: Office | null;
@@ -86,16 +92,35 @@ export function OfficesProvider({ children }: { children: ReactNode }) {
     setOffices((prev) => prev.filter((o) => o.id !== id));
   }, []);
 
+  const joinOffice = useCallback((code: string) => {
+    const c = code.trim();
+    const themes: Office["theme"][] = ["blue", "orange", "green"];
+    const office: Office = {
+      id: slugify(c || "office"),
+      name: c.toUpperCase() || "Shared office",
+      org: "Joined via code",
+      theme: themes[Math.floor(Math.random() * themes.length)],
+      online: 0,
+      members: [],
+    };
+    setOffices((prev) => [...prev, office]);
+  }, []);
+
   const [createOpen, setCreateOpen] = useState(false);
+  const [joinOpen, setJoinOpen] = useState(false);
   const [enteringOffice, setEnteringOffice] = useState<Office | null>(null);
 
   const value: OfficesContextValue = {
     offices,
     addOffice,
     removeOffice,
+    joinOffice,
     createOpen,
     openCreate: () => setCreateOpen(true),
     closeCreate: () => setCreateOpen(false),
+    joinOpen,
+    openJoin: () => setJoinOpen(true),
+    closeJoin: () => setJoinOpen(false),
     enteringOffice,
     openMapChooser: (office) => setEnteringOffice(office),
     closeMapChooser: () => setEnteringOffice(null),

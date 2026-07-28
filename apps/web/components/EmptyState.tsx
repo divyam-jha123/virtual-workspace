@@ -1,3 +1,7 @@
+"use client";
+
+import { useOffices } from "./OfficesProvider";
+import { PlusIcon } from "./icons";
 import styles from "./EmptyState.module.css";
 
 /* The little "spatial map" glyph: a lavender tile holding a grid of rounded
@@ -15,6 +19,8 @@ const PATTERN: string[][] = [
 ];
 
 export function EmptyState() {
+  const { openCreate, openJoin } = useOffices();
+
   return (
     <div className={styles.wrap}>
       <div className={styles.glyph}>
@@ -32,8 +38,16 @@ export function EmptyState() {
         over, talk, and get things done — no scheduled call required.
       </p>
 
+      <button className={styles.create} onClick={openCreate}>
+        <PlusIcon size={20} />
+        Create your office
+      </button>
+
       <p className={styles.invite}>
-        Have an invite code? <a href="#join">Join an existing office</a>
+        Have an invite code?{" "}
+        <button className={styles.joinLink} onClick={openJoin}>
+          Join with a code
+        </button>
       </p>
     </div>
   );

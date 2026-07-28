@@ -1,0 +1,244 @@
+.card {
+  background: var(--card);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Map preview ── */
+.preview {
+  position: relative;
+  height: 170px;
+}
+.blue {
+  background: linear-gradient(160deg, #4a5cf6 0%, #2f3fe0 100%);
+}
+.orange {
+  background: linear-gradient(160deg, #f19052 0%, #df6a30 100%);
+}
+.green {
+  background: linear-gradient(160deg, #4cb78c 0%, #379e73 100%);
+}
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.onlinePill {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 27px;
+  padding: 0 11px;
+  border-radius: 999px;
+  background: #fff;
+  /* Pill stays white on the coloured preview in both themes, so pin dark text. */
+  color: #16181d;
+  font-size: 12.5px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+.onlineDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--online);
+}
+
+.previewTag {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: rgba(20, 22, 28, 0.42);
+  color: rgba(255, 255, 255, 0.92);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}
+
+/* ── Body ── */
+.body {
+  padding: 15px 17px 16px;
+}
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+.name {
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.org {
+  margin-top: 3px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.menuWrap {
+  position: relative;
+  flex-shrink: 0;
+}
+.menu {
+  color: var(--muted-soft);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.menu:hover {
+  background: var(--hover);
+  color: var(--ink-soft);
+}
+
+/* Invisible full-screen catcher so a click anywhere closes the dropdown. */
+.menuBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+}
+.dropdown {
+  position: absolute;
+  top: 34px;
+  right: 0;
+  z-index: 31;
+  min-width: 168px;
+  padding: 6px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  animation: menuPop 0.12s ease;
+}
+@keyframes menuPop {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+.delete {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  height: 38px;
+  padding: 0 10px;
+  border-radius: 8px;
+  color: #e5484d;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.12s ease;
+}
+.delete:hover {
+  background: rgba(229, 72, 77, 0.1);
+}
+
+.foot {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Member avatar stack */
+.stack {
+  display: flex;
+  align-items: center;
+}
+.memberAvatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2.5px solid var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.memberAvatar + .memberAvatar {
+  margin-left: -12px;
+}
+.overflow {
+  background: var(--hover) !important;
+  color: var(--muted);
+}
+
+.empty {
+  font-size: 14px;
+  color: var(--muted-soft);
+  white-space: nowrap;
+}
+
+.enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  background: var(--brand);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(43, 62, 232, 0.35), 0 5px 14px rgba(43, 62, 232, 0.2);
+  transition: background 0.15s ease;
+}
+.enter:hover {
+  background: var(--brand-hover);
+}
+
+/* ── New office (dashed) ── */
+.newCard {
+  border: 2px dashed var(--border-strong);
+  border-radius: var(--r-lg);
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  /* Match a normal office card's height so it never collapses short when it's
+     alone in a row (align-items:stretch still matches taller rows). */
+  min-height: 305px;
+  color: var(--ink-soft);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.newCard:hover {
+  border-color: var(--brand);
+  background: rgba(43, 62, 232, 0.03);
+}
+.newIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--brand-tint);
+  color: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.newLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}

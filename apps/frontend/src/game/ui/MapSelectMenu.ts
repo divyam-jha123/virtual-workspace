@@ -2,10 +2,23 @@ import { THEMES } from "../map/themes";
 import { getOfficeMap } from "../map/build";
 import { buildPreviewCanvas } from "./preview";
 
+/** Where the Vorkium lobby/dashboard is served (dev). Override with
+ *  VITE_DASHBOARD_URL when deployed. */
+const DASHBOARD_URL =
+  (import.meta.env.VITE_DASHBOARD_URL as string | undefined) ?? "http://localhost:3200";
+
 /** DOM-based map-select screen — plain HTML/CSS, no canvas needed for menu chrome. */
 export function renderMapSelectMenu(root: HTMLElement, onSelect: (themeKey: string) => void): void {
   root.innerHTML = "";
   root.className = "menu-screen";
+
+  const back = document.createElement("button");
+  back.className = "back-link";
+  back.textContent = "← Back to dashboard";
+  back.addEventListener("click", () => {
+    window.location.href = DASHBOARD_URL;
+  });
+  root.appendChild(back);
 
   const heading = document.createElement("h1");
   heading.textContent = "Choose a map";

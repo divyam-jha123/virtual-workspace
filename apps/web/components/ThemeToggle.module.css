@@ -1,0 +1,29 @@
+.toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border-strong);
+  background: var(--card);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.toggle:hover {
+  background: var(--hover);
+}
+
+/* Icon swaps with the theme — moon in light (→ go dark), sun in dark (→ go light). */
+.sun {
+  display: none;
+}
+.moon {
+  display: block;
+}
+:global(html[data-theme="dark"]) .sun {
+  display: block;
+}
+:global(html[data-theme="dark"]) .moon {
+  display: none;
+}

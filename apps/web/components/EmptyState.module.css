@@ -1,0 +1,71 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 92px 24px 24px;
+}
+
+/* Lavender glyph tile */
+.glyph {
+  width: 264px;
+  height: 196px;
+  border-radius: var(--r-xl);
+  background: var(--brand-tint-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.glyphGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+.cell {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+}
+.b {
+  background: #2b3ee8;
+}
+.l {
+  background: #c2caf5;
+}
+.w {
+  background: #ffffff;
+}
+.o {
+  background: #ff7a45;
+}
+.g {
+  background: #2fbf63;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.15;
+}
+.subtitle {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.invite {
+  margin-top: 40px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.invite a {
+  color: var(--brand);
+  font-weight: 600;
+}
+.invite a:hover {
+  text-decoration: underline;
+}

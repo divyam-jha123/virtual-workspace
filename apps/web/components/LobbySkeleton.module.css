@@ -1,0 +1,100 @@
+.wrap {
+  padding: 44px 0 60px;
+}
+
+.sk {
+  position: relative;
+  overflow: hidden;
+  background: var(--sk);
+  border-radius: 8px;
+}
+.sk::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, var(--sk-shine), transparent);
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+.greeting {
+  width: 320px;
+  height: 34px;
+  border-radius: 10px;
+}
+.sub {
+  width: 280px;
+  height: 18px;
+  margin-top: 14px;
+}
+.search {
+  width: 380px;
+  height: 48px;
+  border-radius: 12px;
+  margin-top: 6px;
+}
+
+.sectionHead {
+  margin-top: 46px;
+  margin-bottom: 22px;
+}
+.sectionTitle {
+  width: 150px;
+  height: 22px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.card {
+  background: var(--card);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  min-height: 305px;
+}
+.preview {
+  height: 170px;
+  border-radius: 0;
+}
+.body {
+  padding: 15px 17px 16px;
+}
+.name {
+  width: 60%;
+  height: 18px;
+}
+.org {
+  width: 42%;
+  height: 14px;
+  margin-top: 10px;
+}
+.foot {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.stack {
+  width: 88px;
+  height: 30px;
+  border-radius: 999px;
+}
+.btn {
+  width: 110px;
+  height: 40px;
+  border-radius: 10px;
+}

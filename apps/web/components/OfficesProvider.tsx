@@ -16,6 +16,8 @@ type NewOffice = { name: string; org: string; theme: Office["theme"] };
 
 type OfficesContextValue = {
   offices: Office[];
+  /** False until localStorage has been read — gate content to avoid a flash. */
+  hydrated: boolean;
   addOffice: (draft: NewOffice) => void;
   removeOffice: (id: string) => void;
   joinOffice: (code: string) => void;
@@ -112,6 +114,7 @@ export function OfficesProvider({ children }: { children: ReactNode }) {
 
   const value: OfficesContextValue = {
     offices,
+    hydrated,
     addOffice,
     removeOffice,
     joinOffice,

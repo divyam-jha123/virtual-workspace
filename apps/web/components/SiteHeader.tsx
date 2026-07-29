@@ -1,7 +1,6 @@
 "use client";
 
 import { BellIcon, PlusIcon } from "./icons";
-import { ThemeToggle } from "./ThemeToggle";
 import { AccountMenu } from "./AccountMenu";
 import { useOffices } from "./OfficesProvider";
 import styles from "./SiteHeader.module.css";
@@ -19,7 +18,6 @@ export function SiteHeader() {
       </div>
 
       <div className={styles.actions}>
-        <ThemeToggle />
         <AccountMenu />
 
         <button className={styles.bell} aria-label="Notifications">

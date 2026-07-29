@@ -16,17 +16,10 @@ export const metadata: Metadata = {
   description: "Your team's virtual office. Spin up a spatial workspace and drop in.",
 };
 
-/** Runs before paint: applies the saved theme (or the OS preference) to <html>
- *  so there's no light-mode flash before React hydrates. */
-const themeScript = `(function(){try{var t=localStorage.getItem('vw-theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`;
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={poppins.variable} suppressHydrationWarning>
-      <body>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        {children}
-      </body>
+    <html lang="en" className={poppins.variable}>
+      <body>{children}</body>
     </html>
   );
 }

@@ -19,9 +19,10 @@ export const MAPS: GameMap[] = [
 /** Where the PixiJS game client is served. Override per-env if needed. */
 export const GAME_URL = process.env.NEXT_PUBLIC_GAME_URL ?? "http://localhost:5173";
 
-/** The login page (built in the game client's src/ui/auth, phase-1). "Log in" in
- *  the navbar sends signed-out users here. */
-export const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL ?? GAME_URL;
+/** Divyam's login page lives in the game client (src/ui/auth). "Log in" in the
+ *  navbar sends signed-out users there; `?login` forces the sign-in screen even
+ *  if the game still holds a stale session. */
+export const LOGIN_URL = process.env.NEXT_PUBLIC_LOGIN_URL ?? `${GAME_URL}/?login=1`;
 
 /** Leave the lobby and open the chosen map in the game client. */
 export function enterMap(key: MapTheme): void {

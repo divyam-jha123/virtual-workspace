@@ -86,7 +86,11 @@ async function enterWorld(themeKey: string, characterId: string): Promise<void> 
 // Still requires a session — the token endpoint is authenticated.
 const params = new URLSearchParams(window.location.search);
 const themeKey = params.get("map");
-if (!getSession()) {
+if (params.has("login")) {
+  // The lobby's "Log in" links here with ?login to force the sign-in screen,
+  // even if a stale session exists.
+  signOut();
+} else if (!getSession()) {
   showLogin();
 } else if (themeKey) {
   void enterWorld(themeKey, getSavedCharacterId() ?? DEFAULT_CHARACTER_ID);

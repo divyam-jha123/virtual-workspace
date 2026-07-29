@@ -49,6 +49,11 @@ function showMenu(): void {
   renderMapSelectMenu(root, (themeKey) => showCharacterSelect(themeKey));
 }
 
+/** Leave the world and return to the lobby/dashboard (the hub). */
+function goToDashboard(): void {
+  window.location.href = DASHBOARD_URL;
+}
+
 function showCharacterSelect(themeKey: string): void {
   renderCharacterSelect(root, {
     initialId: getSavedCharacterId() ?? undefined,
@@ -83,10 +88,10 @@ async function enterWorld(themeKey: string, characterId: string): Promise<void> 
     theme,
     characterId,
     displayName: session.name,
-    onExit: showMenu,
+    onExit: goToDashboard,
   });
 
-  renderHud(hudContainer, map.name, showMenu, signOut);
+  renderHud(hudContainer, map.name, goToDashboard, signOut);
 }
 
 // Dev deep-link: /?map=<themeKey> jumps straight in with the saved character.

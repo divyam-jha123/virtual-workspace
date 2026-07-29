@@ -21,6 +21,24 @@
 .green {
   background: linear-gradient(160deg, #4cb78c 0%, #379e73 100%);
 }
+
+/* Dark mode: a defining border, and a dark wash over the previews so the bright
+ * gradients sit calmly against the dark surface instead of glowing. */
+:global(:root[data-theme="dark"]) .card {
+  border: 1px solid var(--border);
+}
+:global(:root[data-theme="dark"]) .blue {
+  background: linear-gradient(rgba(13, 17, 23, 0.3), rgba(13, 17, 23, 0.3)),
+    linear-gradient(160deg, #4a5cf6 0%, #2f3fe0 100%);
+}
+:global(:root[data-theme="dark"]) .orange {
+  background: linear-gradient(rgba(13, 17, 23, 0.3), rgba(13, 17, 23, 0.3)),
+    linear-gradient(160deg, #f19052 0%, #df6a30 100%);
+}
+:global(:root[data-theme="dark"]) .green {
+  background: linear-gradient(rgba(13, 17, 23, 0.3), rgba(13, 17, 23, 0.3)),
+    linear-gradient(160deg, #4cb78c 0%, #379e73 100%);
+}
 .grid {
   position: absolute;
   inset: 0;

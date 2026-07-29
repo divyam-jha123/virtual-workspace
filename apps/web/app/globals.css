@@ -39,29 +39,30 @@
 
 /* ── Dark theme (toggled via [data-theme="dark"] on <html>) ── */
 :root[data-theme="dark"] {
-  --bg: #0e1014;
-  --card: #181b21;
-  --border: #262a31;
-  --border-strong: #343945;
+  /* Softer, blue-tinted surfaces (not pure black) with clear elevation steps. */
+  --bg: #0d1117;
+  --card: #171c25;
+  --border: #262d3a;
+  --border-strong: #353d4c;
 
-  --ink: #f3f4f6;
-  --ink-soft: #dfe2e8;
-  --muted: #9096a1;
-  --muted-soft: #6b7280;
+  --ink: #e9edf4;
+  --ink-soft: #c3cbd8;
+  --muted: #8a92a0;
+  --muted-soft: #626b7a;
 
-  --brand: #4a5bf5;
-  --brand-hover: #3a4bf0;
-  --brand-tint: rgba(74, 91, 245, 0.16);
-  --brand-tint-2: #1a2130;
+  --brand: #5a6cff;
+  --brand-hover: #4759f5;
+  --brand-tint: rgba(90, 108, 255, 0.16);
+  --brand-tint-2: #181e2e;
 
-  --online: #2fbf63;
-  --dot: #ff6a3d;
+  --online: #3fca7d;
+  --dot: #ff7a4d;
 
-  --hover: #22262e;
-  --sk: #262a31;
-  --sk-shine: rgba(255, 255, 255, 0.06);
+  --hover: #1d232e;
+  --sk: #202632;
+  --sk-shine: rgba(255, 255, 255, 0.05);
 
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.42);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5), 0 6px 20px rgba(0, 0, 0, 0.32);
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 

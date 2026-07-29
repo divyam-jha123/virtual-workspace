@@ -4,19 +4,16 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 
 export type SessionUser = { name: string; email: string };
 
-/** Demo session. Real auth lives in the game client (apps/frontend/src/ui/auth);
- *  the dashboard just reflects who's signed in and offers sign-out / log-in. */
+/** You only reach the dashboard after signing in (via the game client's login),
+ *  so it's always signed in. Real auth lives in apps/frontend/src/ui/auth. */
 const DEFAULT_USER: SessionUser = { name: "Satyam Thakur", email: "satyam@vorkium.com" };
-/** localStorage key for the demo session, shared with the /login page. */
+/** localStorage key for the demo session. */
 export const SESSION_KEY = "vw.session";
-const KEY = SESSION_KEY;
 
 type AuthContextValue = {
-  user: SessionUser | null;
+  user: SessionUser;
   firstName: string;
   initials: string;
-  signOut: () => void;
-  signIn: () => void;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -35,14 +32,17 @@ function toInitials(name: string): string {
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<SessionUser | null>(DEFAULT_USER);
+  const [user, setUser] = useState<SessionUser>(DEFAULT_USER);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     try {
-      const raw = localStorage.getItem(KEY);
-      if (raw === "null") setUser(null);
-      else if (raw) setUser(JSON.parse(raw) as SessionUser);
+      const raw = localStorage.getItem(SESSION_KEY);
+      // Ignore a stored "null" (a stale sign-out) — the dashboard is always signed in.
+      if (raw && raw !== "null") {
+        const u = JSON.parse(raw) as Partial<SessionUser>;
+        if (u && u.name && u.email) setUser({ name: u.name, email: u.email });
+      }
     } catch {
       /* ignore */
     }
@@ -52,7 +52,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!hydrated) return;
     try {
-      localStorage.setItem(KEY, user ? JSON.stringify(user) : "null");
+      localStorage.setItem(SESSION_KEY, JSON.stringify(user));
     } catch {
       /* ignore */
     }
@@ -60,10 +60,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const value: AuthContextValue = {
     user,
-    firstName: user ? user.name.trim().split(/\s+/)[0] ?? user.name : "",
-    initials: user ? toInitials(user.name) : "",
-    signOut: () => setUser(null),
-    signIn: () => setUser(DEFAULT_USER),
+    firstName: user.name.trim().split(/\s+/)[0] ?? user.name,
+    initials: toInitials(user.name),
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

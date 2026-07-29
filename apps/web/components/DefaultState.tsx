@@ -15,7 +15,7 @@ export function DefaultState() {
     <div className={styles.wrap}>
       <div className={styles.top}>
         <div>
-          <h1 className={styles.greeting}>Welcome back, {firstName || "there"}</h1>
+          <h1 className={styles.greeting}>Welcome back, {firstName}</h1>
           <p className={styles.sub}>Jump back into your office or build a new one.</p>
         </div>
 

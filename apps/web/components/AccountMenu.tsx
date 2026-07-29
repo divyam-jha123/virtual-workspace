@@ -8,10 +8,8 @@ import styles from "./AccountMenu.module.css";
 
 /** Navbar avatar that opens an account dropdown (name, email, Sign out). */
 export function AccountMenu() {
-  const { user, initials, signOut } = useAuth();
+  const { user, initials } = useAuth();
   const [open, setOpen] = useState(false);
-
-  if (!user) return null;
 
   return (
     <div className={styles.wrap}>
@@ -41,7 +39,6 @@ export function AccountMenu() {
               role="menuitem"
               onClick={() => {
                 setOpen(false);
-                signOut();
                 window.location.href = LOGIN_URL;
               }}
             >

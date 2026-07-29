@@ -1,0 +1,74 @@
+:root {
+  /* Surfaces */
+  --bg: #f0f0f1;
+  --card: #ffffff;
+  --border: #e6e7ea;
+  --border-strong: #d7d9df;
+
+  /* Ink */
+  --ink: #16181d;
+  --ink-soft: #2b2e36;
+  --muted: #6b7280;
+  --muted-soft: #8b8f99;
+
+  /* Brand */
+  --brand: #2b3ee8;
+  --brand-hover: #2334cf;
+  --brand-tint: #eef1fd;
+  --brand-tint-2: #e6eafb;
+
+  /* Status */
+  --online: #22c55e;
+  --dot: #ff6a3d;
+
+  /* Interaction + skeleton */
+  --hover: #f6f6f7;
+  --sk: #e6e7ea;
+  --sk-shine: rgba(255, 255, 255, 0.65);
+
+  /* Radii + shadow */
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 18px;
+  --r-xl: 24px;
+  --shadow-card: 0 1px 3px rgba(16, 18, 29, 0.06), 0 8px 24px rgba(16, 18, 29, 0.05);
+  --shadow-soft: 0 1px 2px rgba(16, 18, 29, 0.05);
+
+  --font: var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

@@ -16,7 +16,7 @@ export function renderHud(
   const hint = document.createElement("div");
   hint.className = "hud-hint";
   hint.textContent =
-    "WASD / arrows to move · scroll to zoom · ` toggles debug · ESC or Exit to change map";
+    "WASD / arrows to move · scroll to zoom · ` toggles debug · ESC or Exit to the dashboard";
   root.appendChild(hint);
 
   const exitBtn = document.createElement("button");

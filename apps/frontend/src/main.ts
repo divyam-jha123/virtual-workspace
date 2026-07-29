@@ -9,6 +9,10 @@ import { DEFAULT_CHARACTER_ID } from "./game/entities/characters";
 import { mountLogin } from "./ui/auth/mountLogin";
 import { clearSession, getSession } from "./state/session";
 
+/** The Vorkium lobby/dashboard — where users land after signing in. */
+const DASHBOARD_URL =
+  (import.meta.env.VITE_DASHBOARD_URL as string | undefined) ?? "http://localhost:3200";
+
 const root = document.getElementById("app")!;
 let world: PixiWorld | null = null;
 /** Set while the React login screen owns #app; must run before a DOM screen. */
@@ -26,7 +30,10 @@ function showLogin(): void {
   world?.destroy();
   world = null;
   releaseRoot();
-  unmountLogin = mountLogin(root, () => showMenu());
+  // After a successful sign-in, hand off to the lobby/dashboard.
+  unmountLogin = mountLogin(root, () => {
+    window.location.href = DASHBOARD_URL;
+  });
 }
 
 /** Sign out, or recover from a session the backend no longer accepts. */

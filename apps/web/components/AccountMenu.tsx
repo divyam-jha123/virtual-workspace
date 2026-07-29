@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useAuth } from "./AuthProvider";
 import { LogOutIcon } from "./icons";
+import { LOGIN_URL } from "@/lib/maps";
 import styles from "./AccountMenu.module.css";
 
 /** Navbar avatar that opens an account dropdown (name, email, Sign out). */
@@ -41,6 +42,7 @@ export function AccountMenu() {
               onClick={() => {
                 setOpen(false);
                 signOut();
+                window.location.href = LOGIN_URL;
               }}
             >
               <LogOutIcon size={16} />

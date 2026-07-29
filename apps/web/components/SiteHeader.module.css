@@ -22,22 +22,20 @@
 .logoDot,
 .logoDotI {
   position: absolute;
-  top: 2px;
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--brand);
 }
-/* dot over the V */
+/* floating tittle above the V */
 .logoDot {
-  left: 11px;
+  top: 1px;
+  left: 13px;
 }
-/* dot over the i (tittle) — sized/placed to cover the font's black tittle */
+/* floating tittle above the dotless ı */
 .logoDotI {
-  left: 49px;
-  top: 4px;
-  width: 7px;
-  height: 7px;
+  top: 1px;
+  left: 50px;
 }
 
 .actions {

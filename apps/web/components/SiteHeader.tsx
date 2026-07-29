@@ -15,6 +15,7 @@ export function SiteHeader() {
       <div className={styles.logo}>
         Vorkium
         <span className={styles.logoDot} aria-hidden />
+        <span className={styles.logoDotI} aria-hidden />
       </div>
 
       <div className={styles.actions}>

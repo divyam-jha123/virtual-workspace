@@ -19,14 +19,25 @@
   letter-spacing: -0.02em;
   color: var(--ink);
 }
-.logoDot {
+.logoDot,
+.logoDotI {
   position: absolute;
   top: 2px;
-  left: 11px;
-  width: 5.5px;
-  height: 5.5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--brand);
+}
+/* dot over the V */
+.logoDot {
+  left: 11px;
+}
+/* dot over the i (tittle) — sized/placed to cover the font's black tittle */
+.logoDotI {
+  left: 49px;
+  top: 4px;
+  width: 7px;
+  height: 7px;
 }
 
 .actions {

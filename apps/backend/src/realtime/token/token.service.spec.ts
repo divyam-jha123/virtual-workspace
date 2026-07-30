@@ -38,4 +38,32 @@ describe('TokenService', () => {
     expect(payload.video.canSubscribe).toBe(true);
     expect(payload.video.canPublishData).toBe(true);
   });
+
+  it('scopes publishing to camera + microphone only', async () => {
+    const jwt = await service.createToken({
+      roomName: 'spike-room',
+      identity: 'clientA',
+    });
+
+    const payload = decodeJwtPayload(jwt);
+    expect(payload.video.canPublishSources).toEqual(['camera', 'microphone']);
+    expect(payload.video.canPublishSources).not.toContain('screen_share');
+    expect(payload.video.canPublishSources).not.toContain(
+      'screen_share_audio',
+    );
+  });
+
+  it('sets an explicit 6h expiry', async () => {
+    const before = Math.floor(Date.now() / 1000);
+    const jwt = await service.createToken({
+      roomName: 'spike-room',
+      identity: 'clientA',
+    });
+    const after = Math.floor(Date.now() / 1000);
+
+    const payload = decodeJwtPayload(jwt);
+    const sixHours = 6 * 60 * 60;
+    expect(payload.exp).toBeGreaterThanOrEqual(before + sixHours);
+    expect(payload.exp).toBeLessThanOrEqual(after + sixHours);
+  });
 });

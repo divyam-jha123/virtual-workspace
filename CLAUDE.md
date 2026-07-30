@@ -124,7 +124,7 @@ frontend enhancement issues, plus one checkbox at the end for the phase's overal
 > ⚠️ Tightly coupled — pair on this, don't parallelize.
 
 **Backend**
-- [ ] LiveKit token issuance (scoped tokens)
+- [x] LiveKit token issuance (scoped tokens) — grant scoped to camera + microphone sources with an explicit 6h TTL; screen share stays locked until Phase 3 (`src/realtime/token/token.service.ts`)
 - [ ] Client drives subscribe/unsubscribe on distance (positions already on the data channel)
 - [ ] Webhooks / room lifecycle as needed
 

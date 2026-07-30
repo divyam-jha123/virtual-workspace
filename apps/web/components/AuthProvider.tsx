@@ -13,6 +13,8 @@ type AuthContextValue = {
   user: SessionUser;
   firstName: string;
   initials: string;
+  /** True once the session has been resolved (from the login handoff or storage). */
+  ready: boolean;
 };
 
 const AuthContext = createContext<AuthContextValue | null>(null);
@@ -98,6 +100,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     user,
     firstName: user.name.trim().split(/\s+/)[0] ?? user.name,
     initials: toInitials(user.name),
+    ready: hydrated,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

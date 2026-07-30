@@ -9,8 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { type Office } from "@/lib/offices";
-
-const STORAGE_KEY = "vw.offices";
+import { useAuth } from "./AuthProvider";
 
 type NewOffice = { name: string; org: string; theme: Office["theme"] };
 
@@ -52,61 +51,87 @@ function slugify(name: string): string {
 }
 
 export function OfficesProvider({ children }: { children: ReactNode }) {
-  // Seed on server + first client render (keeps hydration stable), then load any
-  // saved offices from localStorage on mount. `hydrated` is STATE (not a ref) so
-  // the persist effect below reliably skips the first commit — otherwise it would
-  // write the seed back over saved data (e.g. undoing a delete on refresh).
+  const { user, ready } = useAuth();
+  // Offices are scoped to the signed-in account, so a different (or fresh) user
+  // starts empty — and the old un-scoped "vw.offices" key is ignored. `null`
+  // while we don't yet know who's signed in.
+  const storageKey = user.email ? `vw.offices:${user.email}` : null;
+
   const [offices, setOffices] = useState<Office[]>([]);
   const [hydrated, setHydrated] = useState(false);
 
+  // (Re)load this account's offices once auth resolves or the user changes.
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) setOffices(JSON.parse(raw) as Office[]);
-    } catch {
-      /* ignore unreadable storage */
+    if (!ready) return; // wait until we know who's signed in
+    let next: Office[] = [];
+    if (storageKey) {
+      try {
+        const raw = localStorage.getItem(storageKey);
+        if (raw) next = JSON.parse(raw) as Office[];
+      } catch {
+        /* ignore unreadable storage */
+      }
     }
+    setOffices(next);
     setHydrated(true);
-  }, []);
+  }, [storageKey, ready]);
 
-  useEffect(() => {
-    if (!hydrated) return; // don't clobber saved data with the seed
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(offices));
-    } catch {
-      /* ignore */
-    }
-  }, [offices, hydrated]);
+  const persist = useCallback(
+    (next: Office[]) => {
+      if (!storageKey) return;
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(next));
+      } catch {
+        /* ignore */
+      }
+    },
+    [storageKey],
+  );
 
-  const addOffice = useCallback((draft: NewOffice) => {
-    const office: Office = {
-      id: slugify(draft.name),
-      name: draft.name.trim(),
-      org: draft.org.trim() || "Your workspace",
-      theme: draft.theme,
-      online: 0,
-      members: [],
-    };
-    setOffices((prev) => [...prev, office]);
-  }, []);
+  const addOffice = useCallback(
+    (draft: NewOffice) => {
+      const office: Office = {
+        id: slugify(draft.name),
+        name: draft.name.trim(),
+        org: draft.org.trim() || "Your workspace",
+        theme: draft.theme,
+        online: 0,
+        members: [],
+      };
+      const next = [...offices, office];
+      setOffices(next);
+      persist(next);
+    },
+    [offices, persist],
+  );
 
-  const removeOffice = useCallback((id: string) => {
-    setOffices((prev) => prev.filter((o) => o.id !== id));
-  }, []);
+  const removeOffice = useCallback(
+    (id: string) => {
+      const next = offices.filter((o) => o.id !== id);
+      setOffices(next);
+      persist(next);
+    },
+    [offices, persist],
+  );
 
-  const joinOffice = useCallback((code: string) => {
-    const c = code.trim();
-    const themes: Office["theme"][] = ["blue", "orange", "green"];
-    const office: Office = {
-      id: slugify(c || "office"),
-      name: c.toUpperCase() || "Shared office",
-      org: "Joined via code",
-      theme: themes[Math.floor(Math.random() * themes.length)],
-      online: 0,
-      members: [],
-    };
-    setOffices((prev) => [...prev, office]);
-  }, []);
+  const joinOffice = useCallback(
+    (code: string) => {
+      const c = code.trim();
+      const themes: Office["theme"][] = ["blue", "orange", "green"];
+      const office: Office = {
+        id: slugify(c || "office"),
+        name: c.toUpperCase() || "Shared office",
+        org: "Joined via code",
+        theme: themes[Math.floor(Math.random() * themes.length)],
+        online: 0,
+        members: [],
+      };
+      const next = [...offices, office];
+      setOffices(next);
+      persist(next);
+    },
+    [offices, persist],
+  );
 
   const [createOpen, setCreateOpen] = useState(false);
   const [joinOpen, setJoinOpen] = useState(false);

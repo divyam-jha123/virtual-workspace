@@ -8,7 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { OFFICES, type Office } from "@/lib/offices";
+import { type Office } from "@/lib/offices";
 
 const STORAGE_KEY = "vw.offices";
 
@@ -56,7 +56,7 @@ export function OfficesProvider({ children }: { children: ReactNode }) {
   // saved offices from localStorage on mount. `hydrated` is STATE (not a ref) so
   // the persist effect below reliably skips the first commit — otherwise it would
   // write the seed back over saved data (e.g. undoing a delete on refresh).
-  const [offices, setOffices] = useState<Office[]>(OFFICES);
+  const [offices, setOffices] = useState<Office[]>([]);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import { useOffices } from "./OfficesProvider";
 import { useAuth } from "./AuthProvider";
 import { OfficeCard, NewOfficeCard } from "./OfficeCard";
@@ -10,6 +11,19 @@ import styles from "./DefaultState.module.css";
 export function DefaultState() {
   const { offices } = useOffices();
   const { firstName } = useAuth();
+  const [query, setQuery] = useState("");
+
+  const q = query.trim().toLowerCase();
+  const filtered = useMemo(
+    () =>
+      q
+        ? offices.filter(
+            (o) =>
+              o.name.toLowerCase().includes(q) || o.org.toLowerCase().includes(q),
+          )
+        : offices,
+    [offices, q],
+  );
 
   return (
     <div className={styles.wrap}>
@@ -21,21 +35,31 @@ export function DefaultState() {
 
         <div className={styles.search}>
           <SearchIcon size={20} className={styles.searchIcon} />
-          <input placeholder="Search offices" aria-label="Search offices" />
+          <input
+            placeholder="Search offices"
+            aria-label="Search offices"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
         </div>
       </div>
 
       <div className={styles.sectionHead}>
         <h2 className={styles.sectionTitle}>Your offices</h2>
-        <span className={styles.count}>{offices.length}</span>
+        <span className={styles.count}>{filtered.length}</span>
       </div>
 
-      <div className={styles.grid}>
-        {offices.map((office) => (
-          <OfficeCard key={office.id} office={office} />
-        ))}
-        <NewOfficeCard />
-      </div>
+      {q && filtered.length === 0 ? (
+        <p className={styles.empty}>No offices match &ldquo;{query.trim()}&rdquo;.</p>
+      ) : (
+        <div className={styles.grid}>
+          {filtered.map((office) => (
+            <OfficeCard key={office.id} office={office} />
+          ))}
+          {/* Only offer "create" when browsing the full list, not filtered results. */}
+          {!q && <NewOfficeCard />}
+        </div>
+      )}
     </div>
   );
 }

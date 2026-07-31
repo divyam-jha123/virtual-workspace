@@ -90,3 +90,9 @@
   gap: 24px;
   align-items: stretch;
 }
+
+/* No-match message when a search filters everything out */
+.empty {
+  font-size: 14px;
+  color: var(--muted);
+}

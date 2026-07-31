@@ -1,12 +1,27 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { AccessToken } from 'livekit-server-sdk';
+import { AccessToken, TrackSource } from 'livekit-server-sdk';
 
 export interface CreateTokenParams {
   roomName: string;
   identity: string;
   name?: string;
 }
+
+/**
+ * How long an issued join token stays valid. Long enough for a full workday
+ * session without a refresh, short enough that a leaked token expires.
+ */
+export const TOKEN_TTL = '6h';
+
+/**
+ * Media a Phase 2 client is allowed to publish. Screen share stays locked
+ * until Phase 3 ships the screen-share UI.
+ */
+export const PUBLISHABLE_SOURCES = [
+  TrackSource.CAMERA,
+  TrackSource.MICROPHONE,
+];
 
 /**
  * Mints LiveKit access tokens — the backend's *only* real-time role under
@@ -29,7 +44,11 @@ export class TokenService {
     return this.config.get<string>('LIVEKIT_URL')!;
   }
 
-  /** Build a signed join token granting publish + subscribe + data. */
+  /**
+   * Build a signed join token. Publishing is scoped to camera + microphone;
+   * `canSubscribe` and `canPublishData` stay on for client-driven proximity
+   * subscriptions and the position data channel.
+   */
   async createToken({
     roomName,
     identity,
@@ -38,11 +57,13 @@ export class TokenService {
     const at = new AccessToken(this.apiKey, this.apiSecret, {
       identity,
       name,
+      ttl: TOKEN_TTL,
     });
     at.addGrant({
       roomJoin: true,
       room: roomName,
       canPublish: true,
+      canPublishSources: PUBLISHABLE_SOURCES,
       canSubscribe: true,
       canPublishData: true,
     });

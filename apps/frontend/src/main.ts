@@ -30,9 +30,16 @@ function showLogin(): void {
   world?.destroy();
   world = null;
   releaseRoot();
-  // After a successful sign-in, hand off to the lobby/dashboard.
+  // After a successful sign-in, hand off to the lobby/dashboard, passing the
+  // user's identity (it's a different origin, so it can't read our session).
   unmountLogin = mountLogin(root, () => {
-    window.location.href = DASHBOARD_URL;
+    const session = getSession();
+    const dest = new URL(DASHBOARD_URL);
+    if (session) {
+      dest.searchParams.set("name", session.name);
+      dest.searchParams.set("email", session.email);
+    }
+    window.location.href = dest.toString();
   });
 }
 

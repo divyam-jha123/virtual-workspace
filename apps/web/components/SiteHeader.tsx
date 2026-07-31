@@ -12,12 +12,8 @@ export function SiteHeader() {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo} aria-label="Vorkium">
-        {/* dotless "ı" so the blue tittle isn't fighting the font's black dot */}
-        {"Vorkıum"}
-        <span className={styles.logoDot} aria-hidden />
-        <span className={styles.logoDotI} aria-hidden />
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className={styles.logo} src="/vorkium-logo.png" alt="Vorkium" />
 
       <div className={styles.actions}>
         <AccountMenu />

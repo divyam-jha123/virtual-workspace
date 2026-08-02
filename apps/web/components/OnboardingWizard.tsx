@@ -27,6 +27,7 @@ type Draft = {
   displayName: string;
   avatar: string;
   role: Role | null;
+  roleOther: string;
   companyName: string;
   teamSize: TeamSize | null;
   timezone: string;
@@ -54,11 +55,12 @@ export function OnboardingWizard() {
     displayName: "",
     avatar: AVATAR_SWATCHES[0].key,
     role: null,
+    roleOther: "",
     companyName: "",
     teamSize: null,
     timezone: "Asia/Kolkata",
-    workStart: "09:00",
-    workEnd: "18:00",
+    workStart: "",
+    workEnd: "",
     intent: null,
     heardFrom: "",
   });
@@ -87,7 +89,8 @@ export function OnboardingWizard() {
       case 0:
         return draft.displayName.trim().length > 0;
       case 1:
-        return draft.role !== null;
+        // If "Other", they must say what they do.
+        return draft.role !== null && (draft.role !== "other" || draft.roleOther.trim().length > 0);
       case 2:
         return draft.companyName.trim().length > 0 && draft.teamSize !== null;
       case 3:
@@ -103,6 +106,7 @@ export function OnboardingWizard() {
       email: user.email,
       avatar: draft.avatar,
       role: draft.role,
+      roleOther: draft.role === "other" ? draft.roleOther.trim() : "",
       companyName: draft.companyName.trim(),
       teamSize: draft.teamSize,
       timezone: draft.timezone,
@@ -231,6 +235,20 @@ export function OnboardingWizard() {
                   </button>
                 ))}
               </div>
+
+              {draft.role === "other" && (
+                <div className={styles.field} style={{ marginTop: 16 }}>
+                  <label htmlFor="roleOther">Tell us your role</label>
+                  <input
+                    id="roleOther"
+                    className={styles.input}
+                    placeholder="e.g. Product Manager"
+                    value={draft.roleOther}
+                    onChange={onInput("roleOther")}
+                    autoFocus
+                  />
+                </div>
+              )}
             </>
           )}
 

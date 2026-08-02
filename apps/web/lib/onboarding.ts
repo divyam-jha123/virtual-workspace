@@ -29,6 +29,8 @@ export type OnboardingProfile = {
   /** Key into AVATAR_SWATCHES — the account avatar's accent. */
   avatar: string;
   role: Role | null;
+  /** Free-text role, only when `role === "other"`. */
+  roleOther: string;
   companyName: string;
   teamSize: TeamSize | null;
   timezone: string;

@@ -2,8 +2,7 @@ import "./styles.css";
 import { getTheme } from "./game/map/themes";
 import { getOfficeMap } from "./game/map/build";
 import { PixiWorld } from "./game/world/PixiWorld";
-import { renderMapSelectMenu } from "./game/ui/MapSelectMenu";
-import { renderCharacterSelect, getSavedCharacterId } from "./game/ui/CharacterSelect";
+import { getSavedCharacterId } from "./game/ui/CharacterSelect";
 import { renderHud } from "./game/ui/Hud";
 import { DEFAULT_CHARACTER_ID } from "./game/entities/characters";
 import { mountLogin } from "./ui/auth/mountLogin";
@@ -17,8 +16,6 @@ const root = document.getElementById("app")!;
 let world: PixiWorld | null = null;
 /** Set while the React login screen owns #app; must run before a DOM screen. */
 let unmountLogin: (() => void) | null = null;
-
-// Flow: login → map select → character select → world (with avatar).
 
 /** Hand #app back to the plain-DOM screens, tearing down React if it's mounted. */
 function releaseRoot(): void {
@@ -49,24 +46,9 @@ function signOut(): void {
   showLogin();
 }
 
-function showMenu(): void {
-  world?.destroy();
-  world = null;
-  releaseRoot();
-  renderMapSelectMenu(root, (themeKey) => showCharacterSelect(themeKey));
-}
-
 /** Leave the world and return to the lobby/dashboard (the hub). */
 function goToDashboard(): void {
-  window.location.href = DASHBOARD_URL;
-}
-
-function showCharacterSelect(themeKey: string): void {
-  renderCharacterSelect(root, {
-    initialId: getSavedCharacterId() ?? undefined,
-    onBack: showMenu,
-    onStart: (characterId) => void enterWorld(themeKey, characterId),
-  });
+  window.location.replace(DASHBOARD_URL);
 }
 
 async function enterWorld(themeKey: string, characterId: string): Promise<void> {
@@ -114,5 +96,5 @@ if (params.has("login")) {
 } else if (themeKey) {
   void enterWorld(themeKey, getSavedCharacterId() ?? DEFAULT_CHARACTER_ID);
 } else {
-  showMenu();
+  goToDashboard();
 }

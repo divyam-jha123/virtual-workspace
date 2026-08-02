@@ -13,6 +13,7 @@ import {
   deriveCompanyFromEmail,
   gradientForAvatar,
   isOnboarded,
+  nameFromEmail,
   saveProfile,
   type Intent,
   type OnboardingProfile,
@@ -48,7 +49,8 @@ function initials(name: string): string {
  *  account, then hands off to the dashboard. */
 export function OnboardingWizard() {
   const router = useRouter();
-  const { user, firstName, ready } = useAuth();
+  const { user, ready } = useAuth();
+  const emailName = nameFromEmail(user.email);
 
   const [step, setStep] = useState(0);
   const [draft, setDraft] = useState<Draft>({
@@ -65,8 +67,8 @@ export function OnboardingWizard() {
     heardFrom: "",
   });
 
-  // Prefill once the session resolves: name from login, company guessed from the
-  // work-email domain. Already-onboarded accounts skip straight to the dashboard.
+  // Prefill once the session resolves: name derived from the work email, company
+  // guessed from its domain. Already-onboarded accounts skip to the dashboard.
   useEffect(() => {
     if (!ready) return;
     if (user.email && isOnboarded(user.email)) {
@@ -75,10 +77,10 @@ export function OnboardingWizard() {
     }
     setDraft((d) => ({
       ...d,
-      displayName: d.displayName || (user.name && user.name !== "there" ? user.name : ""),
+      displayName: d.displayName || nameFromEmail(user.email),
       companyName: d.companyName || deriveCompanyFromEmail(user.email),
     }));
-  }, [ready, user.email, user.name, router]);
+  }, [ready, user.email, router]);
 
   const set = <K extends keyof Draft>(key: K, value: Draft[K]) =>
     setDraft((d) => ({ ...d, [key]: value }));
@@ -153,8 +155,7 @@ export function OnboardingWizard() {
             <>
               <p className={styles.eyebrow}>Who you are</p>
               <h1 className={styles.title}>
-                Welcome{firstName && firstName !== "there" ? `, ${firstName}` : ""} — let&rsquo;s set
-                up your space
+                Welcome{emailName ? `, ${emailName}` : ""} — let&rsquo;s set up your space
               </h1>
               <p className={styles.subtitle}>
                 This is how teammates will see you inside the office.
@@ -180,7 +181,7 @@ export function OnboardingWizard() {
                       className={styles.avatarPreview}
                       style={{ background: gradientForAvatar(draft.avatar) }}
                     >
-                      {initials(draft.displayName || firstName)}
+                      {initials(draft.displayName || emailName)}
                     </div>
                     <div className={styles.swatches}>
                       {AVATAR_SWATCHES.map((s) => (

@@ -128,6 +128,17 @@ export function deriveCompanyFromEmail(email: string): string {
   return base ? base[0].toUpperCase() + base.slice(1) : "";
 }
 
+/** A friendly display name from the email's local part
+ *  (john.doe@x.com → "John Doe", bond@x.com → "Bond"). */
+export function nameFromEmail(email: string): string {
+  const local = (email.split("@")[0] ?? "").trim();
+  return local
+    .split(/[._-]+/)
+    .filter(Boolean)
+    .map((p) => p[0].toUpperCase() + p.slice(1))
+    .join(" ");
+}
+
 function profileKey(email: string): string | null {
   return email ? `vw.profile:${email}` : null;
 }

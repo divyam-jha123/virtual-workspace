@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { loadProfile } from "@/lib/onboarding";
 
 export type SessionUser = { name: string; email: string };
 
@@ -58,16 +59,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     try {
+      let next: SessionUser | null = null;
+
       // 1) Prefer name/email handed over by the game login redirect (?name&email).
       const params = new URLSearchParams(window.location.search);
       const email = params.get("email");
       if (email) {
-        const next: SessionUser = {
-          name: friendlyName(params.get("name") ?? email, email),
-          email,
-        };
-        setUser(next);
-        localStorage.setItem(SESSION_KEY, JSON.stringify(next));
+        next = { name: friendlyName(params.get("name") ?? email, email), email };
         // Strip the params so they don't linger in the address bar.
         params.delete("name");
         params.delete("email");
@@ -78,8 +76,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         const raw = localStorage.getItem(SESSION_KEY);
         if (raw && raw !== "null") {
           const u = JSON.parse(raw) as Partial<SessionUser>;
-          if (u && u.name && u.email) setUser({ name: u.name, email: u.email });
+          if (u && u.name && u.email) next = { name: u.name, email: u.email };
         }
+      }
+
+      if (next) {
+        // The name the user chose during onboarding wins everywhere it's shown.
+        const chosen = loadProfile(next.email)?.displayName?.trim();
+        if (chosen) next = { ...next, name: chosen };
+        setUser(next);
+        localStorage.setItem(SESSION_KEY, JSON.stringify(next));
       }
     } catch {
       /* ignore */

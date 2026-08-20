@@ -33,7 +33,7 @@
          "objects":[
                 {
                  "gid":43,
-                 "height":96,
+                 "height":48,
                  "id":1,
                  "name":"Desk pod",
                  "class":"workstation",
@@ -45,9 +45,9 @@
                         }],
                  "rotation":0,
                  "visible":true,
-                 "width":128,
-                 "x":64,
-                 "y":160
+                 "width":64,
+                 "x":32,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -73,7 +73,7 @@
          "name":"SpawnPoints",
          "objects":[
                 {
-                 "height":32,
+                 "height":16,
                  "id":2,
                  "name":"main",
                  "class":"spawn",
@@ -90,9 +90,9 @@
                         }],
                  "rotation":0,
                  "visible":true,
-                 "width":32,
-                 "x":32,
-                 "y":32
+                 "width":16,
+                 "x":16,
+                 "y":16
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -106,7 +106,7 @@
          "name":"InteractionZones",
          "objects":[
                 {
-                 "height":64,
+                 "height":32,
                  "id":3,
                  "name":"Focus booth",
                  "class":"interaction-zone",
@@ -123,9 +123,9 @@
                         }],
                  "rotation":0,
                  "visible":true,
-                 "width":64,
-                 "x":160,
-                 "y":64
+                 "width":32,
+                 "x":80,
+                 "y":32
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -144,13 +144,13 @@
         }],
  "renderorder":"right-down",
  "tiledversion":"1.11.0",
- "tileheight":32,
+ "tileheight":16,
  "tilesets":[
         {
          "firstgid":1,
          "source":"..\/tilesets\/office-core.tsj"
         }],
- "tilewidth":32,
+ "tilewidth":16,
  "type":"map",
  "version":"1.10",
  "width":8

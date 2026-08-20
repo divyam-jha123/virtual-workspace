@@ -30,6 +30,10 @@ services:
       MAP_MCP_WORKSPACE: /workspace
       MAP_MCP_LOG_LEVEL: ${MAP_MCP_LOG_LEVEL:-warn}
       MAP_MCP_OFFLINE: ${MAP_MCP_OFFLINE:-false}
+      # Multiple asset sources: a JSON array of {name, url, key}. The local
+      # catalog in content/assets/ is always included and always takes precedence.
+      ASSET_APIS: ${ASSET_APIS:-}
+      # Legacy single-source pair, used only when ASSET_APIS is unset.
       ASSET_SOURCE: ${ASSET_SOURCE:-local}
       # Passed through from the host env — never baked into the image.
       ASSET_API_URL: ${ASSET_API_URL:-}

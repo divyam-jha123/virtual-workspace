@@ -4,6 +4,7 @@ import { cloneMap, emptyTileData, findLayer, isObjectLayer, isTileLayer } from "
 import { LAYER_KINDS, LAYER_ORDER, LIMITS, TILE_SIZE, getObjectClassSpec, isLayerName } from "../schema/index.js";
 import type { AssetService } from "./assets/asset-service.js";
 import type { AssetRecord } from "./assets/types.js";
+import { imageReferences } from "./assets/http-repository.js";
 import { createEmptyMap, parseTmj, serializeTmj, tilesetIdFromSource } from "./tiled-adapter.js";
 import { validateMap, type ValidationContext, type ValidationResult } from "./validator.js";
 import type { WorkspaceService } from "./workspace.js";
@@ -366,6 +367,9 @@ export class MapService {
     const vendored = new Set<string>();
     const tileCounts = new Map<string, number>();
     const tileSizes = new Map<string, number>();
+    const missingAtlasImages = new Map<string, string[]>();
+
+    const present = new Set(await this.workspace.list("tilesets", { extensions: [".png"] }));
 
     for (const id of await this.workspace.list("tilesets", { extensions: [".tsj"] })) {
       const name = tilesetIdFromSource(id);
@@ -374,11 +378,14 @@ export class MapService {
         const tsj = await this.workspace.readJson<Record<string, unknown>>(id);
         if (typeof tsj.tilecount === "number") tileCounts.set(name, tsj.tilecount);
         if (typeof tsj.tilewidth === "number") tileSizes.set(name, tsj.tilewidth);
+
+        const missing = imageReferences(tsj).filter((image) => !present.has(`tilesets/${basename(image)}`));
+        if (missing.length > 0) missingAtlasImages.set(name, missing);
       } catch {
         // A corrupt .tsj still counts as present; the gid rules degrade gracefully.
       }
     }
-    return { vendoredTilesets: vendored, tileCounts, tileSizes };
+    return { vendoredTilesets: vendored, tileCounts, tileSizes, missingAtlasImages };
   }
 
   private async result(mapId: string, message: string): Promise<MutationResult> {
@@ -401,7 +408,18 @@ export class MapService {
 
     const tsj = await this.workspace.readJson<Record<string, unknown>>(workspaceId);
     const tileCount = typeof tsj.tilecount === "number" ? tsj.tilecount : 0;
-    const firstgid = model.tilesets.reduce((next, tileset) => Math.max(next, tileset.firstgid + (tileset.tileCount || 1)), 1);
+
+    // A .tmj stores only {firstgid, source} per tileset, so a binding parsed from
+    // disk carries no tile count. Resolving each one from its .tsj is what keeps
+    // gid ranges from overlapping: guessing 1 tile per set puts the second
+    // tileset's range on top of the first, and every tile then resolves to the
+    // wrong art.
+    let firstgid = 1;
+    for (const binding of model.tilesets) {
+      const count = binding.tileCount > 0 ? binding.tileCount : await this.tileCountOf(binding.id);
+      binding.tileCount = count;
+      firstgid = Math.max(firstgid, binding.firstgid + Math.max(count, 1));
+    }
 
     const binding = {
       firstgid,
@@ -414,6 +432,17 @@ export class MapService {
     };
     model.tilesets.push(binding);
     return binding;
+  }
+
+  /** Tile count from a vendored `.tsj`, or 0 when it is missing or unreadable. */
+  private async tileCountOf(tilesetId: string): Promise<number> {
+    const workspaceId = `tilesets/${tilesetId}.tsj`;
+    try {
+      const tsj = await this.workspace.readJson<Record<string, unknown>>(workspaceId);
+      return typeof tsj.tilecount === "number" ? tsj.tilecount : 0;
+    } catch {
+      return 0;
+    }
   }
 
   /** Marks the Collision layer under an asset whose footprint blocks movement. */
@@ -472,6 +501,11 @@ export class MapService {
       fix: `Existing layers: ${model.layers.map((layer) => layer.name).join(", ") || "(none)"}. Add one with add_layer.`,
     });
   }
+}
+
+/** Basename of a `.tsj` image reference, which may be written as a relative path. */
+function basename(reference: string): string {
+  return reference.split("\\").join("/").split("/").pop() ?? reference;
 }
 
 function layerRank(name: string): number {

@@ -29,7 +29,7 @@ describe("discovery", () => {
   it("serves project://conventions with the layer stack and object classes", async () => {
     const result = await h.client.readResource({ uri: "project://conventions" });
     const conventions = JSON.parse(String(result.contents[0]!.text));
-    expect(conventions.tileSize).toBe(32);
+    expect(conventions.tileSize).toBe(16);
     expect(conventions.layerOrder[0]).toBe("Ground");
     expect(conventions.objectClasses.spawn.properties.default.required).toBe(true);
   });
@@ -39,7 +39,7 @@ describe("get_project_info", () => {
   it("reports conventions, maps, and asset-source status", async () => {
     const info = await h.call("get_project_info");
     expect(info.ok).toBe(true);
-    expect(info.tileSize).toBe(32);
+    expect(info.tileSize).toBe(16);
     expect(info.maps).toEqual([]);
     expect(info.assetSource).toMatchObject({ source: "local", reachable: true, vendoredTilesets: 3 });
     expect(info.conventions.objectClasses["interaction-zone"].properties.kind.enum).toContain("audio-private");
@@ -50,7 +50,7 @@ describe("assets", () => {
   it("searches, and filters out art drawn for another tile size", async () => {
     const result = await h.call("search_assets", { query: "desk" });
     expect(result.assets.map((a: { id: string }) => a.id)).toContain("office.desk.pod4");
-    // retro.desk.small is a 16px asset: unplaceable here, so it is not offered.
+    // retro.desk.small is a 32px asset: unplaceable here, so it is not offered.
     expect(result.assets.map((a: { id: string }) => a.id)).not.toContain("retro.desk.small");
   });
 
@@ -116,7 +116,7 @@ describe("authoring flow", () => {
   it("read_map gives a semantic view, not raw JSON", async () => {
     const mapId = await buildValidMap();
     const result = await h.call("read_map", { mapId });
-    expect(result.map).toMatchObject({ id: mapId, name: "HQ", width: 12, height: 10, tileSize: 32, draft: true });
+    expect(result.map).toMatchObject({ id: mapId, name: "HQ", width: 12, height: 10, tileSize: 16, draft: true });
     expect(result.map.layers.find((l: any) => l.name === "Ground")).toMatchObject({ tiles: 120 });
     expect(result.map.objects[0]).toMatchObject({ class: "spawn", tile: { x: 1, y: 1 } });
   });
@@ -199,5 +199,59 @@ describe("error envelopes", () => {
     await h.call("create_map", { mapId: "maps/x.tmj", width: 4, height: 4 });
     const result = await h.call("place_tiles", { mapId: "maps/x.tmj", layer: "Ground", x: 3, y: 3, width: 5, height: 5, gid: 1 });
     expect(result.code).toBe("INVALID_ARGUMENT");
+  });
+});
+
+describe("a tileset with no atlas image", () => {
+  it("blocks the save instead of producing a map that opens blank in Tiled", async () => {
+    const mapId = "maps/no-atlas.tmj";
+    await h.workspace.writeJson("tilesets/ghost.tsj", {
+      name: "ghost", image: "ghost.png", tilewidth: 32, tileheight: 32,
+      tilecount: 16, columns: 4, imagewidth: 128, imageheight: 128, type: "tileset", version: "1.10",
+    });
+    await h.call("create_map", { mapId, width: 6, height: 6 });
+    await h.call("add_object", { mapId, class: "spawn", x: 1, y: 1, properties: { id: "main", default: true } });
+    await h.call("add_tileset", { mapId, tilesetId: "ghost" });
+
+    const result = await h.call("save_map", { mapId });
+    expect(result).toMatchObject({ ok: false, code: "VALIDATION_FAILED" });
+    expect(result.diagnostics.some((d: any) => d.rule === "atlas-image-missing")).toBe(true);
+    expect(await h.workspace.exists(mapId)).toBe(false);
+  });
+});
+
+describe("binding a second tileset", () => {
+  it("assigns a firstgid past the first tileset's range, not on top of it", async () => {
+    const mapId = "maps/two-tilesets.tmj";
+    await h.call("create_map", { mapId, width: 6, height: 6 });
+    await h.call("add_object", { mapId, class: "spawn", x: 1, y: 1, properties: { id: "main", default: true } });
+    await h.call("add_tileset", { mapId, tilesetId: "office-core" });
+    await h.call("add_tileset", { mapId, tilesetId: "decor-pack" });
+    await h.call("save_map", { mapId });
+
+    // Both fixture tilesets have tilecount 64, so the second must start at 65.
+    const read = await h.call("read_map", { mapId });
+    expect(read.map.tilesets).toEqual([
+      { id: "office-core", firstgid: 1, source: "../tilesets/office-core.tsj" },
+      { id: "decor-pack", firstgid: 65, source: "../tilesets/decor-pack.tsj" },
+    ]);
+    expect(read.validation.ok).toBe(true);
+  });
+
+  it("still gets it right after a reload, when the .tmj carries no tile counts", async () => {
+    const mapId = "maps/reloaded.tmj";
+    await h.call("create_map", { mapId, width: 6, height: 6 });
+    await h.call("add_object", { mapId, class: "spawn", x: 1, y: 1, properties: { id: "main", default: true } });
+    await h.call("add_tileset", { mapId, tilesetId: "office-core" });
+    await h.call("save_map", { mapId });
+
+    // Drop the in-memory draft so the next call re-parses from disk, where a
+    // tileset entry is only {firstgid, source} with no tilecount.
+    h.maps.discardDraft(mapId);
+
+    await h.call("add_tileset", { mapId, tilesetId: "decor-pack" });
+    const read = await h.call("read_map", { mapId });
+    expect(read.map.tilesets.find((t: any) => t.id === "decor-pack").firstgid).toBe(65);
+    expect(read.validation.ok).toBe(true);
   });
 });

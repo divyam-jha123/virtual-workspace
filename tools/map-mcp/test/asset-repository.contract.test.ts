@@ -2,11 +2,13 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { CompositeAssetRepository } from "../src/services/assets/composite-repository.js";
 import { HttpAssetRepository } from "../src/services/assets/http-repository.js";
 import { LocalAssetRepository } from "../src/services/assets/local-repository.js";
 import type { AssetRepository } from "../src/services/assets/types.js";
 import { WorkspaceService } from "../src/services/workspace.js";
 import { createFakeAssetApi } from "./helpers/fake-asset-api.js";
+import { TILE_SIZE } from "../src/schema/index.js";
 import { CATALOG } from "./helpers/fixtures.js";
 
 /**
@@ -20,7 +22,7 @@ const implementations: Array<{ name: string; create: (root: string) => Promise<A
       const workspace = new WorkspaceService(root);
       await workspace.ensureLayout();
       await workspace.writeJson("assets/catalog.json", { assets: CATALOG });
-      return new LocalAssetRepository(workspace, { tileSize: 32 });
+      return new LocalAssetRepository(workspace, { tileSize: TILE_SIZE });
     },
   },
   {
@@ -29,10 +31,29 @@ const implementations: Array<{ name: string; create: (root: string) => Promise<A
       new HttpAssetRepository({
         baseUrl: "https://assets.example.com/v1",
         apiKey: "test-key",
-        defaults: { tileSize: 32 },
+        defaults: { tileSize: TILE_SIZE },
         fetchImpl: createFakeAssetApi().fetchImpl,
         sleep: async () => {},
       }),
+  },
+  {
+    name: "CompositeAssetRepository",
+    // Splits the fixture catalog across two local repositories with no overlap,
+    // so every contract test exercises the real merge path rather than a stub.
+    create: async (root) => {
+      const half = Math.ceil(CATALOG.length / 2);
+      const a = new WorkspaceService(`${root}-a`);
+      await a.ensureLayout();
+      await a.writeJson("assets/catalog.json", { assets: CATALOG.slice(0, half) });
+      const b = new WorkspaceService(`${root}-b`);
+      await b.ensureLayout();
+      await b.writeJson("assets/catalog.json", { assets: CATALOG.slice(half) });
+
+      return new CompositeAssetRepository([
+        { name: "a", repository: new LocalAssetRepository(a, { tileSize: TILE_SIZE }) },
+        { name: "b", repository: new LocalAssetRepository(b, { tileSize: TILE_SIZE }) },
+      ]);
+    },
   },
 ];
 
@@ -54,7 +75,7 @@ describe.each(implementations)("$name — AssetRepository contract", ({ create }
     expect(record).toMatchObject({
       id: "office.desk.pod4",
       category: "furniture",
-      tileSize: 32,
+      tileSize: TILE_SIZE,
       dimensions: { width: 4, height: 3 },
       placement: "floor",
       tilesetId: "office-core",
@@ -69,9 +90,9 @@ describe.each(implementations)("$name — AssetRepository contract", ({ create }
   });
 
   it("finds assets by free text", async () => {
-    const results = await repo.search({ query: "desk", tileSize: 32 });
+    const results = await repo.search({ query: "desk", tileSize: TILE_SIZE });
     expect(results.map((r) => r.id)).toContain("office.desk.pod4");
-    expect(results.every((r) => r.tileSize === 32)).toBe(true);
+    expect(results.every((r) => r.tileSize === TILE_SIZE)).toBe(true);
   });
 
   it("ranks the closest match first", async () => {

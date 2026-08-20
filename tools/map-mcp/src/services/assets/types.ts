@@ -92,7 +92,7 @@ export type TilesetJson = Record<string, unknown>;
 
 export interface AssetRepository {
   /** Human-readable source label, surfaced by `get_project_info`. */
-  readonly kind: "local" | "api";
+  readonly kind: "local" | "api" | "composite";
   get(id: string): Promise<AssetRecord | null>;
   search(query: AssetQuery): Promise<AssetRecord[]>;
   listTilesets(): Promise<TilesetRef[]>;

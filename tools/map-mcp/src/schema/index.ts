@@ -7,7 +7,7 @@
  * files move and the imports change, and nothing else does.
  */
 
-export const TILE_SIZE = 32;
+export const TILE_SIZE = 16;
 
 /** Bottom -> top. Order is enforced by the validator. */
 export const LAYER_ORDER = [

@@ -6,6 +6,8 @@ import { LAYER_KINDS, LAYER_ORDER, LIMITS, REQUIRED_LAYERS, TILE_SIZE, getObject
 export interface ValidationContext {
   /** Tileset ids that exist as a `.tsj` file in the workspace. */
   vendoredTilesets?: Set<string>;
+  /** Per-tileset atlas images the `.tsj` references but which are missing on disk. */
+  missingAtlasImages?: Map<string, string[]>;
   /** Per-tileset tile counts, for gid range checks. */
   tileCounts?: Map<string, number>;
   /** Per-tileset tile size, to catch a 16px set on a 32px map. */
@@ -19,6 +21,9 @@ export interface ValidationResult {
 }
 
 type Rule = (model: MapModel, context: ValidationContext) => Diagnostic[];
+
+/** Layers whose objects are sprites first; gameplay semantics there are optional. */
+const ART_LAYERS = new Set<string>(["Furniture", "Decorations"]);
 
 function error(rule: string, message: string, fix: string, path?: string): Diagnostic {
   return { severity: "error", rule, message, fix, ...(path ? { path } : {}) };
@@ -104,16 +109,36 @@ const dimensions: Rule = (model) => {
 
 const tilesetsResolve: Rule = (model, context) => {
   const diagnostics: Diagnostic[] = [];
-  const seen = new Map<number, string>();
 
-  for (const tileset of model.tilesets) {
-    const previous = seen.get(tileset.firstgid);
-    if (previous) {
+  // Overlap, not just an identical firstgid: two tilesets whose gid RANGES cross
+  // make every tile in the overlap resolve to the wrong art, and the map renders
+  // as garbage in Tiled while looking structurally fine.
+  const ranges = model.tilesets.map((tileset) => {
+    const count = context.tileCounts?.get(tileset.id) ?? tileset.tileCount;
+    return { id: tileset.id, start: tileset.firstgid, end: tileset.firstgid + Math.max(count, 1) - 1, known: count > 0 };
+  });
+  for (let i = 0; i < ranges.length; i += 1) {
+    for (let j = i + 1; j < ranges.length; j += 1) {
+      const a = ranges[i]!;
+      const b = ranges[j]!;
+      if (a.start > b.end || b.start > a.end) continue;
       diagnostics.push(
-        error("firstgid-collision", `Tilesets "${previous}" and "${tileset.id}" both claim firstgid ${tileset.firstgid}`, "Re-bind one of them with add_tileset so gid ranges do not overlap."),
+        a.start === b.start
+          ? error(
+              "firstgid-collision",
+              `Tilesets "${a.id}" and "${b.id}" both claim firstgid ${a.start}`,
+              "Re-bind one of them with add_tileset so gid ranges do not overlap.",
+            )
+          : error(
+              "firstgid-collision",
+              `Tileset gid ranges overlap: "${a.id}" covers ${a.start}-${a.end} and "${b.id}" covers ${b.start}-${b.end}`,
+              `Re-bind "${b.id}" at firstgid ${Math.max(a.end, b.end) + 1} or higher so the ranges are disjoint.`,
+            ),
       );
     }
-    seen.set(tileset.firstgid, tileset.id);
+  }
+
+  for (const tileset of model.tilesets) {
 
     if (context.vendoredTilesets && !context.vendoredTilesets.has(tileset.id)) {
       diagnostics.push(
@@ -121,6 +146,18 @@ const tilesetsResolve: Rule = (model, context) => {
           "tileset-not-vendored",
           `Tileset "${tileset.id}" is referenced as ${tileset.source} but no such file exists`,
           "Drop the .tsj and its atlas into content/tilesets/, or re-bind the map to a vendored tileset. Tiled cannot open the map until this resolves.",
+        ),
+      );
+    }
+
+    // A .tsj whose image is absent loads as a blank grid in Tiled: the map looks
+    // saved and correct right up until someone opens it.
+    for (const image of context.missingAtlasImages?.get(tileset.id) ?? []) {
+      diagnostics.push(
+        error(
+          "atlas-image-missing",
+          `Tileset "${tileset.id}" references the atlas image "${image}", which is not in tilesets/`,
+          `Put ${image} next to ${tileset.id}.tsj in content/tilesets/. Without it Tiled renders the map blank.`,
         ),
       );
     }
@@ -185,7 +222,12 @@ const objectsValid: Rule = (model) => {
     ids.set(object.id, layer.name);
 
     if (object.class === "") {
-      diagnostics.push(warn("object-unclassified", `Object ${object.id} on "${layer.name}" has no class`, `Set one of: ${OBJECT_CLASS_NAMES.join(", ")}.`, path));
+      // A tile object on an art layer is decoration: it is drawn and nothing else,
+      // so demanding a gameplay class would warn once per plant on a real map.
+      const isPlacedArt = object.gid !== undefined && ART_LAYERS.has(layer.name);
+      if (!isPlacedArt) {
+        diagnostics.push(warn("object-unclassified", `Object ${object.id} on "${layer.name}" has no class`, `Set one of: ${OBJECT_CLASS_NAMES.join(", ")}.`, path));
+      }
       continue;
     }
 

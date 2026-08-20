@@ -83,7 +83,7 @@ export function createFakeAssetApi(options: FakeApiOptions = {}): FakeApi {
       }
 
       if (url.pathname.startsWith("/v1/tilesets/")) {
-        return json({ name: "office-core", tilewidth: 32, tileheight: 32, image: "office-core.png" });
+        return json({ name: "office-core", tilewidth: 16, tileheight: 16, image: "office-core.png" });
       }
 
       return new Response("", { status: 404 });

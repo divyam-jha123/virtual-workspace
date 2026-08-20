@@ -11,7 +11,7 @@ const fixture = () => JSON.parse(fs.readFileSync(fixturePath, "utf8"));
 describe("parseTmj — a real Tiled-authored file", () => {
   it("reads dimensions, tilesets and the layer stack", () => {
     const model = parseTmj(fixture());
-    expect(model).toMatchObject({ width: 8, height: 6, tileWidth: 32, tileHeight: 32, infinite: false });
+    expect(model).toMatchObject({ width: 8, height: 6, tileWidth: 16, tileHeight: 16, infinite: false });
     expect(model.layers.map((l) => l.name)).toEqual(["Ground", "Walls", "Furniture", "Collision", "SpawnPoints", "InteractionZones"]);
     expect(model.tilesets).toEqual([
       { firstgid: 1, source: "../tilesets/office-core.tsj", id: "office-core", tileCount: 0 },
@@ -24,7 +24,7 @@ describe("parseTmj — a real Tiled-authored file", () => {
     const furniture = model.layers.find((l) => l.name === "Furniture");
     expect(furniture?.kind).toBe("objectgroup");
     const desk = furniture?.kind === "objectgroup" ? furniture.objects[0] : undefined;
-    expect(desk).toMatchObject({ id: 1, class: "workstation", gid: 43, x: 64, y: 160, width: 128, height: 96 });
+    expect(desk).toMatchObject({ id: 1, class: "workstation", gid: 43, x: 32, y: 80, width: 64, height: 48 });
     expect(desk?.properties).toEqual({ capacity: 4 });
 
     const spawn = model.layers.find((l) => l.name === "SpawnPoints");

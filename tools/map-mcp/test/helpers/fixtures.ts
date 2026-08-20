@@ -1,4 +1,6 @@
 /** One catalog, served by both repository implementations in the contract suite. */
+import { TILE_SIZE } from "../../src/schema/index.js";
+
 export const CATALOG = [
   {
     id: "office.desk.pod4",
@@ -7,7 +9,7 @@ export const CATALOG = [
     subcategory: "desk",
     tags: ["desk", "pod", "workstation"],
     style: "modern",
-    tileSize: 32,
+    tileSize: TILE_SIZE,
     dimensions: { width: 4, height: 3 },
     placement: "floor",
     tilesetId: "office-core",
@@ -23,7 +25,7 @@ export const CATALOG = [
     subcategory: "chair",
     tags: ["chair", "seat"],
     style: "modern",
-    tileSize: 32,
+    tileSize: TILE_SIZE,
     dimensions: { width: 1, height: 1 },
     placement: "floor",
     tilesetId: "office-core",
@@ -36,7 +38,7 @@ export const CATALOG = [
     category: "decoration",
     tags: ["plant", "greenery"],
     style: "modern",
-    tileSize: 32,
+    tileSize: TILE_SIZE,
     dimensions: { width: 1, height: 2 },
     placement: "floor",
     tilesetId: "decor-pack",
@@ -49,7 +51,7 @@ export const CATALOG = [
     subcategory: "desk",
     tags: ["desk"],
     style: "retro",
-    tileSize: 16,
+    tileSize: TILE_SIZE * 2,
     dimensions: { width: 2, height: 1 },
     placement: "floor",
     tilesetId: "retro-pack",
@@ -58,6 +60,6 @@ export const CATALOG = [
 ] as const;
 
 export const TILESETS = [
-  { id: "office-core", name: "Office Core", version: "3", tileSize: 32 },
-  { id: "decor-pack", name: "Decor Pack", version: "1", tileSize: 32 },
+  { id: "office-core", name: "Office Core", version: "3", tileSize: TILE_SIZE },
+  { id: "decor-pack", name: "Decor Pack", version: "1", tileSize: TILE_SIZE },
 ];

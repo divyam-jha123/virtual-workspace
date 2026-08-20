@@ -16,14 +16,14 @@ WORKDIR /app
 # Manifests + lockfile only, so a source edit does not bust the install cache.
 FROM base AS manifests
 COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+# .dockerignore reduces apps/, packages/ and scripts/ to their package.json files
+# alone, so these copy manifests only — and stay correct when a workspace member
+# is added or removed. pnpm needs them because it resolves the lockfile against
+# every workspace member, not just the filtered one.
 COPY tools/map-mcp/package.json tools/map-mcp/
-COPY scripts/package.json scripts/
-COPY packages/config/package.json packages/config/
-COPY packages/protocol/package.json packages/protocol/
-COPY packages/shared-types/package.json packages/shared-types/
-COPY apps/backend/package.json apps/backend/
-COPY apps/frontend/package.json apps/frontend/
-COPY apps/web/package.json apps/web/
+COPY apps apps
+COPY packages packages
+COPY scripts scripts
 
 FROM manifests AS deps
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \

@@ -12,7 +12,7 @@ const raw = () => JSON.parse(fs.readFileSync(path.join(here, "fixtures", "office
 const CONTEXT: ValidationContext = {
   vendoredTilesets: new Set(["office-core"]),
   tileCounts: new Map([["office-core", 64]]),
-  tileSizes: new Map([["office-core", 32]]),
+  tileSizes: new Map([["office-core", 16]]),
 };
 
 function goodMap(): MapModel {
@@ -76,8 +76,8 @@ describe("structure rules", () => {
 
   it("tile-size fires when the map is not on the project grid", () => {
     const model = goodMap();
-    model.tileWidth = 16;
-    model.tileHeight = 16;
+    model.tileWidth = 24;
+    model.tileHeight = 24;
     expect(rules(model)).toContain("tile-size");
   });
 
@@ -93,14 +93,55 @@ describe("tileset rules", () => {
     expect(rules(goodMap(), { ...CONTEXT, vendoredTilesets: new Set() })).toContain("tileset-not-vendored");
   });
 
+  it("atlas-image-missing fires when the .tsj points at an image that is not there", () => {
+    const context = { ...CONTEXT, missingAtlasImages: new Map([["office-core", ["office-core.png"]]]) };
+    const result = validateMap(goodMap(), context);
+    expect(result.diagnostics.map((d) => d.rule)).toContain("atlas-image-missing");
+    // This must block a save: the map would open blank in Tiled.
+    expect(result.ok).toBe(false);
+    expect(result.diagnostics.find((d) => d.rule === "atlas-image-missing")?.fix).toMatch(/content\/tilesets\//);
+  });
+
+  it("stays quiet when the atlas image is present", () => {
+    expect(rules(goodMap(), { ...CONTEXT, missingAtlasImages: new Map() })).not.toContain("atlas-image-missing");
+  });
+
   it("tileset-tile-size fires when the art is drawn for another grid", () => {
-    expect(rules(goodMap(), { ...CONTEXT, tileSizes: new Map([["office-core", 16]]) })).toContain("tileset-tile-size");
+    expect(rules(goodMap(), { ...CONTEXT, tileSizes: new Map([["office-core", 32]]) })).toContain("tileset-tile-size");
   });
 
   it("firstgid-collision fires when two tilesets claim the same range start", () => {
     const model = goodMap();
     model.tilesets.push({ firstgid: 1, source: "../tilesets/decor-pack.tsj", id: "decor-pack", tileCount: 10 });
     expect(rules(model, { ...CONTEXT, vendoredTilesets: new Set(["office-core", "decor-pack"]) })).toContain("firstgid-collision");
+  });
+
+  it("firstgid-collision fires when gid RANGES overlap without sharing a start", () => {
+    // office-core is 64 tiles at firstgid 1, so it owns 1..64. Binding another
+    // set at 2 puts it on top of that range and every tile resolves to the wrong art.
+    const model = goodMap();
+    model.tilesets.push({ firstgid: 2, source: "../tilesets/decor-pack.tsj", id: "decor-pack", tileCount: 16 });
+    const context = {
+      ...CONTEXT,
+      vendoredTilesets: new Set(["office-core", "decor-pack"]),
+      tileCounts: new Map([["office-core", 64], ["decor-pack", 16]]),
+    };
+    const result = validateMap(model, context);
+    const overlap = result.diagnostics.find((d) => d.rule === "firstgid-collision");
+    expect(overlap?.message).toMatch(/ranges overlap/);
+    expect(overlap?.fix).toMatch(/firstgid 65 or higher/);
+    expect(result.ok).toBe(false);
+  });
+
+  it("stays quiet when a second tileset starts just past the first", () => {
+    const model = goodMap();
+    model.tilesets.push({ firstgid: 65, source: "../tilesets/decor-pack.tsj", id: "decor-pack", tileCount: 16 });
+    const context = {
+      ...CONTEXT,
+      vendoredTilesets: new Set(["office-core", "decor-pack"]),
+      tileCounts: new Map([["office-core", 64], ["decor-pack", 16]]),
+    };
+    expect(rules(model, context)).not.toContain("firstgid-collision");
   });
 
   it("gid-unresolved fires for a tile beyond the tileset's range", () => {
@@ -174,9 +215,27 @@ describe("object rules", () => {
     expect(rules(goodMap())).not.toContain("object-layer");
   });
 
-  it("object-unclassified warns about an object with no class", () => {
+  it("object-unclassified warns about a classless object on a gameplay layer", () => {
+    const model = goodMap();
+    const stray = { ...objectLayer(model, "SpawnPoints").objects[0]!, id: 90, class: "", properties: {} };
+    objectLayer(model, "SpawnPoints").objects.push(stray);
+    expect(rules(model)).toContain("object-unclassified");
+  });
+
+  it("stays quiet about placed art, which needs no gameplay class", () => {
+    // Decoration is drawn and nothing else; warning per plant would be noise.
     const model = goodMap();
     objectLayer(model, "Furniture").objects[0]!.class = "";
+    objectLayer(model, "Furniture").objects[0]!.properties = {};
+    expect(rules(model)).not.toContain("object-unclassified");
+  });
+
+  it("still warns about a classless object with no art on an art layer", () => {
+    const model = goodMap();
+    const desk = objectLayer(model, "Furniture").objects[0]!;
+    desk.class = "";
+    desk.properties = {};
+    delete desk.gid;
     expect(rules(model)).toContain("object-unclassified");
   });
 });

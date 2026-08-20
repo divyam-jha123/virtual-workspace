@@ -2,16 +2,20 @@ import type { MapMcpConfig } from "../../config.js";
 import { MapMcpError } from "../../errors.js";
 import { TILE_SIZE } from "../../schema/index.js";
 import type { WorkspaceService } from "../workspace.js";
+import { CompositeAssetRepository } from "./composite-repository.js";
 import { HttpAssetRepository } from "./http-repository.js";
 import { LocalAssetRepository } from "./local-repository.js";
 import type { AssetQuery, AssetRecord, AssetRepository, TilesetRef } from "./types.js";
 
 export interface AssetSourceStatus {
-  source: "local" | "api";
+  /** "local", "api", or "composite" when more than one source is configured. */
+  source: string;
   reachable: boolean;
   detail?: string;
   /** Tilesets present on disk and therefore usable with no network. */
   vendoredTilesets: number;
+  /** One entry per configured source; present only when more than one is active. */
+  sources?: Array<{ name: string; reachable: boolean; detail?: string }>;
 }
 
 /**
@@ -26,29 +30,30 @@ export class AssetService {
     private readonly projectTileSize: number = TILE_SIZE,
   ) {}
 
+  /**
+   * The local catalog is always constructed and always listed first, so the
+   * server stays usable with zero credentials even when remote sources are also
+   * configured, and a local record always shadows a same-id vendor record.
+   */
   static fromConfig(config: MapMcpConfig, workspace: WorkspaceService): AssetService {
     const defaults = { tileSize: TILE_SIZE };
-    if (config.assetSource === "api") {
-      if (!config.assetApiUrl) {
-        throw new MapMcpError("INVALID_ARGUMENT", "ASSET_SOURCE=api requires ASSET_API_URL", {
-          rule: "asset-api-config",
-          fix: "Set ASSET_API_URL (and ASSET_API_KEY), or leave ASSET_SOURCE=local to read content/assets/.",
-        });
-      }
-      return new AssetService(
-        new HttpAssetRepository({
-          baseUrl: config.assetApiUrl,
-          apiKey: config.assetApiKey,
-          defaults,
-          offline: config.offline,
-        }),
-        workspace,
-      );
+    const local = new LocalAssetRepository(workspace, defaults);
+
+    if (config.assetApis.length === 0) {
+      return new AssetService(local, workspace);
     }
-    return new AssetService(new LocalAssetRepository(workspace, defaults), workspace);
+
+    const sources = [
+      { name: "local", repository: local as AssetRepository },
+      ...config.assetApis.map((api) => ({
+        name: api.name,
+        repository: new HttpAssetRepository({ baseUrl: api.url, apiKey: api.key, defaults, offline: config.offline }) as AssetRepository,
+      })),
+    ];
+    return new AssetService(new CompositeAssetRepository(sources), workspace);
   }
 
-  get sourceKind(): "local" | "api" {
+  get sourceKind(): string {
     return this.repository.kind;
   }
 
@@ -97,11 +102,21 @@ export class AssetService {
   async status(): Promise<AssetSourceStatus> {
     const health = await this.repository.health();
     const vendored = (await this.workspace.list("tilesets", { extensions: [".tsj"] })).length;
-    return {
+    const status: AssetSourceStatus = {
       source: this.repository.kind,
       reachable: health.reachable,
       ...(health.detail ? { detail: health.detail } : {}),
       vendoredTilesets: vendored,
     };
+    const repository = this.repository;
+    if (repository instanceof CompositeAssetRepository) {
+      status.sources = await Promise.all(
+        repository.sourceNames.map(async (name) => {
+          const sourceHealth = await repository.healthOf(name);
+          return { name, reachable: sourceHealth.reachable, ...(sourceHealth.detail ? { detail: sourceHealth.detail } : {}) };
+        }),
+      );
+    }
+    return status;
   }
 }

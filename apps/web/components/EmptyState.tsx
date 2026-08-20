@@ -2,7 +2,7 @@
 
 import { useOffices } from "./OfficesProvider";
 import { PlusIcon } from "./icons";
-import styles from "./EmptyState.module.css";
+import styles from "@/styles/EmptyState.module.css";
 
 /* The little "spatial map" glyph: a lavender tile holding a grid of rounded
  * squares, with one orange + one green avatar dot near the centre. */

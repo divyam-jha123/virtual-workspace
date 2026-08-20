@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 import { Modal } from "./Modal";
 import { useOffices } from "./OfficesProvider";
 import type { Office } from "@/lib/offices";
-import styles from "./CreateOfficeModal.module.css";
+import styles from "@/styles/CreateOfficeModal.module.css";
 
 const THEMES: { id: Office["theme"]; label: string }[] = [
   { id: "blue", label: "Blue" },

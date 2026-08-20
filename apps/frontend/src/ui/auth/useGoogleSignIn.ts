@@ -12,7 +12,7 @@
  * only issues a credential from it. (A freely styled button would mean the OAuth
  * auth-code flow, which needs a client secret and a server-side exchange.) So
  * LoginScreen paints the design's button and lays this one over it, invisible;
- * see `.vk-google-overlay` in styles.css. The options below are near-irrelevant
+ * see `.vk-google-overlay` in styles/tailwind.css. The options below are near-irrelevant
  * as a result — nobody sees this button. Only `width` still matters, since it
  * sets the widget's own box before the CSS stretches it to fill.
  *

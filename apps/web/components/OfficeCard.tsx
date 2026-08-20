@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { Office } from "@/lib/offices";
 import { useOffices } from "./OfficesProvider";
 import { ArrowRightIcon, DotsIcon, PlusIcon, TrashIcon } from "./icons";
-import styles from "./OfficeCard.module.css";
+import styles from "@/styles/OfficeCard.module.css";
 
 export function OfficeCard({ office }: { office: Office }) {
   const { removeOffice, openMapChooser } = useOffices();

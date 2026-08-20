@@ -1,0 +1,36 @@
+# Map-design MCP server.
+#
+# Build:  docker compose -f infra/docker/docker-compose.map-mcp.yml build
+# Run  :  handled by Claude Code over stdio — see tools/map-mcp/README.md.
+#
+# This service is NOT a daemon: `docker compose up` is not how you use it. The
+# MCP client starts one container per session with `docker run --rm -i` and talks
+# to it over stdin/stdout. Compose is here to build the image and to document the
+# exact runtime contract in one place.
+services:
+  map-mcp:
+    build:
+      context: ../..
+      dockerfile: tools/map-mcp/Dockerfile
+    image: vorkium/map-mcp:dev
+    # stdio transport: keep stdin open, allocate no TTY (a TTY corrupts framing).
+    stdin_open: true
+    tty: false
+    # No ports. The server never listens; egress to the asset API only.
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    user: node
+    volumes:
+      # The one and only mount. Source stays outside the container entirely.
+      - ../../content:/workspace:rw
+    environment:
+      MAP_MCP_WORKSPACE: /workspace
+      MAP_MCP_LOG_LEVEL: ${MAP_MCP_LOG_LEVEL:-warn}
+      MAP_MCP_OFFLINE: ${MAP_MCP_OFFLINE:-false}
+      ASSET_SOURCE: ${ASSET_SOURCE:-local}
+      # Passed through from the host env — never baked into the image.
+      ASSET_API_URL: ${ASSET_API_URL:-}
+      ASSET_API_KEY: ${ASSET_API_KEY:-}

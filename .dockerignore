@@ -1,0 +1,33 @@
+# Build context for tools/map-mcp/Dockerfile. Everything below stays OUT of the
+# image: the server needs the lockfile and the workspace manifests, and nothing else.
+#
+# (This lives at the repo root because that is the build context root, which is
+# where Docker reads it from.)
+
+node_modules
+**/node_modules
+**/dist
+**/.turbo
+**/.next
+.git
+.github
+.env
+.env.*
+!.env.example
+
+# The workspace is a run-time bind mount, never image content.
+content
+
+# App and package sources are irrelevant to this server; their manifests are not,
+# because pnpm resolves the lockfile against every workspace member.
+apps/**
+!apps/*/package.json
+packages/**
+!packages/*/package.json
+scripts/**
+!scripts/package.json
+
+docs
+infra
+*.md
+.DS_Store

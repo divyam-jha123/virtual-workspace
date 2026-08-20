@@ -1,4 +1,4 @@
-import styles from "./LobbySkeleton.module.css";
+import styles from "@/styles/LobbySkeleton.module.css";
 
 /** Shown for the one tick before localStorage is read, so refresh never flashes
  *  the wrong (default/server) state. Mirrors the Default layout to avoid a jump. */

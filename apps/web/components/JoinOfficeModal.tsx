@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { Modal } from "./Modal";
 import { useOffices } from "./OfficesProvider";
-import styles from "./JoinOfficeModal.module.css";
+import styles from "@/styles/JoinOfficeModal.module.css";
 
 export function JoinOfficeModal() {
   const { joinOpen, closeJoin, joinOffice } = useOffices();

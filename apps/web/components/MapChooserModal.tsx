@@ -4,7 +4,7 @@ import { Modal } from "./Modal";
 import { useOffices } from "./OfficesProvider";
 import { MAPS, enterMap } from "@/lib/maps";
 import { ArrowRightIcon } from "./icons";
-import styles from "./MapChooserModal.module.css";
+import styles from "@/styles/MapChooserModal.module.css";
 
 export function MapChooserModal() {
   const { enteringOffice, closeMapChooser } = useOffices();

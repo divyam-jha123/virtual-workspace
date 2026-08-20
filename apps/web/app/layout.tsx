@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Poppins } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css";
 
 /** Vorkium's wordmark + headings are a rounded geometric sans — Poppins matches. */
 const poppins = Poppins({

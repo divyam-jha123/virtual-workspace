@@ -3,7 +3,7 @@
 import { BellIcon, PlusIcon } from "./icons";
 import { AccountMenu } from "./AccountMenu";
 import { useOffices } from "./OfficesProvider";
-import styles from "./SiteHeader.module.css";
+import styles from "@/styles/SiteHeader.module.css";
 
 /** The white Vorkium top bar. You reach the dashboard already signed in (via the
  *  game client's login), so it always shows the account controls. */

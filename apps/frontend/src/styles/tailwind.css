@@ -3,11 +3,11 @@
  *
  * Preflight is a global reset. This app is mid-migration: only the login screen
  * is React + Tailwind, while the map select, character select, and HUD are still
- * plain DOM styled by the <style> block in index.html. Pulling in Preflight would
+ * plain DOM styled by styles/game-ui.css. Pulling in Preflight would
  * silently restyle those three screens (it strips heading sizes, button borders,
  * list markers...). Importing the layers individually keeps the utilities and
  * skips the reset. Once the remaining screens are ported, drop this in favour of
- * a plain `@import "tailwindcss"` and delete index.html's <style> block.
+ * a plain `@import "tailwindcss"` and delete styles/game-ui.css.
  */
 @layer theme, base, components, utilities;
 @import "tailwindcss/theme.css" layer(theme);

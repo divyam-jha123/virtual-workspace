@@ -5,7 +5,7 @@ import { Lobby } from "@/components/Lobby";
 import { CreateOfficeModal } from "@/components/CreateOfficeModal";
 import { JoinOfficeModal } from "@/components/JoinOfficeModal";
 import { MapChooserModal } from "@/components/MapChooserModal";
-import styles from "./page.module.css";
+import styles from "@/styles/page.module.css";
 
 export default function LobbyPage() {
   return (

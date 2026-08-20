@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, type ReactNode } from "react";
-import styles from "./Modal.module.css";
+import styles from "@/styles/Modal.module.css";
 
 /** A centered dialog with a dimmed backdrop. Closes on Esc or backdrop click. */
 export function Modal({

@@ -76,7 +76,7 @@ export function VerifyCodeScreen({ email, onAuthed, onBack }: VerifyCodeScreenPr
   }
 
   return (
-    // `vk-auth` opts this tree into the scoped reset in styles.css — without it
+    // `vk-auth` opts this tree into the scoped reset in styles/tailwind.css — without it
     // the form controls inherit browser defaults (see the note there).
     <div className="vk-auth flex min-h-screen items-center justify-center bg-vk-page px-6 py-12 font-vk text-vk-ink">
       <div className="w-full max-w-[400px]">

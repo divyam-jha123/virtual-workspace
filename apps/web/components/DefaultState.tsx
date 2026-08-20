@@ -5,7 +5,7 @@ import { useOffices } from "./OfficesProvider";
 import { useAuth } from "./AuthProvider";
 import { OfficeCard, NewOfficeCard } from "./OfficeCard";
 import { SearchIcon } from "./icons";
-import styles from "./DefaultState.module.css";
+import styles from "@/styles/DefaultState.module.css";
 
 /** The returning-user view: greeting, search, and the grid of joinable offices. */
 export function DefaultState() {

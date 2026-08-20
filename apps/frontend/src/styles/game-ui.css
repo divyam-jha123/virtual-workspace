@@ -1,0 +1,277 @@
+/*
+ * Styles for the map select / character select / HUD screens, which are still
+ * plain DOM (no framework). Loaded from index.html so they apply before the
+ * bundle runs. The login screen is React + Tailwind — see styles/tailwind.css.
+ */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #151a26;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+#app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+canvas {
+  image-rendering: pixelated;
+  display: block;
+}
+
+/* --- Map select menu --- */
+.menu-screen {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 64px 24px;
+  text-align: center;
+}
+.menu-screen h1 {
+  color: #ffffff;
+  font-size: 34px;
+  margin: 0 0 12px;
+}
+.menu-subheading {
+  color: #8fa0c5;
+  font-size: 15px;
+  margin: 0 0 48px;
+}
+.name-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 0 28px;
+}
+.name-label {
+  color: #8fa0c5;
+  font-size: 14px;
+}
+.name-input {
+  background: #1b2133;
+  border: 1px solid #2f3956;
+  border-radius: 8px;
+  color: #e8edf9;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 9px 12px;
+  width: 220px;
+  outline: none;
+}
+.name-input::placeholder {
+  color: #5d6b8c;
+}
+.name-input:focus {
+  border-color: #4c7dff;
+}
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.menu-card {
+  width: 218px;
+  background: #222a3c;
+  border: 2px solid #39445e;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+.menu-card:hover {
+  background: #2a3450;
+  border-color: #7aa2ff;
+}
+.menu-preview {
+  width: 100%;
+  height: 126px;
+  object-fit: cover;
+  image-rendering: pixelated;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+.menu-card-title {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.menu-card-desc {
+  color: #9fb0d0;
+  font-size: 12px;
+  margin-bottom: 14px;
+  min-height: 32px;
+}
+.menu-card-cta {
+  color: #7aa2ff;
+  font-size: 13px;
+}
+
+/* --- HUD overlay --- */
+.hud-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+.hud-title {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 0 0 4px #000, 0 0 4px #000;
+}
+.hud-hint {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  color: #ffffff;
+  font-size: 13px;
+  text-shadow: 0 0 4px #000, 0 0 4px #000;
+}
+.hud-exit {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  pointer-events: auto;
+  background: rgba(34, 42, 60, 0.92);
+  border: 2px solid #39445e;
+  border-radius: 6px;
+  color: #ff8a80;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: inherit;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.hud-exit:hover {
+  background: #2a3450;
+  border-color: #ff8a80;
+}
+/* Sits left of Exit — quieter, since it drops you all the way to login. */
+.hud-signout {
+  position: absolute;
+  top: 12px;
+  right: 108px;
+  pointer-events: auto;
+  background: rgba(34, 42, 60, 0.92);
+  border: 2px solid #39445e;
+  border-radius: 6px;
+  color: #8fa0c5;
+  font-size: 15px;
+  font-family: inherit;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.hud-signout:hover {
+  background: #2a3450;
+  border-color: #7aa2ff;
+  color: #cdd8f0;
+}
+
+/* --- Character select --- */
+.back-link {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  background: none;
+  border: none;
+  color: #7aa2ff;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.back-link:hover {
+  color: #a9c4ff;
+}
+.char-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.char-card {
+  width: 120px;
+  background: #222a3c;
+  border: 2px solid #39445e;
+  border-radius: 8px;
+  padding: 12px 8px;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.char-card:hover {
+  background: #2a3450;
+  border-color: #7aa2ff;
+}
+.char-card.selected {
+  border-color: #8fd08a;
+  background: #26382e;
+}
+.char-preview {
+  width: 64px;
+  height: 96px;
+  image-rendering: pixelated;
+}
+.char-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+.start-btn {
+  background: #3f6fb5;
+  border: 2px solid #5a86c8;
+  border-radius: 8px;
+  color: #ffffff;
+  font: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 40px;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+.start-btn:hover:not(:disabled) {
+  background: #4d80c9;
+}
+.start-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* --- Debug overlay --- */
+.debug-overlay {
+  position: absolute;
+  top: 52px;
+  left: 16px;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.6);
+  color: #8fd08a;
+  font-family: monospace;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+}

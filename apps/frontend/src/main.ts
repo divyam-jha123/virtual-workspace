@@ -1,4 +1,4 @@
-import "./styles.css";
+import "./styles/tailwind.css";
 import { getTheme } from "./game/map/themes";
 import { getOfficeMap } from "./game/map/build";
 import { PixiWorld } from "./game/world/PixiWorld";

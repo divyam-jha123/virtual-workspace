@@ -4,8 +4,8 @@
 #   docker build -f tools/map-mcp/Dockerfile -t vorkium/map-mcp:dev .
 #
 # The image carries the server and nothing else — no app source, no content, no
-# secrets. `content/` arrives at run time as the single bind mount, and the asset
-# API key arrives as an env var that is never baked in and never logged.
+# secrets. `content/` arrives at run time as the single bind mount; assets are
+# read from there and the server makes no outbound network calls.
 
 FROM node:20-alpine AS base
 ENV PNPM_HOME=/pnpm PATH=/pnpm:$PATH

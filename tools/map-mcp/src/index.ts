@@ -16,9 +16,7 @@ async function main(): Promise<void> {
   const { server } = await createServer(config);
 
   if (config.logLevel !== "silent") {
-    process.stderr.write(
-      `[map-mcp] workspace=${config.workspaceRoot} assetSource=${config.assetSource}${config.offline ? " (offline)" : ""}\n`,
-    );
+    process.stderr.write(`[map-mcp] workspace=${config.workspaceRoot} assets=local (filesystem)\n`);
   }
 
   await server.connect(new StdioServerTransport());

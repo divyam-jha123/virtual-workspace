@@ -54,7 +54,7 @@ export async function startHarness(options: { catalog?: unknown; tilesets?: stri
     await workspace.writeBytes(`tilesets/${id}.png`, PNG_STUB);
   }
 
-  const config = loadConfig({ MAP_MCP_WORKSPACE: root, ASSET_SOURCE: "local" } as NodeJS.ProcessEnv);
+  const config = loadConfig({ MAP_MCP_WORKSPACE: root } as NodeJS.ProcessEnv);
   const { server, context } = await createServer(config);
 
   const client = new Client({ name: "test-client", version: "0.0.0" });

@@ -1,20 +1,20 @@
 # `tilesets/`
 
-Vendored tilesets: `.tsj` files plus the atlas images they reference. Vendored,
-not fetched live, for three reasons: Tiled on the host has no API key, Git must
-reproduce a map months later, and the game must not load art through a
-third-party API.
+Vendored tilesets: `.tsj` files plus the atlas images they reference. On disk, not
+fetched live, for three reasons: Tiled on the host opens them directly, Git must
+reproduce a map months later, and the game loads art from the filesystem, never
+through a third-party API.
 
-Files land here two ways, and both write the same bytes:
+Add a tileset by dropping both files here:
 
-- **Pulled** by `sync_tilesets`, or automatically by `place_asset` when the art a
-  placement needs is not on disk yet. This is the normal path.
-- **Pushed** by the Asset Manager's vendor step (`pnpm vendor` in
-  `tools/asset-manager`), which writes the same `.tsj` and images directly.
+```
+content/tilesets/<pack>.tsj    <- Tiled tileset (New Tileset… → Based on Tileset Image)
+content/tilesets/<pack>.png    <- the atlas image the .tsj names
+```
 
-Either way the result is a real file, which is the only thing Tiled and the game
-can open. `list_tilesets` reports whatever `.tsj` files are present here, and
-`vendored: true` means exactly that.
+Both must be present — a `.tsj` whose image is missing is a save-blocking error,
+because the map would open blank in Tiled.
 
-`asset-manager.lock.json` records a sha256 of everything the push path wrote, so a
-map can be reproduced later.
+`list_tilesets` reports whatever `.tsj` files are present here, and `vendored: true`
+means exactly that. There is no asset service and nothing to register: the MCP
+discovers tilesets by scanning this folder.

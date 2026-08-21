@@ -4,7 +4,6 @@ import { cloneMap, emptyTileData, findLayer, isObjectLayer, isTileLayer } from "
 import { LAYER_KINDS, LAYER_ORDER, LIMITS, TILE_SIZE, getObjectClassSpec, isLayerName } from "../schema/index.js";
 import type { AssetService } from "./assets/asset-service.js";
 import type { AssetRecord } from "./assets/types.js";
-import { imageReferences } from "./assets/http-repository.js";
 import { createEmptyMap, parseTmj, serializeTmj, tilesetIdFromSource } from "./tiled-adapter.js";
 import { validateMap, type ValidationContext, type ValidationResult } from "./validator.js";
 import type { WorkspaceService } from "./workspace.js";
@@ -399,22 +398,14 @@ export class MapService {
 
     const workspaceId = `tilesets/${tilesetId}.tsj`;
     if (!(await this.workspace.exists(workspaceId))) {
-      // The art is not on disk yet. Pull it rather than failing: this is the
-      // client half of vendoring, and it is what lets place_asset work against a
-      // remote catalog with no manual sync step. A source that cannot supply it
-      // (offline, or a local-only catalog) still lands on the original error.
-      try {
-        await this.assets.syncTileset(tilesetId);
-      } catch (err) {
-        throw new MapMcpError("ASSET_NOT_FOUND", `Tileset "${tilesetId}" is not vendored in the workspace and could not be fetched`, {
-          rule: "tileset-not-vendored",
-          path: workspaceId,
-          fix:
-            `Fetching it failed: ${err instanceof Error ? err.message : String(err)}. ` +
-            "Add the .tsj and its atlas image to content/tilesets/, or configure an asset API that serves it. " +
-            "A map may only reference tilesets that exist as real files, or Tiled cannot open it.",
-        });
-      }
+      // A map may only reference tilesets that exist as real files on disk, or
+      // Tiled cannot open it. The filesystem is the source of truth — nothing is
+      // fetched.
+      throw new MapMcpError("ASSET_NOT_FOUND", `Tileset "${tilesetId}" is not present in the workspace`, {
+        rule: "tileset-not-vendored",
+        path: workspaceId,
+        fix: "Add the .tsj and its atlas image (.png) to content/tilesets/. A map may only reference tilesets that exist as real files, or Tiled cannot open it.",
+      });
     }
 
     const tsj = await this.workspace.readJson<Record<string, unknown>>(workspaceId);
@@ -517,6 +508,21 @@ export class MapService {
 /** Basename of a `.tsj` image reference, which may be written as a relative path. */
 function basename(reference: string): string {
   return reference.split("\\").join("/").split("/").pop() ?? reference;
+}
+
+/** Collects `image` fields from a tileset, both the atlas form and per-tile images. */
+function imageReferences(tsj: Record<string, unknown>): string[] {
+  const found = new Set<string>();
+  if (typeof tsj.image === "string") found.add(tsj.image);
+  const tiles = tsj.tiles;
+  if (Array.isArray(tiles)) {
+    for (const tile of tiles) {
+      if (tile && typeof tile === "object" && typeof (tile as { image?: unknown }).image === "string") {
+        found.add((tile as { image: string }).image);
+      }
+    }
+  }
+  return [...found];
 }
 
 function layerRank(name: string): number {

@@ -18,7 +18,7 @@ function tags(value: unknown): string[] {
 }
 
 /**
- * Coerces an untrusted record (local file or API payload) into an `AssetRecord`,
+ * Coerces an untrusted record (a catalog file on disk) into an `AssetRecord`,
  * or returns `null` with the reason. Payloads are data: no field is ever treated
  * as a path or an instruction, and unknown keys are dropped rather than kept.
  */

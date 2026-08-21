@@ -44,7 +44,7 @@ describe.skipIf(!runnable)("stdio transport", () => {
       new StdioClientTransport({
         command: command!,
         args,
-        env: { ...(process.env as Record<string, string>), MAP_MCP_WORKSPACE: root, ASSET_SOURCE: "local" },
+        env: { ...(process.env as Record<string, string>), MAP_MCP_WORKSPACE: root },
         stderr: "ignore",
       }),
     );

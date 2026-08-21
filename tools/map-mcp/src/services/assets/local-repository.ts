@@ -1,14 +1,12 @@
 import path from "node:path";
-import { MapMcpError } from "../../errors.js";
 import type { WorkspaceService } from "../workspace.js";
 import { parseAssetRecord } from "./record.js";
 import { matches, rank } from "./search.js";
-import type { AssetQuery, AssetRecord, AssetRepository, ImageBlob, TilesetJson, TilesetRef } from "./types.js";
+import type { AssetQuery, AssetRecord, AssetRepository, TilesetRef } from "./types.js";
 
 /**
- * Reads the asset catalog straight out of `assets/` in the workspace. This is the
- * default source, which is what makes the whole server usable — and its whole test
- * suite runnable — with no credentials and no network.
+ * Reads the asset catalog straight out of `assets/` in the workspace. The
+ * filesystem is the only source: no credentials, no network, no asset database.
  */
 export class LocalAssetRepository implements AssetRepository {
   readonly kind = "local" as const;
@@ -93,20 +91,6 @@ export class LocalAssetRepository implements AssetRepository {
     }
 
     return [...refs.values()].sort((a, b) => a.id.localeCompare(b.id));
-  }
-
-  async fetchTileset(id: string): Promise<{ tsj: TilesetJson; images: ImageBlob[] }> {
-    const workspaceId = `tilesets/${path.basename(id, ".tsj")}.tsj`;
-    if (!(await this.workspace.exists(workspaceId))) {
-      throw new MapMcpError("ASSET_NOT_FOUND", `Tileset "${id}" is not present in the workspace`, {
-        rule: "tileset-missing",
-        path: workspaceId,
-        fix: "Drop the .tsj and its atlas image into content/tilesets/, or set ASSET_SOURCE=api to pull it.",
-      });
-    }
-    const tsj = await this.workspace.readJson<TilesetJson>(workspaceId);
-    // Images are already on disk beside the .tsj; nothing to transfer.
-    return { tsj, images: [] };
   }
 
   async health(): Promise<{ reachable: boolean; detail?: string }> {

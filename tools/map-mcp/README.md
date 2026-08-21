@@ -11,9 +11,9 @@ session. Its only filesystem access is the repo's `content/` directory.
 project; until it lands, opening `content/maps/*.tmj` in Tiled is how you see what
 was authored, with the real art.
 
-**There is no ready-made asset API to point this at.** See
-[Getting art](#getting-art) below — today that means downloading a tileset by hand
-and vendoring it into `content/`.
+**Assets live on the filesystem — there is no asset database or asset service.**
+The MCP discovers tilesets and catalog records by scanning `content/`. See
+[Getting art](#getting-art) below for how to add a pack.
 
 ## Quick start (native, no Docker)
 
@@ -54,13 +54,10 @@ docker build -f tools/map-mcp/Dockerfile -t vorkium/map-mcp:dev .
       "args": [
         "run", "--rm", "-i",
         "--read-only", "--tmpfs", "/tmp",
+        "--network", "none",
         "--security-opt", "no-new-privileges",
         "-v", "${PWD}/content:/workspace",
         "-e", "MAP_MCP_WORKSPACE=/workspace",
-        "-e", "ASSET_APIS",
-        "-e", "ASSET_SOURCE",
-        "-e", "ASSET_API_URL",
-        "-e", "ASSET_API_KEY",
         "vorkium/map-mcp:dev"
       ]
     }
@@ -68,9 +65,8 @@ docker build -f tools/map-mcp/Dockerfile -t vorkium/map-mcp:dev .
 }
 ```
 
-`-e ASSET_APIS` / `-e ASSET_API_KEY` with no `=value` passes the value through
-from your shell environment: keys are never written into the image, a compose
-file, or this repo.
+The server makes no outbound network calls, so the container can run with
+`--network none`. Its only access to anything is the `content/` bind mount.
 
 `docker compose up` is *not* how you run it — the MCP client starts one container
 per session and talks to it over stdin/stdout. Compose exists to build the image
@@ -81,78 +77,26 @@ and to document the runtime contract.
 | Variable | Default | Meaning |
 |---|---|---|
 | `MAP_MCP_WORKSPACE` | `./content` | Absolute path to the workspace root. `/workspace` in the container. |
-| `ASSET_APIS` | — | JSON array of remote sources, layered on top of the local catalog. See below. |
-| `ASSET_SOURCE` | `local` | Legacy single-source switch. Ignored when `ASSET_APIS` is set. |
-| `ASSET_API_URL` | — | Legacy single source's base URL, used only when `ASSET_APIS` is unset. |
-| `ASSET_API_KEY` | — | Key for the legacy single source. Never logged, never echoed in a tool result. |
-| `MAP_MCP_OFFLINE` | `false` | Refuse all outbound requests. |
 | `MAP_MCP_LOG_LEVEL` | `warn` | `silent`/`error`/`warn`/`info`/`debug`, to **stderr** only. |
 | `MAP_MCP_MAX_MAP_TILES` | `1000000` | Upper bound on tiles in one map. |
 
-With the defaults the server is fully usable with **no credentials and no
-network**: `content/assets/` is the catalog.
-
-### Multiple asset sources
-
-`ASSET_APIS` takes a JSON array, one entry per remote catalog:
-
-```bash
-ASSET_APIS='[
-  {"name":"vendorA","url":"https://a.example.com/v1","key":"..."},
-  {"name":"vendorB","url":"https://b.example.com/v1","key":"..."}
-]'
-```
-
-The **local catalog is always included and always first** — the server stays
-usable with zero credentials, and adding a vendor never takes away what you
-already had.
-
-`search_assets` queries every source in parallel and merges the results into one
-ranked list; nothing in the output reveals which source answered. `get_asset` and
-`place_asset` check sources in order and take the first match.
-
-**Same-id collisions resolve by config order.** If your local catalog and vendorA
-both publish `office.desk.pod4`, the local one wins, because local is listed
-first — a deliberate override always beats a vendor default. Order the `ASSET_APIS`
-entries by the precedence you want among vendors.
-
-**One source being down does not break the others.** A failing source contributes
-nothing to a search instead of failing the call, and `get_project_info` reports
-each source's reachability by name:
-
-```json
-"assetSource": { "source": "composite", "reachable": true, "vendoredTilesets": 3,
-  "sources": [ { "name": "local", "reachable": true },
-               { "name": "vendorA", "reachable": true },
-               { "name": "vendorB", "reachable": false, "detail": "…401…" } ] }
-```
-
-Each source gets its own `HttpAssetRepository`, so host-pinning is per source: a
-redirect from vendorA to vendorB's host is refused just like any other off-host
-redirect.
+The server is fully usable with **no credentials and no network**: `content/assets/`
+is the catalog and `content/tilesets/` holds the art. There is no asset API to
+configure — the filesystem is the only source.
 
 ## Getting art
 
-**No public asset library exposes the `AssetRepository` contract this server
-expects.** We checked: [itch.io's server-side API](https://itch.io/docs/api/serverside)
-covers profiles, purchases and build versions only — no asset browsing, no
-downloads. Kenney, OpenGameArt and CraftPix have no API at all — they're zip
-downloads behind an HTML page. [Poly Haven](https://polyhaven.com/our-api) and
-[ambientCG](https://docs.ambientcg.com/api/) *do* have real JSON search APIs, but
-they serve HDRIs, 3D models and PBR textures — nothing with a tile grid, so there's
-no `{tilesetId, tileId}` to place. `ASSET_APIS` exists for when a real catalog
-API — a partner's, or one you build — does show up; until then it has nothing to
-point at.
-
-So today, art comes in by hand, in three steps:
+Art comes in by hand, in three steps — there is no importer and nothing to
+register; the MCP discovers files by scanning `content/`.
 
 **1. Download a pack.** [Kenney](https://kenney.itch.io/) (CC0, no attribution
 required) is the easiest starting point — its indoor/roguelike packs fit an
-office. OpenGameArt and itch.io have more, but **check the license on each pack
-individually**: OpenGameArt mixes CC0, CC-BY (needs attribution) and GPL
-(viral) in the same catalog, and many itch.io packs are sale-only with no
-redistribution rights. Kenney's CC0 blanket license is why it's the default
-recommendation.
+office. [Modern Exteriors / Modern Office by LimeZu](https://limezu.itch.io/modernexteriors)
+is the first commercial pack used here — **purchased, not redistributed**, so its
+files stay gitignored and each buyer brings their own. OpenGameArt and itch.io have
+more, but **check the license on each pack individually**: OpenGameArt mixes CC0,
+CC-BY (needs attribution) and GPL (viral) in the same catalog, and many itch.io
+packs are sale-only with no redistribution rights.
 
 **2. Turn it into a `.tsj` in Tiled.** File → New → New Tileset → Based on
 Tileset Image, point it at the pack's atlas PNG, save as JSON (**`.tsj`**, not
@@ -181,18 +125,8 @@ record of what you're allowed to do with each asset once more than one pack is i
 play.
 
 Every `*.json` file in `content/assets/` is merged automatically — one library per
-file, `search_assets` searches all of them as one catalog, no config needed. This
-is genuinely how you use "multiple libraries" right now: not multiple API
-sources, but multiple catalog files sitting side by side.
-
-**What's still missing to make a remote source fully usable:** even once a real
-catalog API exists and is wired up via `ASSET_APIS`, `place_asset` still requires
-the tileset to be vendored in `content/tilesets/` first — `HttpAssetRepository`
-can *find* remote assets today, but nothing yet downloads and vendors their
-tileset automatically. That's `TilesetCache` / `sync_tilesets` / `lockfile.json`,
-explicitly deferred to a later branch (see [Scope](#scope)). Until it lands, a
-remote asset's tileset has to be fetched and placed into `content/tilesets/` by
-hand, the same as everything above.
+file, `search_assets` searches all of them as one catalog, no config needed. Add a
+library by dropping another catalog file beside the others.
 
 ## Tools
 
@@ -201,13 +135,11 @@ hand, the same as everything above.
 | `get_project_info` | Conventions, map index, asset-source status, vendored tileset count. Call this first. |
 | `search_assets` | Ranked, synonym-expanded catalog search, filtered to the project tile size. Pass `showArt` to get the actual sprites back, so a person can pick by eye. |
 | `get_asset` | One asset record in full. |
-| `list_tilesets` | Which tilesets exist, and which are vendored (= usable by Tiled). |
-| `sync_tilesets` | Pull tilesets onto disk — the `.tsj` plus every image it references. `place_asset` does this on its own when art is missing. |
-| `pick_asset` | Put a shortlist in front of a person as a sprite grid in their browser and wait for them to click one. Needs an asset API that serves `/selections`. |
+| `list_tilesets` | Which tilesets exist on disk, and which are vendored (= usable by Tiled). |
 | `read_map` | Semantic view of a map plus its current diagnostics. |
 | `create_map` | New draft with the standard layer stack. |
 | `add_layer` / `place_tiles` / `add_object` / `move_object` / `remove_object` / `set_property` | Semantic mutations. |
-| `place_asset` | Place catalog art: binds the tileset, anchors the sprite, carries interaction metadata, marks collision. Fetches the tileset first if it is not on disk yet. |
+| `place_asset` | Place catalog art: binds the tileset, anchors the sprite, carries interaction metadata, marks collision. The tileset must already be a real `.tsj` in `content/tilesets/`. |
 | `add_tileset` | Bind a vendored `.tsj` as an external tileset. |
 | `validate_map` | Every structural, tileset, object, gameplay and runtime-compat rule. |
 | `save_map` | Flush the draft to `.tmj`. **Blocked by any error-severity diagnostic.** |
@@ -241,17 +173,11 @@ Git stays on the host: this server produces files, it never commits.
   directories, and non-allowlisted extensions are rejected. No tool takes a raw path.
 - **Writes** are confined to `maps/`, `tilesets/`, `assets/`, `runtime/`, `.map-mcp/`,
   and go through tmp+rename so a reader never sees a partial file.
-- **Egress** is pinned per source to that source's configured URL. A redirect to
-  another host is refused,
-  and a URL found inside a map or asset payload is *never* fetched — payloads are
-  untrusted data.
-- **Downloads** are content-type checked, size-capped, PNG-magic verified, and
-  their filenames stripped to a safe basename before anything is written.
-- **The API key** lives in the environment only: never in the image, never in a
-  log line, and redacted from every diagnostic. Rotate it by restarting the
-  session with a new value.
-- **The container** mounts only `content/`, runs as `node`, has no published
-  ports, and executes no shell.
+- **No egress.** The server makes no outbound network requests at all; catalog
+  files and tilesets are read from `content/`, and a URL found inside a map or asset
+  payload is never fetched — payloads are untrusted data.
+- **The container** mounts only `content/`, runs as `node`, has no published ports,
+  can run with `--network none`, and executes no shell.
 
 ## Testing
 
@@ -260,13 +186,7 @@ pnpm --filter map-mcp test
 ```
 
 - **Path security** — every traversal shape, written before the tools.
-- **Contract** — one `AssetRepository` suite that the local, HTTP **and composite**
-  implementations must all pass. This is what keeps the source swappable and the
-  whole suite runnable offline.
-- **Multi-source** — collision precedence, partial-failure degradation, and an
-  end-to-end run with a local catalog plus two vendor APIs through the real server.
-- **Mocked HTTP** — retry/backoff, 401, 429 with `Retry-After`, ETag 304,
-  off-host redirect, oversized payload, corrupt image, key redaction.
+- **Contract** — the `AssetRepository` suite the filesystem catalog must pass.
 - **Round-trip** — a hand-authored, Tiled-saved fixture survives
   parse → serialize → parse unchanged.
 - **Validation** — one broken fixture per rule.
@@ -289,12 +209,11 @@ check the art renders, collision looks right, and the spawn is where you meant i
 
 ## Scope
 
-This branch is the MCP server and its Docker packaging — nothing else. No changes
-to `apps/frontend/src/game/**`, no map porting, no Phaser work, no tileset
-vendoring. Deferred to later branches: `TilesetCache` + `sync_tilesets` +
-`lockfile.json`, `export_runtime_map`, `get_map_diff` / `set_map_state`,
-`open_in_tiled`, and `packages/map-schema` (the schema lives standalone in
-`src/schema/` until the Phaser work needs to share it — the same files move, the
-imports change).
+This is the MCP server and its Docker packaging — nothing else. No changes to
+`apps/frontend/src/game/**`, no map porting, no Phaser work. Assets are read from
+the filesystem; there is deliberately no asset database, asset API, or remote
+tileset sync. Deferred to later branches: `export_runtime_map`, `get_map_diff` /
+`set_map_state`, `open_in_tiled`, and `packages/map-schema` (the schema lives
+standalone in `src/schema/` until the Phaser work needs to share it).
 
 See [`docs/map-design-mcp-plan.md`](../../docs/map-design-mcp-plan.md) for the full plan.

@@ -1,8 +1,8 @@
-# `assets/` — the local asset library
+# `assets/` — the asset library
 
-The default asset source (`ASSET_SOURCE=local`), so the MCP is fully usable with
-no API credentials. Drop asset records here and `search_assets` / `get_asset`
-find them.
+The asset catalog, read straight from this folder — the filesystem is the only
+source, so the MCP is fully usable with no API and no credentials. Drop asset
+records here and `search_assets` / `get_asset` find them by scanning `assets/*.json`.
 
 Two accepted shapes:
 
@@ -46,25 +46,16 @@ the tile in the atlas (left-to-right, top-to-bottom), which Tiled shows when you
 select a tile. Both files must be present — a `.tsj` whose image is missing is a
 save-blocking error, because the map would open blank in Tiled.
 
-**There's no API to pull that art from yet.** No public asset library (Kenney,
-OpenGameArt, itch.io, CraftPix) exposes a JSON catalog — they're zip downloads.
-Download a pack by hand, check its license (Kenney is CC0 and the easiest safe
-default; OpenGameArt mixes licenses per-asset), and record it in `source.license`
-above so that's not lost once several packs are mixed together. See
+**Art comes in by hand — there's no importer or asset service.** Download a pack,
+check its license (Kenney is CC0 and the easiest safe default; commercial packs
+like LimeZu's Modern Exteriors are purchased and not redistributed), drop its
+`.tsj` + `.png` in `content/tilesets/`, and record the license in `source.license`
+above so it's not lost once several packs are mixed together. See
 [`tools/map-mcp/README.md#getting-art`](../../tools/map-mcp/README.md#getting-art)
 for the full walkthrough.
 
-## Adding remote catalogs
+## Multiple catalog files
 
-Set `ASSET_APIS` to a JSON array of `{name, url, key}` to layer one or more remote
-catalogs on top of this directory:
-
-```
-ASSET_APIS=[{"name":"vendorA","url":"https://a.example.com/v1","key":"..."}]
-```
-
-This directory is always included and always searched first, so a record here with
-the same `id` as a vendor record wins — local overrides beat vendor defaults.
-Nothing above the `AssetRepository` interface changes. The request/response mapping
-is assumed until someone points it at a live API — see
-`tools/map-mcp/src/services/assets/asset-api-dto.ts`.
+Every `*.json` file in this directory is merged into one catalog — a bare array of
+records or `{ "assets": [ … ] }` in each. Add a library by dropping another catalog
+file beside the others; `search_assets` searches them all as one. No config needed.

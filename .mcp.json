@@ -4,9 +4,7 @@
       "command": "node",
       "args": ["tools/map-mcp/dist/index.js"],
       "env": {
-        "MAP_MCP_WORKSPACE": "./content",
-        "ASSET_SOURCE": "local",
-        "ASSET_APIS": "[{\"name\":\"asset-manager\",\"url\":\"http://localhost:3300/v1\",\"key\":\"dev-key\"}]"
+        "MAP_MCP_WORKSPACE": "./content"
       }
     }
   }

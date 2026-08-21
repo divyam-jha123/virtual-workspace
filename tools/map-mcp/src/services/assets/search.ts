@@ -17,12 +17,8 @@ const SYNONYMS: Record<string, string[]> = {
 };
 
 /**
- * Query text -> the terms a source should match, synonyms included.
- *
- * This lives above the transport on purpose: the local repository matches these
- * terms itself and the HTTP repository sends them as `q`, so "table" finds a desk
- * whichever source answered. Expanding in only one of them is exactly the kind of
- * divergence the shared contract suite exists to catch.
+ * Query text -> the terms the catalog should match, synonyms included, so that
+ * "table" finds a desk.
  */
 export function expandQueryTerms(query: string): string[] {
   const base = query.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);

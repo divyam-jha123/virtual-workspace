@@ -16,8 +16,8 @@ presence feel spatial and spontaneous instead of scheduled and gridded.
 - **Proximity audio/video** — audio/video subscriptions turn on/off based on how close you
   are to others, with volume fading by distance.
 - **Multiple spaces**, screen-share, and chat (later phases).
-- **Maps and art are authored through tooling in `tools/`** — a map MCP server that writes
-  Tiled files, and an Asset Manager that holds the art library.
+- **Maps are authored through tooling in `tools/`** — a map MCP server that writes Tiled
+  files, using art that lives on the filesystem under `content/`.
 - Built toward **multi-tenant org accounts** and enterprise hardening (SSO, SCIM, audit
   logs, data residency) down the line.
 
@@ -32,7 +32,7 @@ presence feel spatial and spontaneous instead of scheduled and gridded.
 | Real-time A/V    | LiveKit (LiveKit Cloud)                                       |
 | Frontend         | Phaser / PixiJS game engine + UI overlay                      |
 | Monorepo tooling | pnpm workspaces + Turborepo, TypeScript throughout            |
-| Map & art tooling | Tiled maps authored via an MCP server, art via the Asset Manager |
+| Map & art tooling | Tiled maps authored via an MCP server; art is files under `content/` |
 
 ## Repository layout
 
@@ -46,10 +46,9 @@ virtual-workspace/
 │   ├── protocol     # LiveKit data-message schema + versioning
 │   └── config       # shared lint/tsconfig/env config
 ├── tools/
-│   ├── map-mcp/     # MCP server that authors Tiled maps in content/
-│   └── asset-manager/ # art library: import art, mint assets, serve them to map-mcp
+│   └── map-mcp/     # MCP server that authors Tiled maps in content/
 ├── content/         # the map workspace: maps/, tilesets/, assets/ (opened in Tiled)
-├── infra/docker/    # three compose files — see "Services and containers"
+├── infra/docker/    # two compose files — see "Services and containers"
 ├── docs/            # proposal and design docs
 └── scripts/
 ```
@@ -61,7 +60,7 @@ There are **two separate stacks** in this repo, and you rarely need both at once
 | I want to... | Start this |
 |---|---|
 | walk an avatar around, test multiplayer | the **product** stack — backend + frontend + Postgres (+ LiveKit) |
-| import art, design a map, open it in Tiled | the **map tooling** stack — Asset Manager + the map MCP |
+| design a map, open it in Tiled | the **map MCP** — no server, no database; art is files under `content/` |
 
 Both share `pnpm install` from the repo root (it is a pnpm workspace — never install inside a
 sub-package).
@@ -73,12 +72,11 @@ corepack enable       # if `pnpm: command not found`
 
 ### Services and containers
 
-Three compose files, deliberately separate:
+Two compose files, deliberately separate:
 
 | Compose file | Runs | Ports |
 |---|---|---|
 | `docker-compose.yml` | product Postgres | `5432` |
-| `docker-compose.asset-manager.yml` | Asset Manager API + UI, and opt-in local Postgres | `3300` API, `3301` UI, `5434` db |
 | `docker-compose.map-mcp.yml` | the map MCP image | none |
 
 `map-mcp` is **not a daemon** — `docker compose up` is the wrong verb for it. The MCP client
@@ -106,42 +104,18 @@ The frontend alone is single-player and needs none of the above. See
 [Database (Postgres)](#database-postgres) for DB setup and
 [Playing together (multiplayer)](#playing-together-multiplayer) for the `.env` + LiveKit steps.
 
-### Start the map tooling stack
+### Start the map MCP
 
-The Asset Manager's database lives on **Neon** (hosted Postgres), so put both connection
-strings in `tools/asset-manager/.env` first — see
-[`tools/asset-manager/DEVELOPMENT.md`](./tools/asset-manager/DEVELOPMENT.md). Then:
-
-```bash
-docker compose -f infra/docker/docker-compose.asset-manager.yml up -d --build
-```
-
-Prefer a local Postgres instead of Neon? Add the `localdb` profile, which also starts the
-database container:
+There is **no server and no database** to start. The MCP runs on demand over stdio (Claude Code
+launches it per session via `.mcp.json`), and it reads art straight from `content/`. The only
+setup on a fresh clone is building it once, because `dist/` is not committed:
 
 ```bash
-docker compose -f infra/docker/docker-compose.asset-manager.yml --profile localdb up -d --build
+pnpm --filter map-mcp build     # then ask Claude Code to design a map
 ```
 
-- UI  → **http://localhost:3301**
-- API → **http://localhost:3300** (`/health` is open, `/v1` needs the key, `/api` is localhost-only)
-
-Check it came up:
-
-```bash
-curl localhost:3300/health          # {"status":"ok","db":true,...}
-```
-
-First run on an empty database, load the repo's office art:
-
-```bash
-ASSET_MANAGER_SEED=true docker compose -f infra/docker/docker-compose.asset-manager.yml up -d --build
-```
-
-> **If the container loops on `database not ready (attempt n/10)`** it cannot reach the
-> database. Without the `localdb` profile there is no database container, so `DATABASE_URL`
-> **must** point at Neon. Note that inside the container `localhost` is the container itself —
-> a host-style URL like `localhost:5434` will never resolve from in there.
+See [Designing maps](#designing-maps) below for the workflow and
+[`tools/map-mcp/README.md`](./tools/map-mcp/README.md) for the tool reference.
 
 ## Running the frontend
 
@@ -283,84 +257,109 @@ If you set `PORT=3000` instead, you can drop the `VITE_BACKEND_URL=...` part.
 - You don't see the other person → both windows must be on the same map, and open the browser console: if it says `running offline`, the frontend couldn't reach the backend (wrong port, or the backend isn't running).
 - Both windows show up as the same person → use one normal and one Incognito window (each needs its own saved character).
 
-## Designing maps and art
+## Designing maps
 
 Maps are Tiled `.tmj` files in `content/maps/`, built by asking Claude Code (which drives the
-**map MCP**) and reviewed by opening them in Tiled. Art comes from the **Asset Manager**.
+**map MCP**) and reviewed by opening them in Tiled. The architecture is deliberately small —
+**no asset database, no asset service**. Tiled is the source of truth for maps, the filesystem
+is the source of truth for art, and the MCP is the thing in the middle that reads both.
 
 ```
-  your art (.zip)
-       |  http://localhost:3301/import  ->  review  ->  Commit
-       v
-  tileset in the library
-       |  mint asset records (tileset inspector, or a catalog.json in the zip)
-       v
-  ask Claude: "put a desk at 3,4"
-       |  place_asset -- pulls the .tsj + images into content/tilesets/ automatically
-       v
-  save_map  ->  open content/maps/<name>.tmj in Tiled
+        Claude Code
+            │
+            │ MCP (stdio)
+            ▼
+        ┌─────────────┐
+        │   Map MCP   │   map tools · tileset tools · preview · validation
+        └──────┬──────┘
+          ┌────┴─────┐
+          ▼          ▼
+        Tiled      Assets
+      .tmj/.tsj   content/
+          │
+          ▼
+        Phaser  (game — future; today you review in Tiled)
 ```
 
-### Bring your own art
+| Component | Responsibility |
+|---|---|
+| **Claude Code** | Drives the MCP tools to author a map on your behalf |
+| **Map MCP** (`tools/map-mcp`) | Create/read/update/validate maps; discover tilesets and assets from `content/` |
+| **Tiled** | The map format (`.tmj`) and the review surface — source of truth for maps |
+| **Assets** (`content/`) | Tilesets (`.tsj` + `.png`) and the asset catalog — source of truth for art, on the filesystem |
+| **Phaser** | Loads the finished `.tmj` in-game (a later phase; not wired yet) |
 
-**This repo ships code, not art.** `content/tiles/`, the vendored `*.png`/`*.tsj`, and
-`content/assets/catalog.json` are gitignored — the sample pack used during development came
-with no license file, so it cannot be redistributed (see `content/tiles/ATTRIBUTION.md`).
+### How art lives on the filesystem
 
-So on a fresh clone the asset library starts empty, and `pnpm seed` will tell you so rather
-than failing cryptically. Fill it through the importer instead:
+There is no importer and no library service. Art is just files under `content/`:
+
+```
+content/
+├── assets/
+│   └── catalog.json      # asset records: id, category, tileSize, tilesetId, tileId, collision…
+└── tilesets/
+    ├── <pack>.tsj        # a Tiled tileset (JSON) — the only kind a map may reference
+    └── <pack>.png        # the atlas image the .tsj names
+```
+
+The MCP discovers everything by **scanning those folders** at call time — `search_assets` reads
+`content/assets/*.json`, and `list_tilesets` reports whatever `.tsj` files are present in
+`content/tilesets/`. Add a pack by dropping its files in; there is nothing to register.
+
+### Adding a new asset pack
+
+```
+Download / buy an asset pack
+        ↓
+Put its .tsj + .png in content/tilesets/,
+add asset records to content/assets/catalog.json
+        ↓
+MCP discovers the tileset (list_tilesets / search_assets)
+        ↓
+Ask Claude to place it → build the .tmj
+        ↓
+Open content/maps/<name>.tmj in Tiled to review (Phaser later)
+```
+
+A tileset is a sheet of pixels; a **catalog record** turns one tile into placeable art — "tile
+21 is a 2×2 desk that blocks movement and seats one." A `.tsj` with no matching catalog record
+is still a valid tileset, it just won't show up in `search_assets`. See
+[`content/assets/README.md`](./content/assets/README.md) for the record shape and
+[`content/tilesets/README.md`](./content/tilesets/README.md) for the tileset files.
+
+**This repo ships code, not art.** The vendored `*.png`/`*.tsj` and `content/assets/catalog.json`
+are gitignored, so on a fresh clone the library starts empty — bring your own:
 
 - [Kenney](https://kenney.nl/assets) — CC0, no attribution required, the easiest start
+- [Modern Exteriors / Modern Office by LimeZu](https://limezu.itch.io/modernexteriors) — the
+  first commercial pack used here; **purchased, not redistributed** (check its license before
+  committing anything, and record it in each asset's `source.license`)
 - [OpenGameArt](https://opengameart.org/) / [itch.io](https://itch.io/game-assets) — check each
   pack's license
-- anything you drew yourself
 
-Aim for **16x16** art; see the next section for why that matters.
-
-### Getting art in
-
-Drop a `.zip`, `.png`, `.tsx`, `.tsj` or `catalog.json` on the Import page. Two things decide
-whether it becomes usable art, and both are easy to miss:
-
-1. **A zip needs a `.tsx` or `.tsj` in it.** Tilesets are built only from those. A zip of bare
-   PNGs — which is what most free packs are — imports cleanly and produces *nothing placeable*,
-   with no warning. If yours has no `.tsx`, make one in Tiled (New Tileset, based on an image
-   or as a collection), save it beside the images, and zip them together.
-2. **A tileset is not yet placeable art.** A tileset is a sheet of pixels; an asset is "tile 21
-   is a 2x2 desk that blocks movement and seats one." Create them in the tileset inspector
-   (click a tile to get its `tileId`), or ship a `catalog.json` in the zip to ingest a whole
-   pack at once.
-
-On the review screen, check `placeable: true` and that every image is present. A non-16px
-**grid** atlas is stored but hidden from the MCP forever. Collection tilesets are fine at any
-size — they are normalised to the 16px grid on import.
+Aim for **16×16** art — that is the project tile size, and `search_assets` filters out art drawn
+for another grid because it cannot be placed on the map at all.
 
 ### Building a map
 
 Just ask. The MCP tools handle the rest:
 
 - `search_assets` — find art; pass `showArt` to see the actual sprites and choose by eye
-- `pick_asset` — hand a shortlist to a person as a sprite grid at `/pick/<token>` and wait for
-  the click (needs the Asset Manager running)
 - `place_asset` / `place_tiles` / `add_object` — build the map
-- `sync_tilesets` — pull art onto disk; `place_asset` does this on its own when art is missing
+- `validate_map` — check it against the project conventions
 - `save_map` — refuses to write an invalid map, so if it saves, Tiled will open it
 
 **Every map needs a spawn point**, or `save_map` blocks with `spawn-missing`. That one catches
-everyone.
-
-There is no manual "vendor" step any more. Art is fetched into `content/tilesets/` when a
-placement needs it. `pnpm vendor` in `tools/asset-manager` still exists for pushing a whole
-pack offline plus the reproducibility lockfile.
+everyone. A map may only reference tilesets that are real `.tsj` files in `content/tilesets/`,
+because Tiled and the game load them straight from disk.
 
 ### Reviewing the result
 
 Open `content/maps/<name>.tmj` in [Tiled](https://www.mapeditor.org/). The game does not render
 these maps yet — Tiled is the review surface.
 
-Design notes for this tooling: [`docs/map-design-mcp-plan.md`](./docs/map-design-mcp-plan.md),
-[`tools/map-mcp/README.md`](./tools/map-mcp/README.md) and
-[`tools/asset-manager/README.md`](./tools/asset-manager/README.md).
+Design notes for this tooling: [`docs/map-design-mcp-plan.md`](./docs/map-design-mcp-plan.md)
+and [`tools/map-mcp/README.md`](./tools/map-mcp/README.md).
 
 ## Architecture at a glance
 

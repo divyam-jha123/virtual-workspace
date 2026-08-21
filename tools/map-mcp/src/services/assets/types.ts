@@ -1,11 +1,10 @@
 /**
  * The asset seam.
  *
- * Two integration rules keep it clean:
- *  1. Nothing above `AssetRepository` handles a URL, a header, or a filesystem path.
- *  2. `AssetRecord` is the only asset shape that crosses the interface.
- *
- * Follow those and swapping `local` for `api` is an env var, not a refactor.
+ * `AssetRecord` is the only asset shape that crosses the interface, and nothing
+ * above `AssetRepository` handles a filesystem path. Assets live on disk under
+ * the workspace `assets/` and `tilesets/` folders; there is no asset database or
+ * asset service — the filesystem is the source of truth.
  */
 
 export type AssetPlacement = "floor" | "wall" | "ceiling" | "overlay";
@@ -90,45 +89,12 @@ export interface ImageBlob {
 /** Opaque tileset JSON; the MCP parses it but never authors it. */
 export type TilesetJson = Record<string, unknown>;
 
-export type SelectionStatus = "pending" | "chosen" | "cancelled" | "expired";
-
-/**
- * A "which of these?" question handed to a person to answer in a browser.
- *
- * The catalog itself cannot host one — it needs somewhere to park the question
- * and a page to render it — so these methods are optional on the seam and only
- * an HTTP source implements them.
- */
-export interface SelectionSession {
-  token: string;
-  prompt: string;
-  status: SelectionStatus;
-  candidateIds: string[];
-  chosenId: string | null;
-  /** ISO timestamp after which the question stops accepting an answer. */
-  expiresAt: string;
-  /** Where the person goes to answer. Absent if the source did not supply one. */
-  url?: string;
-}
-
-export interface CreateSelectionInput {
-  prompt: string;
-  candidateIds: string[];
-  ttlSeconds?: number;
-}
-
 export interface AssetRepository {
   /** Human-readable source label, surfaced by `get_project_info`. */
-  readonly kind: "local" | "api" | "composite";
+  readonly kind: "local";
   get(id: string): Promise<AssetRecord | null>;
   search(query: AssetQuery): Promise<AssetRecord[]>;
   listTilesets(): Promise<TilesetRef[]>;
-  fetchTileset(id: string, version?: string): Promise<{ tsj: TilesetJson; images: ImageBlob[] }>;
   /** Cheap reachability probe. Never throws. */
   health(): Promise<{ reachable: boolean; detail?: string }>;
-
-  // --- optional: browser handshake, HTTP sources only ---
-  createSelection?(input: CreateSelectionInput): Promise<SelectionSession>;
-  readSelection?(token: string): Promise<SelectionSession>;
-  cancelSelection?(token: string): Promise<SelectionSession>;
 }

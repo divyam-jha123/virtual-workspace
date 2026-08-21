@@ -42,11 +42,10 @@ coverage/
 # art out is a licensing requirement, not a preference.
 #
 # Everything below is either that art or regenerable from it:
-#   tiles/        source art (the seed's input)
-#   *.png         atlases and per-tile sprites pulled/vendored into tilesets/
-#   *.tsj         tileset definitions written by sync_tilesets / vendor
-#   catalog.json  asset records written by the vendor step
-#   *.lock.json   hashes of whatever art was vendored
+#   tiles/        source art
+#   *.png         atlas and per-tile sprite images placed in tilesets/
+#   *.tsj         tileset definitions that accompany the art
+#   catalog.json  asset records describing the art
 #
 # Hand-authored .tsx tileset definitions ARE tracked: they are metadata, not
 # pixels, and they are what a new pack needs in order to import at all.
@@ -56,6 +55,3 @@ content/tilesets/*.png
 content/tilesets/*.tsj
 content/tilesets/*.lock.json
 content/assets/catalog.json
-
-# Local object store for the Asset Manager (bytes live in Postgres' sibling volume).
-tools/asset-manager/storage/

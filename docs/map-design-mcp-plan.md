@@ -1,5 +1,17 @@
 # Dockerized Map-Design MCP — Implementation Plan (rev 2)
 
+> **SUPERSEDED (rev 3, 2026-08): the asset-API architecture below was dropped.**
+> The external asset-library API, `HttpAssetRepository` / `CompositeAssetRepository`,
+> `AssetApiDto`, the browser "selection" handshake, `sync_tilesets`, `pick_asset`,
+> the `lockfile.json` / `TilesetCache`, and the separate Asset Manager app were all
+> **removed** in favour of a much smaller design: **the filesystem is the source of
+> truth for art.** The MCP scans `content/assets/*.json` and `content/tilesets/*.tsj`
+> directly — no database, no asset service, no network. Wherever this document
+> mentions an asset API, `ASSET_API_URL`/`ASSET_APIS`, HTTP repositories, remote
+> vendoring or tileset sync, treat it as **historical**. The current architecture
+> and tool list live in [`../README.md`](../README.md) and
+> [`../tools/map-mcp/README.md`](../tools/map-mcp/README.md).
+
 Status: **B1–B6 implemented** in `tools/map-mcp` (see its README). Branch: `feature/map-design-mcp`.
 The rest of this document is unchanged and still describes the full programme; only the
 "Rev 3 — Scope of this branch" subset has shipped.

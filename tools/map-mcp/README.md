@@ -34,7 +34,8 @@ Then register it with Claude Code:
       "env": { "MAP_MCP_WORKSPACE": "./content" }
     }
   }
-}
+}     
+
 ```
 
 For an edit-reload loop use `pnpm --filter map-mcp dev` (tsx watch) against `./content`.
@@ -86,8 +87,9 @@ configure — the filesystem is the only source.
 
 ## Getting art
 
-Art comes in by hand, in three steps — there is no importer and nothing to
-register; the MCP discovers files by scanning `content/`.
+There is one importer, for the LimeZu pack ([below](#the-limezu-importer)).
+Anything else comes in by hand, in three steps — nothing to register either way;
+the MCP discovers files by scanning `content/`.
 
 **1. Download a pack.** [Kenney](https://kenney.itch.io/) (CC0, no attribution
 required) is the easiest starting point — its indoor/roguelike packs fit an
@@ -127,6 +129,41 @@ play.
 Every `*.json` file in `content/assets/` is merged automatically — one library per
 file, `search_assets` searches all of them as one catalog, no config needed. Add a
 library by dropping another catalog file beside the others.
+
+### The LimeZu importer
+
+Modern Exteriors is big enough that steps 2 and 3 are automated. Unzip the pack
+into `tools/map-mcp/modernexteriors-win/` (gitignored — it is per-buyer art) and
+run:
+
+```bash
+node tools/map-mcp/scripts/import-limezu.mjs --list          # what themes exist
+node tools/map-mcp/scripts/import-limezu.mjs                 # office, city_props, garden, terrains
+node tools/map-mcp/scripts/import-limezu.mjs --themes school,vehicles
+node tools/map-mcp/scripts/import-limezu.mjs --all --dry-run # see the totals first
+```
+
+Per theme it writes `content/tilesets/limezu-<theme>.tsj`, the object PNGs
+beside it, and `content/assets/limezu-<theme>-catalog.json`. Rerunning is safe;
+it overwrites. Restart the MCP server afterwards — it scans the workspace once,
+at startup.
+
+It reads the pack's **Singles** folders, not the theme atlases. An asset here is
+one tile drawn at `dimensions × 16` px, so a 2×3 tree has to be a single 32×48
+tile — which is exactly what a single is, already named and already on the grid
+(every single in the 16px pack is a multiple of 16, so the pixels are copied
+untouched and nothing is rescaled). Slicing the atlas would give a thousand
+nameless 16px fragments instead.
+
+Category, placement, collision and gameplay class are **guessed from the object's
+filename** by the rule tables in the script. They are right often enough to
+search and place with, and wrong sometimes — a bin that should block, a sign that
+should hang on a wall. Fix the rule and rerun, rather than hand-editing a
+generated catalog: the next import would overwrite it.
+
+The RPG Maker MV export that ships in the same purchase (`Modern_Exteriors_RPG_Maker_MV/`)
+is not importable — MV tilesets are a 48px A1–A5 autotile layout, a different
+grid and a different addressing scheme from this project's 16px Tiled maps.
 
 ## Tools
 

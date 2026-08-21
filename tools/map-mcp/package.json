@@ -19,7 +19,8 @@
     "lint": "tsc -p tsconfig.json --noEmit",
     "placeholder-art": "node scripts/make-placeholder-tileset.mjs",
     "office-art": "node scripts/make-office-tileset.mjs",
-    "office-map": "node scripts/make-office-hq.mjs"
+    "office-map": "node scripts/make-office-hq.mjs",
+    "import-limezu": "node scripts/import-limezu.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",

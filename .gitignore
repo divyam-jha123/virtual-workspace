@@ -55,3 +55,13 @@ content/tilesets/*.png
 content/tilesets/*.tsj
 content/tilesets/*.lock.json
 content/assets/catalog.json
+
+# Purchased art packs unzipped in place (LimeZu Modern Exteriors, RPG Maker MV
+# export). Licensed per-buyer, ~350MB, and redistribution is not granted — the
+# importer reads them from here, but they must never be committed.
+tools/map-mcp/modernexteriors-win/
+tools/map-mcp/Modern_Exteriors_RPG_Maker_MV/
+tools/map-mcp/packs/
+
+# Everything the LimeZu importer generates is derived from that art.
+content/assets/limezu-*.json

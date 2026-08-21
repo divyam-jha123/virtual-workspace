@@ -1,8 +1,8 @@
 import path from "node:path";
 import { MapMcpError, redact } from "../../errors.js";
-import { assetPath, authHeaders, searchPath, tilesetPath, tilesetsPath, toAssetRecord, toAssetRecords, toTilesetRefs } from "./asset-api-dto.js";
+import { assetPath, authHeaders, searchPath, tilesetPath, tilesetsPath, toAssetRecord, toAssetRecords, toSelectionSession, toTilesetRefs } from "./asset-api-dto.js";
 import { rank } from "./search.js";
-import type { AssetQuery, AssetRecord, AssetRepository, ImageBlob, TilesetJson, TilesetRef } from "./types.js";
+import type { AssetQuery, AssetRecord, AssetRepository, CreateSelectionInput, ImageBlob, SelectionSession, TilesetJson, TilesetRef } from "./types.js";
 
 export interface HttpAssetRepositoryOptions {
   baseUrl: string;
@@ -93,10 +93,15 @@ export class HttpAssetRepository implements AssetRepository {
     }
   }
 
-  private async request(url: URL, accept: string, etag?: string): Promise<Response> {
+  private async request(url: URL, accept: string, etag?: string, init?: { method?: string; body?: string }): Promise<Response> {
     if (this.offline) {
       throw unavailable("MAP_MCP_OFFLINE is set; no outbound request was attempted", "Unset MAP_MCP_OFFLINE, or use ASSET_SOURCE=local.");
     }
+
+    const method = init?.method ?? "GET";
+    // GET is idempotent, so a retry is free. A POST is not: retrying a create
+    // that actually succeeded would leave a duplicate behind, so it gets one shot.
+    const maxRetries = method === "GET" ? this.maxRetries : 0;
 
     let attempt = 0;
     let current = url;
@@ -107,14 +112,20 @@ export class HttpAssetRepository implements AssetRepository {
       let response: Response;
       try {
         response = await this.fetchImpl(current, {
-          method: "GET",
+          method,
           redirect: "manual",
           signal: controller.signal,
-          headers: { accept, ...authHeaders(this.options.apiKey), ...(etag ? { "if-none-match": etag } : {}) },
+          ...(init?.body === undefined ? {} : { body: init.body }),
+          headers: {
+            accept,
+            ...authHeaders(this.options.apiKey),
+            ...(etag ? { "if-none-match": etag } : {}),
+            ...(init?.body === undefined ? {} : { "content-type": "application/json" }),
+          },
         });
       } catch (err) {
         clearTimeout(timer);
-        if (attempt < this.maxRetries) {
+        if (attempt < maxRetries) {
           await this.sleep(backoffMs(attempt++));
           continue;
         }
@@ -140,7 +151,7 @@ export class HttpAssetRepository implements AssetRepository {
         );
       }
 
-      if ((response.status === 429 || response.status >= 500) && attempt < this.maxRetries) {
+      if ((response.status === 429 || response.status >= 500) && attempt < maxRetries) {
         const retryAfter = Number(response.headers.get("retry-after"));
         await this.sleep(Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1000 : backoffMs(attempt));
         attempt += 1;
@@ -264,6 +275,49 @@ export class HttpAssetRepository implements AssetRepository {
     }
 
     return { filename, contentType: "image/png", bytes };
+  }
+
+  // --- selection handshake --------------------------------------------------
+
+  async createSelection(input: CreateSelectionInput): Promise<SelectionSession> {
+    return this.selectionCall("/selections", {
+      method: "POST",
+      body: JSON.stringify({
+        prompt: input.prompt,
+        candidateIds: input.candidateIds,
+        ...(input.ttlSeconds === undefined ? {} : { ttlSeconds: input.ttlSeconds }),
+      }),
+    });
+  }
+
+  async readSelection(token: string): Promise<SelectionSession> {
+    // Never ETag-cached: a poll must see the answer the instant it lands.
+    return this.selectionCall(`/selections/${encodeURIComponent(token)}`);
+  }
+
+  async cancelSelection(token: string): Promise<SelectionSession> {
+    return this.selectionCall(`/selections/${encodeURIComponent(token)}/cancel`, { method: "POST" });
+  }
+
+  private async selectionCall(relative: string, init?: { method?: string; body?: string }): Promise<SelectionSession> {
+    const response = await this.request(this.urlFor(relative), "application/json", undefined, init);
+    if (response.status === 404) {
+      throw new MapMcpError("NOT_FOUND", "That selection no longer exists — it may have expired.", {
+        rule: "selection-missing",
+        fix: "Ask again to get a fresh link.",
+      });
+    }
+    if (!response.ok) {
+      throw unavailable(`Asset API returned ${response.status} for ${relative}`, "Retry, or choose an asset directly by id.");
+    }
+    const text = await this.readCapped(response);
+    let payload: unknown;
+    try {
+      payload = JSON.parse(text);
+    } catch {
+      throw unavailable(`Asset API returned non-JSON for ${relative}`, "Report this to the asset API owner.");
+    }
+    return toSelectionSession(payload);
   }
 
   async health(): Promise<{ reachable: boolean; detail?: string }> {

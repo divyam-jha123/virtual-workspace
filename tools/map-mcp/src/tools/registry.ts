@@ -14,10 +14,20 @@ export interface ToolContext {
 
 export type ToolModule = (server: McpServer, context: ToolContext) => void;
 
+export type ToolContent =
+  | { type: "text"; text: string }
+  | { type: "image"; data: string; mimeType: string };
+
 export interface ToolResult {
-  content: Array<{ type: "text"; text: string }>;
+  content: ToolContent[];
   isError?: boolean;
   [key: string]: unknown;
+}
+
+/** A tool answer that shows art alongside its JSON envelope. */
+export interface MediaPayload {
+  data: Record<string, unknown>;
+  images?: Array<{ mimeType: string; bytes: Uint8Array }>;
 }
 
 function asText(payload: unknown): string {
@@ -30,8 +40,27 @@ function asText(payload: unknown): string {
  * the point — it is what lets the model correct itself instead of guessing.
  */
 export async function respond(run: () => Promise<Record<string, unknown>>): Promise<ToolResult> {
+  return respondWithMedia(async () => ({ data: await run() }));
+}
+
+/**
+ * Same envelope and same error path as `respond`, plus image blocks appended
+ * after the text. The JSON stays first and stays complete, so a client that
+ * ignores images loses nothing.
+ */
+export async function respondWithMedia(run: () => Promise<MediaPayload>): Promise<ToolResult> {
   try {
-    return { content: [{ type: "text", text: asText({ ok: true, ...(await run()) }) }] };
+    const { data, images = [] } = await run();
+    return {
+      content: [
+        { type: "text", text: asText({ ok: true, ...data }) },
+        ...images.map((image) => ({
+          type: "image" as const,
+          data: Buffer.from(image.bytes).toString("base64"),
+          mimeType: image.mimeType,
+        })),
+      ],
+    };
   } catch (err) {
     return { content: [{ type: "text", text: asText(toEnvelope(err)) }], isError: true };
   }

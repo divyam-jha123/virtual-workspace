@@ -16,8 +16,8 @@ describe("discovery", () => {
     const names = (await h.client.listTools()).tools.map((tool) => tool.name).sort();
     expect(names).toEqual([
       "add_layer", "add_object", "add_tileset", "create_map", "get_asset", "get_project_info",
-      "list_tilesets", "move_object", "place_asset", "place_tiles", "read_map", "remove_object",
-      "save_map", "search_assets", "set_property", "validate_map",
+      "list_tilesets", "move_object", "pick_asset", "place_asset", "place_tiles", "read_map", "remove_object",
+      "save_map", "search_assets", "set_property", "sync_tilesets", "validate_map",
     ]);
   });
 

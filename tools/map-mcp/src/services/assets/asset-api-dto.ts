@@ -10,15 +10,19 @@
  *   GET  /assets/{id}                  -> AssetDto
  *   GET  /tilesets                     -> { items: TilesetDto[] }
  *   GET  /tilesets/{id}.tsj?version=   -> Tiled tileset JSON
+ *   POST /selections                   -> SelectionDto   (the browser handshake)
+ *   GET  /selections/{token}           -> SelectionDto
+ *   POST /selections/{token}/cancel    -> SelectionDto
  *   GET  <image path from the .tsj>    -> binary, resolved against the API host
  *
  * Auth: `Authorization: Bearer <ASSET_API_KEY>` plus `X-API-Key`, because APIs
  * disagree about which one they want and sending both is harmless.
  */
 
+import { MapMcpError } from "../../errors.js";
 import { parseAssetRecord } from "./record.js";
 import { expandQueryTerms } from "./search.js";
-import type { AssetQuery, AssetRecord, TilesetRef } from "./types.js";
+import type { AssetQuery, AssetRecord, SelectionSession, SelectionStatus, TilesetRef } from "./types.js";
 
 export function searchPath(query: AssetQuery): string {
   const params = new URLSearchParams();
@@ -103,4 +107,53 @@ export function toTilesetRefs(payload: unknown): TilesetRef[] {
     });
   }
   return refs;
+}
+
+const SELECTION_STATUSES = new Set<SelectionStatus>(["pending", "chosen", "cancelled", "expired"]);
+
+/**
+ * Parse a selection payload. Everything here is remote data, so an unrecognised
+ * status is treated as "pending" rather than trusted: the worst case is one more
+ * poll, whereas trusting a bad value could end the wait on an answer that never
+ * came.
+ *
+ * `url` is validated as a URL but deliberately NOT host-pinned — the pick page is
+ * a link shown to a person, not something this process fetches.
+ */
+export function toSelectionSession(payload: unknown): SelectionSession {
+  if (!payload || typeof payload !== "object") {
+    throw new MapMcpError("INVALID_ARGUMENT", "Asset API returned a selection that is not an object", {
+      rule: "selection-shape",
+      fix: "Report this to the asset API owner.",
+    });
+  }
+  const raw = payload as Record<string, unknown>;
+  if (typeof raw.token !== "string" || raw.token === "") {
+    throw new MapMcpError("INVALID_ARGUMENT", "Asset API returned a selection with no token", {
+      rule: "selection-shape",
+      fix: "Report this to the asset API owner.",
+    });
+  }
+  const status = typeof raw.status === "string" && SELECTION_STATUSES.has(raw.status as SelectionStatus)
+    ? (raw.status as SelectionStatus)
+    : "pending";
+
+  let url: string | undefined;
+  if (typeof raw.url === "string") {
+    try {
+      url = new URL(raw.url).href;
+    } catch {
+      url = undefined;
+    }
+  }
+
+  return {
+    token: raw.token,
+    prompt: typeof raw.prompt === "string" ? raw.prompt : "",
+    status,
+    candidateIds: Array.isArray(raw.candidateIds) ? raw.candidateIds.filter((id): id is string => typeof id === "string") : [],
+    chosenId: typeof raw.chosenId === "string" ? raw.chosenId : null,
+    expiresAt: typeof raw.expiresAt === "string" ? raw.expiresAt : new Date(0).toISOString(),
+    ...(url ? { url } : {}),
+  };
 }

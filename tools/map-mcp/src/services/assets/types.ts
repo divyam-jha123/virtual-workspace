@@ -90,6 +90,33 @@ export interface ImageBlob {
 /** Opaque tileset JSON; the MCP parses it but never authors it. */
 export type TilesetJson = Record<string, unknown>;
 
+export type SelectionStatus = "pending" | "chosen" | "cancelled" | "expired";
+
+/**
+ * A "which of these?" question handed to a person to answer in a browser.
+ *
+ * The catalog itself cannot host one — it needs somewhere to park the question
+ * and a page to render it — so these methods are optional on the seam and only
+ * an HTTP source implements them.
+ */
+export interface SelectionSession {
+  token: string;
+  prompt: string;
+  status: SelectionStatus;
+  candidateIds: string[];
+  chosenId: string | null;
+  /** ISO timestamp after which the question stops accepting an answer. */
+  expiresAt: string;
+  /** Where the person goes to answer. Absent if the source did not supply one. */
+  url?: string;
+}
+
+export interface CreateSelectionInput {
+  prompt: string;
+  candidateIds: string[];
+  ttlSeconds?: number;
+}
+
 export interface AssetRepository {
   /** Human-readable source label, surfaced by `get_project_info`. */
   readonly kind: "local" | "api" | "composite";
@@ -99,4 +126,9 @@ export interface AssetRepository {
   fetchTileset(id: string, version?: string): Promise<{ tsj: TilesetJson; images: ImageBlob[] }>;
   /** Cheap reachability probe. Never throws. */
   health(): Promise<{ reachable: boolean; detail?: string }>;
+
+  // --- optional: browser handshake, HTTP sources only ---
+  createSelection?(input: CreateSelectionInput): Promise<SelectionSession>;
+  readSelection?(token: string): Promise<SelectionSession>;
+  cancelSelection?(token: string): Promise<SelectionSession>;
 }

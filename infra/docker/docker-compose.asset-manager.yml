@@ -1,0 +1,68 @@
+# Asset Manager — dev tooling for the map MCP's 2D art pipeline.
+#
+#   docker compose -f infra/docker/docker-compose.asset-manager.yml up --build
+#
+# Brings up its own Postgres (port 5434 on the host, to avoid the Phase-1 DB on
+# 5432) and one app container running the API (3300) + UI (3301). The repo's
+# content/ directory is bind-mounted so vendoring writes tilesets and the asset
+# catalog straight into the map-mcp workspace.
+services:
+  # Local Postgres. Opt-in via the "localdb" profile, because the database now
+  # normally lives on Neon:
+  #   docker compose -f ... --profile localdb up
+  # Keep it for the test database, which must never point at real data.
+  asset-db:
+    image: postgres:16
+    container_name: vw-asset-manager-db
+    profiles: ['localdb']
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: asset_manager
+      POSTGRES_PASSWORD: asset_manager
+      POSTGRES_DB: asset_manager
+    ports:
+      - '5434:5432'
+    volumes:
+      - vw-asset-manager-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U asset_manager -d asset_manager']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  asset-manager:
+    build:
+      context: ../..
+      dockerfile: tools/asset-manager/Dockerfile
+    image: vorkium/asset-manager:dev
+    container_name: vw-asset-manager
+    restart: unless-stopped
+    # No depends_on: the database is normally Neon, not a sibling container, and
+    # Compose refuses a dependency on a profiled service. The entrypoint retries
+    # migrations instead, which also covers a Neon instance waking from idle.
+    ports:
+      - '3300:3300' # API: /v1 (MCP contract) + /api (UI backend)
+      - '3301:3301' # UI: Next.js
+    environment:
+      PORT: '3300'
+      # Real credentials come from infra/docker/.env or your shell — never commit
+      # them here. Falls back to the sibling container when you run --profile localdb.
+      DATABASE_URL: ${DATABASE_URL:-postgresql://asset_manager:asset_manager@asset-db:5432/asset_manager?schema=public}
+      DIRECT_DATABASE_URL: ${DIRECT_DATABASE_URL:-${DATABASE_URL:-postgresql://asset_manager:asset_manager@asset-db:5432/asset_manager?schema=public}}
+      ASSET_MANAGER_API_KEY: ${ASSET_MANAGER_API_KEY:-dev-key}
+      ASSET_MANAGER_STORAGE_DIR: /data/storage
+      MAP_MCP_CONTENT_DIR: /content
+      ASSET_MANAGER_CORS_ORIGINS: http://localhost:3301,http://127.0.0.1:3301,http://localhost:3300
+      ASSET_MANAGER_INTERNAL_API: http://localhost:3300
+      NEXT_PUBLIC_API_BASE: http://localhost:3300
+      # Set ASSET_MANAGER_SEED=true once to ingest the repo's office art on boot.
+      ASSET_MANAGER_SEED: ${ASSET_MANAGER_SEED:-false}
+    volumes:
+      # Vendoring target: the real map-mcp workspace on the host.
+      - ../../content:/content:rw
+      # Persist the local object store and seed source art.
+      - vw-asset-manager-storage:/data/storage
+
+volumes:
+  vw-asset-manager-data:
+  vw-asset-manager-storage:

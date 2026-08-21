@@ -6,8 +6,9 @@ avatars around a 2D map and get **proximity-based audio/video**: you hear and se
 near you, and conversations naturally fade as you walk away. The goal is to make remote
 presence feel spatial and spontaneous instead of scheduled and gridded.
 
-> Status: early scaffolding. See [`CLAUDE.md`](./CLAUDE.md) for the architecture and phased
-> build roadmap, and [`docs/proposal.md`](./docs/proposal.md) for the full proposal.
+> Status: Phase 1 (spatial MVP) in progress. See [`CLAUDE.md`](./CLAUDE.md) for the
+> architecture and phased build roadmap, and [`docs/deployment-plan.md`](./docs/deployment-plan.md)
+> for hosting and cost. Jump to [Getting started](#getting-started) to run it.
 
 ## What it does
 
@@ -15,6 +16,8 @@ presence feel spatial and spontaneous instead of scheduled and gridded.
 - **Proximity audio/video** — audio/video subscriptions turn on/off based on how close you
   are to others, with volume fading by distance.
 - **Multiple spaces**, screen-share, and chat (later phases).
+- **Maps and art are authored through tooling in `tools/`** — a map MCP server that writes
+  Tiled files, and an Asset Manager that holds the art library.
 - Built toward **multi-tenant org accounts** and enterprise hardening (SSO, SCIM, audit
   logs, data residency) down the line.
 
@@ -22,47 +25,123 @@ presence feel spatial and spontaneous instead of scheduled and gridded.
 
 | Layer            | Choice                                                        |
 | ---------------- | ------------------------------------------------------------- |
-| Backend          | NestJS + WebSocket gateway                                    |
+| Backend          | NestJS **stateless REST API** (no custom WebSocket gateway)    |
 | Database         | PostgreSQL via Prisma                                         |
-| Cache / pub-sub  | Redis                                                         |
+| Realtime transport | LiveKit data messages + participant events                  |
+| Cache / queues   | Redis — **not used until Phase 3+**, never for game state      |
 | Real-time A/V    | LiveKit (LiveKit Cloud)                                       |
 | Frontend         | Phaser / PixiJS game engine + UI overlay                      |
 | Monorepo tooling | pnpm workspaces + Turborepo, TypeScript throughout            |
+| Map & art tooling | Tiled maps authored via an MCP server, art via the Asset Manager |
 
 ## Repository layout
 
 ```
 virtual-workspace/
 ├── apps/
-│   ├── backend/     # NestJS API + WebSocket gateway (realtime, presence, media, chat, ...)
+│   ├── backend/     # NestJS stateless REST API (auth, LiveKit tokens, CRUD, webhooks)
 │   └── frontend/    # Phaser/PixiJS game client + UI overlay
 ├── packages/
 │   ├── shared-types # TypeScript types shared across apps
-│   ├── protocol     # WebSocket event/message contracts
+│   ├── protocol     # LiveKit data-message schema + versioning
 │   └── config       # shared lint/tsconfig/env config
-├── infra/           # docker (local Postgres/Redis/LiveKit), k8s, terraform
+├── tools/
+│   ├── map-mcp/     # MCP server that authors Tiled maps in content/
+│   └── asset-manager/ # art library: import art, mint assets, serve them to map-mcp
+├── content/         # the map workspace: maps/, tilesets/, assets/ (opened in Tiled)
+├── infra/docker/    # three compose files — see "Services and containers"
 ├── docs/            # proposal and design docs
 └── scripts/
 ```
 
 ## Getting started
 
-> The workspace scaffolding is in place; `package.json` files and app code are being added
-> incrementally. Once they exist, the expected workflow is:
+There are **two separate stacks** in this repo, and you rarely need both at once:
+
+| I want to... | Start this |
+|---|---|
+| walk an avatar around, test multiplayer | the **product** stack — backend + frontend + Postgres (+ LiveKit) |
+| import art, design a map, open it in Tiled | the **map tooling** stack — Asset Manager + the map MCP |
+
+Both share `pnpm install` from the repo root (it is a pnpm workspace — never install inside a
+sub-package).
 
 ```bash
-pnpm install                                              # install workspace dependencies
-docker compose -f infra/docker/docker-compose.yml up -d   # local Postgres (from infra/docker)
-pnpm --filter backend prisma:migrate                      # set up the database schema
-pnpm dev                                                  # run backend + frontend together (turbo)
-
-# or run a single app:
-pnpm --filter backend dev
-pnpm --filter frontend dev
+pnpm install          # once, from the repo ROOT
+corepack enable       # if `pnpm: command not found`
 ```
 
-See [Database (Postgres)](#database-postgres) for the full DB setup, and
-[Playing together (multiplayer)](#playing-together-multiplayer) for the `.env` and LiveKit steps.
+### Services and containers
+
+Three compose files, deliberately separate:
+
+| Compose file | Runs | Ports |
+|---|---|---|
+| `docker-compose.yml` | product Postgres | `5432` |
+| `docker-compose.asset-manager.yml` | Asset Manager API + UI, and opt-in local Postgres | `3300` API, `3301` UI, `5434` db |
+| `docker-compose.map-mcp.yml` | the map MCP image | none |
+
+`map-mcp` is **not a daemon** — `docker compose up` is the wrong verb for it. The MCP client
+starts one container per session and talks over stdin/stdout; that compose file exists to build
+the image and document the runtime contract.
+
+In this repo it runs straight off `node` via `.mcp.json`, which points at
+`tools/map-mcp/dist/index.js`. **`dist/` is not committed**, so on a fresh clone build it once
+or the MCP silently fails to start:
+
+```bash
+pnpm --filter map-mcp build
+```
+
+### Start the product stack
+
+```bash
+docker compose -f infra/docker/docker-compose.yml up -d   # Postgres on :5432
+pnpm --filter backend prisma:migrate                      # create the schema
+pnpm --filter backend dev                                 # needs a root .env
+pnpm --filter frontend dev                                # http://localhost:5173
+```
+
+The frontend alone is single-player and needs none of the above. See
+[Database (Postgres)](#database-postgres) for DB setup and
+[Playing together (multiplayer)](#playing-together-multiplayer) for the `.env` + LiveKit steps.
+
+### Start the map tooling stack
+
+The Asset Manager's database lives on **Neon** (hosted Postgres), so put both connection
+strings in `tools/asset-manager/.env` first — see
+[`tools/asset-manager/DEVELOPMENT.md`](./tools/asset-manager/DEVELOPMENT.md). Then:
+
+```bash
+docker compose -f infra/docker/docker-compose.asset-manager.yml up -d --build
+```
+
+Prefer a local Postgres instead of Neon? Add the `localdb` profile, which also starts the
+database container:
+
+```bash
+docker compose -f infra/docker/docker-compose.asset-manager.yml --profile localdb up -d --build
+```
+
+- UI  → **http://localhost:3301**
+- API → **http://localhost:3300** (`/health` is open, `/v1` needs the key, `/api` is localhost-only)
+
+Check it came up:
+
+```bash
+curl localhost:3300/health          # {"status":"ok","db":true,...}
+```
+
+First run on an empty database, load the repo's office art:
+
+```bash
+ASSET_MANAGER_SEED=true docker compose -f infra/docker/docker-compose.asset-manager.yml up -d --build
+```
+
+> **If the container loops on `database not ready (attempt n/10)`** it cannot reach the
+> database. Without the `localdb` profile there is no database container, so `DATABASE_URL`
+> **must** point at Neon. Note that inside the container `localhost` is the container itself —
+> a host-style URL like `localhost:5434` will never resolve from in there.
 
 ## Running the frontend
 
@@ -204,14 +283,94 @@ If you set `PORT=3000` instead, you can drop the `VITE_BACKEND_URL=...` part.
 - You don't see the other person → both windows must be on the same map, and open the browser console: if it says `running offline`, the frontend couldn't reach the backend (wrong port, or the backend isn't running).
 - Both windows show up as the same person → use one normal and one Incognito window (each needs its own saved character).
 
+## Designing maps and art
+
+Maps are Tiled `.tmj` files in `content/maps/`, built by asking Claude Code (which drives the
+**map MCP**) and reviewed by opening them in Tiled. Art comes from the **Asset Manager**.
+
+```
+  your art (.zip)
+       |  http://localhost:3301/import  ->  review  ->  Commit
+       v
+  tileset in the library
+       |  mint asset records (tileset inspector, or a catalog.json in the zip)
+       v
+  ask Claude: "put a desk at 3,4"
+       |  place_asset -- pulls the .tsj + images into content/tilesets/ automatically
+       v
+  save_map  ->  open content/maps/<name>.tmj in Tiled
+```
+
+### Bring your own art
+
+**This repo ships code, not art.** `content/tiles/`, the vendored `*.png`/`*.tsj`, and
+`content/assets/catalog.json` are gitignored — the sample pack used during development came
+with no license file, so it cannot be redistributed (see `content/tiles/ATTRIBUTION.md`).
+
+So on a fresh clone the asset library starts empty, and `pnpm seed` will tell you so rather
+than failing cryptically. Fill it through the importer instead:
+
+- [Kenney](https://kenney.nl/assets) — CC0, no attribution required, the easiest start
+- [OpenGameArt](https://opengameart.org/) / [itch.io](https://itch.io/game-assets) — check each
+  pack's license
+- anything you drew yourself
+
+Aim for **16x16** art; see the next section for why that matters.
+
+### Getting art in
+
+Drop a `.zip`, `.png`, `.tsx`, `.tsj` or `catalog.json` on the Import page. Two things decide
+whether it becomes usable art, and both are easy to miss:
+
+1. **A zip needs a `.tsx` or `.tsj` in it.** Tilesets are built only from those. A zip of bare
+   PNGs — which is what most free packs are — imports cleanly and produces *nothing placeable*,
+   with no warning. If yours has no `.tsx`, make one in Tiled (New Tileset, based on an image
+   or as a collection), save it beside the images, and zip them together.
+2. **A tileset is not yet placeable art.** A tileset is a sheet of pixels; an asset is "tile 21
+   is a 2x2 desk that blocks movement and seats one." Create them in the tileset inspector
+   (click a tile to get its `tileId`), or ship a `catalog.json` in the zip to ingest a whole
+   pack at once.
+
+On the review screen, check `placeable: true` and that every image is present. A non-16px
+**grid** atlas is stored but hidden from the MCP forever. Collection tilesets are fine at any
+size — they are normalised to the 16px grid on import.
+
+### Building a map
+
+Just ask. The MCP tools handle the rest:
+
+- `search_assets` — find art; pass `showArt` to see the actual sprites and choose by eye
+- `pick_asset` — hand a shortlist to a person as a sprite grid at `/pick/<token>` and wait for
+  the click (needs the Asset Manager running)
+- `place_asset` / `place_tiles` / `add_object` — build the map
+- `sync_tilesets` — pull art onto disk; `place_asset` does this on its own when art is missing
+- `save_map` — refuses to write an invalid map, so if it saves, Tiled will open it
+
+**Every map needs a spawn point**, or `save_map` blocks with `spawn-missing`. That one catches
+everyone.
+
+There is no manual "vendor" step any more. Art is fetched into `content/tilesets/` when a
+placement needs it. `pnpm vendor` in `tools/asset-manager` still exists for pushing a whole
+pack offline plus the reproducibility lockfile.
+
+### Reviewing the result
+
+Open `content/maps/<name>.tmj` in [Tiled](https://www.mapeditor.org/). The game does not render
+these maps yet — Tiled is the review surface.
+
+Design notes for this tooling: [`docs/map-design-mcp-plan.md`](./docs/map-design-mcp-plan.md),
+[`tools/map-mcp/README.md`](./tools/map-mcp/README.md) and
+[`tools/asset-manager/README.md`](./tools/asset-manager/README.md).
+
 ## Architecture at a glance
 
-- **Movement & presence** broadcast via Redis pub/sub; the WebSocket gateway fans out to
-  clients in the same space.
+- **Movement & presence** ride LiveKit data messages and participant events, interpolated on
+  the client. The backend does **not** broadcast position and runs **no** Redis pub/sub for
+  game state — that is what keeps it stateless and horizontally scalable.
 - **Proximity A/V** — the backend issues LiveKit tokens and drives subscribe/unsubscribe on
   a distance threshold; the frontend attaches/detaches tracks and handles distance-based
   volume, mute, and camera.
-- **Shared contracts** for all WebSocket events live in `packages/protocol` +
+- **Shared contracts** for all LiveKit data messages live in `packages/protocol` +
   `packages/shared-types` — never redefined per app.
 
 ## Roadmap

@@ -399,11 +399,22 @@ export class MapService {
 
     const workspaceId = `tilesets/${tilesetId}.tsj`;
     if (!(await this.workspace.exists(workspaceId))) {
-      throw new MapMcpError("ASSET_NOT_FOUND", `Tileset "${tilesetId}" is not vendored in the workspace`, {
-        rule: "tileset-not-vendored",
-        path: workspaceId,
-        fix: "Add the .tsj and its atlas image to content/tilesets/. A map may only reference tilesets that exist as real files, or Tiled cannot open it.",
-      });
+      // The art is not on disk yet. Pull it rather than failing: this is the
+      // client half of vendoring, and it is what lets place_asset work against a
+      // remote catalog with no manual sync step. A source that cannot supply it
+      // (offline, or a local-only catalog) still lands on the original error.
+      try {
+        await this.assets.syncTileset(tilesetId);
+      } catch (err) {
+        throw new MapMcpError("ASSET_NOT_FOUND", `Tileset "${tilesetId}" is not vendored in the workspace and could not be fetched`, {
+          rule: "tileset-not-vendored",
+          path: workspaceId,
+          fix:
+            `Fetching it failed: ${err instanceof Error ? err.message : String(err)}. ` +
+            "Add the .tsj and its atlas image to content/tilesets/, or configure an asset API that serves it. " +
+            "A map may only reference tilesets that exist as real files, or Tiled cannot open it.",
+        });
+      }
     }
 
     const tsj = await this.workspace.readJson<Record<string, unknown>>(workspaceId);

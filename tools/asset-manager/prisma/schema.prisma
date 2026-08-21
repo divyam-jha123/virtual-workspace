@@ -1,0 +1,244 @@
+// Asset Manager — v1 data model.
+//
+// Six tables only: AssetPack, Asset, AssetFile, Tileset, Tag, License.
+// The asset TYPE enum is intentionally wide, but there are NO tables for sprite
+// sheets, animations, categories, or version history yet. `version` is a plain
+// string on Asset/Tileset — that is all the MCP reads.
+//
+// Identity vs storage: an Asset's `id`/`slug` is its stable identity, the only
+// thing the MCP ever sees. Bytes live in AssetFile under a hashed `storageKey`
+// that is never exposed.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+/// `url` is what the app queries through; `directUrl` is what migrations use.
+///
+/// Hosted Postgres (Neon, Supabase) puts a connection pooler in front of the
+/// database. Pooled connections cannot run the statements a migration needs, so
+/// Prisma has to be told how to reach the database directly. Against a plain
+/// local Postgres there is no pooler and the two are simply the same string —
+/// which is why .env.example sets both.
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_DATABASE_URL")
+}
+
+/// Wide on purpose; most rows are OBJECT/ENVIRONMENT/TILESET in v1.
+enum AssetType {
+  TILESET
+  SPRITE
+  SPRITE_SHEET
+  CHARACTER
+  OBJECT
+  ENVIRONMENT
+  BUILDING
+  ANIMATION
+  UI
+  FONT
+  MAP_RESOURCE
+  OTHER
+}
+
+/// Mirrors AssetRecord.placement in the MCP seam.
+enum AssetPlacement {
+  floor
+  wall
+  ceiling
+  overlay
+}
+
+/// grid = single-atlas tileset (one image, uniform cells).
+/// collection = image-collection tileset (per-tile images, variable sizes).
+enum TilesetKind {
+  grid
+  collection
+}
+
+/// What an AssetFile physically is.
+enum FileRole {
+  original
+  thumbnail
+  tsj
+  tsx
+  atlas
+  tile_image
+  zip
+}
+
+model License {
+  id                    String   @id @default(cuid())
+  name                  String
+  licenseName           String?
+  licenseUrl            String?
+  source                String?
+  sourceUrl             String?
+  author                String?
+  attributionRequired   Boolean  @default(true)
+  commercialUseAllowed  Boolean  @default(true)
+  redistributionAllowed Boolean  @default(true)
+  notes                 String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  packs  AssetPack[]
+  assets Asset[]
+}
+
+model AssetPack {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  description String?
+  source      String?
+  sourceUrl   String?
+  author      String?
+  /// Tile size the pack's art targets. When not 16 the pack is flagged
+  /// non-placeable and excluded from every /v1 response.
+  tileSize    Int?
+  licenseId   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  license  License?    @relation(fields: [licenseId], references: [id])
+  assets   Asset[]
+  tilesets Tileset[]
+  files    AssetFile[]
+}
+
+model Tileset {
+  id          String      @id @default(cuid())
+  packId      String
+  /// The `.tsj` basename and the MCP's tilesetId. Stable, filename-safe, unique.
+  key         String      @unique
+  name        String
+  kind        TilesetKind @default(grid)
+  tileWidth   Int
+  tileHeight  Int
+  columns     Int         @default(0)
+  tileCount   Int         @default(0)
+  imageWidth  Int?
+  imageHeight Int?
+  version     String      @default("1")
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  pack   AssetPack   @relation(fields: [packId], references: [id], onDelete: Cascade)
+  assets Asset[]
+  files  AssetFile[]
+}
+
+model Asset {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  name        String
+  description String?
+  type        AssetType @default(OBJECT)
+  category    String    @default("uncategorized")
+  subcategory String?
+  /// Free-text style tag the MCP filters on (e.g. "modern", "retro").
+  style       String?
+  source      String?
+  sourceUrl   String?
+  author      String?
+  version     String    @default("1")
+
+  // --- placement fields (what makes a record usable by the MCP) ---
+  tileSize    Int            @default(16)
+  widthTiles  Int            @default(1)
+  heightTiles Int            @default(1)
+  placement   AssetPlacement @default(floor)
+  tilesetId   String?
+  /// 0-based tile index within the tileset. Together with tilesetId this is the
+  /// difference between a browsable record and a placeable one.
+  tileId      Int?
+  /// { blocking: bool, box?: {x,y,width,height} }
+  collision   Json?
+  /// { class: string, ... }  — class must be a map object-class.
+  interaction Json?
+
+  packId    String
+  licenseId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  pack    AssetPack   @relation(fields: [packId], references: [id], onDelete: Cascade)
+  tileset Tileset?    @relation(fields: [tilesetId], references: [id])
+  license License?    @relation(fields: [licenseId], references: [id])
+  files   AssetFile[]
+  tags    Tag[]       @relation("AssetTags")
+
+  @@index([category])
+  @@index([type])
+  @@index([tilesetId])
+}
+
+model Tag {
+  id     String  @id @default(cuid())
+  slug   String  @unique
+  label  String
+  assets Asset[] @relation("AssetTags")
+}
+
+/// Storage LOCATION, kept separate from identity. `storageKey` is an opaque,
+/// hashed path in the Storage backend and is never serialized to a client.
+model AssetFile {
+  id          String   @id @default(cuid())
+  role        FileRole
+  storageKey  String   @unique
+  filename    String
+  contentType String
+  bytes       Int      @default(0)
+  width       Int?
+  height      Int?
+  sha256      String?
+  createdAt   DateTime @default(now())
+
+  assetId   String?
+  tilesetId String?
+  packId    String?
+
+  asset   Asset?     @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  tileset Tileset?   @relation(fields: [tilesetId], references: [id], onDelete: Cascade)
+  pack    AssetPack? @relation(fields: [packId], references: [id], onDelete: Cascade)
+
+  @@index([assetId])
+  @@index([tilesetId])
+}
+
+/// Where a pending pick stands.
+enum SelectionStatus {
+  pending
+  chosen
+  cancelled
+  expired
+}
+
+/// One "which of these?" question, asked by the map MCP and answered in a browser.
+///
+/// This is the only table that is not part of the asset library itself — it is a
+/// short-lived handshake, not content. The MCP creates a row, hands the person a
+/// /pick/<token> link, and polls until the row resolves.
+///
+/// `token` is the whole capability: the pick page is served from /api, which has
+/// no login, so the token must be unguessable and short-lived. Candidates are
+/// stored as plain asset slugs rather than relations — a selection is a snapshot
+/// of a question that was asked, and must not change if the library does.
+model Selection {
+  id           String          @id @default(cuid())
+  token        String          @unique
+  /// What the person is choosing, e.g. "chair for the meeting room".
+  prompt       String
+  /// Asset slugs offered, in the order they were ranked.
+  candidateIds String[]
+  /// The slug that was picked. Null until someone answers.
+  chosenId     String?
+  status       SelectionStatus @default(pending)
+  createdAt    DateTime        @default(now())
+  expiresAt    DateTime
+  resolvedAt   DateTime?
+
+  @@index([status, expiresAt])
+}

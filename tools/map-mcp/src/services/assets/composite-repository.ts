@@ -1,6 +1,6 @@
 import { MapMcpError, redact } from "../../errors.js";
 import { rank } from "./search.js";
-import type { AssetQuery, AssetRecord, AssetRepository, ImageBlob, TilesetJson, TilesetRef } from "./types.js";
+import type { AssetQuery, AssetRecord, AssetRepository, CreateSelectionInput, ImageBlob, SelectionSession, TilesetJson, TilesetRef } from "./types.js";
 
 export interface NamedRepository {
   name: string;
@@ -104,10 +104,37 @@ export class CompositeAssetRepository implements AssetRepository {
     return [...merged.values()].sort((a, b) => a.id.localeCompare(b.id));
   }
 
+  /**
+   * Fetch while ignoring the local catalog.
+   *
+   * Local-first precedence is right for reading — an override should shadow a
+   * vendor record — but wrong for a deliberate refresh, where the local copy is
+   * exactly the stale thing being replaced. Without this, `sync_tilesets --force`
+   * would "succeed" by handing back the file it was asked to overwrite.
+   */
+  async fetchTilesetFromRemote(id: string, version?: string): Promise<{ tsj: TilesetJson; images: ImageBlob[] }> {
+    const remote = this.sources.filter((source) => source.repository.kind !== "local");
+    if (remote.length === 0) {
+      throw new MapMcpError("ASSET_NOT_FOUND", `No remote asset source is configured, so tileset "${id}" cannot be refreshed`, {
+        rule: "no-remote-source",
+        fix: "Configure ASSET_APIS with a source that serves this tileset, or replace the files in content/tilesets/ by hand.",
+      });
+    }
+    return this.fetchFrom(remote, id, version);
+  }
+
   /** Tries each source in order; the first that actually has the tileset wins. */
   async fetchTileset(id: string, version?: string): Promise<{ tsj: TilesetJson; images: ImageBlob[] }> {
+    return this.fetchFrom(this.sources, id, version);
+  }
+
+  private async fetchFrom(
+    sources: NamedRepository[],
+    id: string,
+    version?: string,
+  ): Promise<{ tsj: TilesetJson; images: ImageBlob[] }> {
     let lastError: unknown;
-    for (const { repository } of this.sources) {
+    for (const { repository } of sources) {
       try {
         return await repository.fetchTileset(id, version);
       } catch (err) {
@@ -119,6 +146,35 @@ export class CompositeAssetRepository implements AssetRepository {
       rule: "tileset-missing",
       fix: "Call list_tilesets to see which sources and tilesets are available.",
     });
+  }
+
+  // --- selection handshake --------------------------------------------------
+  //
+  // Delegated to the first source that can host one. The local catalog never
+  // can — there is no page to send anyone to — so this is effectively "the first
+  // configured API".
+
+  private selectionHost(): AssetRepository {
+    const source = this.sources.find((entry) => typeof entry.repository.createSelection === "function");
+    if (!source) {
+      throw new MapMcpError("INVALID_ARGUMENT", "No configured asset source can host a browser selection", {
+        rule: "no-selection-source",
+        fix: "Configure ASSET_APIS with an asset API that serves /selections, or pick an asset by id instead.",
+      });
+    }
+    return source.repository;
+  }
+
+  async createSelection(input: CreateSelectionInput): Promise<SelectionSession> {
+    return this.selectionHost().createSelection!(input);
+  }
+
+  async readSelection(token: string): Promise<SelectionSession> {
+    return this.selectionHost().readSelection!(token);
+  }
+
+  async cancelSelection(token: string): Promise<SelectionSession> {
+    return this.selectionHost().cancelSelection!(token);
   }
 
   /** Reachable if ANY source is — the offline story still holds as long as one source works. */

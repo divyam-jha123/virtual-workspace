@@ -199,13 +199,15 @@ hand, the same as everything above.
 | Tool | What it does |
 |---|---|
 | `get_project_info` | Conventions, map index, asset-source status, vendored tileset count. Call this first. |
-| `search_assets` | Ranked, synonym-expanded catalog search, filtered to the project tile size. |
+| `search_assets` | Ranked, synonym-expanded catalog search, filtered to the project tile size. Pass `showArt` to get the actual sprites back, so a person can pick by eye. |
 | `get_asset` | One asset record in full. |
 | `list_tilesets` | Which tilesets exist, and which are vendored (= usable by Tiled). |
+| `sync_tilesets` | Pull tilesets onto disk — the `.tsj` plus every image it references. `place_asset` does this on its own when art is missing. |
+| `pick_asset` | Put a shortlist in front of a person as a sprite grid in their browser and wait for them to click one. Needs an asset API that serves `/selections`. |
 | `read_map` | Semantic view of a map plus its current diagnostics. |
 | `create_map` | New draft with the standard layer stack. |
 | `add_layer` / `place_tiles` / `add_object` / `move_object` / `remove_object` / `set_property` | Semantic mutations. |
-| `place_asset` | Place catalog art: binds the tileset, anchors the sprite, carries interaction metadata, marks collision. |
+| `place_asset` | Place catalog art: binds the tileset, anchors the sprite, carries interaction metadata, marks collision. Fetches the tileset first if it is not on disk yet. |
 | `add_tileset` | Bind a vendored `.tsj` as an external tileset. |
 | `validate_map` | Every structural, tileset, object, gameplay and runtime-compat rule. |
 | `save_map` | Flush the draft to `.tmj`. **Blocked by any error-severity diagnostic.** |

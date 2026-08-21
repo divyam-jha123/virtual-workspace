@@ -156,6 +156,18 @@ export class WorkspaceService {
     }
   }
 
+  async readBytes(id: string): Promise<Uint8Array> {
+    const absolute = await this.resolve(id);
+    try {
+      return new Uint8Array(await fs.readFile(absolute));
+    } catch (err) {
+      if ((err as NodeJS.ErrnoException).code === "ENOENT") {
+        throw new MapMcpError("NOT_FOUND", `No such file: ${id}`, { path: id, fix: "List the directory first, or sync the tileset." });
+      }
+      throw err;
+    }
+  }
+
   async readJson<T = unknown>(id: string): Promise<T> {
     const text = await this.readText(id);
     try {

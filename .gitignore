@@ -50,7 +50,6 @@ coverage/
 # Hand-authored .tsx tileset definitions ARE tracked: they are metadata, not
 # pixels, and they are what a new pack needs in order to import at all.
 # ---------------------------------------------------------------------------
-content/tiles/
 content/tilesets/*.png
 content/tilesets/*.tsj
 content/tilesets/*.lock.json

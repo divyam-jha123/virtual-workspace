@@ -51,9 +51,13 @@ touching the map.
 images tilesets whose per-tile PNGs are gitignored, and no tracked script
 regenerates them. `office-props.tsx` (tracked) describes the same 28 tiles but is
 not a substitute — it names different tile dimensions. Right now these two only
-exist on the machine that made them, which means a second person cannot fully
-open `vorkium-hq.tmj`. Closing this needs either a generator script committed
-alongside the others, or a decision to commit the art if its license allows.
+exist on the machine that made them, which means teammates cannot fully open
+`vorkium-hq.tmj`.
+
+Until this is closed with a committed generator or a license-approved decision to
+track the source art, map edits that touch these two tilesets must be made by the
+person who has the source images locally. Everyone else should treat those layers
+as read-only and avoid saving partial loads.
 
 ## Working on a map with someone else
 
@@ -62,3 +66,20 @@ merge two edits to one only by producing a conflict no one can resolve by hand,
 so treat map files as **exclusively locked**: say in chat that you are taking the
 map, push before handing it back. If that starts to chafe, split the map by zone
 into separate `.tmj` files rather than trying to make the merge work.
+
+## Asset sync workflow (for 3 coders)
+
+Use this when multiple people are editing maps so everyone stays on the same
+asset state in Git.
+
+1. Pull latest `main` before opening Tiled.
+2. Run the LimeZu importer with the exact theme list from this README.
+3. Confirm `git status` is clean before editing; if not, stop and reconcile first.
+4. Announce map lock in team chat (who owns `maps/vorkium-hq.tmj` right now).
+5. Commit map + tileset metadata changes together in one commit.
+6. Push immediately after map work; unlock in chat.
+
+Team rules:
+- Never commit licensed raw packs (for example, `tools/map-mcp/modernexteriors-win/`).
+- Never save a map that opened with missing tilesets.
+- If tile ids look scrambled, do not "fix by eye"; re-run importer and compare generated tileset sizes first.

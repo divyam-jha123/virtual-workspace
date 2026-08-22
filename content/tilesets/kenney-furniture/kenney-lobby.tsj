@@ -1,0 +1,259 @@
+{
+  "columns": 0,
+  "grid": {
+    "orientation": "orthogonal",
+    "width": 16,
+    "height": 16
+  },
+  "margin": 0,
+  "name": "kenney-lobby",
+  "spacing": 0,
+  "tilecount": 40,
+  "tiledversion": "1.11.0",
+  "tileheight": 16,
+  "tilewidth": 16,
+  "type": "tileset",
+  "version": "1.10",
+  "tiles": [
+    {
+      "id": 0,
+      "image": "lobby16/kenney-loungeSofa-SE.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 1,
+      "image": "lobby16/kenney-loungeSofa-SW.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 2,
+      "image": "lobby16/kenney-loungeSofa-NE.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 3,
+      "image": "lobby16/kenney-loungeSofa-NW.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 4,
+      "image": "lobby16/kenney-loungeDesignSofa-SE.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 5,
+      "image": "lobby16/kenney-loungeDesignSofa-SW.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 6,
+      "image": "lobby16/kenney-loungeDesignSofa-NE.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 7,
+      "image": "lobby16/kenney-loungeDesignSofa-NW.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 8,
+      "image": "lobby16/kenney-loungeDesignSofaCorner-SE.png",
+      "imagewidth": 96,
+      "imageheight": 64
+    },
+    {
+      "id": 9,
+      "image": "lobby16/kenney-loungeDesignSofaCorner-SW.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 10,
+      "image": "lobby16/kenney-loungeDesignSofaCorner-NE.png",
+      "imagewidth": 96,
+      "imageheight": 64
+    },
+    {
+      "id": 11,
+      "image": "lobby16/kenney-loungeDesignSofaCorner-NW.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 12,
+      "image": "lobby16/kenney-loungeDesignChair-SE.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 13,
+      "image": "lobby16/kenney-loungeDesignChair-SW.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 14,
+      "image": "lobby16/kenney-loungeDesignChair-NE.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 15,
+      "image": "lobby16/kenney-loungeDesignChair-NW.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 16,
+      "image": "lobby16/kenney-loungeSofaCorner-SE.png",
+      "imagewidth": 80,
+      "imageheight": 64
+    },
+    {
+      "id": 17,
+      "image": "lobby16/kenney-loungeSofaCorner-NW.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 18,
+      "image": "lobby16/kenney-loungeSofaLong-SE.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 19,
+      "image": "lobby16/kenney-loungeSofaLong-NE.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 20,
+      "image": "lobby16/kenney-loungeChair-SE.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 21,
+      "image": "lobby16/kenney-loungeChair-SW.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 22,
+      "image": "lobby16/kenney-loungeChair-NE.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 23,
+      "image": "lobby16/kenney-loungeChair-NW.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 24,
+      "image": "lobby16/kenney-tableCoffee-SE.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 25,
+      "image": "lobby16/kenney-sideTableDrawers-SE.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 26,
+      "image": "lobby16/kenney-tableCoffeeGlass-SE.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 27,
+      "image": "lobby16/kenney-rugRectangle-SE.png",
+      "imagewidth": 96,
+      "imageheight": 64
+    },
+    {
+      "id": 28,
+      "image": "lobby16/kenney-rugRounded-SE.png",
+      "imagewidth": 80,
+      "imageheight": 64
+    },
+    {
+      "id": 29,
+      "image": "lobby16/kenney-rugSquare-SE.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 30,
+      "image": "lobby16/kenney-desk-SE.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 31,
+      "image": "lobby16/kenney-deskCorner-SE.png",
+      "imagewidth": 80,
+      "imageheight": 48
+    },
+    {
+      "id": 32,
+      "image": "lobby16/kenney-chairDesk-NE.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 33,
+      "image": "lobby16/kenney-computerScreen-SE.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 34,
+      "image": "lobby16/kenney-pottedPlant-SE.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 35,
+      "image": "lobby16/kenney-plantSmall1-SE.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 36,
+      "image": "lobby16/kenney-bookcaseClosed-SE.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 37,
+      "image": "lobby16/kenney-sideTable-SE.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 38,
+      "image": "lobby16/kenney-lampSquareFloor-SE.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 39,
+      "image": "lobby16/kenney-trashcan-SE.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    }
+  ]
+}

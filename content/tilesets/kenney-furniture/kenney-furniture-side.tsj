@@ -1,0 +1,859 @@
+{
+  "columns": 0,
+  "grid": {
+    "orientation": "orthogonal",
+    "width": 16,
+    "height": 16
+  },
+  "margin": 0,
+  "name": "kenney-furniture-side",
+  "spacing": 0,
+  "tilecount": 140,
+  "tiledversion": "1.11.0",
+  "tileheight": 16,
+  "tilewidth": 16,
+  "type": "tileset",
+  "version": "1.10",
+  "tiles": [
+    {
+      "id": 0,
+      "image": "side/bathroomCabinet.png",
+      "imagewidth": 37,
+      "imageheight": 58
+    },
+    {
+      "id": 1,
+      "image": "side/bathroomCabinetDrawer.png",
+      "imagewidth": 76,
+      "imageheight": 70
+    },
+    {
+      "id": 2,
+      "image": "side/bathroomMirror.png",
+      "imagewidth": 46,
+      "imageheight": 65
+    },
+    {
+      "id": 3,
+      "image": "side/bathroomSink.png",
+      "imagewidth": 58,
+      "imageheight": 83
+    },
+    {
+      "id": 4,
+      "image": "side/bathroomSinkSquare.png",
+      "imagewidth": 76,
+      "imageheight": 86
+    },
+    {
+      "id": 5,
+      "image": "side/bathtub.png",
+      "imagewidth": 177,
+      "imageheight": 62
+    },
+    {
+      "id": 6,
+      "image": "side/bear.png",
+      "imagewidth": 51,
+      "imageheight": 67
+    },
+    {
+      "id": 7,
+      "image": "side/bedBunk.png",
+      "imagewidth": 172,
+      "imageheight": 126
+    },
+    {
+      "id": 8,
+      "image": "side/bedDouble.png",
+      "imagewidth": 215,
+      "imageheight": 56
+    },
+    {
+      "id": 9,
+      "image": "side/bedSingle.png",
+      "imagewidth": 175,
+      "imageheight": 56
+    },
+    {
+      "id": 10,
+      "image": "side/bench.png",
+      "imagewidth": 62,
+      "imageheight": 70
+    },
+    {
+      "id": 11,
+      "image": "side/benchCushion.png",
+      "imagewidth": 62,
+      "imageheight": 68
+    },
+    {
+      "id": 12,
+      "image": "side/benchCushionLow.png",
+      "imagewidth": 66,
+      "imageheight": 30
+    },
+    {
+      "id": 13,
+      "image": "side/bookcaseClosed.png",
+      "imagewidth": 67,
+      "imageheight": 126
+    },
+    {
+      "id": 14,
+      "image": "side/bookcaseClosedDoors.png",
+      "imagewidth": 67,
+      "imageheight": 126
+    },
+    {
+      "id": 15,
+      "image": "side/bookcaseClosedWide.png",
+      "imagewidth": 109,
+      "imageheight": 117
+    },
+    {
+      "id": 16,
+      "image": "side/bookcaseOpen.png",
+      "imagewidth": 67,
+      "imageheight": 130
+    },
+    {
+      "id": 17,
+      "image": "side/bookcaseOpenLow.png",
+      "imagewidth": 67,
+      "imageheight": 60
+    },
+    {
+      "id": 18,
+      "image": "side/books.png",
+      "imagewidth": 26,
+      "imageheight": 16
+    },
+    {
+      "id": 19,
+      "image": "side/cabinetBed.png",
+      "imagewidth": 50,
+      "imageheight": 35
+    },
+    {
+      "id": 20,
+      "image": "side/cabinetBedDrawer.png",
+      "imagewidth": 50,
+      "imageheight": 40
+    },
+    {
+      "id": 21,
+      "image": "side/cabinetBedDrawerTable.png",
+      "imagewidth": 50,
+      "imageheight": 40
+    },
+    {
+      "id": 22,
+      "image": "side/cabinetTelevision.png",
+      "imagewidth": 109,
+      "imageheight": 46
+    },
+    {
+      "id": 23,
+      "image": "side/cabinetTelevisionDoors.png",
+      "imagewidth": 109,
+      "imageheight": 46
+    },
+    {
+      "id": 24,
+      "image": "side/cardboardBoxClosed.png",
+      "imagewidth": 44,
+      "imageheight": 42
+    },
+    {
+      "id": 25,
+      "image": "side/cardboardBoxOpen.png",
+      "imagewidth": 60,
+      "imageheight": 42
+    },
+    {
+      "id": 26,
+      "image": "side/ceilingFan.png",
+      "imagewidth": 74,
+      "imageheight": 21
+    },
+    {
+      "id": 27,
+      "image": "side/chair.png",
+      "imagewidth": 42,
+      "imageheight": 70
+    },
+    {
+      "id": 28,
+      "image": "side/chairCushion.png",
+      "imagewidth": 42,
+      "imageheight": 68
+    },
+    {
+      "id": 29,
+      "image": "side/chairDesk.png",
+      "imagewidth": 60,
+      "imageheight": 90
+    },
+    {
+      "id": 30,
+      "image": "side/chairModernCushion.png",
+      "imagewidth": 42,
+      "imageheight": 68
+    },
+    {
+      "id": 31,
+      "image": "side/chairModernFrameCushion.png",
+      "imagewidth": 42,
+      "imageheight": 68
+    },
+    {
+      "id": 32,
+      "image": "side/chairRounded.png",
+      "imagewidth": 42,
+      "imageheight": 68
+    },
+    {
+      "id": 33,
+      "image": "side/coatRack.png",
+      "imagewidth": 60,
+      "imageheight": 42
+    },
+    {
+      "id": 34,
+      "image": "side/coatRackStanding.png",
+      "imagewidth": 32,
+      "imageheight": 114
+    },
+    {
+      "id": 35,
+      "image": "side/computerKeyboard.png",
+      "imagewidth": 41,
+      "imageheight": 5
+    },
+    {
+      "id": 36,
+      "image": "side/computerMouse.png",
+      "imagewidth": 11,
+      "imageheight": 4
+    },
+    {
+      "id": 37,
+      "image": "side/computerScreen.png",
+      "imagewidth": 46,
+      "imageheight": 44
+    },
+    {
+      "id": 38,
+      "image": "side/desk.png",
+      "imagewidth": 116,
+      "imageheight": 57
+    },
+    {
+      "id": 39,
+      "image": "side/deskCorner.png",
+      "imagewidth": 202,
+      "imageheight": 57
+    },
+    {
+      "id": 40,
+      "image": "side/doorway.png",
+      "imagewidth": 59,
+      "imageheight": 149
+    },
+    {
+      "id": 41,
+      "image": "side/doorwayFront.png",
+      "imagewidth": 59,
+      "imageheight": 149
+    },
+    {
+      "id": 42,
+      "image": "side/doorwayOpen.png",
+      "imagewidth": 59,
+      "imageheight": 149
+    },
+    {
+      "id": 43,
+      "image": "side/dryer.png",
+      "imagewidth": 76,
+      "imageheight": 70
+    },
+    {
+      "id": 44,
+      "image": "side/floorCorner.png",
+      "imagewidth": 104,
+      "imageheight": 8
+    },
+    {
+      "id": 45,
+      "image": "side/floorCornerRound.png",
+      "imagewidth": 108,
+      "imageheight": 8
+    },
+    {
+      "id": 46,
+      "image": "side/floorFull.png",
+      "imagewidth": 207,
+      "imageheight": 8
+    },
+    {
+      "id": 47,
+      "image": "side/floorHalf.png",
+      "imagewidth": 155,
+      "imageheight": 8
+    },
+    {
+      "id": 48,
+      "image": "side/hoodLarge.png",
+      "imagewidth": 75,
+      "imageheight": 55
+    },
+    {
+      "id": 49,
+      "image": "side/hoodModern.png",
+      "imagewidth": 75,
+      "imageheight": 59
+    },
+    {
+      "id": 50,
+      "image": "side/kitchenBar.png",
+      "imagewidth": 67,
+      "imageheight": 63
+    },
+    {
+      "id": 51,
+      "image": "side/kitchenBarEnd.png",
+      "imagewidth": 26,
+      "imageheight": 63
+    },
+    {
+      "id": 52,
+      "image": "side/kitchenBlender.png",
+      "imagewidth": 16,
+      "imageheight": 34
+    },
+    {
+      "id": 53,
+      "image": "side/kitchenCabinet.png",
+      "imagewidth": 92,
+      "imageheight": 67
+    },
+    {
+      "id": 54,
+      "image": "side/kitchenCabinetCornerInner.png",
+      "imagewidth": 96,
+      "imageheight": 67
+    },
+    {
+      "id": 55,
+      "image": "side/kitchenCabinetCornerRound.png",
+      "imagewidth": 94,
+      "imageheight": 67
+    },
+    {
+      "id": 56,
+      "image": "side/kitchenCabinetDrawer.png",
+      "imagewidth": 92,
+      "imageheight": 67
+    },
+    {
+      "id": 57,
+      "image": "side/kitchenCabinetUpper.png",
+      "imagewidth": 67,
+      "imageheight": 58
+    },
+    {
+      "id": 58,
+      "image": "side/kitchenCabinetUpperCorner.png",
+      "imagewidth": 44,
+      "imageheight": 58
+    },
+    {
+      "id": 59,
+      "image": "side/kitchenCabinetUpperDouble.png",
+      "imagewidth": 67,
+      "imageheight": 58
+    },
+    {
+      "id": 60,
+      "image": "side/kitchenCabinetUpperLow.png",
+      "imagewidth": 67,
+      "imageheight": 30
+    },
+    {
+      "id": 61,
+      "image": "side/kitchenCoffeeMachine.png",
+      "imagewidth": 35,
+      "imageheight": 27
+    },
+    {
+      "id": 62,
+      "image": "side/kitchenFridge.png",
+      "imagewidth": 71,
+      "imageheight": 136
+    },
+    {
+      "id": 63,
+      "image": "side/kitchenFridgeBuiltIn.png",
+      "imagewidth": 89,
+      "imageheight": 128
+    },
+    {
+      "id": 64,
+      "image": "side/kitchenFridgeLarge.png",
+      "imagewidth": 91,
+      "imageheight": 136
+    },
+    {
+      "id": 65,
+      "image": "side/kitchenFridgeSmall.png",
+      "imagewidth": 71,
+      "imageheight": 89
+    },
+    {
+      "id": 66,
+      "image": "side/kitchenMicrowave.png",
+      "imagewidth": 50,
+      "imageheight": 27
+    },
+    {
+      "id": 67,
+      "image": "side/kitchenSink.png",
+      "imagewidth": 92,
+      "imageheight": 73
+    },
+    {
+      "id": 68,
+      "image": "side/kitchenStove.png",
+      "imagewidth": 92,
+      "imageheight": 67
+    },
+    {
+      "id": 69,
+      "image": "side/kitchenStoveElectric.png",
+      "imagewidth": 92,
+      "imageheight": 67
+    },
+    {
+      "id": 70,
+      "image": "side/lampRoundFloor.png",
+      "imagewidth": 24,
+      "imageheight": 127
+    },
+    {
+      "id": 71,
+      "image": "side/lampRoundTable.png",
+      "imagewidth": 24,
+      "imageheight": 47
+    },
+    {
+      "id": 72,
+      "image": "side/lampSquareCeiling.png",
+      "imagewidth": 24,
+      "imageheight": 35
+    },
+    {
+      "id": 73,
+      "image": "side/lampSquareFloor.png",
+      "imagewidth": 24,
+      "imageheight": 127
+    },
+    {
+      "id": 74,
+      "image": "side/lampSquareTable.png",
+      "imagewidth": 24,
+      "imageheight": 44
+    },
+    {
+      "id": 75,
+      "image": "side/lampWall.png",
+      "imagewidth": 31,
+      "imageheight": 15
+    },
+    {
+      "id": 76,
+      "image": "side/laptop.png",
+      "imagewidth": 50,
+      "imageheight": 25
+    },
+    {
+      "id": 77,
+      "image": "side/loungeChair.png",
+      "imagewidth": 91,
+      "imageheight": 68
+    },
+    {
+      "id": 78,
+      "image": "side/loungeChairRelax.png",
+      "imagewidth": 105,
+      "imageheight": 93
+    },
+    {
+      "id": 79,
+      "image": "side/loungeDesignChair.png",
+      "imagewidth": 115,
+      "imageheight": 60
+    },
+    {
+      "id": 80,
+      "image": "side/loungeDesignSofa.png",
+      "imagewidth": 156,
+      "imageheight": 60
+    },
+    {
+      "id": 81,
+      "image": "side/loungeDesignSofaCorner.png",
+      "imagewidth": 280,
+      "imageheight": 59
+    },
+    {
+      "id": 82,
+      "image": "side/loungeSofa.png",
+      "imagewidth": 141,
+      "imageheight": 68
+    },
+    {
+      "id": 83,
+      "image": "side/loungeSofaCorner.png",
+      "imagewidth": 202,
+      "imageheight": 68
+    },
+    {
+      "id": 84,
+      "image": "side/loungeSofaLong.png",
+      "imagewidth": 179,
+      "imageheight": 68
+    },
+    {
+      "id": 85,
+      "image": "side/loungeSofaOttoman.png",
+      "imagewidth": 92,
+      "imageheight": 35
+    },
+    {
+      "id": 86,
+      "image": "side/paneling.png",
+      "imagewidth": 55,
+      "imageheight": 88
+    },
+    {
+      "id": 87,
+      "image": "side/pillow.png",
+      "imagewidth": 29,
+      "imageheight": 34
+    },
+    {
+      "id": 88,
+      "image": "side/pillowBlue.png",
+      "imagewidth": 25,
+      "imageheight": 20
+    },
+    {
+      "id": 89,
+      "image": "side/pillowBlueLong.png",
+      "imagewidth": 58,
+      "imageheight": 34
+    },
+    {
+      "id": 90,
+      "image": "side/pillowLong.png",
+      "imagewidth": 45,
+      "imageheight": 34
+    },
+    {
+      "id": 91,
+      "image": "side/plantSmall1.png",
+      "imagewidth": 14,
+      "imageheight": 21
+    },
+    {
+      "id": 92,
+      "image": "side/plantSmall2.png",
+      "imagewidth": 14,
+      "imageheight": 21
+    },
+    {
+      "id": 93,
+      "image": "side/plantSmall3.png",
+      "imagewidth": 14,
+      "imageheight": 22
+    },
+    {
+      "id": 94,
+      "image": "side/pottedPlant.png",
+      "imagewidth": 28,
+      "imageheight": 97
+    },
+    {
+      "id": 95,
+      "image": "side/radio.png",
+      "imagewidth": 41,
+      "imageheight": 34
+    },
+    {
+      "id": 96,
+      "image": "side/rugDoormat.png",
+      "imagewidth": 64,
+      "imageheight": 2
+    },
+    {
+      "id": 97,
+      "image": "side/rugRectangle.png",
+      "imagewidth": 257,
+      "imageheight": 2
+    },
+    {
+      "id": 98,
+      "image": "side/rugRound.png",
+      "imagewidth": 134,
+      "imageheight": 2
+    },
+    {
+      "id": 99,
+      "image": "side/rugRounded.png",
+      "imagewidth": 201,
+      "imageheight": 2
+    },
+    {
+      "id": 100,
+      "image": "side/rugSquare.png",
+      "imagewidth": 189,
+      "imageheight": 2
+    },
+    {
+      "id": 101,
+      "image": "side/shower.png",
+      "imagewidth": 116,
+      "imageheight": 162
+    },
+    {
+      "id": 102,
+      "image": "side/showerRound.png",
+      "imagewidth": 116,
+      "imageheight": 161
+    },
+    {
+      "id": 103,
+      "image": "side/sideTable.png",
+      "imagewidth": 78,
+      "imageheight": 57
+    },
+    {
+      "id": 104,
+      "image": "side/sideTableDrawers.png",
+      "imagewidth": 78,
+      "imageheight": 57
+    },
+    {
+      "id": 105,
+      "image": "side/speaker.png",
+      "imagewidth": 30,
+      "imageheight": 94
+    },
+    {
+      "id": 106,
+      "image": "side/speakerSmall.png",
+      "imagewidth": 29,
+      "imageheight": 45
+    },
+    {
+      "id": 107,
+      "image": "side/stairs.png",
+      "imagewidth": 270,
+      "imageheight": 197
+    },
+    {
+      "id": 108,
+      "image": "side/stairsCorner.png",
+      "imagewidth": 265,
+      "imageheight": 197
+    },
+    {
+      "id": 109,
+      "image": "side/stairsOpen.png",
+      "imagewidth": 270,
+      "imageheight": 197
+    },
+    {
+      "id": 110,
+      "image": "side/stairsOpenSingle.png",
+      "imagewidth": 270,
+      "imageheight": 197
+    },
+    {
+      "id": 111,
+      "image": "side/stoolBar.png",
+      "imagewidth": 38,
+      "imageheight": 65
+    },
+    {
+      "id": 112,
+      "image": "side/stoolBarSquare.png",
+      "imagewidth": 31,
+      "imageheight": 60
+    },
+    {
+      "id": 113,
+      "image": "side/table.png",
+      "imagewidth": 133,
+      "imageheight": 49
+    },
+    {
+      "id": 114,
+      "image": "side/tableCloth.png",
+      "imagewidth": 133,
+      "imageheight": 49
+    },
+    {
+      "id": 115,
+      "image": "side/tableCoffee.png",
+      "imagewidth": 110,
+      "imageheight": 35
+    },
+    {
+      "id": 116,
+      "image": "side/tableCoffeeGlass.png",
+      "imagewidth": 110,
+      "imageheight": 35
+    },
+    {
+      "id": 117,
+      "image": "side/tableCoffeeGlassSquare.png",
+      "imagewidth": 83,
+      "imageheight": 35
+    },
+    {
+      "id": 118,
+      "image": "side/tableCoffeeSquare.png",
+      "imagewidth": 83,
+      "imageheight": 35
+    },
+    {
+      "id": 119,
+      "image": "side/tableCross.png",
+      "imagewidth": 134,
+      "imageheight": 52
+    },
+    {
+      "id": 120,
+      "image": "side/tableCrossCloth.png",
+      "imagewidth": 134,
+      "imageheight": 52
+    },
+    {
+      "id": 121,
+      "image": "side/tableGlass.png",
+      "imagewidth": 133,
+      "imageheight": 49
+    },
+    {
+      "id": 122,
+      "image": "side/tableRound.png",
+      "imagewidth": 113,
+      "imageheight": 55
+    },
+    {
+      "id": 123,
+      "image": "side/televisionAntenna.png",
+      "imagewidth": 30,
+      "imageheight": 16
+    },
+    {
+      "id": 124,
+      "image": "side/televisionModern.png",
+      "imagewidth": 74,
+      "imageheight": 68
+    },
+    {
+      "id": 125,
+      "image": "side/televisionVintage.png",
+      "imagewidth": 63,
+      "imageheight": 41
+    },
+    {
+      "id": 126,
+      "image": "side/toaster.png",
+      "imagewidth": 29,
+      "imageheight": 20
+    },
+    {
+      "id": 127,
+      "image": "side/toilet.png",
+      "imagewidth": 74,
+      "imageheight": 67
+    },
+    {
+      "id": 128,
+      "image": "side/toiletSquare.png",
+      "imagewidth": 66,
+      "imageheight": 67
+    },
+    {
+      "id": 129,
+      "image": "side/trashcan.png",
+      "imagewidth": 33,
+      "imageheight": 64
+    },
+    {
+      "id": 130,
+      "image": "side/wall.png",
+      "imagewidth": 108,
+      "imageheight": 190
+    },
+    {
+      "id": 131,
+      "image": "side/wallCorner.png",
+      "imagewidth": 52,
+      "imageheight": 190
+    },
+    {
+      "id": 132,
+      "image": "side/wallCornerRond.png",
+      "imagewidth": 56,
+      "imageheight": 190
+    },
+    {
+      "id": 133,
+      "image": "side/wallDoorway.png",
+      "imagewidth": 109,
+      "imageheight": 190
+    },
+    {
+      "id": 134,
+      "image": "side/wallDoorwayWide.png",
+      "imagewidth": 108,
+      "imageheight": 190
+    },
+    {
+      "id": 135,
+      "image": "side/wallHalf.png",
+      "imagewidth": 57,
+      "imageheight": 190
+    },
+    {
+      "id": 136,
+      "image": "side/wallWindow.png",
+      "imagewidth": 108,
+      "imageheight": 190
+    },
+    {
+      "id": 137,
+      "image": "side/wallWindowSlide.png",
+      "imagewidth": 109,
+      "imageheight": 190
+    },
+    {
+      "id": 138,
+      "image": "side/washer.png",
+      "imagewidth": 76,
+      "imageheight": 70
+    },
+    {
+      "id": 139,
+      "image": "side/washerDryerStacked.png",
+      "imagewidth": 76,
+      "imageheight": 139
+    }
+  ]
+}

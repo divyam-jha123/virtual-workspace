@@ -65,3 +65,15 @@ tools/map-mcp/packs/
 
 # Everything the LimeZu importer generates is derived from that art.
 content/assets/limezu-*.json
+
+# One-shot map edits already applied to the committed .tmj. Replaying one is a
+# no-op at best and destructive at worst (it would overwrite areas the map has
+# since moved past), so they are working notes, not a build chain. Reusable
+# generators — make-*.mjs, import-*.mjs — stay tracked alongside.
+tools/map-mcp/scripts/scratch/
+
+# Exception to the art rule above: Kenney's Furniture Kit is CC0 (see its
+# License.txt) — commercial use granted, credit optional — so it ships with the
+# repo rather than being sourced per-person. vorkium-hq.tmj references
+# kenney-lobby.tsj and will not open without it. Licensed packs stay out.
+!content/tilesets/kenney-furniture/

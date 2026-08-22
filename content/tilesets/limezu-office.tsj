@@ -1,0 +1,721 @@
+{
+  "columns": 0,
+  "grid": {
+    "orientation": "orthogonal",
+    "width": 16,
+    "height": 16
+  },
+  "margin": 0,
+  "name": "limezu-office",
+  "spacing": 0,
+  "tilecount": 117,
+  "tiledversion": "1.10.2",
+  "tileheight": 16,
+  "tilewidth": 16,
+  "type": "tileset",
+  "version": "1.10",
+  "tiles": [
+    {
+      "id": 0,
+      "image": "limezu-office-air_duct_1_roof_prop.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 1,
+      "image": "limezu-office-air_duct_2_roof_prop.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 2,
+      "image": "limezu-office-air_duct_3_roof_prop.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 3,
+      "image": "limezu-office-balcony_1_building_1.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 4,
+      "image": "limezu-office-balcony_1_building_2.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 5,
+      "image": "limezu-office-balcony_1_building_3.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 6,
+      "image": "limezu-office-balcony_1_building_4.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 7,
+      "image": "limezu-office-balcony_2_building_1.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 8,
+      "image": "limezu-office-balcony_2_building_2.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 9,
+      "image": "limezu-office-balcony_2_building_3.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 10,
+      "image": "limezu-office-balcony_2_building_4.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 11,
+      "image": "limezu-office-balcony_left_1_building_1.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 12,
+      "image": "limezu-office-balcony_left_1_building_2.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 13,
+      "image": "limezu-office-balcony_left_1_building_3.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 14,
+      "image": "limezu-office-balcony_left_1_building_4.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 15,
+      "image": "limezu-office-balcony_left_2_building_1.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 16,
+      "image": "limezu-office-balcony_left_2_building_2.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 17,
+      "image": "limezu-office-balcony_left_2_building_3.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 18,
+      "image": "limezu-office-balcony_left_2_building_4.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 19,
+      "image": "limezu-office-balcony_middle_modular_1_building_1.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 20,
+      "image": "limezu-office-balcony_middle_modular_1_building_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 21,
+      "image": "limezu-office-balcony_middle_modular_1_building_3.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 22,
+      "image": "limezu-office-balcony_middle_modular_1_building_4.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 23,
+      "image": "limezu-office-balcony_middle_modular_2_building_1.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 24,
+      "image": "limezu-office-balcony_middle_modular_2_building_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 25,
+      "image": "limezu-office-balcony_middle_modular_2_building_3.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 26,
+      "image": "limezu-office-balcony_middle_modular_2_building_4.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 27,
+      "image": "limezu-office-balcony_right_1_building_1.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 28,
+      "image": "limezu-office-balcony_right_1_building_2.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 29,
+      "image": "limezu-office-balcony_right_1_building_3.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 30,
+      "image": "limezu-office-balcony_right_1_building_4.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 31,
+      "image": "limezu-office-balcony_right_2_building_1.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 32,
+      "image": "limezu-office-balcony_right_2_building_2.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 33,
+      "image": "limezu-office-balcony_right_2_building_3.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 34,
+      "image": "limezu-office-balcony_right_2_building_4.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 35,
+      "image": "limezu-office-balcony_window_left_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 36,
+      "image": "limezu-office-balcony_window_left_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 37,
+      "image": "limezu-office-balcony_window_middle_modular_1.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 38,
+      "image": "limezu-office-balcony_window_middle_modular_2.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 39,
+      "image": "limezu-office-balcony_window_right_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 40,
+      "image": "limezu-office-balcony_window_right_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 41,
+      "image": "limezu-office-bottom_diagonal_left_building_1.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 42,
+      "image": "limezu-office-bottom_diagonal_left_building_2_and_3.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 43,
+      "image": "limezu-office-bottom_diagonal_left_building_4.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 44,
+      "image": "limezu-office-bottom_diagonal_right_building_1.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 45,
+      "image": "limezu-office-bottom_diagonal_right_building_2_and_3.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 46,
+      "image": "limezu-office-bottom_diagonal_right_building_4.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 47,
+      "image": "limezu-office-building_1_left.png",
+      "imagewidth": 32,
+      "imageheight": 96
+    },
+    {
+      "id": 48,
+      "image": "limezu-office-building_1_left_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 49,
+      "image": "limezu-office-building_1_middle_modular.png",
+      "imagewidth": 48,
+      "imageheight": 96
+    },
+    {
+      "id": 50,
+      "image": "limezu-office-building_1_middle_modular_2.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 51,
+      "image": "limezu-office-building_1_right.png",
+      "imagewidth": 32,
+      "imageheight": 96
+    },
+    {
+      "id": 52,
+      "image": "limezu-office-building_1_right_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 53,
+      "image": "limezu-office-building_1_window_modular.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 54,
+      "image": "limezu-office-building_2_left.png",
+      "imagewidth": 32,
+      "imageheight": 96
+    },
+    {
+      "id": 55,
+      "image": "limezu-office-building_2_left_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 56,
+      "image": "limezu-office-building_2_middle_modular.png",
+      "imagewidth": 48,
+      "imageheight": 96
+    },
+    {
+      "id": 57,
+      "image": "limezu-office-building_2_middle_modular_2.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 58,
+      "image": "limezu-office-building_2_right.png",
+      "imagewidth": 32,
+      "imageheight": 96
+    },
+    {
+      "id": 59,
+      "image": "limezu-office-building_2_right_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 60,
+      "image": "limezu-office-building_2_window_modular.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 61,
+      "image": "limezu-office-building_3_left.png",
+      "imagewidth": 32,
+      "imageheight": 96
+    },
+    {
+      "id": 62,
+      "image": "limezu-office-building_3_left_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 63,
+      "image": "limezu-office-building_3_middle_modular.png",
+      "imagewidth": 48,
+      "imageheight": 96
+    },
+    {
+      "id": 64,
+      "image": "limezu-office-building_3_right.png",
+      "imagewidth": 32,
+      "imageheight": 96
+    },
+    {
+      "id": 65,
+      "image": "limezu-office-building_3_right_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 66,
+      "image": "limezu-office-building_3_window_modular.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 67,
+      "image": "limezu-office-building_4_left.png",
+      "imagewidth": 32,
+      "imageheight": 96
+    },
+    {
+      "id": 68,
+      "image": "limezu-office-building_4_left_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 69,
+      "image": "limezu-office-building_4_middle_modular.png",
+      "imagewidth": 48,
+      "imageheight": 96
+    },
+    {
+      "id": 70,
+      "image": "limezu-office-building_4_middle_modular_2.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 71,
+      "image": "limezu-office-building_4_right.png",
+      "imagewidth": 32,
+      "imageheight": 96
+    },
+    {
+      "id": 72,
+      "image": "limezu-office-building_4_right_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 73,
+      "image": "limezu-office-building_4_window_modular.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 74,
+      "image": "limezu-office-building_sign_1.png",
+      "imagewidth": 112,
+      "imageheight": 16
+    },
+    {
+      "id": 75,
+      "image": "limezu-office-building_sign_2.png",
+      "imagewidth": 112,
+      "imageheight": 16
+    },
+    {
+      "id": 76,
+      "image": "limezu-office-cabin_entrance_roof_prop.png",
+      "imagewidth": 32,
+      "imageheight": 64
+    },
+    {
+      "id": 77,
+      "image": "limezu-office-diagonal_middle_modular_left_building_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 78,
+      "image": "limezu-office-diagonal_middle_modular_left_building_2_and_3.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 79,
+      "image": "limezu-office-diagonal_middle_modular_left_building_4.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 80,
+      "image": "limezu-office-diagonal_middle_modular_right_building_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 81,
+      "image": "limezu-office-diagonal_middle_modular_right_building_2_and_3.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 82,
+      "image": "limezu-office-diagonal_middle_modular_right_building_4.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 83,
+      "image": "limezu-office-example_1.png",
+      "imagewidth": 192,
+      "imageheight": 304
+    },
+    {
+      "id": 84,
+      "image": "limezu-office-example_2.png",
+      "imagewidth": 304,
+      "imageheight": 288
+    },
+    {
+      "id": 85,
+      "image": "limezu-office-roof_diagonal_left_building_1.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 86,
+      "image": "limezu-office-roof_diagonal_left_building_2_and_3.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 87,
+      "image": "limezu-office-roof_diagonal_left_building_4.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 88,
+      "image": "limezu-office-roof_diagonal_right_building_1.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 89,
+      "image": "limezu-office-roof_diagonal_right_building_2_and_3.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 90,
+      "image": "limezu-office-roof_diagonal_right_building_4.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 91,
+      "image": "limezu-office-roof_left.png",
+      "imagewidth": 32,
+      "imageheight": 80
+    },
+    {
+      "id": 92,
+      "image": "limezu-office-roof_middle_modular.png",
+      "imagewidth": 48,
+      "imageheight": 80
+    },
+    {
+      "id": 93,
+      "image": "limezu-office-roof_prop_1.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 94,
+      "image": "limezu-office-roof_prop_2.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 95,
+      "image": "limezu-office-roof_prop_3.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 96,
+      "image": "limezu-office-roof_right.png",
+      "imagewidth": 32,
+      "imageheight": 80
+    },
+    {
+      "id": 97,
+      "image": "limezu-office-roof_stairs.png",
+      "imagewidth": 48,
+      "imageheight": 80
+    },
+    {
+      "id": 98,
+      "image": "limezu-office-roof_stairs_left.png",
+      "imagewidth": 32,
+      "imageheight": 80
+    },
+    {
+      "id": 99,
+      "image": "limezu-office-shutter_dish_roof_prop.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 100,
+      "image": "limezu-office-solar_panel_roof_prop.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 101,
+      "image": "limezu-office-window_1_left_modular.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 102,
+      "image": "limezu-office-window_1_middle_modular.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 103,
+      "image": "limezu-office-window_1_right_modular.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 104,
+      "image": "limezu-office-window_2_left_modular.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 105,
+      "image": "limezu-office-window_2_middle_modular.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 106,
+      "image": "limezu-office-window_2_right_modular.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 107,
+      "image": "limezu-office-window_3_left_modular.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 108,
+      "image": "limezu-office-window_3_middle_modular.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 109,
+      "image": "limezu-office-window_3_right_modular.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 110,
+      "image": "limezu-office-window_4_left_modular.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 111,
+      "image": "limezu-office-window_4_middle_modular.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 112,
+      "image": "limezu-office-window_4_right_modular.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 113,
+      "image": "limezu-office-window_with_shutter_1_modular.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 114,
+      "image": "limezu-office-window_with_shutter_2_modular.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 115,
+      "image": "limezu-office-window_with_shutter_3_modular.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 116,
+      "image": "limezu-office-window_with_shutter_4_modular.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    }
+  ]
+}

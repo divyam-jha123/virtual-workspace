@@ -1,0 +1,781 @@
+{
+  "name": "office-props",
+  "tilewidth": 16,
+  "tileheight": 16,
+  "tilecount": 127,
+  "margin": 0,
+  "spacing": 0,
+  "type": "tileset",
+  "version": "1.10",
+  "tiledversion": "1.10.2",
+  "columns": 0,
+  "grid": {
+    "orientation": "orthogonal",
+    "width": 1,
+    "height": 1
+  },
+  "tiles": [
+    {
+      "id": 0,
+      "image": "monitor_off.png",
+      "imagewidth": 16,
+      "imageheight": 19
+    },
+    {
+      "id": 1,
+      "image": "monitor_chart.png",
+      "imagewidth": 16,
+      "imageheight": 19
+    },
+    {
+      "id": 2,
+      "image": "monitor_code.png",
+      "imagewidth": 16,
+      "imageheight": 19
+    },
+    {
+      "id": 3,
+      "image": "printer.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 4,
+      "image": "fridge.png",
+      "imagewidth": 16,
+      "imageheight": 27
+    },
+    {
+      "id": 5,
+      "image": "chair_left.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 6,
+      "image": "chair_down.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 7,
+      "image": "chair_up.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 8,
+      "image": "chair_right.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 9,
+      "image": "lockers.png",
+      "imagewidth": 16,
+      "imageheight": 14
+    },
+    {
+      "id": 10,
+      "image": "window_pane_a.png",
+      "imagewidth": 16,
+      "imageheight": 17
+    },
+    {
+      "id": 11,
+      "image": "window_pane_b.png",
+      "imagewidth": 16,
+      "imageheight": 17
+    },
+    {
+      "id": 12,
+      "image": "plant.png",
+      "imagewidth": 20,
+      "imageheight": 19
+    },
+    {
+      "id": 13,
+      "image": "keyboard_a.png",
+      "imagewidth": 12,
+      "imageheight": 4
+    },
+    {
+      "id": 14,
+      "image": "keyboard_b.png",
+      "imagewidth": 13,
+      "imageheight": 4
+    },
+    {
+      "id": 15,
+      "image": "elevator.png",
+      "imagewidth": 30,
+      "imageheight": 32
+    },
+    {
+      "id": 16,
+      "image": "ladder.png",
+      "imagewidth": 15,
+      "imageheight": 16
+    },
+    {
+      "id": 17,
+      "image": "water_cooler.png",
+      "imagewidth": 16,
+      "imageheight": 24
+    },
+    {
+      "id": 18,
+      "image": "cabinet_drawers.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 19,
+      "image": "cabinet_plain.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 20,
+      "image": "whiteboard.png",
+      "imagewidth": 21,
+      "imageheight": 25
+    },
+    {
+      "id": 21,
+      "image": "desk_wood.png",
+      "imagewidth": 31,
+      "imageheight": 22
+    },
+    {
+      "id": 22,
+      "image": "window_unit.png",
+      "imagewidth": 44,
+      "imageheight": 61
+    },
+    {
+      "id": 23,
+      "image": "doorway_arch.png",
+      "imagewidth": 44,
+      "imageheight": 54
+    },
+    {
+      "id": 24,
+      "image": "reception_desk.png",
+      "imagewidth": 46,
+      "imageheight": 23
+    },
+    {
+      "id": 25,
+      "image": "window_frame_1.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 26,
+      "image": "window_frame_2.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 27,
+      "image": "window_frame_3.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 28,
+      "image": "sofa-big.png",
+      "imagewidth": 48,
+      "imageheight": 24
+    },
+    {
+      "id": 29,
+      "image": "sofa-small.png",
+      "imagewidth": 32,
+      "imageheight": 24
+    },
+    {
+      "id": 30,
+      "image": "small-sofa.png",
+      "imagewidth": 32,
+      "imageheight": 24
+    },
+    {
+      "id": 31,
+      "image": "big-sofa.png",
+      "imagewidth": 48,
+      "imageheight": 21
+    },
+    {
+      "id": 32,
+      "image": "sofa-variant-01.png",
+      "imagewidth": 48,
+      "imageheight": 41
+    },
+    {
+      "id": 33,
+      "image": "sofa-variant-02.png",
+      "imagewidth": 48,
+      "imageheight": 40
+    },
+    {
+      "id": 34,
+      "image": "sofa-variant-03.png",
+      "imagewidth": 48,
+      "imageheight": 41
+    },
+    {
+      "id": 35,
+      "image": "sofa-variant-04.png",
+      "imagewidth": 48,
+      "imageheight": 42
+    },
+    {
+      "id": 36,
+      "image": "sofa-variant-05.png",
+      "imagewidth": 48,
+      "imageheight": 25
+    },
+    {
+      "id": 37,
+      "image": "sofa-variant-06.png",
+      "imagewidth": 48,
+      "imageheight": 23
+    },
+    {
+      "id": 38,
+      "image": "sofa-variant-07.png",
+      "imagewidth": 48,
+      "imageheight": 24
+    },
+    {
+      "id": 39,
+      "image": "sofa-variant-08.png",
+      "imagewidth": 48,
+      "imageheight": 23
+    },
+    {
+      "id": 40,
+      "image": "sofa-variant-09.png",
+      "imagewidth": 48,
+      "imageheight": 17
+    },
+    {
+      "id": 41,
+      "image": "sofa-variant-10.png",
+      "imagewidth": 48,
+      "imageheight": 17
+    },
+    {
+      "id": 42,
+      "image": "sofa-variant-11.png",
+      "imagewidth": 48,
+      "imageheight": 17
+    },
+    {
+      "id": 43,
+      "image": "sofa-variant-12.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 44,
+      "image": "sofa-variant-13.png",
+      "imagewidth": 48,
+      "imageheight": 24
+    },
+    {
+      "id": 45,
+      "image": "sofa-variant-14.png",
+      "imagewidth": 48,
+      "imageheight": 26
+    },
+    {
+      "id": 46,
+      "image": "sofa-variant-15.png",
+      "imagewidth": 48,
+      "imageheight": 25
+    },
+    {
+      "id": 47,
+      "image": "sofa-variant-16.png",
+      "imagewidth": 48,
+      "imageheight": 22
+    },
+    {
+      "id": 48,
+      "image": "sofa-variant-17.png",
+      "imagewidth": 48,
+      "imageheight": 22
+    },
+    {
+      "id": 49,
+      "image": "sofa-variant-18.png",
+      "imagewidth": 48,
+      "imageheight": 22
+    },
+    {
+      "id": 50,
+      "image": "sofa-variant-19.png",
+      "imagewidth": 48,
+      "imageheight": 23
+    },
+    {
+      "id": 51,
+      "image": "sofa-variant-20.png",
+      "imagewidth": 48,
+      "imageheight": 20
+    },
+    {
+      "id": 52,
+      "image": "sofa-variant-21.png",
+      "imagewidth": 48,
+      "imageheight": 27
+    },
+    {
+      "id": 53,
+      "image": "sofa-variant-22.png",
+      "imagewidth": 48,
+      "imageheight": 26
+    },
+    {
+      "id": 54,
+      "image": "sofa-variant-23.png",
+      "imagewidth": 48,
+      "imageheight": 26
+    },
+    {
+      "id": 55,
+      "image": "sofa-variant-24.png",
+      "imagewidth": 48,
+      "imageheight": 27
+    },
+    {
+      "id": 56,
+      "image": "sofa-variant-25.png",
+      "imagewidth": 48,
+      "imageheight": 46
+    },
+    {
+      "id": 57,
+      "image": "sofa-variant-26.png",
+      "imagewidth": 47,
+      "imageheight": 48
+    },
+    {
+      "id": 58,
+      "image": "sofa-variant-27.png",
+      "imagewidth": 47,
+      "imageheight": 48
+    },
+    {
+      "id": 59,
+      "image": "sofa-variant-28.png",
+      "imagewidth": 47,
+      "imageheight": 48
+    },
+    {
+      "id": 60,
+      "image": "sofa-variant-29.png",
+      "imagewidth": 48,
+      "imageheight": 20
+    },
+    {
+      "id": 61,
+      "image": "sofa-variant-30.png",
+      "imagewidth": 48,
+      "imageheight": 21
+    },
+    {
+      "id": 62,
+      "image": "sofa-variant-31.png",
+      "imagewidth": 48,
+      "imageheight": 21
+    },
+    {
+      "id": 63,
+      "image": "sofa-variant-32.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 64,
+      "image": "sofa-variant-33.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 65,
+      "image": "sofa-variant-34.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 66,
+      "image": "sofa-variant-35.png",
+      "imagewidth": 48,
+      "imageheight": 17
+    },
+    {
+      "id": 67,
+      "image": "sofa-variant-36.png",
+      "imagewidth": 48,
+      "imageheight": 17
+    },
+    {
+      "id": 68,
+      "image": "sofa-variant-37.png",
+      "imagewidth": 48,
+      "imageheight": 15
+    },
+    {
+      "id": 69,
+      "image": "sofa-variant-38.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 70,
+      "image": "sofa-variant-39.png",
+      "imagewidth": 48,
+      "imageheight": 15
+    },
+    {
+      "id": 71,
+      "image": "sofa-variant-40.png",
+      "imagewidth": 48,
+      "imageheight": 15
+    },
+    {
+      "id": 72,
+      "image": "sofa-variant-41.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 73,
+      "image": "sofa-variant-42.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 74,
+      "image": "sofa-variant-43.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 75,
+      "image": "sofa-variant-44.png",
+      "imagewidth": 48,
+      "imageheight": 17
+    },
+    {
+      "id": 76,
+      "image": "sofa-variant-45.png",
+      "imagewidth": 48,
+      "imageheight": 17
+    },
+    {
+      "id": 77,
+      "image": "sofa-variant-46.png",
+      "imagewidth": 48,
+      "imageheight": 17
+    },
+    {
+      "id": 78,
+      "image": "sofa-variant-47.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 79,
+      "image": "curved-reception-desk.png",
+      "imagewidth": 64,
+      "imageheight": 43
+    },
+    {
+      "id": 80,
+      "image": "water-filter.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 81,
+      "image": "lobby-reception-desk-full.png",
+      "imagewidth": 64,
+      "imageheight": 27
+    },
+    {
+      "id": 82,
+      "image": "lobby-reception-counter.png",
+      "imagewidth": 64,
+      "imageheight": 35
+    },
+    {
+      "id": 83,
+      "image": "lobby-office-chair.png",
+      "imagewidth": 50,
+      "imageheight": 64
+    },
+    {
+      "id": 84,
+      "image": "lobby-monitor.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 85,
+      "image": "lobby-sofa-3-seat.png",
+      "imagewidth": 64,
+      "imageheight": 24
+    },
+    {
+      "id": 86,
+      "image": "lobby-armchair.png",
+      "imagewidth": 58,
+      "imageheight": 64
+    },
+    {
+      "id": 87,
+      "image": "lobby-coffee-table.png",
+      "imagewidth": 64,
+      "imageheight": 30
+    },
+    {
+      "id": 88,
+      "image": "lobby-area-rug.png",
+      "imagewidth": 64,
+      "imageheight": 35
+    },
+    {
+      "id": 89,
+      "image": "lobby-notebook.png",
+      "imagewidth": 40,
+      "imageheight": 48
+    },
+    {
+      "id": 90,
+      "image": "lobby-plant-round.png",
+      "imagewidth": 53,
+      "imageheight": 64
+    },
+    {
+      "id": 91,
+      "image": "lobby-plant-tall.png",
+      "imagewidth": 41,
+      "imageheight": 64
+    },
+    {
+      "id": 92,
+      "image": "lobby-water-cooler.png",
+      "imagewidth": 37,
+      "imageheight": 64
+    },
+    {
+      "id": 93,
+      "image": "lobby-plant-square.png",
+      "imagewidth": 50,
+      "imageheight": 64
+    },
+    {
+      "id": 94,
+      "image": "layout-floor-cross-bottom.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 95,
+      "image": "layout-floor-cross-top.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 96,
+      "image": "layout-floor-l-bottom.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 97,
+      "image": "layout-floor-l-top.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 98,
+      "image": "layout-floor-pill-bottom.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 99,
+      "image": "layout-floor-pill-top.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 100,
+      "image": "layout-floor-rect-bottom.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 101,
+      "image": "layout-floor-rect-top.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 102,
+      "image": "layout-floor-square-bottom.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 103,
+      "image": "layout-floor-square-top.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 104,
+      "image": "layout-floor-t-bottom.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 105,
+      "image": "layout-floor-t-top.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 106,
+      "image": "layout-room-frame-oct-bottom.png",
+      "imagewidth": 64,
+      "imageheight": 39
+    },
+    {
+      "id": 107,
+      "image": "layout-room-frame-oct-top.png",
+      "imagewidth": 64,
+      "imageheight": 62
+    },
+    {
+      "id": 108,
+      "image": "layout-rug-big-outline.png",
+      "imagewidth": 64,
+      "imageheight": 53
+    },
+    {
+      "id": 109,
+      "image": "layout-rug-cross-fill.png",
+      "imagewidth": 64,
+      "imageheight": 61
+    },
+    {
+      "id": 110,
+      "image": "layout-rug-cross-outline.png",
+      "imagewidth": 64,
+      "imageheight": 61
+    },
+    {
+      "id": 111,
+      "image": "layout-rug-l-fill.png",
+      "imagewidth": 64,
+      "imageheight": 54
+    },
+    {
+      "id": 112,
+      "image": "layout-rug-l-outline.png",
+      "imagewidth": 64,
+      "imageheight": 54
+    },
+    {
+      "id": 113,
+      "image": "layout-rug-pill-fill.png",
+      "imagewidth": 41,
+      "imageheight": 64
+    },
+    {
+      "id": 114,
+      "image": "layout-rug-pill-outline.png",
+      "imagewidth": 40,
+      "imageheight": 64
+    },
+    {
+      "id": 115,
+      "image": "layout-rug-rect-fill.png",
+      "imagewidth": 64,
+      "imageheight": 57
+    },
+    {
+      "id": 116,
+      "image": "layout-rug-rect-outline.png",
+      "imagewidth": 64,
+      "imageheight": 27
+    },
+    {
+      "id": 117,
+      "image": "layout-rug-square-fill.png",
+      "imagewidth": 60,
+      "imageheight": 64
+    },
+    {
+      "id": 118,
+      "image": "layout-rug-square-outline.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 119,
+      "image": "layout-wall-cross-top.png",
+      "imagewidth": 57,
+      "imageheight": 64
+    },
+    {
+      "id": 120,
+      "image": "layout-wall-l-top.png",
+      "imagewidth": 64,
+      "imageheight": 53
+    },
+    {
+      "id": 121,
+      "image": "layout-wall-pill-top.png",
+      "imagewidth": 41,
+      "imageheight": 64
+    },
+    {
+      "id": 122,
+      "image": "layout-wall-rect-top.png",
+      "imagewidth": 64,
+      "imageheight": 39
+    },
+    {
+      "id": 123,
+      "image": "layout-wall-square-top.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 124,
+      "image": "layout-wall-t-top.png",
+      "imagewidth": 60,
+      "imageheight": 64
+    },
+    {
+      "id": 125,
+      "image": "reception-signboard.png",
+      "imagewidth": 96,
+      "imageheight": 32
+    },
+    {
+      "id": 126,
+      "image": "bookshelf-desk-set.png",
+      "imagewidth": 96,
+      "imageheight": 48
+    }
+  ]
+}

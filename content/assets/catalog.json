@@ -1,0 +1,4728 @@
+{
+  "assets": [
+    {
+      "id": "mop.archive-box",
+      "name": "Archive Box",
+      "category": "props",
+      "tags": [
+        "office",
+        "archive",
+        "box",
+        "desktop",
+        "prop"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 36,
+      "version": "1.0",
+      "subcategory": "archive",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.artwork-abstract",
+      "name": "Artwork Abstract",
+      "category": "decor",
+      "tags": [
+        "office",
+        "abstract",
+        "artwork",
+        "decor"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "wall",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 0,
+      "version": "1.0",
+      "subcategory": "artwork",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.bin-recycling",
+      "name": "Bin Recycling",
+      "category": "decor",
+      "tags": [
+        "office",
+        "decor",
+        "bin",
+        "recycling"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 1,
+      "version": "1.0",
+      "subcategory": "bin",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.bin-waste",
+      "name": "Bin Waste",
+      "category": "decor",
+      "tags": [
+        "office",
+        "decor",
+        "bin",
+        "waste"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 2,
+      "version": "1.0",
+      "subcategory": "bin",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.cabinet-filing-tall",
+      "name": "Cabinet Filing Tall",
+      "category": "furniture",
+      "tags": [
+        "office",
+        "cabinet",
+        "filing",
+        "furniture",
+        "tall"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 24,
+      "version": "1.0",
+      "subcategory": "cabinet",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.calculator",
+      "name": "Calculator",
+      "category": "props",
+      "tags": [
+        "office",
+        "desktop",
+        "prop",
+        "calculator"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 37,
+      "version": "1.0",
+      "subcategory": "calculator",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.camera-security",
+      "name": "Camera Security",
+      "category": "electronics",
+      "tags": [
+        "office",
+        "camera",
+        "electronics",
+        "security"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "wall",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 10,
+      "version": "1.0",
+      "subcategory": "camera",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.chair-meeting",
+      "name": "Chair Meeting",
+      "category": "furniture",
+      "tags": [
+        "office",
+        "chair",
+        "furniture",
+        "meeting"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 25,
+      "version": "1.0",
+      "subcategory": "chair",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "interaction": {
+        "class": "seat",
+        "capacity": 1
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.chair-task",
+      "name": "Chair Task",
+      "category": "furniture",
+      "tags": [
+        "office",
+        "chair",
+        "furniture",
+        "task"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 26,
+      "version": "1.0",
+      "subcategory": "chair",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "interaction": {
+        "class": "seat",
+        "capacity": 1
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.chair-visitor",
+      "name": "Chair Visitor",
+      "category": "furniture",
+      "tags": [
+        "office",
+        "chair",
+        "furniture",
+        "visitor"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 27,
+      "version": "1.0",
+      "subcategory": "chair",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "interaction": {
+        "class": "seat",
+        "capacity": 1
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.clipboard-blank",
+      "name": "Clipboard Blank",
+      "category": "props",
+      "tags": [
+        "office",
+        "desktop",
+        "prop",
+        "blank",
+        "clipboard"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 38,
+      "version": "1.0",
+      "subcategory": "clipboard",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.clock-wall",
+      "name": "Clock Wall",
+      "category": "electronics",
+      "tags": [
+        "office",
+        "wall",
+        "electronics",
+        "clock"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "wall",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 11,
+      "version": "1.0",
+      "subcategory": "clock",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.computer-tower",
+      "name": "Computer Tower",
+      "category": "electronics",
+      "tags": [
+        "office",
+        "electronics",
+        "computer",
+        "tower"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 12,
+      "version": "1.0",
+      "subcategory": "computer",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.control-panel",
+      "name": "Control Panel",
+      "category": "electronics",
+      "tags": [
+        "office",
+        "electronics",
+        "control",
+        "panel"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "wall",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 13,
+      "version": "1.0",
+      "subcategory": "control",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": false
+      },
+      "interaction": {
+        "class": "appliance",
+        "capacity": 1
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.copier-multifunction",
+      "name": "Copier Multifunction",
+      "category": "electronics",
+      "tags": [
+        "office",
+        "electronics",
+        "copier",
+        "multifunction"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 14,
+      "version": "1.0",
+      "subcategory": "copier",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "interaction": {
+        "class": "printer",
+        "capacity": 1
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.counter-reception-curved",
+      "name": "Counter Reception Curved",
+      "category": "furniture",
+      "tags": [
+        "office",
+        "reception",
+        "furniture",
+        "counter",
+        "curved"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 28,
+      "version": "1.0",
+      "subcategory": "counter",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.credenza-low",
+      "name": "Credenza Low",
+      "category": "furniture",
+      "tags": [
+        "office",
+        "furniture",
+        "credenza",
+        "low"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 29,
+      "version": "1.0",
+      "subcategory": "credenza",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.desk-corner-l",
+      "name": "Desk Corner L",
+      "category": "furniture",
+      "tags": [
+        "desk",
+        "office",
+        "furniture",
+        "corner",
+        "l"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 30,
+      "version": "1.0",
+      "subcategory": "desk",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.desk-modesty-panel",
+      "name": "Desk Modesty Panel",
+      "category": "furniture",
+      "tags": [
+        "desk",
+        "office",
+        "panel",
+        "furniture",
+        "modesty"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 31,
+      "version": "1.0",
+      "subcategory": "desk",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.desk-standing",
+      "name": "Desk Standing",
+      "category": "furniture",
+      "tags": [
+        "desk",
+        "office",
+        "furniture",
+        "standing"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 32,
+      "version": "1.0",
+      "subcategory": "desk",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.desk-straight",
+      "name": "Desk Straight",
+      "category": "furniture",
+      "tags": [
+        "desk",
+        "office",
+        "furniture",
+        "straight"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 33,
+      "version": "1.0",
+      "subcategory": "desk",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.folder-closed",
+      "name": "Folder Closed",
+      "category": "props",
+      "tags": [
+        "office",
+        "closed",
+        "desktop",
+        "prop",
+        "folder"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 39,
+      "version": "1.0",
+      "subcategory": "folder",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.frame-photo-blank",
+      "name": "Frame Photo Blank",
+      "category": "props",
+      "tags": [
+        "office",
+        "desktop",
+        "prop",
+        "blank",
+        "frame",
+        "photo"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 40,
+      "version": "1.0",
+      "subcategory": "frame",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.headphones",
+      "name": "Headphones",
+      "category": "props",
+      "tags": [
+        "office",
+        "desktop",
+        "prop",
+        "headphones"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 41,
+      "version": "1.0",
+      "subcategory": "headphones",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.keys-set",
+      "name": "Keys Set",
+      "category": "props",
+      "tags": [
+        "office",
+        "desktop",
+        "prop",
+        "keys",
+        "set"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 42,
+      "version": "1.0",
+      "subcategory": "keys",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.lamp-desk",
+      "name": "Lamp Desk",
+      "category": "electronics",
+      "tags": [
+        "desk",
+        "office",
+        "electronics",
+        "lamp"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 15,
+      "version": "1.0",
+      "subcategory": "lamp",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.lamp-floor",
+      "name": "Lamp Floor",
+      "category": "electronics",
+      "tags": [
+        "office",
+        "floor",
+        "electronics",
+        "lamp"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 16,
+      "version": "1.0",
+      "subcategory": "lamp",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.laptop-closed",
+      "name": "Laptop Closed",
+      "category": "electronics",
+      "tags": [
+        "office",
+        "electronics",
+        "closed",
+        "laptop"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 17,
+      "version": "1.0",
+      "subcategory": "laptop",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.laptop-open-off",
+      "name": "Laptop Open Off",
+      "category": "electronics",
+      "tags": [
+        "office",
+        "electronics",
+        "laptop",
+        "off",
+        "open"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 18,
+      "version": "1.0",
+      "subcategory": "laptop",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.monitor-single-off",
+      "name": "Monitor Single Off",
+      "category": "electronics",
+      "tags": [
+        "office",
+        "monitor",
+        "electronics",
+        "off",
+        "single"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 19,
+      "version": "1.0",
+      "subcategory": "monitor",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": false
+      },
+      "interaction": {
+        "class": "workstation",
+        "capacity": 1
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.mug",
+      "name": "Mug",
+      "category": "props",
+      "tags": [
+        "office",
+        "desktop",
+        "prop",
+        "mug"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 43,
+      "version": "1.0",
+      "subcategory": "mug",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.notebook-closed",
+      "name": "Notebook Closed",
+      "category": "props",
+      "tags": [
+        "office",
+        "closed",
+        "desktop",
+        "prop",
+        "notebook"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 44,
+      "version": "1.0",
+      "subcategory": "notebook",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.organizer-desk",
+      "name": "Organizer Desk",
+      "category": "props",
+      "tags": [
+        "desk",
+        "office",
+        "desktop",
+        "prop",
+        "organizer"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 45,
+      "version": "1.0",
+      "subcategory": "organizer",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.papers-stack",
+      "name": "Papers Stack",
+      "category": "props",
+      "tags": [
+        "office",
+        "desktop",
+        "prop",
+        "papers",
+        "stack"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 46,
+      "version": "1.0",
+      "subcategory": "papers",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.partition-fabric",
+      "name": "Partition Fabric",
+      "category": "decor",
+      "tags": [
+        "office",
+        "partition",
+        "decor",
+        "fabric"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 3,
+      "version": "1.0",
+      "subcategory": "partition",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.pedestal-mobile",
+      "name": "Pedestal Mobile",
+      "category": "furniture",
+      "tags": [
+        "office",
+        "furniture",
+        "mobile",
+        "pedestal"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 34,
+      "version": "1.0",
+      "subcategory": "pedestal",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.pen-cup",
+      "name": "Pen Cup",
+      "category": "props",
+      "tags": [
+        "office",
+        "desktop",
+        "prop",
+        "cup",
+        "pen"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 47,
+      "version": "1.0",
+      "subcategory": "pen",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.plant-broadleaf",
+      "name": "Plant Broadleaf",
+      "category": "decor",
+      "tags": [
+        "office",
+        "plant",
+        "decor",
+        "broadleaf"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 4,
+      "version": "1.0",
+      "subcategory": "plant",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.plant-palm",
+      "name": "Plant Palm",
+      "category": "decor",
+      "tags": [
+        "office",
+        "plant",
+        "decor",
+        "palm"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 5,
+      "version": "1.0",
+      "subcategory": "plant",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.plant-snake",
+      "name": "Plant Snake",
+      "category": "decor",
+      "tags": [
+        "office",
+        "plant",
+        "decor",
+        "snake"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 6,
+      "version": "1.0",
+      "subcategory": "plant",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.printer-small",
+      "name": "Printer Small",
+      "category": "electronics",
+      "tags": [
+        "office",
+        "printer",
+        "electronics",
+        "small"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 20,
+      "version": "1.0",
+      "subcategory": "printer",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "interaction": {
+        "class": "printer",
+        "capacity": 1
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.projector",
+      "name": "Projector",
+      "category": "electronics",
+      "tags": [
+        "office",
+        "electronics",
+        "projector"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 21,
+      "version": "1.0",
+      "subcategory": "projector",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": false
+      },
+      "interaction": {
+        "class": "screen",
+        "capacity": 1
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.refrigerator-compact",
+      "name": "Refrigerator Compact",
+      "category": "decor",
+      "tags": [
+        "office",
+        "decor",
+        "compact",
+        "refrigerator"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 7,
+      "version": "1.0",
+      "subcategory": "refrigerator",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "interaction": {
+        "class": "appliance",
+        "capacity": 1
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.shredder",
+      "name": "Shredder",
+      "category": "electronics",
+      "tags": [
+        "office",
+        "electronics",
+        "shredder"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 22,
+      "version": "1.0",
+      "subcategory": "shredder",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.stand-umbrella",
+      "name": "Stand Umbrella",
+      "category": "decor",
+      "tags": [
+        "office",
+        "decor",
+        "stand",
+        "umbrella"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 8,
+      "version": "1.0",
+      "subcategory": "stand",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.stapler",
+      "name": "Stapler",
+      "category": "props",
+      "tags": [
+        "office",
+        "desktop",
+        "prop",
+        "stapler"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 48,
+      "version": "1.0",
+      "subcategory": "stapler",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.stool-high",
+      "name": "Stool High",
+      "category": "furniture",
+      "tags": [
+        "office",
+        "furniture",
+        "high",
+        "stool"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 35,
+      "version": "1.0",
+      "subcategory": "stool",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "interaction": {
+        "class": "seat",
+        "capacity": 1
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.succulent-small",
+      "name": "Succulent Small",
+      "category": "props",
+      "tags": [
+        "office",
+        "small",
+        "desktop",
+        "prop",
+        "succulent"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 49,
+      "version": "1.0",
+      "subcategory": "succulent",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.tape-dispenser",
+      "name": "Tape Dispenser",
+      "category": "props",
+      "tags": [
+        "office",
+        "desktop",
+        "prop",
+        "dispenser",
+        "tape"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 50,
+      "version": "1.0",
+      "subcategory": "tape",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.tree-indoor",
+      "name": "Tree Indoor",
+      "category": "decor",
+      "tags": [
+        "office",
+        "decor",
+        "indoor",
+        "tree"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 9,
+      "version": "1.0",
+      "subcategory": "tree",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.ups",
+      "name": "Ups",
+      "category": "electronics",
+      "tags": [
+        "office",
+        "electronics",
+        "ups"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 23,
+      "version": "1.0",
+      "subcategory": "ups",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.usb-drive",
+      "name": "Usb Drive",
+      "category": "props",
+      "tags": [
+        "office",
+        "desktop",
+        "prop",
+        "drive",
+        "usb"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 51,
+      "version": "1.0",
+      "subcategory": "usb",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.wastebasket-small",
+      "name": "Wastebasket Small",
+      "category": "props",
+      "tags": [
+        "office",
+        "small",
+        "desktop",
+        "prop",
+        "wastebasket"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 52,
+      "version": "1.0",
+      "subcategory": "wastebasket",
+      "style": "flat-cartoon-topdown",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "mop.water-bottle",
+      "name": "Water Bottle",
+      "category": "props",
+      "tags": [
+        "office",
+        "water",
+        "desktop",
+        "prop",
+        "bottle"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "modern-office-modern-office-props",
+      "tileId": 53,
+      "version": "1.0",
+      "subcategory": "water",
+      "style": "flat-cartoon-topdown",
+      "source": {
+        "author": "nacl1234",
+        "license": "Modern Office 2D Props Pack Commercial License"
+      }
+    },
+    {
+      "id": "office.cabinet",
+      "name": "Filing cabinet",
+      "category": "furniture",
+      "tags": [
+        "storage",
+        "cabinet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 18,
+      "version": "1",
+      "subcategory": "storage",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.chair-down",
+      "name": "Swivel chair (down)",
+      "category": "furniture",
+      "tags": [
+        "chair",
+        "seat"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 6,
+      "version": "1",
+      "subcategory": "chair",
+      "collision": {
+        "blocking": false
+      },
+      "interaction": {
+        "class": "seat",
+        "facing": "down",
+        "seatType": "deskchair"
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.chair-left",
+      "name": "Swivel chair (left)",
+      "category": "furniture",
+      "tags": [
+        "chair",
+        "seat"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 5,
+      "version": "1",
+      "subcategory": "chair",
+      "collision": {
+        "blocking": false
+      },
+      "interaction": {
+        "class": "seat",
+        "facing": "left",
+        "seatType": "deskchair"
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.chair-right",
+      "name": "Swivel chair (right)",
+      "category": "furniture",
+      "tags": [
+        "chair",
+        "seat"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 8,
+      "version": "1",
+      "subcategory": "chair",
+      "collision": {
+        "blocking": false
+      },
+      "interaction": {
+        "class": "seat",
+        "facing": "right",
+        "seatType": "deskchair"
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.chair-up",
+      "name": "Swivel chair (up)",
+      "category": "furniture",
+      "tags": [
+        "chair",
+        "seat"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 7,
+      "version": "1",
+      "subcategory": "chair",
+      "collision": {
+        "blocking": false
+      },
+      "interaction": {
+        "class": "seat",
+        "facing": "up",
+        "seatType": "deskchair"
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.desk",
+      "name": "Office desk",
+      "category": "furniture",
+      "tags": [
+        "desk",
+        "table",
+        "workstation",
+        "office"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 21,
+      "version": "1",
+      "subcategory": "desk",
+      "style": "office",
+      "collision": {
+        "blocking": true
+      },
+      "interaction": {
+        "class": "workstation",
+        "capacity": 1
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.elevator",
+      "name": "Elevator",
+      "category": "structure",
+      "tags": [
+        "elevator",
+        "lift"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "wall",
+      "tilesetId": "office-props",
+      "tileId": 15,
+      "version": "1",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.floor",
+      "name": "Office floor tile",
+      "category": "floor",
+      "tags": [
+        "floor",
+        "ground"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-floors",
+      "tileId": 0,
+      "version": "1",
+      "collision": {
+        "blocking": false
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.fridge",
+      "name": "Fridge",
+      "category": "appliance",
+      "tags": [
+        "fridge",
+        "kitchen"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 4,
+      "version": "1",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.lockers",
+      "name": "Lockers",
+      "category": "furniture",
+      "tags": [
+        "lockers",
+        "storage"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 9,
+      "version": "1",
+      "subcategory": "storage",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.monitor-chart",
+      "name": "Monitor (chart)",
+      "category": "equipment",
+      "tags": [
+        "monitor",
+        "screen",
+        "display"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "overlay",
+      "tilesetId": "office-props",
+      "tileId": 1,
+      "version": "1",
+      "collision": {
+        "blocking": false
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.monitor-code",
+      "name": "Monitor (code)",
+      "category": "equipment",
+      "tags": [
+        "monitor",
+        "screen",
+        "display"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "overlay",
+      "tilesetId": "office-props",
+      "tileId": 2,
+      "version": "1",
+      "collision": {
+        "blocking": false
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.plant",
+      "name": "Fiddle-leaf plant",
+      "category": "decoration",
+      "tags": [
+        "plant",
+        "greenery",
+        "decoration"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 12,
+      "version": "1",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.printer",
+      "name": "Printer",
+      "category": "equipment",
+      "tags": [
+        "printer",
+        "equipment"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 3,
+      "version": "1",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.reception-desk",
+      "name": "Reception desk",
+      "category": "furniture",
+      "tags": [
+        "desk",
+        "office",
+        "reception"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 24,
+      "version": "1",
+      "subcategory": "desk",
+      "style": "office",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.wall",
+      "name": "Office wall tile",
+      "category": "wall",
+      "tags": [
+        "wall",
+        "partition"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "wall",
+      "tilesetId": "office-walls",
+      "tileId": 0,
+      "version": "1",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.water-cooler",
+      "name": "Water cooler",
+      "category": "equipment",
+      "tags": [
+        "water",
+        "cooler"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 17,
+      "version": "1",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.whiteboard",
+      "name": "Whiteboard",
+      "category": "furniture",
+      "tags": [
+        "whiteboard",
+        "board"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "wall",
+      "tilesetId": "office-props",
+      "tileId": 20,
+      "version": "1",
+      "collision": {
+        "blocking": false
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.sofa-big",
+      "name": "Big sofa",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "couch",
+        "seating",
+        "office",
+        "lounge"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 28,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "collision": {
+        "blocking": true
+      },
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.sofa-small",
+      "name": "Small sofa",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "couch",
+        "seating"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 29,
+      "version": "1",
+      "subcategory": "furniture",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.small-sofa",
+      "name": "Small Sofa",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "small",
+        "ottoman"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 30,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.big-sofa",
+      "name": "Big Sofa",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "large",
+        "couch"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 31,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-01",
+      "name": "Sofa Variant 01",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 32,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-02",
+      "name": "Sofa Variant 02",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 33,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-03",
+      "name": "Sofa Variant 03",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 34,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-04",
+      "name": "Sofa Variant 04",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 35,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-05",
+      "name": "Sofa Variant 05",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 36,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-06",
+      "name": "Sofa Variant 06",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 37,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-07",
+      "name": "Sofa Variant 07",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 38,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-08",
+      "name": "Sofa Variant 08",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 39,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-09",
+      "name": "Sofa Variant 09",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 40,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-10",
+      "name": "Sofa Variant 10",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 41,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-11",
+      "name": "Sofa Variant 11",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 42,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-12",
+      "name": "Sofa Variant 12",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 43,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-13",
+      "name": "Sofa Variant 13",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 44,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-14",
+      "name": "Sofa Variant 14",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 45,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-15",
+      "name": "Sofa Variant 15",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 46,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-16",
+      "name": "Sofa Variant 16",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 47,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-17",
+      "name": "Sofa Variant 17",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 48,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-18",
+      "name": "Sofa Variant 18",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 49,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-19",
+      "name": "Sofa Variant 19",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 50,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-20",
+      "name": "Sofa Variant 20",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 51,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-21",
+      "name": "Sofa Variant 21",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 52,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-22",
+      "name": "Sofa Variant 22",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 53,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-23",
+      "name": "Sofa Variant 23",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 54,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-24",
+      "name": "Sofa Variant 24",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 55,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-25",
+      "name": "Sofa Variant 25",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 56,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-26",
+      "name": "Sofa Variant 26",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 57,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-27",
+      "name": "Sofa Variant 27",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 58,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-28",
+      "name": "Sofa Variant 28",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 59,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-29",
+      "name": "Sofa Variant 29",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 60,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-30",
+      "name": "Sofa Variant 30",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 61,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-31",
+      "name": "Sofa Variant 31",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 62,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-32",
+      "name": "Sofa Variant 32",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 63,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-33",
+      "name": "Sofa Variant 33",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 64,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-34",
+      "name": "Sofa Variant 34",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 65,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-35",
+      "name": "Sofa Variant 35",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 66,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-36",
+      "name": "Sofa Variant 36",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 67,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-37",
+      "name": "Sofa Variant 37",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 68,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-38",
+      "name": "Sofa Variant 38",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 69,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-39",
+      "name": "Sofa Variant 39",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 70,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-40",
+      "name": "Sofa Variant 40",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 71,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-41",
+      "name": "Sofa Variant 41",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 72,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-42",
+      "name": "Sofa Variant 42",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 73,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-43",
+      "name": "Sofa Variant 43",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 74,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-44",
+      "name": "Sofa Variant 44",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 75,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-45",
+      "name": "Sofa Variant 45",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 76,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-46",
+      "name": "Sofa Variant 46",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 77,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.sofa-variant-47",
+      "name": "Sofa Variant 47",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "variant",
+        "sheet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 78,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.curved-reception-desk",
+      "name": "Curved Reception Desk",
+      "category": "furniture",
+      "tags": [
+        "desk",
+        "reception",
+        "curved",
+        "counter"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 79,
+      "version": "1",
+      "subcategory": "desk",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.water-filter",
+      "name": "Water Filter",
+      "category": "furniture",
+      "tags": [
+        "water",
+        "filter",
+        "cooler",
+        "dispenser"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 80,
+      "version": "1",
+      "subcategory": "appliance",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lobby-reception-desk-full",
+      "name": "Lobby Reception Desk Full",
+      "category": "furniture",
+      "tags": [
+        "reception",
+        "desk",
+        "lobby"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 81,
+      "version": "1",
+      "subcategory": "desk",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lobby-reception-counter",
+      "name": "Lobby Reception Counter",
+      "category": "furniture",
+      "tags": [
+        "reception",
+        "counter",
+        "lobby"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 82,
+      "version": "1",
+      "subcategory": "desk",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lobby-office-chair",
+      "name": "Lobby Office Chair",
+      "category": "furniture",
+      "tags": [
+        "chair",
+        "office",
+        "lobby"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 83,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lobby-monitor",
+      "name": "Lobby Monitor",
+      "category": "props",
+      "tags": [
+        "monitor",
+        "display",
+        "screen"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 84,
+      "version": "1",
+      "subcategory": "electronics",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lobby-sofa-3-seat",
+      "name": "Lobby Sofa 3-Seat",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "3seat",
+        "lobby"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 85,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lobby-armchair",
+      "name": "Lobby Armchair",
+      "category": "furniture",
+      "tags": [
+        "chair",
+        "armchair",
+        "lobby"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 86,
+      "version": "1",
+      "subcategory": "seating",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lobby-coffee-table",
+      "name": "Lobby Coffee Table",
+      "category": "furniture",
+      "tags": [
+        "table",
+        "coffee",
+        "lobby"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 87,
+      "version": "1",
+      "subcategory": "table",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lobby-area-rug",
+      "name": "Lobby Area Rug",
+      "category": "decor",
+      "tags": [
+        "rug",
+        "carpet",
+        "lobby"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 88,
+      "version": "1",
+      "subcategory": "rug",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lobby-notebook",
+      "name": "Lobby Notebook",
+      "category": "props",
+      "tags": [
+        "notebook",
+        "book",
+        "lobby"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 89,
+      "version": "1",
+      "subcategory": "stationery",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lobby-plant-round",
+      "name": "Lobby Plant Round",
+      "category": "decor",
+      "tags": [
+        "plant",
+        "potted",
+        "lobby"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 90,
+      "version": "1",
+      "subcategory": "plant",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lobby-plant-tall",
+      "name": "Lobby Plant Tall",
+      "category": "decor",
+      "tags": [
+        "plant",
+        "potted",
+        "tall",
+        "lobby"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 91,
+      "version": "1",
+      "subcategory": "plant",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lobby-water-cooler",
+      "name": "Lobby Water Cooler",
+      "category": "furniture",
+      "tags": [
+        "water",
+        "cooler",
+        "dispenser",
+        "lobby"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 92,
+      "version": "1",
+      "subcategory": "appliance",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lobby-plant-square",
+      "name": "Lobby Plant Square",
+      "category": "decor",
+      "tags": [
+        "plant",
+        "potted",
+        "square",
+        "lobby"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 93,
+      "version": "1",
+      "subcategory": "plant",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.layout-floor-cross-bottom",
+      "name": "Layout Floor Cross Bottom",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "floor",
+        "tile"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 94,
+      "version": "1",
+      "subcategory": "floor",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-floor-cross-top",
+      "name": "Layout Floor Cross Top",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "floor",
+        "tile"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 95,
+      "version": "1",
+      "subcategory": "floor",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-floor-l-bottom",
+      "name": "Layout Floor L Bottom",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "floor",
+        "tile"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 96,
+      "version": "1",
+      "subcategory": "floor",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-floor-l-top",
+      "name": "Layout Floor L Top",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "floor",
+        "tile"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 97,
+      "version": "1",
+      "subcategory": "floor",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-floor-pill-bottom",
+      "name": "Layout Floor Pill Bottom",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "floor",
+        "tile"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 98,
+      "version": "1",
+      "subcategory": "floor",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-floor-pill-top",
+      "name": "Layout Floor Pill Top",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "floor",
+        "tile"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 99,
+      "version": "1",
+      "subcategory": "floor",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-floor-rect-bottom",
+      "name": "Layout Floor Rect Bottom",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "floor",
+        "tile"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 100,
+      "version": "1",
+      "subcategory": "floor",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-floor-rect-top",
+      "name": "Layout Floor Rect Top",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "floor",
+        "tile"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 101,
+      "version": "1",
+      "subcategory": "floor",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-floor-square-bottom",
+      "name": "Layout Floor Square Bottom",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "floor",
+        "tile"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 102,
+      "version": "1",
+      "subcategory": "floor",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-floor-square-top",
+      "name": "Layout Floor Square Top",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "floor",
+        "tile"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 103,
+      "version": "1",
+      "subcategory": "floor",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-floor-t-bottom",
+      "name": "Layout Floor T Bottom",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "floor",
+        "tile"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 104,
+      "version": "1",
+      "subcategory": "floor",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-floor-t-top",
+      "name": "Layout Floor T Top",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "floor",
+        "tile"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 105,
+      "version": "1",
+      "subcategory": "floor",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-room-frame-oct-bottom",
+      "name": "Layout Room Frame Oct Bottom",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "wall",
+        "frame"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 3
+      },
+      "placement": "wall",
+      "tilesetId": "office-props",
+      "tileId": 106,
+      "version": "1",
+      "subcategory": "wall",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-room-frame-oct-top",
+      "name": "Layout Room Frame Oct Top",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "wall",
+        "frame"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "wall",
+      "tilesetId": "office-props",
+      "tileId": 107,
+      "version": "1",
+      "subcategory": "wall",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-rug-big-outline",
+      "name": "Layout Rug Big Outline",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "rug",
+        "carpet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 108,
+      "version": "1",
+      "subcategory": "rug",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-rug-cross-fill",
+      "name": "Layout Rug Cross Fill",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "rug",
+        "carpet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 109,
+      "version": "1",
+      "subcategory": "rug",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-rug-cross-outline",
+      "name": "Layout Rug Cross Outline",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "rug",
+        "carpet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 110,
+      "version": "1",
+      "subcategory": "rug",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-rug-l-fill",
+      "name": "Layout Rug L Fill",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "rug",
+        "carpet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 111,
+      "version": "1",
+      "subcategory": "rug",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-rug-l-outline",
+      "name": "Layout Rug L Outline",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "rug",
+        "carpet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 112,
+      "version": "1",
+      "subcategory": "rug",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-rug-pill-fill",
+      "name": "Layout Rug Pill Fill",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "rug",
+        "carpet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 113,
+      "version": "1",
+      "subcategory": "rug",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-rug-pill-outline",
+      "name": "Layout Rug Pill Outline",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "rug",
+        "carpet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 114,
+      "version": "1",
+      "subcategory": "rug",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-rug-rect-fill",
+      "name": "Layout Rug Rect Fill",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "rug",
+        "carpet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 115,
+      "version": "1",
+      "subcategory": "rug",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-rug-rect-outline",
+      "name": "Layout Rug Rect Outline",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "rug",
+        "carpet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 116,
+      "version": "1",
+      "subcategory": "rug",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-rug-square-fill",
+      "name": "Layout Rug Square Fill",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "rug",
+        "carpet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 117,
+      "version": "1",
+      "subcategory": "rug",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-rug-square-outline",
+      "name": "Layout Rug Square Outline",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "rug",
+        "carpet"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 118,
+      "version": "1",
+      "subcategory": "rug",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-wall-cross-top",
+      "name": "Layout Wall Cross Top",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "wall",
+        "frame"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "wall",
+      "tilesetId": "office-props",
+      "tileId": 119,
+      "version": "1",
+      "subcategory": "wall",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-wall-l-top",
+      "name": "Layout Wall L Top",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "wall",
+        "frame"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "wall",
+      "tilesetId": "office-props",
+      "tileId": 120,
+      "version": "1",
+      "subcategory": "wall",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-wall-pill-top",
+      "name": "Layout Wall Pill Top",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "wall",
+        "frame"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 4
+      },
+      "placement": "wall",
+      "tilesetId": "office-props",
+      "tileId": 121,
+      "version": "1",
+      "subcategory": "wall",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-wall-rect-top",
+      "name": "Layout Wall Rect Top",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "wall",
+        "frame"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 3
+      },
+      "placement": "wall",
+      "tilesetId": "office-props",
+      "tileId": 122,
+      "version": "1",
+      "subcategory": "wall",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-wall-square-top",
+      "name": "Layout Wall Square Top",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "wall",
+        "frame"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "wall",
+      "tilesetId": "office-props",
+      "tileId": 123,
+      "version": "1",
+      "subcategory": "wall",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.layout-wall-t-top",
+      "name": "Layout Wall T Top",
+      "category": "decor",
+      "tags": [
+        "layout",
+        "wall",
+        "frame"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "wall",
+      "tilesetId": "office-props",
+      "tileId": 124,
+      "version": "1",
+      "subcategory": "wall",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.reception-signboard",
+      "name": "Reception Signboard",
+      "category": "decor",
+      "tags": [
+        "reception",
+        "sign",
+        "signboard",
+        "lobby"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 6,
+        "height": 2
+      },
+      "placement": "wall",
+      "tilesetId": "office-props",
+      "tileId": 125,
+      "version": "1",
+      "subcategory": "signage",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.bookshelf-desk-set",
+      "name": "Bookshelf Desk Set",
+      "category": "furniture",
+      "tags": [
+        "desk",
+        "books",
+        "library",
+        "workspace"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 6,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 126,
+      "version": "1",
+      "subcategory": "desk",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    }
+  ]
+}

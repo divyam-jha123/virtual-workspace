@@ -1,0 +1,1291 @@
+{
+  "columns": 0,
+  "grid": {
+    "orientation": "orthogonal",
+    "width": 16,
+    "height": 16
+  },
+  "margin": 0,
+  "name": "limezu-additional_houses",
+  "spacing": 0,
+  "tilecount": 212,
+  "tiledversion": "1.10.2",
+  "tileheight": 16,
+  "tilewidth": 16,
+  "type": "tileset",
+  "version": "1.10",
+  "tiles": [
+    {
+      "id": 0,
+      "image": "limezu-additional_houses-24_additional_houses_country_house_16x16.png",
+      "imagewidth": 288,
+      "imageheight": 256
+    },
+    {
+      "id": 1,
+      "image": "limezu-additional_houses-24_additional_houses_country_house_banister_balcony_16x16.png",
+      "imagewidth": 176,
+      "imageheight": 128
+    },
+    {
+      "id": 2,
+      "image": "limezu-additional_houses-24_additional_houses_country_house_banister_ground_floor_16x16.png",
+      "imagewidth": 176,
+      "imageheight": 48
+    },
+    {
+      "id": 3,
+      "image": "limezu-additional_houses-24_additional_houses_country_house_no_banisters_16x16.png",
+      "imagewidth": 288,
+      "imageheight": 256
+    },
+    {
+      "id": 4,
+      "image": "limezu-additional_houses-24_additional_houses_fence_1_bottom_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 5,
+      "image": "limezu-additional_houses-24_additional_houses_fence_1_bottom_middle_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 6,
+      "image": "limezu-additional_houses-24_additional_houses_fence_1_bottom_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 7,
+      "image": "limezu-additional_houses-24_additional_houses_fence_1_inner_corner_1_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 8,
+      "image": "limezu-additional_houses-24_additional_houses_fence_1_inner_corner_2_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 9,
+      "image": "limezu-additional_houses-24_additional_houses_fence_1_inner_corner_3_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 10,
+      "image": "limezu-additional_houses-24_additional_houses_fence_1_inner_corner_4_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 11,
+      "image": "limezu-additional_houses-24_additional_houses_fence_1_middle_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 12,
+      "image": "limezu-additional_houses-24_additional_houses_fence_1_middle_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 13,
+      "image": "limezu-additional_houses-24_additional_houses_fence_1_pass_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 14,
+      "image": "limezu-additional_houses-24_additional_houses_fence_1_top_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 15,
+      "image": "limezu-additional_houses-24_additional_houses_fence_1_top_middle_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 16,
+      "image": "limezu-additional_houses-24_additional_houses_fence_1_top_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 17,
+      "image": "limezu-additional_houses-24_additional_houses_fence_2_bottom_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 18,
+      "image": "limezu-additional_houses-24_additional_houses_fence_2_bottom_middle_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 19,
+      "image": "limezu-additional_houses-24_additional_houses_fence_2_bottom_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 20,
+      "image": "limezu-additional_houses-24_additional_houses_fence_2_inner_corner_1_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 21,
+      "image": "limezu-additional_houses-24_additional_houses_fence_2_inner_corner_2_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 22,
+      "image": "limezu-additional_houses-24_additional_houses_fence_2_inner_corner_3_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 23,
+      "image": "limezu-additional_houses-24_additional_houses_fence_2_inner_corner_4_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 24,
+      "image": "limezu-additional_houses-24_additional_houses_fence_2_middle_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 25,
+      "image": "limezu-additional_houses-24_additional_houses_fence_2_middle_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 26,
+      "image": "limezu-additional_houses-24_additional_houses_fence_2_pass_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 27,
+      "image": "limezu-additional_houses-24_additional_houses_fence_2_top_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 28,
+      "image": "limezu-additional_houses-24_additional_houses_fence_2_top_middle_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 29,
+      "image": "limezu-additional_houses-24_additional_houses_fence_2_top_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 30,
+      "image": "limezu-additional_houses-24_additional_houses_fence_3_bottom_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 31,
+      "image": "limezu-additional_houses-24_additional_houses_fence_3_bottom_middle_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 32,
+      "image": "limezu-additional_houses-24_additional_houses_fence_3_bottom_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 33,
+      "image": "limezu-additional_houses-24_additional_houses_fence_3_inner_corner_1_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 34,
+      "image": "limezu-additional_houses-24_additional_houses_fence_3_inner_corner_2_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 35,
+      "image": "limezu-additional_houses-24_additional_houses_fence_3_inner_corner_3_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 36,
+      "image": "limezu-additional_houses-24_additional_houses_fence_3_inner_corner_4_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 37,
+      "image": "limezu-additional_houses-24_additional_houses_fence_3_middle_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 38,
+      "image": "limezu-additional_houses-24_additional_houses_fence_3_middle_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 39,
+      "image": "limezu-additional_houses-24_additional_houses_fence_3_pass_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 40,
+      "image": "limezu-additional_houses-24_additional_houses_fence_3_top_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 41,
+      "image": "limezu-additional_houses-24_additional_houses_fence_3_top_middle_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 42,
+      "image": "limezu-additional_houses-24_additional_houses_fence_3_top_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 43,
+      "image": "limezu-additional_houses-24_additional_houses_fence_4_bottom_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 44,
+      "image": "limezu-additional_houses-24_additional_houses_fence_4_bottom_middle_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 45,
+      "image": "limezu-additional_houses-24_additional_houses_fence_4_bottom_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 46,
+      "image": "limezu-additional_houses-24_additional_houses_fence_4_inner_corner_1_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 47,
+      "image": "limezu-additional_houses-24_additional_houses_fence_4_inner_corner_2_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 48,
+      "image": "limezu-additional_houses-24_additional_houses_fence_4_inner_corner_3_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 49,
+      "image": "limezu-additional_houses-24_additional_houses_fence_4_inner_corner_4_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 50,
+      "image": "limezu-additional_houses-24_additional_houses_fence_4_middle_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 51,
+      "image": "limezu-additional_houses-24_additional_houses_fence_4_middle_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 52,
+      "image": "limezu-additional_houses-24_additional_houses_fence_4_pass_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 53,
+      "image": "limezu-additional_houses-24_additional_houses_fence_4_top_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 54,
+      "image": "limezu-additional_houses-24_additional_houses_fence_4_top_middle_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 55,
+      "image": "limezu-additional_houses-24_additional_houses_fence_4_top_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 56,
+      "image": "limezu-additional_houses-24_additional_houses_fence_5_bottom_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 57,
+      "image": "limezu-additional_houses-24_additional_houses_fence_5_bottom_middle_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 58,
+      "image": "limezu-additional_houses-24_additional_houses_fence_5_bottom_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 59,
+      "image": "limezu-additional_houses-24_additional_houses_fence_5_inner_corner_1_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 60,
+      "image": "limezu-additional_houses-24_additional_houses_fence_5_inner_corner_2_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 61,
+      "image": "limezu-additional_houses-24_additional_houses_fence_5_inner_corner_3_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 62,
+      "image": "limezu-additional_houses-24_additional_houses_fence_5_inner_corner_4_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 63,
+      "image": "limezu-additional_houses-24_additional_houses_fence_5_middle_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 64,
+      "image": "limezu-additional_houses-24_additional_houses_fence_5_middle_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 65,
+      "image": "limezu-additional_houses-24_additional_houses_fence_5_pass_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 66,
+      "image": "limezu-additional_houses-24_additional_houses_fence_5_top_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 67,
+      "image": "limezu-additional_houses-24_additional_houses_fence_5_top_middle_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 68,
+      "image": "limezu-additional_houses-24_additional_houses_fence_5_top_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 69,
+      "image": "limezu-additional_houses-24_additional_houses_fence_6_bottom_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 70,
+      "image": "limezu-additional_houses-24_additional_houses_fence_6_bottom_middle_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 71,
+      "image": "limezu-additional_houses-24_additional_houses_fence_6_bottom_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 72,
+      "image": "limezu-additional_houses-24_additional_houses_fence_6_inner_corner_1_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 73,
+      "image": "limezu-additional_houses-24_additional_houses_fence_6_inner_corner_2_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 74,
+      "image": "limezu-additional_houses-24_additional_houses_fence_6_inner_corner_3_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 75,
+      "image": "limezu-additional_houses-24_additional_houses_fence_6_inner_corner_4_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 76,
+      "image": "limezu-additional_houses-24_additional_houses_fence_6_middle_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 77,
+      "image": "limezu-additional_houses-24_additional_houses_fence_6_middle_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 78,
+      "image": "limezu-additional_houses-24_additional_houses_fence_6_pass_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 79,
+      "image": "limezu-additional_houses-24_additional_houses_fence_6_top_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 80,
+      "image": "limezu-additional_houses-24_additional_houses_fence_6_top_middle_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 81,
+      "image": "limezu-additional_houses-24_additional_houses_fence_6_top_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 82,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_16x16.png",
+      "imagewidth": 304,
+      "imageheight": 352
+    },
+    {
+      "id": 83,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_basement_door_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 84,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_basement_door_open_1_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 85,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_basement_door_open_2_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 86,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_door_open_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 64
+    },
+    {
+      "id": 87,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_bottom_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 88,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_bottom_left_pass_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 89,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_bottom_middle_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 90,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_bottom_middle_pass_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 91,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_bottom_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 92,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_bottom_right_pass_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 93,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_inner_corner_1_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 94,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_inner_corner_2_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 95,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_inner_corner_3_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 96,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_inner_corner_4_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 97,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_middle_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 98,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_middle_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 99,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_top_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 100,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_top_left_pass_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 101,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_top_middle_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 102,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_top_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 103,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_fence_top_right_pass_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 104,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_no_lantern_16x16.png",
+      "imagewidth": 304,
+      "imageheight": 352
+    },
+    {
+      "id": 105,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_pole_1_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 106,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_pole_2_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 107,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_pole_3_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 108,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_pole_4_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 109,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_pole_5_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 110,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_sign_1_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 111,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_sign_1_get_out_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 112,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_sign_2_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 113,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_sign_2_danger_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 114,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_sign_3_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 115,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_sign_3_stop_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 116,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_sign_4_16x16.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 117,
+      "image": "limezu-additional_houses-24_additional_houses_haunted_house_sign_4_get_out_16x16.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 118,
+      "image": "limezu-additional_houses-24_additional_houses_japanese_ac_unit_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 119,
+      "image": "limezu-additional_houses-24_additional_houses_japanese_house_16x16.png",
+      "imagewidth": 240,
+      "imageheight": 224
+    },
+    {
+      "id": 120,
+      "image": "limezu-additional_houses-24_additional_houses_japanese_house_door_open_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 121,
+      "image": "limezu-additional_houses-24_additional_houses_japanese_house_pot_1_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 122,
+      "image": "limezu-additional_houses-24_additional_houses_japanese_house_pot_2_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 123,
+      "image": "limezu-additional_houses-24_additional_houses_japanese_house_pot_3_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 124,
+      "image": "limezu-additional_houses-24_additional_houses_japanese_house_shelf_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 125,
+      "image": "limezu-additional_houses-24_additional_houses_japanese_house_shelf_empty_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 126,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_16x16.png",
+      "imagewidth": 368,
+      "imageheight": 224
+    },
+    {
+      "id": 127,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_banister_balcony_16x16.png",
+      "imagewidth": 256,
+      "imageheight": 96
+    },
+    {
+      "id": 128,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_deck_chair_grey_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 129,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_deck_chair_white_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 130,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_door_open_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 131,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_glass_railing_modular_left_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 132,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_glass_railing_modular_middle_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 133,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_glass_railing_modular_right_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 134,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_pot_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 135,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_potted_plant_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 136,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_potted_plant_bloomed_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 137,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_tiny_table_grey_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 138,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_tiny_table_white_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 139,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_tiny_table_with_drinks_1_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 140,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_tiny_table_with_drinks_2_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 141,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_tiny_table_with_drinks_3_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 142,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_tiny_table_with_drinks_4_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 143,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_tiny_table_with_drinks_5_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 144,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_tiny_table_with_drinks_6_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 145,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_tiny_table_with_drinks_7_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 146,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_tiny_table_with_drinks_8_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 147,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_umbrella_composition_16x16.png",
+      "imagewidth": 80,
+      "imageheight": 80
+    },
+    {
+      "id": 148,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_umbrella_left_16x16.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 149,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_umbrella_left_shadow_16x16.png",
+      "imagewidth": 64,
+      "imageheight": 32
+    },
+    {
+      "id": 150,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_umbrella_left_shadowless_16x16.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 151,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_umbrella_right_16x16.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 152,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_umbrella_right_shadow_16x16.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 153,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_umbrella_right_shadowless_16x16.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 154,
+      "image": "limezu-additional_houses-24_additional_houses_modern_house_unadorned_16x16.png",
+      "imagewidth": 368,
+      "imageheight": 224
+    },
+    {
+      "id": 155,
+      "image": "limezu-additional_houses-24_additional_houses_one_story_house_16x16.png",
+      "imagewidth": 256,
+      "imageheight": 224
+    },
+    {
+      "id": 156,
+      "image": "limezu-additional_houses-24_additional_houses_one_story_house_door_open_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 157,
+      "image": "limezu-additional_houses-24_additional_houses_post_apocalyptic_house_1_16x16.png",
+      "imagewidth": 208,
+      "imageheight": 160
+    },
+    {
+      "id": 158,
+      "image": "limezu-additional_houses-24_additional_houses_post_apocalyptic_house_2_16x16.png",
+      "imagewidth": 208,
+      "imageheight": 160
+    },
+    {
+      "id": 159,
+      "image": "limezu-additional_houses-24_additional_houses_post_apocalyptic_house_door_open_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 160,
+      "image": "limezu-additional_houses-24_additional_houses_post_apocalyptic_house_generator_1_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 161,
+      "image": "limezu-additional_houses-24_additional_houses_post_apocalyptic_house_generator_2_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 162,
+      "image": "limezu-additional_houses-24_additional_houses_post_apocalyptic_house_generator_side_left_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 163,
+      "image": "limezu-additional_houses-24_additional_houses_post_apocalyptic_house_generator_side_right_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 164,
+      "image": "limezu-additional_houses-24_additional_houses_post_apocalyptic_house_solar_panels_1_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 165,
+      "image": "limezu-additional_houses-24_additional_houses_post_apocalyptic_house_solar_panels_2_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 166,
+      "image": "limezu-additional_houses-24_additional_houses_post_apocalyptic_house_wind_mill_16x16.png",
+      "imagewidth": 64,
+      "imageheight": 128
+    },
+    {
+      "id": 167,
+      "image": "limezu-additional_houses-24_additional_houses_post_apocalyptic_house_wind_mill_no_propeller_16x16.png",
+      "imagewidth": 64,
+      "imageheight": 128
+    },
+    {
+      "id": 168,
+      "image": "limezu-additional_houses-24_additional_houses_post_apocalyptic_house_wind_mill_propeller_16x16.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 169,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_1_16x16.png",
+      "imagewidth": 192,
+      "imageheight": 240
+    },
+    {
+      "id": 170,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_2_16x16.png",
+      "imagewidth": 192,
+      "imageheight": 240
+    },
+    {
+      "id": 171,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_3_16x16.png",
+      "imagewidth": 192,
+      "imageheight": 256
+    },
+    {
+      "id": 172,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_4_16x16.png",
+      "imagewidth": 192,
+      "imageheight": 240
+    },
+    {
+      "id": 173,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_5_16x16.png",
+      "imagewidth": 192,
+      "imageheight": 240
+    },
+    {
+      "id": 174,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_6_16x16.png",
+      "imagewidth": 192,
+      "imageheight": 240
+    },
+    {
+      "id": 175,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_ac_unit_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 176,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_canopy_16x16.png",
+      "imagewidth": 128,
+      "imageheight": 80
+    },
+    {
+      "id": 177,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_mailbox_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 178,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_modular_1_16x16.png",
+      "imagewidth": 160,
+      "imageheight": 240
+    },
+    {
+      "id": 179,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_modular_2_16x16.png",
+      "imagewidth": 160,
+      "imageheight": 240
+    },
+    {
+      "id": 180,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_modular_3_16x16.png",
+      "imagewidth": 160,
+      "imageheight": 240
+    },
+    {
+      "id": 181,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_modular_4_16x16.png",
+      "imagewidth": 160,
+      "imageheight": 240
+    },
+    {
+      "id": 182,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_modular_5_16x16.png",
+      "imagewidth": 160,
+      "imageheight": 256
+    },
+    {
+      "id": 183,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_modular_6_16x16.png",
+      "imagewidth": 160,
+      "imageheight": 240
+    },
+    {
+      "id": 184,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_pot_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 185,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_potted_plant_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 186,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_potted_plant_1_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 187,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_potted_plant_2_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 188,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_potted_plant_3_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 189,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_potted_plant_4_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 190,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_roof_door_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 191,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_roof_styling_piece_16x16.png",
+      "imagewidth": 144,
+      "imageheight": 48
+    },
+    {
+      "id": 192,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_roof_styling_piece_2_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 193,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_roof_styling_piece_3_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 194,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_roof_styling_piece_4_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 195,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_roof_styling_piece_5_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 196,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_roof_styling_piece_6_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 197,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_side_view_base_1_16x16.png",
+      "imagewidth": 160,
+      "imageheight": 96
+    },
+    {
+      "id": 198,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_side_view_base_2_16x16.png",
+      "imagewidth": 160,
+      "imageheight": 96
+    },
+    {
+      "id": 199,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_side_view_canopy_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 112
+    },
+    {
+      "id": 200,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_side_view_roof_1_16x16.png",
+      "imagewidth": 160,
+      "imageheight": 160
+    },
+    {
+      "id": 201,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_side_view_roof_2_16x16.png",
+      "imagewidth": 160,
+      "imageheight": 160
+    },
+    {
+      "id": 202,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_side_view_roof_3_16x16.png",
+      "imagewidth": 160,
+      "imageheight": 160
+    },
+    {
+      "id": 203,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_side_view_roof_styling_piece_1_16x16.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 204,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_side_view_roof_styling_piece_2_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 205,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_side_view_roof_styling_piece_3_16x16.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 206,
+      "image": "limezu-additional_houses-24_additional_houses_terraced_house_side_view_roof_styling_piece_4_16x16.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 207,
+      "image": "limezu-additional_houses-24_additional_houses_victorian_house_1_side_entrance_16x16.png",
+      "imagewidth": 64,
+      "imageheight": 160
+    },
+    {
+      "id": 208,
+      "image": "limezu-additional_houses-24_additional_houses_victorian_house_4_16x16.png",
+      "imagewidth": 288,
+      "imageheight": 352
+    },
+    {
+      "id": 209,
+      "image": "limezu-additional_houses-24_additional_houses_victorian_house_5_16x16.png",
+      "imagewidth": 288,
+      "imageheight": 256
+    },
+    {
+      "id": 210,
+      "image": "limezu-additional_houses-24_additional_houses_victorian_house_6_16x16.png",
+      "imagewidth": 192,
+      "imageheight": 352
+    },
+    {
+      "id": 211,
+      "image": "limezu-additional_houses-24_additional_houses_victorian_house_7_16x16.png",
+      "imagewidth": 96,
+      "imageheight": 256
+    }
+  ]
+}

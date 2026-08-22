@@ -1,0 +1,343 @@
+{
+  "name": "modern-office-modern-office-props",
+  "tilewidth": 16,
+  "tileheight": 16,
+  "tilecount": 54,
+  "margin": 0,
+  "spacing": 0,
+  "type": "tileset",
+  "version": "1.10",
+  "tiledversion": "1.10.2",
+  "columns": 0,
+  "grid": {
+    "orientation": "orthogonal",
+    "width": 1,
+    "height": 1
+  },
+  "tiles": [
+    {
+      "id": 0,
+      "image": "mop_decor_artwork_abstract.png",
+      "imagewidth": 20,
+      "imageheight": 24
+    },
+    {
+      "id": 1,
+      "image": "mop_decor_bin_recycling.png",
+      "imagewidth": 12,
+      "imageheight": 17
+    },
+    {
+      "id": 2,
+      "image": "mop_decor_bin_waste.png",
+      "imagewidth": 12,
+      "imageheight": 16
+    },
+    {
+      "id": 3,
+      "image": "mop_decor_partition_fabric.png",
+      "imagewidth": 32,
+      "imageheight": 38
+    },
+    {
+      "id": 4,
+      "image": "mop_decor_plant_broadleaf.png",
+      "imagewidth": 14,
+      "imageheight": 18
+    },
+    {
+      "id": 5,
+      "image": "mop_decor_plant_palm.png",
+      "imagewidth": 14,
+      "imageheight": 18
+    },
+    {
+      "id": 6,
+      "image": "mop_decor_plant_snake.png",
+      "imagewidth": 12,
+      "imageheight": 19
+    },
+    {
+      "id": 7,
+      "image": "mop_decor_refrigerator_compact.png",
+      "imagewidth": 16,
+      "imageheight": 24
+    },
+    {
+      "id": 8,
+      "image": "mop_decor_stand_umbrella.png",
+      "imagewidth": 10,
+      "imageheight": 19
+    },
+    {
+      "id": 9,
+      "image": "mop_decor_tree_indoor.png",
+      "imagewidth": 18,
+      "imageheight": 24
+    },
+    {
+      "id": 10,
+      "image": "mop_electronics_camera_security.png",
+      "imagewidth": 10,
+      "imageheight": 8
+    },
+    {
+      "id": 11,
+      "image": "mop_electronics_clock_wall.png",
+      "imagewidth": 12,
+      "imageheight": 12
+    },
+    {
+      "id": 12,
+      "image": "mop_electronics_computer_tower.png",
+      "imagewidth": 10,
+      "imageheight": 16
+    },
+    {
+      "id": 13,
+      "image": "mop_electronics_control_panel.png",
+      "imagewidth": 12,
+      "imageheight": 14
+    },
+    {
+      "id": 14,
+      "image": "mop_electronics_copier_multifunction.png",
+      "imagewidth": 24,
+      "imageheight": 33
+    },
+    {
+      "id": 15,
+      "image": "mop_electronics_lamp_desk.png",
+      "imagewidth": 10,
+      "imageheight": 13
+    },
+    {
+      "id": 16,
+      "image": "mop_electronics_lamp_floor.png",
+      "imagewidth": 10,
+      "imageheight": 32
+    },
+    {
+      "id": 17,
+      "image": "mop_electronics_laptop_closed.png",
+      "imagewidth": 14,
+      "imageheight": 8
+    },
+    {
+      "id": 18,
+      "image": "mop_electronics_laptop_open_off.png",
+      "imagewidth": 14,
+      "imageheight": 14
+    },
+    {
+      "id": 19,
+      "image": "mop_electronics_monitor_single_off.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 20,
+      "image": "mop_electronics_printer_small.png",
+      "imagewidth": 16,
+      "imageheight": 14
+    },
+    {
+      "id": 21,
+      "image": "mop_electronics_projector.png",
+      "imagewidth": 14,
+      "imageheight": 11
+    },
+    {
+      "id": 22,
+      "image": "mop_electronics_shredder.png",
+      "imagewidth": 12,
+      "imageheight": 14
+    },
+    {
+      "id": 23,
+      "image": "mop_electronics_ups.png",
+      "imagewidth": 10,
+      "imageheight": 13
+    },
+    {
+      "id": 24,
+      "image": "mop_furniture_cabinet_filing_tall.png",
+      "imagewidth": 16,
+      "imageheight": 30
+    },
+    {
+      "id": 25,
+      "image": "mop_furniture_chair_meeting.png",
+      "imagewidth": 15,
+      "imageheight": 21
+    },
+    {
+      "id": 26,
+      "image": "mop_furniture_chair_task.png",
+      "imagewidth": 15,
+      "imageheight": 25
+    },
+    {
+      "id": 27,
+      "image": "mop_furniture_chair_visitor.png",
+      "imagewidth": 15,
+      "imageheight": 21
+    },
+    {
+      "id": 28,
+      "image": "mop_furniture_counter_reception_curved.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 29,
+      "image": "mop_furniture_credenza_low.png",
+      "imagewidth": 32,
+      "imageheight": 21
+    },
+    {
+      "id": 30,
+      "image": "mop_furniture_desk_corner_l.png",
+      "imagewidth": 48,
+      "imageheight": 34
+    },
+    {
+      "id": 31,
+      "image": "mop_furniture_desk_modesty_panel.png",
+      "imagewidth": 32,
+      "imageheight": 23
+    },
+    {
+      "id": 32,
+      "image": "mop_furniture_desk_standing.png",
+      "imagewidth": 32,
+      "imageheight": 26
+    },
+    {
+      "id": 33,
+      "image": "mop_furniture_desk_straight.png",
+      "imagewidth": 32,
+      "imageheight": 22
+    },
+    {
+      "id": 34,
+      "image": "mop_furniture_pedestal_mobile.png",
+      "imagewidth": 14,
+      "imageheight": 20
+    },
+    {
+      "id": 35,
+      "image": "mop_furniture_stool_high.png",
+      "imagewidth": 12,
+      "imageheight": 20
+    },
+    {
+      "id": 36,
+      "image": "mop_props_archive_box.png",
+      "imagewidth": 12,
+      "imageheight": 12
+    },
+    {
+      "id": 37,
+      "image": "mop_props_calculator.png",
+      "imagewidth": 8,
+      "imageheight": 8
+    },
+    {
+      "id": 38,
+      "image": "mop_props_clipboard_blank.png",
+      "imagewidth": 8,
+      "imageheight": 8
+    },
+    {
+      "id": 39,
+      "image": "mop_props_folder_closed.png",
+      "imagewidth": 9,
+      "imageheight": 8
+    },
+    {
+      "id": 40,
+      "image": "mop_props_frame_photo_blank.png",
+      "imagewidth": 9,
+      "imageheight": 11
+    },
+    {
+      "id": 41,
+      "image": "mop_props_headphones.png",
+      "imagewidth": 9,
+      "imageheight": 10
+    },
+    {
+      "id": 42,
+      "image": "mop_props_keys_set.png",
+      "imagewidth": 7,
+      "imageheight": 8
+    },
+    {
+      "id": 43,
+      "image": "mop_props_mug.png",
+      "imagewidth": 7,
+      "imageheight": 7
+    },
+    {
+      "id": 44,
+      "image": "mop_props_notebook_closed.png",
+      "imagewidth": 9,
+      "imageheight": 8
+    },
+    {
+      "id": 45,
+      "image": "mop_props_organizer_desk.png",
+      "imagewidth": 10,
+      "imageheight": 9
+    },
+    {
+      "id": 46,
+      "image": "mop_props_papers_stack.png",
+      "imagewidth": 9,
+      "imageheight": 8
+    },
+    {
+      "id": 47,
+      "image": "mop_props_pen_cup.png",
+      "imagewidth": 7,
+      "imageheight": 11
+    },
+    {
+      "id": 48,
+      "image": "mop_props_stapler.png",
+      "imagewidth": 9,
+      "imageheight": 8
+    },
+    {
+      "id": 49,
+      "image": "mop_props_succulent_small.png",
+      "imagewidth": 7,
+      "imageheight": 10
+    },
+    {
+      "id": 50,
+      "image": "mop_props_tape_dispenser.png",
+      "imagewidth": 8,
+      "imageheight": 8
+    },
+    {
+      "id": 51,
+      "image": "mop_props_usb_drive.png",
+      "imagewidth": 5,
+      "imageheight": 4
+    },
+    {
+      "id": 52,
+      "image": "mop_props_wastebasket_small.png",
+      "imagewidth": 10,
+      "imageheight": 12
+    },
+    {
+      "id": 53,
+      "image": "mop_props_water_bottle.png",
+      "imagewidth": 6,
+      "imageheight": 13
+    }
+  ]
+}

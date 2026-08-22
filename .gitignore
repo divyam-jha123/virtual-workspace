@@ -50,10 +50,7 @@ coverage/
 # Hand-authored .tsx tileset definitions ARE tracked: they are metadata, not
 # pixels, and they are what a new pack needs in order to import at all.
 # ---------------------------------------------------------------------------
-content/tilesets/*.png
-content/tilesets/*.tsj
-content/tilesets/*.lock.json
-content/assets/catalog.json
+
 
 # Purchased art packs unzipped in place (LimeZu Modern Exteriors, RPG Maker MV
 # export). Licensed per-buyer, ~350MB, and redistribution is not granted — the

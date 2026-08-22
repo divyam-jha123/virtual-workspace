@@ -1,0 +1,4309 @@
+{
+  "columns": 0,
+  "grid": {
+    "orientation": "orthogonal",
+    "width": 16,
+    "height": 16
+  },
+  "margin": 0,
+  "name": "limezu-city_props",
+  "spacing": 0,
+  "tilecount": 715,
+  "tiledversion": "1.10.2",
+  "tileheight": 16,
+  "tilewidth": 16,
+  "type": "tileset",
+  "version": "1.10",
+  "tiles": [
+    {
+      "id": 0,
+      "image": "limezu-city_props-atm_1.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 1,
+      "image": "limezu-city_props-antenna.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 2,
+      "image": "limezu-city_props-barrel_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 3,
+      "image": "limezu-city_props-barrel_10.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 4,
+      "image": "limezu-city_props-barrel_11.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 5,
+      "image": "limezu-city_props-barrel_12.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 6,
+      "image": "limezu-city_props-barrel_13.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 7,
+      "image": "limezu-city_props-barrel_14.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 8,
+      "image": "limezu-city_props-barrel_15.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 9,
+      "image": "limezu-city_props-barrel_2.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 10,
+      "image": "limezu-city_props-barrel_3.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 11,
+      "image": "limezu-city_props-barrel_4.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 12,
+      "image": "limezu-city_props-barrel_5.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 13,
+      "image": "limezu-city_props-barrel_6.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 14,
+      "image": "limezu-city_props-barrel_7.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 15,
+      "image": "limezu-city_props-barrel_8.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 16,
+      "image": "limezu-city_props-barrel_9.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 17,
+      "image": "limezu-city_props-bench_1.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 18,
+      "image": "limezu-city_props-bench_2.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 19,
+      "image": "limezu-city_props-bench_3.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 20,
+      "image": "limezu-city_props-bench_4.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 21,
+      "image": "limezu-city_props-bench_5.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 22,
+      "image": "limezu-city_props-bench_6.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 23,
+      "image": "limezu-city_props-bench_7.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 24,
+      "image": "limezu-city_props-billboard_1.png",
+      "imagewidth": 80,
+      "imageheight": 96
+    },
+    {
+      "id": 25,
+      "image": "limezu-city_props-billboard_2.png",
+      "imagewidth": 80,
+      "imageheight": 96
+    },
+    {
+      "id": 26,
+      "image": "limezu-city_props-billboard_3.png",
+      "imagewidth": 80,
+      "imageheight": 96
+    },
+    {
+      "id": 27,
+      "image": "limezu-city_props-billboard_4.png",
+      "imagewidth": 80,
+      "imageheight": 96
+    },
+    {
+      "id": 28,
+      "image": "limezu-city_props-billboard_5.png",
+      "imagewidth": 80,
+      "imageheight": 96
+    },
+    {
+      "id": 29,
+      "image": "limezu-city_props-billboard_6.png",
+      "imagewidth": 80,
+      "imageheight": 96
+    },
+    {
+      "id": 30,
+      "image": "limezu-city_props-billboard_7.png",
+      "imagewidth": 80,
+      "imageheight": 96
+    },
+    {
+      "id": 31,
+      "image": "limezu-city_props-billboard_8.png",
+      "imagewidth": 80,
+      "imageheight": 96
+    },
+    {
+      "id": 32,
+      "image": "limezu-city_props-black_closed_lateral_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 33,
+      "image": "limezu-city_props-black_closed_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 34,
+      "image": "limezu-city_props-black_open_empty_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 35,
+      "image": "limezu-city_props-black_open_full_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 36,
+      "image": "limezu-city_props-black_open_lateral_empty_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 37,
+      "image": "limezu-city_props-black_open_lateral_full_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 38,
+      "image": "limezu-city_props-blue_can_trash.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 39,
+      "image": "limezu-city_props-blue_closed_lateral_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 40,
+      "image": "limezu-city_props-blue_closed_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 41,
+      "image": "limezu-city_props-blue_open_empty_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 42,
+      "image": "limezu-city_props-blue_open_full_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 43,
+      "image": "limezu-city_props-blue_open_lateral_empty_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 44,
+      "image": "limezu-city_props-blue_open_lateral_full_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 45,
+      "image": "limezu-city_props-blue_structure_example.png",
+      "imagewidth": 80,
+      "imageheight": 80
+    },
+    {
+      "id": 46,
+      "image": "limezu-city_props-box_trash_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 47,
+      "image": "limezu-city_props-box_trash_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 48,
+      "image": "limezu-city_props-brake_marks_1.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 49,
+      "image": "limezu-city_props-brake_marks_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 50,
+      "image": "limezu-city_props-brake_marks_3.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 51,
+      "image": "limezu-city_props-brake_marks_4.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 52,
+      "image": "limezu-city_props-brake_marks_5.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 53,
+      "image": "limezu-city_props-brake_marks_6.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 54,
+      "image": "limezu-city_props-brake_marks_7.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 55,
+      "image": "limezu-city_props-brake_marks_8.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 56,
+      "image": "limezu-city_props-brake_marks_9.png",
+      "imagewidth": 80,
+      "imageheight": 96
+    },
+    {
+      "id": 57,
+      "image": "limezu-city_props-brake_marks_example.png",
+      "imagewidth": 128,
+      "imageheight": 48
+    },
+    {
+      "id": 58,
+      "image": "limezu-city_props-brick_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 59,
+      "image": "limezu-city_props-brick_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 60,
+      "image": "limezu-city_props-brick_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 61,
+      "image": "limezu-city_props-brick_4.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 62,
+      "image": "limezu-city_props-brick_5.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 63,
+      "image": "limezu-city_props-broken_ladder_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 64,
+      "image": "limezu-city_props-brown_barrel_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 65,
+      "image": "limezu-city_props-brown_barrel_2.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 66,
+      "image": "limezu-city_props-candies_cart_1.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 67,
+      "image": "limezu-city_props-candies_cart_2.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 68,
+      "image": "limezu-city_props-candies_cart_3.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 69,
+      "image": "limezu-city_props-car_wreck_1.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 70,
+      "image": "limezu-city_props-car_wreck_10.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 71,
+      "image": "limezu-city_props-car_wreck_11.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 72,
+      "image": "limezu-city_props-car_wreck_12.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 73,
+      "image": "limezu-city_props-car_wreck_13.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 74,
+      "image": "limezu-city_props-car_wreck_2.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 75,
+      "image": "limezu-city_props-car_wreck_3.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 76,
+      "image": "limezu-city_props-car_wreck_4.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 77,
+      "image": "limezu-city_props-car_wreck_5.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 78,
+      "image": "limezu-city_props-car_wreck_6.png",
+      "imagewidth": 64,
+      "imageheight": 64
+    },
+    {
+      "id": 79,
+      "image": "limezu-city_props-car_wreck_7.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 80,
+      "image": "limezu-city_props-car_wreck_8.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 81,
+      "image": "limezu-city_props-car_wreck_9.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 82,
+      "image": "limezu-city_props-cardboard_trash_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 83,
+      "image": "limezu-city_props-cardboard_trash_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 84,
+      "image": "limezu-city_props-cardboard_trash_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 85,
+      "image": "limezu-city_props-cardboard_trash_4.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 86,
+      "image": "limezu-city_props-cone_10.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 87,
+      "image": "limezu-city_props-cone_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 88,
+      "image": "limezu-city_props-cone_4.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 89,
+      "image": "limezu-city_props-cone_5.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 90,
+      "image": "limezu-city_props-cone_6.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 91,
+      "image": "limezu-city_props-cone_7.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 92,
+      "image": "limezu-city_props-cone_8.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 93,
+      "image": "limezu-city_props-cone_9.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 94,
+      "image": "limezu-city_props-container_1.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 95,
+      "image": "limezu-city_props-container_2.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 96,
+      "image": "limezu-city_props-container_3.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 97,
+      "image": "limezu-city_props-container_4.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 98,
+      "image": "limezu-city_props-container_5.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 99,
+      "image": "limezu-city_props-container_6.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 100,
+      "image": "limezu-city_props-container_house_1.png",
+      "imagewidth": 80,
+      "imageheight": 80
+    },
+    {
+      "id": 101,
+      "image": "limezu-city_props-container_modular_1.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 102,
+      "image": "limezu-city_props-container_modular_10.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 103,
+      "image": "limezu-city_props-container_modular_11.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 104,
+      "image": "limezu-city_props-container_modular_12.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 105,
+      "image": "limezu-city_props-container_modular_13.png",
+      "imagewidth": 64,
+      "imageheight": 32
+    },
+    {
+      "id": 106,
+      "image": "limezu-city_props-container_modular_14.png",
+      "imagewidth": 64,
+      "imageheight": 32
+    },
+    {
+      "id": 107,
+      "image": "limezu-city_props-container_modular_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 108,
+      "image": "limezu-city_props-container_modular_3.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 109,
+      "image": "limezu-city_props-container_modular_4.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 110,
+      "image": "limezu-city_props-container_modular_5.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 111,
+      "image": "limezu-city_props-container_modular_6.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 112,
+      "image": "limezu-city_props-container_modular_7.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 113,
+      "image": "limezu-city_props-container_modular_8.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 114,
+      "image": "limezu-city_props-container_modular_9.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 115,
+      "image": "limezu-city_props-danger_sign_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 116,
+      "image": "limezu-city_props-danger_sign_10.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 117,
+      "image": "limezu-city_props-danger_sign_11.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 118,
+      "image": "limezu-city_props-danger_sign_12.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 119,
+      "image": "limezu-city_props-danger_sign_13.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 120,
+      "image": "limezu-city_props-danger_sign_14.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 121,
+      "image": "limezu-city_props-danger_sign_15.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 122,
+      "image": "limezu-city_props-danger_sign_16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 123,
+      "image": "limezu-city_props-danger_sign_2.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 124,
+      "image": "limezu-city_props-danger_sign_3.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 125,
+      "image": "limezu-city_props-danger_sign_4.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 126,
+      "image": "limezu-city_props-danger_sign_5.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 127,
+      "image": "limezu-city_props-danger_sign_6.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 128,
+      "image": "limezu-city_props-danger_sign_7.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 129,
+      "image": "limezu-city_props-danger_sign_8.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 130,
+      "image": "limezu-city_props-danger_sign_9.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 131,
+      "image": "limezu-city_props-drinking_fountain_1.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 132,
+      "image": "limezu-city_props-drinking_fountain_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 133,
+      "image": "limezu-city_props-drone_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 134,
+      "image": "limezu-city_props-drone_2.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 135,
+      "image": "limezu-city_props-drone_3.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 136,
+      "image": "limezu-city_props-drone_4.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 137,
+      "image": "limezu-city_props-drone_5.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 138,
+      "image": "limezu-city_props-drone_controller_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 139,
+      "image": "limezu-city_props-drone_controller_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 140,
+      "image": "limezu-city_props-drone_controller_3.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 141,
+      "image": "limezu-city_props-drone_controller_4.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 142,
+      "image": "limezu-city_props-drone_helix_propeller.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 143,
+      "image": "limezu-city_props-dumpster_1.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 144,
+      "image": "limezu-city_props-dumpster_2.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 145,
+      "image": "limezu-city_props-dumpster_3.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 146,
+      "image": "limezu-city_props-dumpster_4.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 147,
+      "image": "limezu-city_props-dumpster_5.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 148,
+      "image": "limezu-city_props-dumpster_6.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 149,
+      "image": "limezu-city_props-ev_charging_station_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 150,
+      "image": "limezu-city_props-ev_charging_station_2.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 151,
+      "image": "limezu-city_props-electric_box_1.png",
+      "imagewidth": 32,
+      "imageheight": 64
+    },
+    {
+      "id": 152,
+      "image": "limezu-city_props-electric_box_2.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 153,
+      "image": "limezu-city_props-electric_pole_1.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 154,
+      "image": "limezu-city_props-electric_pole_2.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 155,
+      "image": "limezu-city_props-electric_pole_3.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 156,
+      "image": "limezu-city_props-electric_pole_6.png",
+      "imagewidth": 80,
+      "imageheight": 64
+    },
+    {
+      "id": 157,
+      "image": "limezu-city_props-flower_bush_1.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 158,
+      "image": "limezu-city_props-flower_bush_2.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 159,
+      "image": "limezu-city_props-flower_bush_3.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 160,
+      "image": "limezu-city_props-flower_bush_4.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 161,
+      "image": "limezu-city_props-flower_bush_5.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 162,
+      "image": "limezu-city_props-flower_bush_6.png",
+      "imagewidth": 48,
+      "imageheight": 16
+    },
+    {
+      "id": 163,
+      "image": "limezu-city_props-flower_bush_7.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 164,
+      "image": "limezu-city_props-flowers_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 165,
+      "image": "limezu-city_props-flowers_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 166,
+      "image": "limezu-city_props-flowers_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 167,
+      "image": "limezu-city_props-flowers_4.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 168,
+      "image": "limezu-city_props-flowers_5.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 169,
+      "image": "limezu-city_props-fountain_1.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 170,
+      "image": "limezu-city_props-fountain_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 171,
+      "image": "limezu-city_props-grate_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 172,
+      "image": "limezu-city_props-grate_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 173,
+      "image": "limezu-city_props-grate_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 174,
+      "image": "limezu-city_props-grate_4.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 175,
+      "image": "limezu-city_props-grate_5.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 176,
+      "image": "limezu-city_props-grate_6.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 177,
+      "image": "limezu-city_props-green_closed_lateral_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 178,
+      "image": "limezu-city_props-green_closed_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 179,
+      "image": "limezu-city_props-green_open_empty_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 180,
+      "image": "limezu-city_props-green_open_full_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 181,
+      "image": "limezu-city_props-green_open_lateral_empty_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 182,
+      "image": "limezu-city_props-green_open_lateral_full_trash_can.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 183,
+      "image": "limezu-city_props-green_trash_truck_down.png",
+      "imagewidth": 48,
+      "imageheight": 128
+    },
+    {
+      "id": 184,
+      "image": "limezu-city_props-green_trash_truck_left.png",
+      "imagewidth": 128,
+      "imageheight": 80
+    },
+    {
+      "id": 185,
+      "image": "limezu-city_props-green_trash_truck_right.png",
+      "imagewidth": 128,
+      "imageheight": 80
+    },
+    {
+      "id": 186,
+      "image": "limezu-city_props-green_trash_truck_up.png",
+      "imagewidth": 48,
+      "imageheight": 128
+    },
+    {
+      "id": 187,
+      "image": "limezu-city_props-grey_stake.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 188,
+      "image": "limezu-city_props-hanging_clothes_1.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 189,
+      "image": "limezu-city_props-hanging_clothes_2.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 190,
+      "image": "limezu-city_props-hanging_clothes_3.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 191,
+      "image": "limezu-city_props-hanging_clothes_4.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 192,
+      "image": "limezu-city_props-hanging_clothes_5.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 193,
+      "image": "limezu-city_props-hanging_clothes_6.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 194,
+      "image": "limezu-city_props-hanging_clothes_7.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 195,
+      "image": "limezu-city_props-holes_1.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 196,
+      "image": "limezu-city_props-holes_10.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 197,
+      "image": "limezu-city_props-holes_11.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 198,
+      "image": "limezu-city_props-holes_12.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 199,
+      "image": "limezu-city_props-holes_2.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 200,
+      "image": "limezu-city_props-holes_3.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 201,
+      "image": "limezu-city_props-holes_4.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 202,
+      "image": "limezu-city_props-holes_5.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 203,
+      "image": "limezu-city_props-holes_6.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 204,
+      "image": "limezu-city_props-holes_7.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 205,
+      "image": "limezu-city_props-holes_8.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 206,
+      "image": "limezu-city_props-holes_9.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 207,
+      "image": "limezu-city_props-hydrant_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 208,
+      "image": "limezu-city_props-hydrant_2.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 209,
+      "image": "limezu-city_props-hydrant_3.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 210,
+      "image": "limezu-city_props-hydrant_sign_1.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 211,
+      "image": "limezu-city_props-info_sign_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 212,
+      "image": "limezu-city_props-info_sign_2.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 213,
+      "image": "limezu-city_props-info_sign_3.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 214,
+      "image": "limezu-city_props-info_sign_4.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 215,
+      "image": "limezu-city_props-info_sign_5.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 216,
+      "image": "limezu-city_props-info_sign_6.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 217,
+      "image": "limezu-city_props-junk_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 218,
+      "image": "limezu-city_props-junk_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 219,
+      "image": "limezu-city_props-junk_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 220,
+      "image": "limezu-city_props-junk_4.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 221,
+      "image": "limezu-city_props-junk_5.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 222,
+      "image": "limezu-city_props-junk_6.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 223,
+      "image": "limezu-city_props-junk_7.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 224,
+      "image": "limezu-city_props-junk_shack_1.png",
+      "imagewidth": 96,
+      "imageheight": 96
+    },
+    {
+      "id": 225,
+      "image": "limezu-city_props-kiosk_coffee_cup.png",
+      "imagewidth": 96,
+      "imageheight": 144
+    },
+    {
+      "id": 226,
+      "image": "limezu-city_props-kiosk_coffee_cup_example.png",
+      "imagewidth": 96,
+      "imageheight": 144
+    },
+    {
+      "id": 227,
+      "image": "limezu-city_props-kiosk_coffee_cup_hollow_1.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 228,
+      "image": "limezu-city_props-kiosk_coffee_cup_hollow_2.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 229,
+      "image": "limezu-city_props-kiosk_coffee_cup_shutter_closed.png",
+      "imagewidth": 64,
+      "imageheight": 32
+    },
+    {
+      "id": 230,
+      "image": "limezu-city_props-kiosk_coffee_empty.png",
+      "imagewidth": 96,
+      "imageheight": 144
+    },
+    {
+      "id": 231,
+      "image": "limezu-city_props-kiosk_icecream.png",
+      "imagewidth": 112,
+      "imageheight": 192
+    },
+    {
+      "id": 232,
+      "image": "limezu-city_props-kiosk_icecream_empty.png",
+      "imagewidth": 112,
+      "imageheight": 192
+    },
+    {
+      "id": 233,
+      "image": "limezu-city_props-kiosk_icecream_example.png",
+      "imagewidth": 112,
+      "imageheight": 192
+    },
+    {
+      "id": 234,
+      "image": "limezu-city_props-kiosk_icecream_hollow_1.png",
+      "imagewidth": 112,
+      "imageheight": 64
+    },
+    {
+      "id": 235,
+      "image": "limezu-city_props-kiosk_icecream_hollow_2.png",
+      "imagewidth": 112,
+      "imageheight": 64
+    },
+    {
+      "id": 236,
+      "image": "limezu-city_props-kiosk_icecream_just_a_giant_cone_version.png",
+      "imagewidth": 112,
+      "imageheight": 192
+    },
+    {
+      "id": 237,
+      "image": "limezu-city_props-kiosk_icecream_shutter_closed.png",
+      "imagewidth": 80,
+      "imageheight": 48
+    },
+    {
+      "id": 238,
+      "image": "limezu-city_props-kiosk_infopoint_1.png",
+      "imagewidth": 80,
+      "imageheight": 96
+    },
+    {
+      "id": 239,
+      "image": "limezu-city_props-kiosk_infopoint_2.png",
+      "imagewidth": 80,
+      "imageheight": 96
+    },
+    {
+      "id": 240,
+      "image": "limezu-city_props-kiosk_infopoint_hollow_1.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 241,
+      "image": "limezu-city_props-kiosk_infopoint_hollow_2.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 242,
+      "image": "limezu-city_props-kiosk_infopoint_shutter_closed.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 243,
+      "image": "limezu-city_props-kiosk_mushroom_1.png",
+      "imagewidth": 96,
+      "imageheight": 112
+    },
+    {
+      "id": 244,
+      "image": "limezu-city_props-kiosk_mushroom_example.png",
+      "imagewidth": 96,
+      "imageheight": 128
+    },
+    {
+      "id": 245,
+      "image": "limezu-city_props-kiosk_mushroom_hollow_1.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 246,
+      "image": "limezu-city_props-kiosk_mushroom_hollow_2.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 247,
+      "image": "limezu-city_props-kiosk_mushroom_props_1.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 248,
+      "image": "limezu-city_props-kiosk_mushroom_props_2.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 249,
+      "image": "limezu-city_props-kiosk_mushroom_props_3.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 250,
+      "image": "limezu-city_props-kiosk_mushroom_props_4.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 251,
+      "image": "limezu-city_props-kiosk_mushroom_props_5.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 252,
+      "image": "limezu-city_props-kiosk_mushroom_props_6.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 253,
+      "image": "limezu-city_props-kiosk_mushroom_props_7.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 254,
+      "image": "limezu-city_props-kiosk_mushroom_shutter_closed.png",
+      "imagewidth": 80,
+      "imageheight": 48
+    },
+    {
+      "id": 255,
+      "image": "limezu-city_props-mailbox_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 256,
+      "image": "limezu-city_props-manhole_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 257,
+      "image": "limezu-city_props-manhole_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 258,
+      "image": "limezu-city_props-manhole_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 259,
+      "image": "limezu-city_props-manhole_4.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 260,
+      "image": "limezu-city_props-manhole_5.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 261,
+      "image": "limezu-city_props-manhole_6.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 262,
+      "image": "limezu-city_props-manhole_7.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 263,
+      "image": "limezu-city_props-manhole_8.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 264,
+      "image": "limezu-city_props-milk_trash_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 265,
+      "image": "limezu-city_props-milk_trash_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 266,
+      "image": "limezu-city_props-open_can_trash.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 267,
+      "image": "limezu-city_props-orange_juice_trash.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 268,
+      "image": "limezu-city_props-orange_structure.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 269,
+      "image": "limezu-city_props-orange_trash_truck_down.png",
+      "imagewidth": 48,
+      "imageheight": 128
+    },
+    {
+      "id": 270,
+      "image": "limezu-city_props-orange_trash_truck_left.png",
+      "imagewidth": 128,
+      "imageheight": 80
+    },
+    {
+      "id": 271,
+      "image": "limezu-city_props-orange_trash_truck_right.png",
+      "imagewidth": 128,
+      "imageheight": 80
+    },
+    {
+      "id": 272,
+      "image": "limezu-city_props-orange_trash_truck_up.png",
+      "imagewidth": 48,
+      "imageheight": 128
+    },
+    {
+      "id": 273,
+      "image": "limezu-city_props-paper_trash.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 274,
+      "image": "limezu-city_props-parking_meter_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 275,
+      "image": "limezu-city_props-pedestrian_barrier_post_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 276,
+      "image": "limezu-city_props-pedestrian_barrier_post_10.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 277,
+      "image": "limezu-city_props-pedestrian_barrier_post_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 278,
+      "image": "limezu-city_props-pedestrian_barrier_post_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 279,
+      "image": "limezu-city_props-pedestrian_barrier_post_4.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 280,
+      "image": "limezu-city_props-pedestrian_barrier_post_5.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 281,
+      "image": "limezu-city_props-pedestrian_barrier_post_6.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 282,
+      "image": "limezu-city_props-pedestrian_barrier_post_7.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 283,
+      "image": "limezu-city_props-pedestrian_barrier_post_8.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 284,
+      "image": "limezu-city_props-pedestrian_barrier_post_9.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 285,
+      "image": "limezu-city_props-pedestrian_barrier_post_modular_1_left.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 286,
+      "image": "limezu-city_props-pedestrian_barrier_post_modular_1_middle.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 287,
+      "image": "limezu-city_props-pedestrian_barrier_post_modular_1_right.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 288,
+      "image": "limezu-city_props-pedestrian_barrier_post_modular_2_left.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 289,
+      "image": "limezu-city_props-pedestrian_barrier_post_modular_2_middle.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 290,
+      "image": "limezu-city_props-pedestrian_barrier_post_modular_2_right.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 291,
+      "image": "limezu-city_props-phone_booth_1.png",
+      "imagewidth": 48,
+      "imageheight": 80
+    },
+    {
+      "id": 292,
+      "image": "limezu-city_props-phone_booth_2.png",
+      "imagewidth": 48,
+      "imageheight": 80
+    },
+    {
+      "id": 293,
+      "image": "limezu-city_props-phone_booth_3.png",
+      "imagewidth": 48,
+      "imageheight": 96
+    },
+    {
+      "id": 294,
+      "image": "limezu-city_props-phone_booth_4.png",
+      "imagewidth": 48,
+      "imageheight": 96
+    },
+    {
+      "id": 295,
+      "image": "limezu-city_props-pigeon_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 296,
+      "image": "limezu-city_props-pigeon_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 297,
+      "image": "limezu-city_props-pizza_trash.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 298,
+      "image": "limezu-city_props-pole_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 299,
+      "image": "limezu-city_props-pot_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 300,
+      "image": "limezu-city_props-pot_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 301,
+      "image": "limezu-city_props-pot_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 302,
+      "image": "limezu-city_props-pot_4.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 303,
+      "image": "limezu-city_props-power_house_1.png",
+      "imagewidth": 112,
+      "imageheight": 128
+    },
+    {
+      "id": 304,
+      "image": "limezu-city_props-red_can_trash.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 305,
+      "image": "limezu-city_props-scrap_metal_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 306,
+      "image": "limezu-city_props-scrap_metal_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 307,
+      "image": "limezu-city_props-scrap_metal_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 308,
+      "image": "limezu-city_props-scrap_metal_4.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 309,
+      "image": "limezu-city_props-scrap_metal_5.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 310,
+      "image": "limezu-city_props-scrap_metal_6.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 311,
+      "image": "limezu-city_props-scrap_metal_7.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 312,
+      "image": "limezu-city_props-scrap_metal_8.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 313,
+      "image": "limezu-city_props-scrap_metal_pile_1.png",
+      "imagewidth": 80,
+      "imageheight": 48
+    },
+    {
+      "id": 314,
+      "image": "limezu-city_props-shrub_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 315,
+      "image": "limezu-city_props-shrub_10.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 316,
+      "image": "limezu-city_props-shrub_11.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 317,
+      "image": "limezu-city_props-shrub_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 318,
+      "image": "limezu-city_props-shrub_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 319,
+      "image": "limezu-city_props-shrub_4.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 320,
+      "image": "limezu-city_props-shrub_5.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 321,
+      "image": "limezu-city_props-shrub_6.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 322,
+      "image": "limezu-city_props-shrub_7.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 323,
+      "image": "limezu-city_props-shrub_8.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 324,
+      "image": "limezu-city_props-shrub_9.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 325,
+      "image": "limezu-city_props-sign.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 326,
+      "image": "limezu-city_props-single_trash_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 327,
+      "image": "limezu-city_props-single_trash_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 328,
+      "image": "limezu-city_props-single_trash_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 329,
+      "image": "limezu-city_props-single_trash_4.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 330,
+      "image": "limezu-city_props-small_closed_trash_can.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 331,
+      "image": "limezu-city_props-small_empty_trash_can.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 332,
+      "image": "limezu-city_props-small_full_trash_can.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 333,
+      "image": "limezu-city_props-small_trash_pile_1.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 334,
+      "image": "limezu-city_props-small_trash_pile_2.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 335,
+      "image": "limezu-city_props-small_trash_pile_3.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 336,
+      "image": "limezu-city_props-small_trash_pile_4.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 337,
+      "image": "limezu-city_props-solar_panel.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 338,
+      "image": "limezu-city_props-stacked_barrels_1.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 339,
+      "image": "limezu-city_props-stop_barrier_back.png",
+      "imagewidth": 80,
+      "imageheight": 32
+    },
+    {
+      "id": 340,
+      "image": "limezu-city_props-stop_barrier_front.png",
+      "imagewidth": 80,
+      "imageheight": 32
+    },
+    {
+      "id": 341,
+      "image": "limezu-city_props-stop_barrier_up_back.png",
+      "imagewidth": 32,
+      "imageheight": 80
+    },
+    {
+      "id": 342,
+      "image": "limezu-city_props-stop_barrier_up_front.png",
+      "imagewidth": 32,
+      "imageheight": 80
+    },
+    {
+      "id": 343,
+      "image": "limezu-city_props-street_lamp_1.png",
+      "imagewidth": 32,
+      "imageheight": 64
+    },
+    {
+      "id": 344,
+      "image": "limezu-city_props-street_lamp_2.png",
+      "imagewidth": 32,
+      "imageheight": 64
+    },
+    {
+      "id": 345,
+      "image": "limezu-city_props-street_lamp_3.png",
+      "imagewidth": 32,
+      "imageheight": 64
+    },
+    {
+      "id": 346,
+      "image": "limezu-city_props-street_lamp_4.png",
+      "imagewidth": 32,
+      "imageheight": 64
+    },
+    {
+      "id": 347,
+      "image": "limezu-city_props-street_lamp_5.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 348,
+      "image": "limezu-city_props-structure_roof_prop_1.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 349,
+      "image": "limezu-city_props-structure_roof_prop_2.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 350,
+      "image": "limezu-city_props-structure_roof_prop_3.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 351,
+      "image": "limezu-city_props-structure_roof_prop_5.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 352,
+      "image": "limezu-city_props-structure_roof_prop_6.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 353,
+      "image": "limezu-city_props-structure_roof_red_light.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 354,
+      "image": "limezu-city_props-structure_yellow_light_left.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 355,
+      "image": "limezu-city_props-structure_yellow_light_right.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 356,
+      "image": "limezu-city_props-tire_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 357,
+      "image": "limezu-city_props-tire_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 358,
+      "image": "limezu-city_props-traffic_barrier_1.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 359,
+      "image": "limezu-city_props-traffic_barrier_2.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 360,
+      "image": "limezu-city_props-traffic_barrier_3.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 361,
+      "image": "limezu-city_props-traffic_barrier_4.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 362,
+      "image": "limezu-city_props-traffic_barrier_5.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 363,
+      "image": "limezu-city_props-traffic_barrier_6.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 364,
+      "image": "limezu-city_props-traffic_barrier_7.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 365,
+      "image": "limezu-city_props-traffic_barrier_8.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 366,
+      "image": "limezu-city_props-traffic_barrier_9.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 367,
+      "image": "limezu-city_props-traffic_light_1.png",
+      "imagewidth": 16,
+      "imageheight": 80
+    },
+    {
+      "id": 368,
+      "image": "limezu-city_props-traffic_light_10.png",
+      "imagewidth": 64,
+      "imageheight": 96
+    },
+    {
+      "id": 369,
+      "image": "limezu-city_props-traffic_light_11.png",
+      "imagewidth": 64,
+      "imageheight": 96
+    },
+    {
+      "id": 370,
+      "image": "limezu-city_props-traffic_light_12.png",
+      "imagewidth": 64,
+      "imageheight": 96
+    },
+    {
+      "id": 371,
+      "image": "limezu-city_props-traffic_light_13.png",
+      "imagewidth": 64,
+      "imageheight": 96
+    },
+    {
+      "id": 372,
+      "image": "limezu-city_props-traffic_light_14.png",
+      "imagewidth": 64,
+      "imageheight": 96
+    },
+    {
+      "id": 373,
+      "image": "limezu-city_props-traffic_light_15.png",
+      "imagewidth": 64,
+      "imageheight": 96
+    },
+    {
+      "id": 374,
+      "image": "limezu-city_props-traffic_light_16.png",
+      "imagewidth": 64,
+      "imageheight": 96
+    },
+    {
+      "id": 375,
+      "image": "limezu-city_props-traffic_light_2.png",
+      "imagewidth": 16,
+      "imageheight": 80
+    },
+    {
+      "id": 376,
+      "image": "limezu-city_props-traffic_light_3.png",
+      "imagewidth": 16,
+      "imageheight": 80
+    },
+    {
+      "id": 377,
+      "image": "limezu-city_props-traffic_light_4.png",
+      "imagewidth": 16,
+      "imageheight": 80
+    },
+    {
+      "id": 378,
+      "image": "limezu-city_props-traffic_light_5.png",
+      "imagewidth": 16,
+      "imageheight": 80
+    },
+    {
+      "id": 379,
+      "image": "limezu-city_props-traffic_light_6.png",
+      "imagewidth": 64,
+      "imageheight": 96
+    },
+    {
+      "id": 380,
+      "image": "limezu-city_props-traffic_light_7.png",
+      "imagewidth": 64,
+      "imageheight": 96
+    },
+    {
+      "id": 381,
+      "image": "limezu-city_props-traffic_light_8.png",
+      "imagewidth": 64,
+      "imageheight": 96
+    },
+    {
+      "id": 382,
+      "image": "limezu-city_props-traffic_light_9.png",
+      "imagewidth": 64,
+      "imageheight": 96
+    },
+    {
+      "id": 383,
+      "image": "limezu-city_props-traffic_light_new_back_diagonal_left_sign_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 384,
+      "image": "limezu-city_props-traffic_light_new_back_diagonal_left_sign_2.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 385,
+      "image": "limezu-city_props-traffic_light_new_back_diagonal_right_sign_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 386,
+      "image": "limezu-city_props-traffic_light_new_back_diagonal_right_sign_2.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 387,
+      "image": "limezu-city_props-traffic_light_new_back_sign_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 388,
+      "image": "limezu-city_props-traffic_light_new_back_sign_2.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 389,
+      "image": "limezu-city_props-traffic_light_new_back_sign_3.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 390,
+      "image": "limezu-city_props-traffic_light_new_example_1.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 391,
+      "image": "limezu-city_props-traffic_light_new_example_2.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 392,
+      "image": "limezu-city_props-traffic_light_new_example_3.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 393,
+      "image": "limezu-city_props-traffic_light_new_example_4.png",
+      "imagewidth": 48,
+      "imageheight": 80
+    },
+    {
+      "id": 394,
+      "image": "limezu-city_props-traffic_light_new_example_5.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 395,
+      "image": "limezu-city_props-traffic_light_new_example_6.png",
+      "imagewidth": 48,
+      "imageheight": 80
+    },
+    {
+      "id": 396,
+      "image": "limezu-city_props-traffic_light_new_example_7.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 397,
+      "image": "limezu-city_props-traffic_light_new_example_8.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 398,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_down_1.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 399,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_down_green.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 400,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_down_orange.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 401,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_down_red.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 402,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_sign_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 403,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_sign_2.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 404,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_sign_3.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 405,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_sign_4.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 406,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_sign_5.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 407,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_sign_6.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 408,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_sign_7.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 409,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_sign_8.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 410,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_up_1.png",
+      "imagewidth": 48,
+      "imageheight": 80
+    },
+    {
+      "id": 411,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_down_1.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 412,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_down_green.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 413,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_down_orange.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 414,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_down_red.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 415,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_sign_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 416,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_sign_2.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 417,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_sign_3.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 418,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_sign_4.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 419,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_sign_5.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 420,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_sign_6.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 421,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_sign_7.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 422,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_sign_8.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 423,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_up_1.png",
+      "imagewidth": 48,
+      "imageheight": 80
+    },
+    {
+      "id": 424,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_up_green.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 425,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_up_orange.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 426,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_right_up_red.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 427,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_up_green.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 428,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_up_red.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 429,
+      "image": "limezu-city_props-traffic_light_new_front_diagonal_left_up_orange.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 430,
+      "image": "limezu-city_props-traffic_light_new_front_left_green.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 431,
+      "image": "limezu-city_props-traffic_light_new_front_left_orange.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 432,
+      "image": "limezu-city_props-traffic_light_new_front_left_red.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 433,
+      "image": "limezu-city_props-traffic_light_new_front_right_1.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 434,
+      "image": "limezu-city_props-traffic_light_new_front_right_green.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 435,
+      "image": "limezu-city_props-traffic_light_new_front_right_orange.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 436,
+      "image": "limezu-city_props-traffic_light_new_front_right_red.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 437,
+      "image": "limezu-city_props-traffic_light_new_front_sign_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 438,
+      "image": "limezu-city_props-traffic_light_new_front_sign_2.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 439,
+      "image": "limezu-city_props-traffic_light_new_front_sign_3.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 440,
+      "image": "limezu-city_props-traffic_light_new_front_sign_4.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 441,
+      "image": "limezu-city_props-traffic_light_new_front_sign_5.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 442,
+      "image": "limezu-city_props-traffic_light_new_front_sign_6.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 443,
+      "image": "limezu-city_props-traffic_light_new_front_sign_7.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 444,
+      "image": "limezu-city_props-traffic_light_new_front_sign_8.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 445,
+      "image": "limezu-city_props-traffic_light_new_front_left_1.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 446,
+      "image": "limezu-city_props-traffic_lights_back_1.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 447,
+      "image": "limezu-city_props-traffic_lights_back_2.png",
+      "imagewidth": 16,
+      "imageheight": 80
+    },
+    {
+      "id": 448,
+      "image": "limezu-city_props-traffic_lights_colours_mod_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 449,
+      "image": "limezu-city_props-traffic_lights_colours_mod_2.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 450,
+      "image": "limezu-city_props-traffic_lights_green_mod_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 451,
+      "image": "limezu-city_props-traffic_lights_green_mod_2.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 452,
+      "image": "limezu-city_props-traffic_lights_left_1.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 453,
+      "image": "limezu-city_props-traffic_lights_left_2.png",
+      "imagewidth": 16,
+      "imageheight": 80
+    },
+    {
+      "id": 454,
+      "image": "limezu-city_props-traffic_lights_off_frontal_1.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 455,
+      "image": "limezu-city_props-traffic_lights_off_frontal_2.png",
+      "imagewidth": 16,
+      "imageheight": 80
+    },
+    {
+      "id": 456,
+      "image": "limezu-city_props-traffic_lights_red_mod_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 457,
+      "image": "limezu-city_props-traffic_lights_red_mod_2.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 458,
+      "image": "limezu-city_props-traffic_lights_right_1.png",
+      "imagewidth": 16,
+      "imageheight": 64
+    },
+    {
+      "id": 459,
+      "image": "limezu-city_props-traffic_lights_right_2.png",
+      "imagewidth": 16,
+      "imageheight": 80
+    },
+    {
+      "id": 460,
+      "image": "limezu-city_props-traffic_lights_yellow_mod_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 461,
+      "image": "limezu-city_props-traffic_lights_yellow_mod_2.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 462,
+      "image": "limezu-city_props-traffic_sign_1.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 463,
+      "image": "limezu-city_props-traffic_sign_10.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 464,
+      "image": "limezu-city_props-traffic_sign_11.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 465,
+      "image": "limezu-city_props-traffic_sign_12.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 466,
+      "image": "limezu-city_props-traffic_sign_13.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 467,
+      "image": "limezu-city_props-traffic_sign_14.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 468,
+      "image": "limezu-city_props-traffic_sign_15.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 469,
+      "image": "limezu-city_props-traffic_sign_16.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 470,
+      "image": "limezu-city_props-traffic_sign_17.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 471,
+      "image": "limezu-city_props-traffic_sign_18.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 472,
+      "image": "limezu-city_props-traffic_sign_19.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 473,
+      "image": "limezu-city_props-traffic_sign_2.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 474,
+      "image": "limezu-city_props-traffic_sign_20.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 475,
+      "image": "limezu-city_props-traffic_sign_21.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 476,
+      "image": "limezu-city_props-traffic_sign_22.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 477,
+      "image": "limezu-city_props-traffic_sign_23.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 478,
+      "image": "limezu-city_props-traffic_sign_24.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 479,
+      "image": "limezu-city_props-traffic_sign_25.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 480,
+      "image": "limezu-city_props-traffic_sign_26.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 481,
+      "image": "limezu-city_props-traffic_sign_27.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 482,
+      "image": "limezu-city_props-traffic_sign_28.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 483,
+      "image": "limezu-city_props-traffic_sign_29.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 484,
+      "image": "limezu-city_props-traffic_sign_3.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 485,
+      "image": "limezu-city_props-traffic_sign_30.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 486,
+      "image": "limezu-city_props-traffic_sign_31.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 487,
+      "image": "limezu-city_props-traffic_sign_32.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 488,
+      "image": "limezu-city_props-traffic_sign_33.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 489,
+      "image": "limezu-city_props-traffic_sign_34.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 490,
+      "image": "limezu-city_props-traffic_sign_35.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 491,
+      "image": "limezu-city_props-traffic_sign_36.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 492,
+      "image": "limezu-city_props-traffic_sign_37.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 493,
+      "image": "limezu-city_props-traffic_sign_38.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 494,
+      "image": "limezu-city_props-traffic_sign_39.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 495,
+      "image": "limezu-city_props-traffic_sign_4.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 496,
+      "image": "limezu-city_props-traffic_sign_40.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 497,
+      "image": "limezu-city_props-traffic_sign_41.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 498,
+      "image": "limezu-city_props-traffic_sign_42.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 499,
+      "image": "limezu-city_props-traffic_sign_43.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 500,
+      "image": "limezu-city_props-traffic_sign_44.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 501,
+      "image": "limezu-city_props-traffic_sign_45.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 502,
+      "image": "limezu-city_props-traffic_sign_46.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 503,
+      "image": "limezu-city_props-traffic_sign_47.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 504,
+      "image": "limezu-city_props-traffic_sign_48.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 505,
+      "image": "limezu-city_props-traffic_sign_49.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 506,
+      "image": "limezu-city_props-traffic_sign_5.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 507,
+      "image": "limezu-city_props-traffic_sign_50.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 508,
+      "image": "limezu-city_props-traffic_sign_51.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 509,
+      "image": "limezu-city_props-traffic_sign_6.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 510,
+      "image": "limezu-city_props-traffic_sign_7.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 511,
+      "image": "limezu-city_props-traffic_sign_8.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 512,
+      "image": "limezu-city_props-traffic_sign_9.png",
+      "imagewidth": 16,
+      "imageheight": 48
+    },
+    {
+      "id": 513,
+      "image": "limezu-city_props-traffic_sign_modular_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 514,
+      "image": "limezu-city_props-traffic_sign_modular_10.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 515,
+      "image": "limezu-city_props-traffic_sign_modular_11.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 516,
+      "image": "limezu-city_props-traffic_sign_modular_12.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 517,
+      "image": "limezu-city_props-traffic_sign_modular_13.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 518,
+      "image": "limezu-city_props-traffic_sign_modular_14.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 519,
+      "image": "limezu-city_props-traffic_sign_modular_15.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 520,
+      "image": "limezu-city_props-traffic_sign_modular_16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 521,
+      "image": "limezu-city_props-traffic_sign_modular_17.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 522,
+      "image": "limezu-city_props-traffic_sign_modular_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 523,
+      "image": "limezu-city_props-traffic_sign_modular_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 524,
+      "image": "limezu-city_props-traffic_sign_modular_4.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 525,
+      "image": "limezu-city_props-traffic_sign_modular_5.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 526,
+      "image": "limezu-city_props-traffic_sign_modular_6.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 527,
+      "image": "limezu-city_props-traffic_sign_modular_7.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 528,
+      "image": "limezu-city_props-traffic_sign_modular_8.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 529,
+      "image": "limezu-city_props-traffic_sign_modular_9.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 530,
+      "image": "limezu-city_props-traffic_sign_new_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 531,
+      "image": "limezu-city_props-traffic_sign_new_10.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 532,
+      "image": "limezu-city_props-traffic_sign_new_100.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 533,
+      "image": "limezu-city_props-traffic_sign_new_101.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 534,
+      "image": "limezu-city_props-traffic_sign_new_102.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 535,
+      "image": "limezu-city_props-traffic_sign_new_103.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 536,
+      "image": "limezu-city_props-traffic_sign_new_104.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 537,
+      "image": "limezu-city_props-traffic_sign_new_105.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 538,
+      "image": "limezu-city_props-traffic_sign_new_106.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 539,
+      "image": "limezu-city_props-traffic_sign_new_107.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 540,
+      "image": "limezu-city_props-traffic_sign_new_108.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 541,
+      "image": "limezu-city_props-traffic_sign_new_109.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 542,
+      "image": "limezu-city_props-traffic_sign_new_11.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 543,
+      "image": "limezu-city_props-traffic_sign_new_110.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 544,
+      "image": "limezu-city_props-traffic_sign_new_111.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 545,
+      "image": "limezu-city_props-traffic_sign_new_112.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 546,
+      "image": "limezu-city_props-traffic_sign_new_113.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 547,
+      "image": "limezu-city_props-traffic_sign_new_114.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 548,
+      "image": "limezu-city_props-traffic_sign_new_115.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 549,
+      "image": "limezu-city_props-traffic_sign_new_116.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 550,
+      "image": "limezu-city_props-traffic_sign_new_117.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 551,
+      "image": "limezu-city_props-traffic_sign_new_12.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 552,
+      "image": "limezu-city_props-traffic_sign_new_13.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 553,
+      "image": "limezu-city_props-traffic_sign_new_14.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 554,
+      "image": "limezu-city_props-traffic_sign_new_15.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 555,
+      "image": "limezu-city_props-traffic_sign_new_16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 556,
+      "image": "limezu-city_props-traffic_sign_new_17.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 557,
+      "image": "limezu-city_props-traffic_sign_new_18.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 558,
+      "image": "limezu-city_props-traffic_sign_new_19.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 559,
+      "image": "limezu-city_props-traffic_sign_new_2.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 560,
+      "image": "limezu-city_props-traffic_sign_new_20.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 561,
+      "image": "limezu-city_props-traffic_sign_new_21.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 562,
+      "image": "limezu-city_props-traffic_sign_new_22.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 563,
+      "image": "limezu-city_props-traffic_sign_new_23.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 564,
+      "image": "limezu-city_props-traffic_sign_new_24.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 565,
+      "image": "limezu-city_props-traffic_sign_new_25.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 566,
+      "image": "limezu-city_props-traffic_sign_new_26.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 567,
+      "image": "limezu-city_props-traffic_sign_new_27.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 568,
+      "image": "limezu-city_props-traffic_sign_new_28.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 569,
+      "image": "limezu-city_props-traffic_sign_new_29.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 570,
+      "image": "limezu-city_props-traffic_sign_new_3.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 571,
+      "image": "limezu-city_props-traffic_sign_new_30.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 572,
+      "image": "limezu-city_props-traffic_sign_new_31.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 573,
+      "image": "limezu-city_props-traffic_sign_new_32.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 574,
+      "image": "limezu-city_props-traffic_sign_new_33.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 575,
+      "image": "limezu-city_props-traffic_sign_new_34.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 576,
+      "image": "limezu-city_props-traffic_sign_new_35.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 577,
+      "image": "limezu-city_props-traffic_sign_new_36.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 578,
+      "image": "limezu-city_props-traffic_sign_new_37.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 579,
+      "image": "limezu-city_props-traffic_sign_new_38.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 580,
+      "image": "limezu-city_props-traffic_sign_new_39.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 581,
+      "image": "limezu-city_props-traffic_sign_new_4.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 582,
+      "image": "limezu-city_props-traffic_sign_new_40.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 583,
+      "image": "limezu-city_props-traffic_sign_new_41.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 584,
+      "image": "limezu-city_props-traffic_sign_new_42.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 585,
+      "image": "limezu-city_props-traffic_sign_new_43.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 586,
+      "image": "limezu-city_props-traffic_sign_new_44.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 587,
+      "image": "limezu-city_props-traffic_sign_new_45.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 588,
+      "image": "limezu-city_props-traffic_sign_new_46.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 589,
+      "image": "limezu-city_props-traffic_sign_new_47.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 590,
+      "image": "limezu-city_props-traffic_sign_new_48.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 591,
+      "image": "limezu-city_props-traffic_sign_new_49.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 592,
+      "image": "limezu-city_props-traffic_sign_new_5.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 593,
+      "image": "limezu-city_props-traffic_sign_new_50.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 594,
+      "image": "limezu-city_props-traffic_sign_new_51.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 595,
+      "image": "limezu-city_props-traffic_sign_new_52.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 596,
+      "image": "limezu-city_props-traffic_sign_new_53.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 597,
+      "image": "limezu-city_props-traffic_sign_new_54.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 598,
+      "image": "limezu-city_props-traffic_sign_new_55.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 599,
+      "image": "limezu-city_props-traffic_sign_new_56.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 600,
+      "image": "limezu-city_props-traffic_sign_new_57.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 601,
+      "image": "limezu-city_props-traffic_sign_new_58.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 602,
+      "image": "limezu-city_props-traffic_sign_new_59.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 603,
+      "image": "limezu-city_props-traffic_sign_new_6.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 604,
+      "image": "limezu-city_props-traffic_sign_new_60.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 605,
+      "image": "limezu-city_props-traffic_sign_new_61.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 606,
+      "image": "limezu-city_props-traffic_sign_new_62.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 607,
+      "image": "limezu-city_props-traffic_sign_new_63.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 608,
+      "image": "limezu-city_props-traffic_sign_new_64.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 609,
+      "image": "limezu-city_props-traffic_sign_new_65.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 610,
+      "image": "limezu-city_props-traffic_sign_new_66.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 611,
+      "image": "limezu-city_props-traffic_sign_new_67.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 612,
+      "image": "limezu-city_props-traffic_sign_new_68.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 613,
+      "image": "limezu-city_props-traffic_sign_new_69.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 614,
+      "image": "limezu-city_props-traffic_sign_new_7.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 615,
+      "image": "limezu-city_props-traffic_sign_new_70.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 616,
+      "image": "limezu-city_props-traffic_sign_new_71.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 617,
+      "image": "limezu-city_props-traffic_sign_new_72.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 618,
+      "image": "limezu-city_props-traffic_sign_new_73.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 619,
+      "image": "limezu-city_props-traffic_sign_new_74.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 620,
+      "image": "limezu-city_props-traffic_sign_new_75.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 621,
+      "image": "limezu-city_props-traffic_sign_new_76.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 622,
+      "image": "limezu-city_props-traffic_sign_new_77.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 623,
+      "image": "limezu-city_props-traffic_sign_new_78.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 624,
+      "image": "limezu-city_props-traffic_sign_new_79.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 625,
+      "image": "limezu-city_props-traffic_sign_new_8.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 626,
+      "image": "limezu-city_props-traffic_sign_new_80.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 627,
+      "image": "limezu-city_props-traffic_sign_new_81.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 628,
+      "image": "limezu-city_props-traffic_sign_new_82.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 629,
+      "image": "limezu-city_props-traffic_sign_new_83.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 630,
+      "image": "limezu-city_props-traffic_sign_new_84.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 631,
+      "image": "limezu-city_props-traffic_sign_new_85.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 632,
+      "image": "limezu-city_props-traffic_sign_new_86.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 633,
+      "image": "limezu-city_props-traffic_sign_new_87.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 634,
+      "image": "limezu-city_props-traffic_sign_new_88.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 635,
+      "image": "limezu-city_props-traffic_sign_new_89.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 636,
+      "image": "limezu-city_props-traffic_sign_new_9.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 637,
+      "image": "limezu-city_props-traffic_sign_new_90.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 638,
+      "image": "limezu-city_props-traffic_sign_new_91.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 639,
+      "image": "limezu-city_props-traffic_sign_new_92.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 640,
+      "image": "limezu-city_props-traffic_sign_new_93.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 641,
+      "image": "limezu-city_props-traffic_sign_new_94.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 642,
+      "image": "limezu-city_props-traffic_sign_new_95.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 643,
+      "image": "limezu-city_props-traffic_sign_new_96.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 644,
+      "image": "limezu-city_props-traffic_sign_new_97.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 645,
+      "image": "limezu-city_props-traffic_sign_new_98.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 646,
+      "image": "limezu-city_props-traffic_sign_new_99.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 647,
+      "image": "limezu-city_props-trash_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 648,
+      "image": "limezu-city_props-trash_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 649,
+      "image": "limezu-city_props-trash_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 650,
+      "image": "limezu-city_props-trash_4.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 651,
+      "image": "limezu-city_props-trash_5.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 652,
+      "image": "limezu-city_props-trash_pile_1.png",
+      "imagewidth": 64,
+      "imageheight": 32
+    },
+    {
+      "id": 653,
+      "image": "limezu-city_props-trash_pile_2.png",
+      "imagewidth": 64,
+      "imageheight": 32
+    },
+    {
+      "id": 654,
+      "image": "limezu-city_props-trash_pile_3.png",
+      "imagewidth": 64,
+      "imageheight": 32
+    },
+    {
+      "id": 655,
+      "image": "limezu-city_props-trash_pile_4.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 656,
+      "image": "limezu-city_props-trash_pile_5.png",
+      "imagewidth": 64,
+      "imageheight": 48
+    },
+    {
+      "id": 657,
+      "image": "limezu-city_props-trash_pile_modular_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 658,
+      "image": "limezu-city_props-trash_pile_modular_2.png",
+      "imagewidth": 64,
+      "imageheight": 32
+    },
+    {
+      "id": 659,
+      "image": "limezu-city_props-trash_pile_modular_3.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 660,
+      "image": "limezu-city_props-trash_pile_props_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 661,
+      "image": "limezu-city_props-trash_pile_props_10.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 662,
+      "image": "limezu-city_props-trash_pile_props_11.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 663,
+      "image": "limezu-city_props-trash_pile_props_12.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 664,
+      "image": "limezu-city_props-trash_pile_props_13.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 665,
+      "image": "limezu-city_props-trash_pile_props_14.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 666,
+      "image": "limezu-city_props-trash_pile_props_15.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 667,
+      "image": "limezu-city_props-trash_pile_props_16.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 668,
+      "image": "limezu-city_props-trash_pile_props_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 669,
+      "image": "limezu-city_props-trash_pile_props_3.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 670,
+      "image": "limezu-city_props-trash_pile_props_4.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 671,
+      "image": "limezu-city_props-trash_pile_props_5.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 672,
+      "image": "limezu-city_props-trash_pile_props_6.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 673,
+      "image": "limezu-city_props-trash_pile_props_7.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 674,
+      "image": "limezu-city_props-trash_pile_props_8.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 675,
+      "image": "limezu-city_props-trash_pile_props_9.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 676,
+      "image": "limezu-city_props-trashbin_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 677,
+      "image": "limezu-city_props-trashbin_10.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 678,
+      "image": "limezu-city_props-trashbin_11.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 679,
+      "image": "limezu-city_props-trashbin_12.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 680,
+      "image": "limezu-city_props-trashbin_13.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 681,
+      "image": "limezu-city_props-trashbin_14.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 682,
+      "image": "limezu-city_props-trashbin_15.png",
+      "imagewidth": 32,
+      "imageheight": 32
+    },
+    {
+      "id": 683,
+      "image": "limezu-city_props-trashbin_2.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 684,
+      "image": "limezu-city_props-trashbin_3.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 685,
+      "image": "limezu-city_props-trashbin_4.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 686,
+      "image": "limezu-city_props-trashbin_5.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 687,
+      "image": "limezu-city_props-trashbin_6.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 688,
+      "image": "limezu-city_props-trashbin_7.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 689,
+      "image": "limezu-city_props-trashbin_8.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 690,
+      "image": "limezu-city_props-trashbin_9.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 691,
+      "image": "limezu-city_props-tree_1.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 692,
+      "image": "limezu-city_props-tree_10.png",
+      "imagewidth": 32,
+      "imageheight": 64
+    },
+    {
+      "id": 693,
+      "image": "limezu-city_props-tree_11.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 694,
+      "image": "limezu-city_props-tree_12.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 695,
+      "image": "limezu-city_props-tree_13.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 696,
+      "image": "limezu-city_props-tree_14.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 697,
+      "image": "limezu-city_props-tree_15.png",
+      "imagewidth": 48,
+      "imageheight": 64
+    },
+    {
+      "id": 698,
+      "image": "limezu-city_props-tree_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 699,
+      "image": "limezu-city_props-tree_3.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 700,
+      "image": "limezu-city_props-tree_4.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 701,
+      "image": "limezu-city_props-tree_5.png",
+      "imagewidth": 32,
+      "imageheight": 64
+    },
+    {
+      "id": 702,
+      "image": "limezu-city_props-tree_6.png",
+      "imagewidth": 32,
+      "imageheight": 64
+    },
+    {
+      "id": 703,
+      "image": "limezu-city_props-tree_7.png",
+      "imagewidth": 32,
+      "imageheight": 64
+    },
+    {
+      "id": 704,
+      "image": "limezu-city_props-tree_8.png",
+      "imagewidth": 32,
+      "imageheight": 64
+    },
+    {
+      "id": 705,
+      "image": "limezu-city_props-tree_9.png",
+      "imagewidth": 32,
+      "imageheight": 64
+    },
+    {
+      "id": 706,
+      "image": "limezu-city_props-underground_parking_1.png",
+      "imagewidth": 64,
+      "imageheight": 96
+    },
+    {
+      "id": 707,
+      "image": "limezu-city_props-underground_parking_2.png",
+      "imagewidth": 64,
+      "imageheight": 96
+    },
+    {
+      "id": 708,
+      "image": "limezu-city_props-underground_parking_3.png",
+      "imagewidth": 112,
+      "imageheight": 112
+    },
+    {
+      "id": 709,
+      "image": "limezu-city_props-water_tower_1.png",
+      "imagewidth": 48,
+      "imageheight": 112
+    },
+    {
+      "id": 710,
+      "image": "limezu-city_props-water_tower_2.png",
+      "imagewidth": 80,
+      "imageheight": 112
+    },
+    {
+      "id": 711,
+      "image": "limezu-city_props-water_tower_3.png",
+      "imagewidth": 80,
+      "imageheight": 80
+    },
+    {
+      "id": 712,
+      "image": "limezu-city_props-water_tower_4.png",
+      "imagewidth": 80,
+      "imageheight": 112
+    },
+    {
+      "id": 713,
+      "image": "limezu-city_props-wind_turbine_1.png",
+      "imagewidth": 96,
+      "imageheight": 160
+    },
+    {
+      "id": 714,
+      "image": "limezu-city_props-yellow_stake.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    }
+  ]
+}

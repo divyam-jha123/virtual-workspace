@@ -1,0 +1,241 @@
+{
+  "columns": 0,
+  "grid": {
+    "orientation": "orthogonal",
+    "width": 16,
+    "height": 16
+  },
+  "margin": 0,
+  "name": "limezu-police_station",
+  "spacing": 0,
+  "tilecount": 37,
+  "tiledversion": "1.10.2",
+  "tileheight": 16,
+  "tilewidth": 16,
+  "type": "tileset",
+  "version": "1.10",
+  "tiles": [
+    {
+      "id": 0,
+      "image": "limezu-police_station-automatic_barrier_1.png",
+      "imagewidth": 80,
+      "imageheight": 32
+    },
+    {
+      "id": 1,
+      "image": "limezu-police_station-automatic_barrier_2.png",
+      "imagewidth": 80,
+      "imageheight": 32
+    },
+    {
+      "id": 2,
+      "image": "limezu-police_station-automatic_barrier_3.png",
+      "imagewidth": 32,
+      "imageheight": 80
+    },
+    {
+      "id": 3,
+      "image": "limezu-police_station-automatic_barrier_4.png",
+      "imagewidth": 32,
+      "imageheight": 80
+    },
+    {
+      "id": 4,
+      "image": "limezu-police_station-badge_1.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 5,
+      "image": "limezu-police_station-badge_sign_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 6,
+      "image": "limezu-police_station-badge_sign_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 7,
+      "image": "limezu-police_station-barrier_1.png",
+      "imagewidth": 32,
+      "imageheight": 16
+    },
+    {
+      "id": 8,
+      "image": "limezu-police_station-helicopter_1.png",
+      "imagewidth": 160,
+      "imageheight": 112
+    },
+    {
+      "id": 9,
+      "image": "limezu-police_station-landing_pad_1.png",
+      "imagewidth": 96,
+      "imageheight": 96
+    },
+    {
+      "id": 10,
+      "image": "limezu-police_station-parking_booth_1.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 11,
+      "image": "limezu-police_station-parking_booth_2.png",
+      "imagewidth": 80,
+      "imageheight": 80
+    },
+    {
+      "id": 12,
+      "image": "limezu-police_station-police_box_1.png",
+      "imagewidth": 48,
+      "imageheight": 96
+    },
+    {
+      "id": 13,
+      "image": "limezu-police_station-police_box_2.png",
+      "imagewidth": 48,
+      "imageheight": 96
+    },
+    {
+      "id": 14,
+      "image": "limezu-police_station-police_car_1.png",
+      "imagewidth": 80,
+      "imageheight": 48
+    },
+    {
+      "id": 15,
+      "image": "limezu-police_station-police_car_2.png",
+      "imagewidth": 80,
+      "imageheight": 48
+    },
+    {
+      "id": 16,
+      "image": "limezu-police_station-police_car_3.png",
+      "imagewidth": 32,
+      "imageheight": 80
+    },
+    {
+      "id": 17,
+      "image": "limezu-police_station-police_car_4.png",
+      "imagewidth": 32,
+      "imageheight": 80
+    },
+    {
+      "id": 18,
+      "image": "limezu-police_station-police_station_1.png",
+      "imagewidth": 336,
+      "imageheight": 288
+    },
+    {
+      "id": 19,
+      "image": "limezu-police_station-police_station_2.png",
+      "imagewidth": 336,
+      "imageheight": 288
+    },
+    {
+      "id": 20,
+      "image": "limezu-police_station-police_station_3.png",
+      "imagewidth": 336,
+      "imageheight": 288
+    },
+    {
+      "id": 21,
+      "image": "limezu-police_station-police_station_roof_cabin_1.png",
+      "imagewidth": 64,
+      "imageheight": 80
+    },
+    {
+      "id": 22,
+      "image": "limezu-police_station-police_station_roof_handrail_1.png",
+      "imagewidth": 176,
+      "imageheight": 144
+    },
+    {
+      "id": 23,
+      "image": "limezu-police_station-police_station_roof_no_sign_1.png",
+      "imagewidth": 160,
+      "imageheight": 160
+    },
+    {
+      "id": 24,
+      "image": "limezu-police_station-police_station_roof_no_spotlights_1.png",
+      "imagewidth": 128,
+      "imageheight": 48
+    },
+    {
+      "id": 25,
+      "image": "limezu-police_station-police_station_roof_sign_1.png",
+      "imagewidth": 128,
+      "imageheight": 64
+    },
+    {
+      "id": 26,
+      "image": "limezu-police_station-police_station_small_1.png",
+      "imagewidth": 112,
+      "imageheight": 208
+    },
+    {
+      "id": 27,
+      "image": "limezu-police_station-police_station_small_2.png",
+      "imagewidth": 112,
+      "imageheight": 208
+    },
+    {
+      "id": 28,
+      "image": "limezu-police_station-police_station_small_highlight_1.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 29,
+      "image": "limezu-police_station-police_station_small_highlight_2.png",
+      "imagewidth": 48,
+      "imageheight": 48
+    },
+    {
+      "id": 30,
+      "image": "limezu-police_station-sidewalk_obstacle_1.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 31,
+      "image": "limezu-police_station-sidewalk_obstacle_2.png",
+      "imagewidth": 16,
+      "imageheight": 16
+    },
+    {
+      "id": 32,
+      "image": "limezu-police_station-siren_1.png",
+      "imagewidth": 16,
+      "imageheight": 32
+    },
+    {
+      "id": 33,
+      "image": "limezu-police_station-spotlight_1.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 34,
+      "image": "limezu-police_station-spotlight_2.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 35,
+      "image": "limezu-police_station-spotlight_3.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    },
+    {
+      "id": 36,
+      "image": "limezu-police_station-spotlight_4.png",
+      "imagewidth": 32,
+      "imageheight": 48
+    }
+  ]
+}

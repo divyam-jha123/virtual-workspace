@@ -1,0 +1,15 @@
+{
+  "name": "office-walls",
+  "tilewidth": 16,
+  "tileheight": 16,
+  "tilecount": 112,
+  "margin": 0,
+  "spacing": 0,
+  "type": "tileset",
+  "version": "1.10",
+  "tiledversion": "1.10.2",
+  "columns": 16,
+  "image": "office-walls.png",
+  "imagewidth": 256,
+  "imageheight": 112
+}

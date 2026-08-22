@@ -1,0 +1,15 @@
+{
+  "name": "office-floors",
+  "tilewidth": 16,
+  "tileheight": 16,
+  "tilecount": 33,
+  "margin": 0,
+  "spacing": 0,
+  "type": "tileset",
+  "version": "1.10",
+  "tiledversion": "1.10.2",
+  "columns": 11,
+  "image": "office-floors.png",
+  "imagewidth": 191,
+  "imageheight": 48
+}

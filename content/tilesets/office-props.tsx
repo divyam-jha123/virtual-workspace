@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="office-props" tilewidth="96" tileheight="64" tilecount="126" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="office-props" tilewidth="96" tileheight="64" tilecount="127" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image source="../tiles/props/monitor_off.png" width="16" height="19"/>
@@ -378,5 +378,8 @@
  </tile>
  <tile id="125">
   <image source="../tiles/props/reception-signboard.png" width="96" height="32"/>
+ </tile>
+ <tile id="126">
+  <image source="../tiles/props/bookshelf-desk-set.png" width="96" height="48"/>
  </tile>
 </tileset>

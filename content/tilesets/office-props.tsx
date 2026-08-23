@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="office-props" tilewidth="96" tileheight="64" tilecount="127" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="office-props" tilewidth="96" tileheight="64" tilecount="139" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image source="../tiles/props/monitor_off.png" width="16" height="19"/>
@@ -381,5 +381,41 @@
  </tile>
  <tile id="126">
   <image source="../tiles/props/bookshelf-desk-set.png" width="96" height="48"/>
+ </tile>
+ <tile id="127">
+  <image source="../tiles/props/office-workstation.png" width="48" height="31"/>
+ </tile>
+ <tile id="128">
+  <image source="../tiles/props/compact-workstation-desk.png" width="32" height="27"/>
+ </tile>
+ <tile id="129">
+  <image source="../tiles/props/double-workstation-desk.png" width="48" height="29"/>
+ </tile>
+ <tile id="130">
+  <image source="../tiles/props/four-drawer-filing-cabinet.png" width="32" height="22"/>
+ </tile>
+ <tile id="131">
+  <image source="../tiles/props/low-bench-table.png" width="48" height="23"/>
+ </tile>
+ <tile id="132">
+  <image source="../tiles/props/office-chair.png" width="17" height="22"/>
+ </tile>
+ <tile id="133">
+  <image source="../tiles/props/executive-chair.png" width="18" height="24"/>
+ </tile>
+ <tile id="134">
+  <image source="../tiles/props/armchair.png" width="17" height="22"/>
+ </tile>
+ <tile id="135">
+  <image source="../tiles/props/partition-panel.png" width="9" height="32"/>
+ </tile>
+ <tile id="136">
+  <image source="../tiles/props/lounge-armchair.png" width="17" height="22"/>
+ </tile>
+ <tile id="137">
+  <image source="../tiles/props/mobile-drawer-pedestal.png" width="17" height="28"/>
+ </tile>
+ <tile id="138">
+  <image source="../tiles/props/office-printer.png" width="24" height="22"/>
  </tile>
 </tileset>

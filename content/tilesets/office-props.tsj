@@ -2,7 +2,7 @@
   "name": "office-props",
   "tilewidth": 16,
   "tileheight": 16,
-  "tilecount": 127,
+  "tilecount": 139,
   "margin": 0,
   "spacing": 0,
   "type": "tileset",
@@ -776,6 +776,78 @@
       "image": "bookshelf-desk-set.png",
       "imagewidth": 96,
       "imageheight": 48
+    },
+    {
+      "id": 127,
+      "image": "office-workstation.png",
+      "imagewidth": 48,
+      "imageheight": 31
+    },
+    {
+      "id": 128,
+      "image": "compact-workstation-desk.png",
+      "imagewidth": 32,
+      "imageheight": 27
+    },
+    {
+      "id": 129,
+      "image": "double-workstation-desk.png",
+      "imagewidth": 48,
+      "imageheight": 29
+    },
+    {
+      "id": 130,
+      "image": "four-drawer-filing-cabinet.png",
+      "imagewidth": 32,
+      "imageheight": 22
+    },
+    {
+      "id": 131,
+      "image": "low-bench-table.png",
+      "imagewidth": 48,
+      "imageheight": 23
+    },
+    {
+      "id": 132,
+      "image": "office-chair.png",
+      "imagewidth": 17,
+      "imageheight": 22
+    },
+    {
+      "id": 133,
+      "image": "executive-chair.png",
+      "imagewidth": 18,
+      "imageheight": 24
+    },
+    {
+      "id": 134,
+      "image": "armchair.png",
+      "imagewidth": 17,
+      "imageheight": 22
+    },
+    {
+      "id": 135,
+      "image": "partition-panel.png",
+      "imagewidth": 9,
+      "imageheight": 32
+    },
+    {
+      "id": 136,
+      "image": "lounge-armchair.png",
+      "imagewidth": 17,
+      "imageheight": 22
+    },
+    {
+      "id": 137,
+      "image": "mobile-drawer-pedestal.png",
+      "imagewidth": 17,
+      "imageheight": 28
+    },
+    {
+      "id": 138,
+      "image": "office-printer.png",
+      "imagewidth": 24,
+      "imageheight": 22
     }
   ]
 }

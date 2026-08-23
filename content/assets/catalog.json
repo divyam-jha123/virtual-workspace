@@ -4723,6 +4723,356 @@
       "collision": {
         "blocking": true
       }
+    },
+    {
+      "id": "office.office-workstation",
+      "name": "Office workstation",
+      "category": "furniture",
+      "tags": [
+        "desk",
+        "workstation",
+        "laptop",
+        "printer",
+        "office"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 127,
+      "version": "1",
+      "subcategory": "furniture",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.compact-workstation-desk",
+      "name": "Compact workstation desk",
+      "category": "furniture",
+      "tags": [
+        "desk",
+        "workstation",
+        "laptop",
+        "office"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 128,
+      "version": "1",
+      "subcategory": "furniture",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.double-workstation-desk",
+      "name": "Double workstation desk",
+      "category": "furniture",
+      "tags": [
+        "desk",
+        "workstation",
+        "laptop",
+        "double",
+        "office"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 129,
+      "version": "1",
+      "subcategory": "furniture",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.four-drawer-filing-cabinet",
+      "name": "Four-drawer filing cabinet",
+      "category": "furniture",
+      "tags": [
+        "cabinet",
+        "filing",
+        "storage",
+        "office"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 130,
+      "version": "1",
+      "subcategory": "furniture",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.low-bench-table",
+      "name": "Low bench table",
+      "category": "furniture",
+      "tags": [
+        "bench",
+        "table",
+        "low",
+        "office"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 131,
+      "version": "1",
+      "subcategory": "furniture",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.office-chair",
+      "name": "Office chair",
+      "category": "furniture",
+      "tags": [
+        "chair",
+        "seat",
+        "office",
+        "swivel"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 132,
+      "version": "1",
+      "subcategory": "furniture",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.executive-chair",
+      "name": "Executive chair",
+      "category": "furniture",
+      "tags": [
+        "chair",
+        "seat",
+        "office",
+        "executive"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 133,
+      "version": "1",
+      "subcategory": "furniture",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.armchair",
+      "name": "Armchair",
+      "category": "furniture",
+      "tags": [
+        "chair",
+        "seat",
+        "armchair",
+        "lounge"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 134,
+      "version": "1",
+      "subcategory": "furniture",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.partition-panel",
+      "name": "Partition panel",
+      "category": "furniture",
+      "tags": [
+        "partition",
+        "divider",
+        "panel",
+        "office"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 135,
+      "version": "1",
+      "subcategory": "furniture",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.lounge-armchair",
+      "name": "Lounge armchair",
+      "category": "furniture",
+      "tags": [
+        "chair",
+        "seat",
+        "armchair",
+        "lounge"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 136,
+      "version": "1",
+      "subcategory": "furniture",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.mobile-drawer-pedestal",
+      "name": "Mobile drawer pedestal",
+      "category": "furniture",
+      "tags": [
+        "pedestal",
+        "drawers",
+        "storage",
+        "mobile",
+        "office"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 137,
+      "version": "1",
+      "subcategory": "furniture",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.office-printer",
+      "name": "Office printer",
+      "category": "equipment",
+      "tags": [
+        "printer",
+        "electronics",
+        "office"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 138,
+      "version": "1",
+      "subcategory": "equipment",
+      "style": "office",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
     }
   ]
 }

@@ -5073,6 +5073,776 @@
       "collision": {
         "blocking": true
       }
+    },
+    {
+      "id": "office.library-reception-desk",
+      "name": "Library reception desk",
+      "category": "furniture",
+      "tags": [
+        "desk",
+        "reception",
+        "counter",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 5,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 139,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-tall-bookshelf",
+      "name": "Library tall bookshelf",
+      "category": "furniture",
+      "tags": [
+        "bookshelf",
+        "books",
+        "shelving",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 6,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 140,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-armchair",
+      "name": "Library armchair",
+      "category": "furniture",
+      "tags": [
+        "armchair",
+        "seat",
+        "seating",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 141,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-round-meeting-table",
+      "name": "Library round meeting table",
+      "category": "furniture",
+      "tags": [
+        "table",
+        "meeting",
+        "round",
+        "seating",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 142,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-long-study-table",
+      "name": "Library long study table",
+      "category": "furniture",
+      "tags": [
+        "table",
+        "study",
+        "seating",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 143,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-sofa",
+      "name": "Library sofa",
+      "category": "furniture",
+      "tags": [
+        "sofa",
+        "couch",
+        "seating",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 144,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-reading-table-narrow",
+      "name": "Library reading table narrow",
+      "category": "furniture",
+      "tags": [
+        "library",
+        "narrow",
+        "reading",
+        "table"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 145,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-sofa-vertical",
+      "name": "Library sofa vertical",
+      "category": "furniture",
+      "tags": [
+        "library",
+        "sofa",
+        "vertical"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 146,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-loveseat-vertical",
+      "name": "Library loveseat vertical",
+      "category": "furniture",
+      "tags": [
+        "library",
+        "loveseat",
+        "vertical"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 147,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-reading-corner",
+      "name": "Library reading corner",
+      "category": "furniture",
+      "tags": [
+        "armchair",
+        "rug",
+        "reading",
+        "nook",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 148,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-small-study-table",
+      "name": "Library small study table",
+      "category": "furniture",
+      "tags": [
+        "table",
+        "study",
+        "seating",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 149,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-bookshelf-medium",
+      "name": "Library bookshelf medium",
+      "category": "furniture",
+      "tags": [
+        "bookshelf",
+        "books",
+        "shelving",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 4,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 150,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-potted-plant-large",
+      "name": "Library potted plant large",
+      "category": "decoration",
+      "tags": [
+        "plant",
+        "potted",
+        "greenery",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 151,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-planter-box",
+      "name": "Library planter box",
+      "category": "decoration",
+      "tags": [
+        "plant",
+        "planter",
+        "greenery",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 152,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-reception-desk-wide",
+      "name": "Library reception desk wide",
+      "category": "furniture",
+      "tags": [
+        "desk",
+        "reception",
+        "counter",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 5,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 153,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-narrow-display-shelf",
+      "name": "Library narrow display shelf",
+      "category": "furniture",
+      "tags": [
+        "bookshelf",
+        "display",
+        "shelving",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 154,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-double-door",
+      "name": "Library double door",
+      "category": "structure",
+      "tags": [
+        "door",
+        "entrance",
+        "doorway",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 3,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 155,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-bookshelf-wide",
+      "name": "Library bookshelf wide",
+      "category": "furniture",
+      "tags": [
+        "bookshelf",
+        "books",
+        "shelving",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 5,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 156,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-water-cooler",
+      "name": "Library water cooler",
+      "category": "decoration",
+      "tags": [
+        "cooler",
+        "library",
+        "water"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 157,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-potted-plant-small",
+      "name": "Library potted plant small",
+      "category": "decoration",
+      "tags": [
+        "plant",
+        "potted",
+        "greenery",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 158,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-display-shelf",
+      "name": "Library display shelf",
+      "category": "decoration",
+      "tags": [
+        "display",
+        "library",
+        "shelf"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 159,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-planter-box-small",
+      "name": "Library planter box small",
+      "category": "furniture",
+      "tags": [
+        "box",
+        "library",
+        "planter",
+        "small"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 160,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-potted-tree",
+      "name": "Library potted tree",
+      "category": "furniture",
+      "tags": [
+        "library",
+        "potted",
+        "tree"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 161,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-floor-lamp",
+      "name": "Library floor lamp",
+      "category": "furniture",
+      "tags": [
+        "floor",
+        "lamp",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 3
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 162,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      },
+      "collision": {
+        "blocking": true
+      }
+    },
+    {
+      "id": "office.library-printer-unit",
+      "name": "Library printer unit",
+      "category": "decoration",
+      "tags": [
+        "library",
+        "printer",
+        "unit"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 2
+      },
+      "placement": "wall",
+      "tilesetId": "office-props",
+      "tileId": 163,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.library-floor-light",
+      "name": "Library floor light",
+      "category": "decoration",
+      "tags": [
+        "light",
+        "lamp",
+        "downlight",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 1,
+        "height": 1
+      },
+      "placement": "floor",
+      "tilesetId": "office-props",
+      "tileId": 164,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
+    },
+    {
+      "id": "office.library-strip-light",
+      "name": "Library strip light",
+      "category": "decoration",
+      "tags": [
+        "light",
+        "lamp",
+        "strip",
+        "wall",
+        "library"
+      ],
+      "tileSize": 16,
+      "dimensions": {
+        "width": 2,
+        "height": 1
+      },
+      "placement": "wall",
+      "tilesetId": "office-props",
+      "tileId": 165,
+      "version": "1",
+      "subcategory": "library",
+      "style": "library",
+      "source": {
+        "author": "unknown (see content/tiles/ATTRIBUTION.md)",
+        "license": "Unconfirmed"
+      }
     }
   ]
 }

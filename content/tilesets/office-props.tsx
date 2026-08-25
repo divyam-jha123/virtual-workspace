@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.2" name="office-props" tilewidth="96" tileheight="64" tilecount="139" columns="0">
+<tileset version="1.10" tiledversion="1.10.2" name="office-props" tilewidth="96" tileheight="64" tilecount="166" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image source="../tiles/props/monitor_off.png" width="16" height="19"/>
@@ -417,5 +417,86 @@
  </tile>
  <tile id="138">
   <image source="../tiles/props/office-printer.png" width="24" height="22"/>
+ </tile>
+ <tile id="139">
+  <image source="../tiles/props/library-reception-desk.png" width="80" height="53"/>
+ </tile>
+ <tile id="140">
+  <image source="../tiles/props/library-tall-bookshelf.png" width="96" height="26"/>
+ </tile>
+ <tile id="141">
+  <image source="../tiles/props/library-armchair.png" width="28" height="32"/>
+ </tile>
+ <tile id="142">
+  <image source="../tiles/props/library-round-meeting-table.png" width="58" height="64"/>
+ </tile>
+ <tile id="143">
+  <image source="../tiles/props/library-long-study-table.png" width="45" height="64"/>
+ </tile>
+ <tile id="144">
+  <image source="../tiles/props/library-sofa.png" width="64" height="40"/>
+ </tile>
+ <tile id="145">
+  <image source="../tiles/props/library-reading-table-narrow.png" width="29" height="56"/>
+ </tile>
+ <tile id="146">
+  <image source="../tiles/props/library-sofa-vertical.png" width="27" height="56"/>
+ </tile>
+ <tile id="147">
+  <image source="../tiles/props/library-loveseat-vertical.png" width="18" height="40"/>
+ </tile>
+ <tile id="148">
+  <image source="../tiles/props/library-reading-corner.png" width="55" height="64"/>
+ </tile>
+ <tile id="149">
+  <image source="../tiles/props/library-small-study-table.png" width="46" height="48"/>
+ </tile>
+ <tile id="150">
+  <image source="../tiles/props/library-bookshelf-medium.png" width="64" height="47"/>
+ </tile>
+ <tile id="151">
+  <image source="../tiles/props/library-potted-plant-large.png" width="19" height="32"/>
+ </tile>
+ <tile id="152">
+  <image source="../tiles/props/library-planter-box.png" width="48" height="32"/>
+ </tile>
+ <tile id="153">
+  <image source="../tiles/props/library-reception-desk-wide.png" width="80" height="48"/>
+ </tile>
+ <tile id="154">
+  <image source="../tiles/props/library-narrow-display-shelf.png" width="14" height="48"/>
+ </tile>
+ <tile id="155">
+  <image source="../tiles/props/library-double-door.png" width="48" height="41"/>
+ </tile>
+ <tile id="156">
+  <image source="../tiles/props/library-bookshelf-wide.png" width="80" height="47"/>
+ </tile>
+ <tile id="157">
+  <image source="../tiles/props/library-planter-box-small.png" width="12" height="28"/>
+ </tile>
+ <tile id="158">
+  <image source="../tiles/props/library-potted-plant-small.png" width="18" height="24"/>
+ </tile>
+ <tile id="159">
+  <image source="../tiles/props/library-display-shelf.png" width="14" height="28"/>
+ </tile>
+ <tile id="160">
+  <image source="../tiles/props/library-planter-box-small.png" width="20" height="32"/>
+ </tile>
+ <tile id="161">
+  <image source="../tiles/props/library-potted-tree.png" width="19" height="32"/>
+ </tile>
+ <tile id="162">
+  <image source="../tiles/props/library-floor-lamp.png" width="15" height="48"/>
+ </tile>
+ <tile id="163">
+  <image source="../tiles/props/library-printer-unit.png" width="32" height="22"/>
+ </tile>
+ <tile id="164">
+  <image source="../tiles/props/library-floor-light.png" width="16" height="13"/>
+ </tile>
+ <tile id="165">
+  <image source="../tiles/props/library-strip-light.png" width="32" height="6"/>
  </tile>
 </tileset>

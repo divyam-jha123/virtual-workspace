@@ -2,7 +2,7 @@
   "name": "office-props",
   "tilewidth": 16,
   "tileheight": 16,
-  "tilecount": 139,
+  "tilecount": 166,
   "margin": 0,
   "spacing": 0,
   "type": "tileset",
@@ -848,6 +848,168 @@
       "image": "office-printer.png",
       "imagewidth": 24,
       "imageheight": 22
+    },
+    {
+      "id": 139,
+      "image": "library-reception-desk.png",
+      "imagewidth": 80,
+      "imageheight": 53
+    },
+    {
+      "id": 140,
+      "image": "library-tall-bookshelf.png",
+      "imagewidth": 96,
+      "imageheight": 26
+    },
+    {
+      "id": 141,
+      "image": "library-armchair.png",
+      "imagewidth": 28,
+      "imageheight": 32
+    },
+    {
+      "id": 142,
+      "image": "library-round-meeting-table.png",
+      "imagewidth": 58,
+      "imageheight": 64
+    },
+    {
+      "id": 143,
+      "image": "library-long-study-table.png",
+      "imagewidth": 45,
+      "imageheight": 64
+    },
+    {
+      "id": 144,
+      "image": "library-sofa.png",
+      "imagewidth": 64,
+      "imageheight": 40
+    },
+    {
+      "id": 145,
+      "image": "library-reading-table-narrow.png",
+      "imagewidth": 29,
+      "imageheight": 56
+    },
+    {
+      "id": 146,
+      "image": "library-sofa-vertical.png",
+      "imagewidth": 27,
+      "imageheight": 56
+    },
+    {
+      "id": 147,
+      "image": "library-loveseat-vertical.png",
+      "imagewidth": 18,
+      "imageheight": 40
+    },
+    {
+      "id": 148,
+      "image": "library-reading-corner.png",
+      "imagewidth": 55,
+      "imageheight": 64
+    },
+    {
+      "id": 149,
+      "image": "library-small-study-table.png",
+      "imagewidth": 46,
+      "imageheight": 48
+    },
+    {
+      "id": 150,
+      "image": "library-bookshelf-medium.png",
+      "imagewidth": 64,
+      "imageheight": 47
+    },
+    {
+      "id": 151,
+      "image": "library-potted-plant-large.png",
+      "imagewidth": 19,
+      "imageheight": 32
+    },
+    {
+      "id": 152,
+      "image": "library-planter-box.png",
+      "imagewidth": 48,
+      "imageheight": 32
+    },
+    {
+      "id": 153,
+      "image": "library-reception-desk-wide.png",
+      "imagewidth": 80,
+      "imageheight": 48
+    },
+    {
+      "id": 154,
+      "image": "library-narrow-display-shelf.png",
+      "imagewidth": 14,
+      "imageheight": 48
+    },
+    {
+      "id": 155,
+      "image": "library-double-door.png",
+      "imagewidth": 48,
+      "imageheight": 41
+    },
+    {
+      "id": 156,
+      "image": "library-bookshelf-wide.png",
+      "imagewidth": 80,
+      "imageheight": 47
+    },
+    {
+      "id": 157,
+      "image": "library-water-cooler.png",
+      "imagewidth": 12,
+      "imageheight": 28
+    },
+    {
+      "id": 158,
+      "image": "library-potted-plant-small.png",
+      "imagewidth": 18,
+      "imageheight": 24
+    },
+    {
+      "id": 159,
+      "image": "library-display-shelf.png",
+      "imagewidth": 14,
+      "imageheight": 28
+    },
+    {
+      "id": 160,
+      "image": "library-planter-box-small.png",
+      "imagewidth": 20,
+      "imageheight": 32
+    },
+    {
+      "id": 161,
+      "image": "library-potted-tree.png",
+      "imagewidth": 19,
+      "imageheight": 32
+    },
+    {
+      "id": 162,
+      "image": "library-floor-lamp.png",
+      "imagewidth": 15,
+      "imageheight": 48
+    },
+    {
+      "id": 163,
+      "image": "library-printer-unit.png",
+      "imagewidth": 32,
+      "imageheight": 22
+    },
+    {
+      "id": 164,
+      "image": "library-floor-light.png",
+      "imagewidth": 16,
+      "imageheight": 13
+    },
+    {
+      "id": 165,
+      "image": "library-strip-light.png",
+      "imagewidth": 32,
+      "imageheight": 6
     }
   ]
 }
